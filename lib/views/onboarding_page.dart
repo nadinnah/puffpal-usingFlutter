@@ -23,7 +23,7 @@ class OnboardingPage extends StatelessWidget {
           ),
           if (title != null)
             Padding(
-              padding: const EdgeInsets.fromLTRB(0,150,0,20),
+              padding: const EdgeInsets.fromLTRB(0,100,0,20),
               child: Text(title!,
                   textAlign: TextAlign.center,
                   style: TextStyle(

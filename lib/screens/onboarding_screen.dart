@@ -48,19 +48,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   children: [
                     OnboardingPage(
                       animationUrl:
-                          'https://lottie.host/786170f4-55ee-46ce-9231-df87f8447c78/sEXoNCHnLX.json',
+                          'https://lottie.host/5cf639ad-7a01-4c6d-94e3-76c986dd6e9c/jFLyI97OUg.json',
                       title: 'Welcome to PuffPal',
                       description: 'description',
                     ),
                     OnboardingPage(
                       animationUrl:
-                          'https://lottie.host/786170f4-55ee-46ce-9231-df87f8447c78/sEXoNCHnLX.json',
+                          'https://lottie.host/5cf639ad-7a01-4c6d-94e3-76c986dd6e9c/jFLyI97OUg.json',
                       title: 'title',
                       description: 'description',
                     ),
                     OnboardingPage(
                       animationUrl:
-                          'https://lottie.host/786170f4-55ee-46ce-9231-df87f8447c78/sEXoNCHnLX.json',
+                          'https://lottie.host/5cf639ad-7a01-4c6d-94e3-76c986dd6e9c/jFLyI97OUg.json',
                     ),
                   ],
                 ),
@@ -114,8 +114,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       style: TextStyle(color: Colors.white, fontSize: 24),
                     ),
                   ),
-                  SizedBox(height: 150.0),
-
+                  SizedBox(height: 200.0),
+    ]),
                   SmoothPageIndicator(
                     controller: _pageController,
                     count: 3,
@@ -159,8 +159,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   const SizedBox(height: 32.0),
                 ],
               ),
-          ],
-        ),
+
       ),
     );
   }
