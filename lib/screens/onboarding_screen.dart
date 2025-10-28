@@ -4,6 +4,7 @@ import 'package:puffpal/views/onboarding_page.dart';
 import 'package:puffpal/views/signup_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -49,13 +50,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     OnboardingPage(
                       animationUrl:
                           'https://lottie.host/5cf639ad-7a01-4c6d-94e3-76c986dd6e9c/jFLyI97OUg.json',
-                      title: 'Welcome to PuffPal',
+                      title: Row(mainAxisAlignment: MainAxisAlignment.center,children:[Text('Welcome to', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold,  color: Color(0xFF3D4853) )),SizedBox(width: 10,) , Text('PuffPal', style: GoogleFonts.rubikBubbles(fontSize: 40, fontWeight: FontWeight.w600, color: Color(
+                          0xFF1E6097)),)]),
                       description: 'description',
                     ),
                     OnboardingPage(
                       animationUrl:
                           'https://lottie.host/5cf639ad-7a01-4c6d-94e3-76c986dd6e9c/jFLyI97OUg.json',
-                      title: 'title',
+                      title: Text('title!',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 35,
+                              fontWeight: FontWeight.bold,
+                              color: Color(0xFF3D4853))),
                       description: 'description',
                     ),
                     OnboardingPage(
