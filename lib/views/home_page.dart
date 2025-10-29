@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import '../services/firestore_service.dart';
-import 'carousel_slider_pages/page_1.dart';
-import 'carousel_slider_pages/page_2.dart';
-import 'carousel_slider_pages/page_3.dart';
-import 'carousel_slider_pages/page_4.dart';
-import 'carousel_slider_pages/page_5.dart';
-import 'carousel_slider_pages/page_6.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:puffpal/models/carousel.dart';
+
+import 'carousel_details_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -98,41 +94,51 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-}
 
-Widget carouselView(int index) {
-  return carouselCard(carouselDataList[index]);
-}
+  Widget carouselView(int index) {
+    return carouselCard(carouselDataList[index]);
+  }
 
-Widget carouselCard(CarouselDataModel data) {
-  return Column(
-    children: [
-      SizedBox(
-        height: 200,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              image: DecorationImage(
-                image: AssetImage(data.imageName),
-                fit: BoxFit.fill,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(0, 4),
-                  blurRadius: 10,
-                  color: Color(0xff615f5f),
+  Widget carouselCard(CarouselDataModel data) {
+    return Column(
+      children: [
+        SizedBox(
+          height: 200,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Hero(
+              tag:data.imageName,
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => CarouselDetailsPage(carouselData: data)));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    image: DecorationImage(
+                      image: AssetImage(data.imageName),
+                      fit: BoxFit.fill,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        offset: Offset(0, 4),
+                        blurRadius: 10,
+                        color: Color(0xff615f5f),
+                      ),
+                    ],
+                  ),
                 ),
-              ],
+              ),
             ),
           ),
         ),
-      ),
-      Text(
-        data.title,
-        style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-      ),
-    ],
-  );
+        Text(
+          data.title,
+          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+        ),
+      ],
+    );
+  }
+
 }
+
