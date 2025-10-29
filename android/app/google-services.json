@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "192668855025",
+    "project_id": "puff-pal",
+    "storage_bucket": "puff-pal.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192668855025:android:d588de2ff1dac32a64d750",
+        "android_client_info": {
+          "package_name": "com.example.puffpal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu0N6T_RSzLLxNp2GuKUZc5eOR5PWMrG8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

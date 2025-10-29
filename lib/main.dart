@@ -5,6 +5,8 @@ import 'package:puffpal/views/login_page.dart';
 import 'package:puffpal/views/profile_page.dart';
 import 'package:puffpal/views/signup_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,6 +14,10 @@ Future<void> main() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   final initScreen = prefs.getBool("initScreen")?? false;
 
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(App(initScreen: initScreen));
 }
 
