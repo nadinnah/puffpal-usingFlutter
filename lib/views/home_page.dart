@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:puffpal/views/track_symptoms_page.dart';
 import '../services/firestore_service.dart';
@@ -37,8 +38,15 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final items= [
+      Icon(Icons.home_filled,size:30),
+      Icon(Icons.person,size:30),
+      Icon(Icons.medical_information,size:30)
+    ];
+
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
           IconButton(
@@ -51,6 +59,11 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.logout),
           ),
         ],
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        items: items,
+        height: 60,
+
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -93,9 +106,8 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-             SizedBox(height:30,),
              Padding(
-               padding: const EdgeInsets.fromLTRB(50,0,0,0),
+               padding: const EdgeInsets.fromLTRB(50,50,0,0),
                child: Row(
                  mainAxisAlignment: MainAxisAlignment.start,
                  children: [
@@ -124,6 +136,7 @@ class _HomePageState extends State<HomePage> {
                 dotColor: Color(0x446E6E6E),
               ),
             ),
+            SizedBox(height: 20,)
           ],
         ),
       ),
