@@ -38,7 +38,7 @@ class App extends StatelessWidget {
           '/onboarding': (context) => OnboardingScreen()
         },
         //home: initScreen ? LoginPage() : OnboardingScreen());
-        //home: initScreen ? HomePage() : OnboardingScreen());
-        home: OnboardingScreen());
+        home: initScreen ? HomePage() : OnboardingScreen());
+        //home: OnboardingScreen());
   }
 }

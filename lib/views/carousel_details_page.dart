@@ -40,7 +40,7 @@ class _CarouselDetailsPageState extends State<CarouselDetailsPage> {
                     boxShadow: [
                       BoxShadow(
                         offset: Offset(0, 4),
-                        blurRadius: 10,
+                        blurRadius: 5,
                         color: Color(0xff615f5f),
                       ),
                     ],

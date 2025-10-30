@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:puffpal/views/track_symptoms_page.dart';
 import '../services/firestore_service.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:puffpal/models/carousel.dart';
@@ -58,13 +59,43 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-             SizedBox(height: 400,),
+             SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(40.0,0,40,30),
+              child: Text('Hello x. Discover how understanding your health can make every breath easier!'),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(40,0,40,0),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => TrackSymptomsPage()));
+                },
+                child: Card(
+                  elevation: 5,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Image.network('https://www.miraclemovers.com/wp-content/uploads/2021/08/How-to-hire-a-professional-moving-company.jpg', ),
+                        ListTile(
+                          leading: Icon(Icons.medical_information),
+                          title: Text('Track Your Symptoms!'),
+                          subtitle: Text('end-to-end logistics services'),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+             SizedBox(height:50,),
              Padding(
                padding: const EdgeInsets.fromLTRB(50,0,0,0),
                child: Row(
                  mainAxisAlignment: MainAxisAlignment.start,
                  children: [
-                   Text('Breathe Better, learn More', style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
+                   Text('Breathe Better, learn More', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
                  ],
                ),
              ),
@@ -114,15 +145,15 @@ class _HomePageState extends State<HomePage> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
                       image: AssetImage(data.imageName),
                       fit: BoxFit.fill,
                     ),
                     boxShadow: [
                       BoxShadow(
-                        offset: Offset(0, 4),
-                        blurRadius: 10,
+                        offset: Offset(0, 2),
+                        blurRadius: 5,
                         color: Color(0xff615f5f),
                       ),
                     ],
