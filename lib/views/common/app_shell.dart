@@ -69,6 +69,7 @@ class _AppShellState extends State<AppShell> {
         ],
       ),
       bottomNavigationBar:  CurvedNavigationBar(
+          animationDuration: Duration(milliseconds: 300),
           items: items,
           index: index,
           height: 60,

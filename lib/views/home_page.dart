@@ -45,12 +45,24 @@ class _HomePageState extends State<HomePage> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(50.0, 115, 50, 30),
-            child: Text(
-              'Hello x. \nDiscover how understanding your health can make every breath easier!',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(40, 115, 40, 20),
+                child: Text(
+                  'Hello x!',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(40, 0, 40, 50),
+                child: Text(
+                  'Discover how understanding your health can make every breath easier!',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,)
+                ),
+              ),
+            ],
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
@@ -123,8 +135,8 @@ class _HomePageState extends State<HomePage> {
             effect: ExpandingDotsEffect(
               dotWidth: 10,
               dotHeight: 10,
-              activeDotColor: Colors.grey,
-              dotColor: Color(0x446E6E6E),
+              activeDotColor: Color(0xffd6d1e6),
+              dotColor: Color(0xffcccee5),
             ),
           ),
           SizedBox(height: 80),
