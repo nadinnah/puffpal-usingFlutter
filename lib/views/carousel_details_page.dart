@@ -14,7 +14,16 @@ class _CarouselDetailsPageState extends State<CarouselDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(elevation: 0),
+      appBar: AppBar(
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back_ios_new, color: Colors.black),
+        ),
+      ),
+
       body: Column(
         children: [
           Padding(
@@ -52,7 +61,7 @@ class _CarouselDetailsPageState extends State<CarouselDetailsPage> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(widget.carouselData.description),
-          )
+          ),
         ],
       ),
     );

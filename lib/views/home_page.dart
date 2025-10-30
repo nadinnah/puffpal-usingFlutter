@@ -38,50 +38,54 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        actions: [
+          IconButton(
+            iconSize: 20,
+            color: Colors.black,
+            onPressed: () {
+              firebaseServices.signOut();
+              Navigator.pushNamed(context, '/login');
+            },
+            icon: Icon(Icons.logout),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 50),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.fromLTRB(50.0,0,50,30),
+              child: Text('Hello x. \nDiscover how understanding your health can make every breath easier!', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(50,0,0,0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  IconButton(
-                    iconSize: 20,
-                    color: Colors.black,
-                    onPressed: () {
-                      firebaseServices.signOut();
-                      Navigator.pushNamed(context, '/login');
-                    },
-                    icon: Icon(Icons.logout),
-                  ),
+                  Text('Breathe Better, learn More', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),),
                 ],
               ),
             ),
-             SizedBox(height: 10,),
             Padding(
-              padding: const EdgeInsets.fromLTRB(40.0,0,40,30),
-              child: Text('Hello x. Discover how understanding your health can make every breath easier!'),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(40,0,40,0),
+              padding: const EdgeInsets.fromLTRB(50,0,45,0),
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => TrackSymptomsPage()));
                 },
                 child: Card(
-                  elevation: 5,
+                  elevation: 3,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(12.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Image.network('https://www.miraclemovers.com/wp-content/uploads/2021/08/How-to-hire-a-professional-moving-company.jpg', ),
+                        Image.network('https://images.ctfassets.net/h8qzhh7m9m8u/3yLMtGnvAqt0mySfcZtkLi/5d195fa0b61f4f0f84d8fd6a47c03255/How_to_know_if_someone_is_having_an_asthma_attack__1_.png?fm=webp&w=2100&h=1200&fit=fill&bg=rgb:FFFFFF&q=70', ),
                         ListTile(
                           leading: Icon(Icons.medical_information),
                           title: Text('Track Your Symptoms!'),
-                          subtitle: Text('end-to-end logistics services'),
+                          subtitle: Text('quick questions'),
                         ),
                       ],
                     ),
@@ -89,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-             SizedBox(height:50,),
+             SizedBox(height:30,),
              Padding(
                padding: const EdgeInsets.fromLTRB(50,0,0,0),
                child: Row(
