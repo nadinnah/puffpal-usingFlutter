@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:puffpal/screens/onboarding_screen.dart';
+import 'package:puffpal/views/common/app_shell.dart';
 import 'package:puffpal/views/home_page.dart';
 import 'package:puffpal/views/login_page.dart';
 import 'package:puffpal/views/profile_page.dart';
@@ -38,7 +39,7 @@ class App extends StatelessWidget {
           '/onboarding': (context) => OnboardingScreen()
         },
         //home: initScreen ? LoginPage() : OnboardingScreen());
-        home: initScreen ? HomePage() : OnboardingScreen());
+        home: initScreen ? AppShell() : OnboardingScreen());
         //home: OnboardingScreen());
   }
 }
