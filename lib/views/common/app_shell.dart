@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:puffpal/views/home_page.dart';
 import 'package:puffpal/views/profile_page.dart';
+import 'package:puffpal/views/quizzes_games_page.dart';
 import 'package:puffpal/views/track_symptoms_page.dart';
 import '../../services/firestore_service.dart';
 
@@ -19,9 +20,9 @@ class _AppShellState extends State<AppShell> {
   int index = 0;
 
   final List<Widget> pages = [
-    const HomePage(),
-    const ProfilePage(),
-    const TrackSymptomsPage(),
+    HomePage(),
+    ProfilePage(),
+    QuizzesGamesPage(),
   ];
 
   @override

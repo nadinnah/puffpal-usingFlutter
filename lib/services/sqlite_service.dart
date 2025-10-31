@@ -28,7 +28,8 @@ class LocalDatabase {
   initialize() async {
     String myPath = await getDatabasesPath();
     String path = join(myPath, 'myDataBase.db');
-    Database myDb = await openDatabase(path, version: version, onCreate: (db, version) async {
+    Database myDb = await openDatabase(
+        path, version: version, onCreate: (db, version) async {
       await db.execute('''
        CREATE TABLE IF NOT EXISTS Users (
        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
@@ -41,7 +42,7 @@ class LocalDatabase {
        );
       ''');
     });
-      return myDb;
+    return myDb;
   }
 
   Future<void> updateUserFieldById(int id, Map<String, dynamic> fieldsToUpdate) async {

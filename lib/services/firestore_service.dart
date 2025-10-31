@@ -9,7 +9,7 @@ class FirebaseServices{
   //Signs in a user with email and password
   Future<bool> signIn(String emailAddress, String password) async {
     try {
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailAddress,
         password: password,
       );
@@ -28,7 +28,7 @@ class FirebaseServices{
   //Signs up a new user with email, password, name, and phone.
   Future<bool> signUp(String emailAddress, String password, String name, String phone, int age, String gender) async {
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailAddress,
           password: password
       );

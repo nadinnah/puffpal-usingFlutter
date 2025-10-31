@@ -11,14 +11,13 @@ import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   final initScreen = prefs.getBool("initScreen")?? false;
 
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   runApp(App(initScreen: initScreen));
 }
 
@@ -38,7 +37,7 @@ class App extends StatelessWidget {
           '/onboarding': (context) => OnboardingScreen()
         },
         //home: initScreen ? LoginPage() : OnboardingScreen());
-        //home: initScreen ? AppShell() : OnboardingScreen());
-        home: OnboardingScreen());
+        home: initScreen ? AppShell() : OnboardingScreen());
+        //home: OnboardingScreen());
   }
 }
