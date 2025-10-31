@@ -7,6 +7,7 @@ class LocalDatabase {
 
   Future<Database?> get myDataBase async{
     if(_myDatabase != null){
+      _myDatabase = await initialize();
       return _myDatabase;
     }else{
       return _myDatabase;
@@ -56,5 +57,15 @@ class LocalDatabase {
     } catch (e) {
       throw Exception("Failed to update user field(s) in SQLite.");
     }
+  }
+
+  Future<int> insertUser(Map<String, dynamic> userData) async {
+    final db = await myDataBase;
+    return await db!.insert(
+      'Users',
+      {
+        ...userData,
+      },
+    );
   }
 }

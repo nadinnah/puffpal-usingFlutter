@@ -147,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
                                 email, password);
                             if (status) {
                               Navigator.pushReplacementNamed(
-                                  context, '/home');
+                                  context, '/appshell');
                             } else {
                               throw Exception(
                                   'Login failed: Invalid credentials');

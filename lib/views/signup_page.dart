@@ -13,6 +13,10 @@ class _SignupPageState extends State<SignupPage> {
   final passwordController = TextEditingController();
   final nameController = TextEditingController();
   final phoneController = TextEditingController();
+  final ageController = TextEditingController();
+  String? _selectedGender;
+
+
 
   final formKey = GlobalKey<FormState>();
 
@@ -21,6 +25,16 @@ class _SignupPageState extends State<SignupPage> {
 
   FirebaseServices firebaseServices = FirebaseServices();
 
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
+    phoneController.dispose();
+    ageController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +97,47 @@ class _SignupPageState extends State<SignupPage> {
                         },
                       ),
                       SizedBox(height: 15),
+                      TextFormField(
+                        controller: ageController,
+                        keyboardType: TextInputType.number,
+                        decoration: const InputDecoration(
+                          labelText: 'Age',
+                          hintText: 'Enter your age',
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your age';
+                          }
+                          final int? age = int.tryParse(value);
+                          if (age == null || age <= 0 || age > 120) {
+                            return 'Please enter a valid age (1-120)';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 15),
+                      DropdownButtonFormField<String>(
+                        decoration: InputDecoration(labelText: 'Gender'),
+                        value: _selectedGender,
+                        items: <String>['Male', 'Female'].map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _selectedGender = newValue;
+                          });
+                        },
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please select your gender';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 15),
                       InputField(
                         key: Key('email_field2'),
                         hint: 'Email',
@@ -132,10 +187,12 @@ class _SignupPageState extends State<SignupPage> {
                             String password = passwordController.text.trim();
                             String name = nameController.text.trim();
                             String phone = phoneController.text.trim();
+                            int age = int.parse(ageController.text.trim());
+                            String gender = _selectedGender!;
                   
                             try {
                               bool result = await firebaseServices.signUp(
-                                  email, password, name, phone);
+                                  email, password, name, phone,age, gender);
                   
                               if (result) {
                                 ScaffoldMessenger.of(context).showSnackBar(

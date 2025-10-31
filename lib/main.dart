@@ -34,12 +34,11 @@ class App extends StatelessWidget {
         routes: {
           '/login': (context) => LoginPage(),
           '/signup': (context) => SignupPage(),
-          '/home': (context) => HomePage(),
-          '/profile': (context) => ProfilePage(),
+          '/appshell': (context) => AppShell(),
           '/onboarding': (context) => OnboardingScreen()
         },
         //home: initScreen ? LoginPage() : OnboardingScreen());
-        home: initScreen ? AppShell() : OnboardingScreen());
-        //home: OnboardingScreen());
+        //home: initScreen ? AppShell() : OnboardingScreen());
+        home: OnboardingScreen());
   }
 }
