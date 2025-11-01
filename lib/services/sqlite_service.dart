@@ -18,7 +18,7 @@ class LocalDatabase {
 
   Future<void> deleteOldDatabase() async{
     String myPath= await getDatabasesPath();
-    String path= join(myPath, 'example.db');
+    String path= join(myPath, 'puffpal1.db');
 
     if(await databaseExists(path)){
       await deleteDatabase(path);
@@ -27,15 +27,16 @@ class LocalDatabase {
 
   initialize() async {
     String myPath = await getDatabasesPath();
-    String path = join(myPath, 'puffpal.db');
+    String path = join(myPath, 'puffpal2.db');
     Database myDb = await openDatabase(
         path, version: version, onCreate: (db, version) async {
       await db.execute('''
        CREATE TABLE IF NOT EXISTS Users (
        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
        firebaseId TEXT,
+       password TEXT NOT NULL,
        name TEXT NOT NULL,
-       phone TEXT NOT NULL,
+       number TEXT NOT NULL,
        email TEXT NOT NULL UNIQUE,
        age INTEGER NOT NULL,
        gender TEXT NOT NULL
