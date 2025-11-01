@@ -28,36 +28,17 @@ class _CarouselDetailsPageState extends State<CarouselDetailsPage> {
         children: [
           Padding(
             padding: EdgeInsets.only(bottom: 20),
-            child: Text(
-              widget.carouselData.title,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Hero(
-            tag: widget.carouselData.imageName,
-            child: SizedBox(
-              height: 300,
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(
-                      image: AssetImage(widget.carouselData.imageName),
-                      fit: BoxFit.fill,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 4),
-                        blurRadius: 5,
-                        color: Color(0xff615f5f),
-                      ),
-                    ],
-                  ),
+            child: Hero(
+              tag: widget.carouselData.title,
+              child: Center(
+                child: Text(
+                  widget.carouselData.title,
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
               ),
             ),
           ),
+
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Text(widget.carouselData.description),

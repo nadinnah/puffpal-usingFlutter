@@ -157,7 +157,7 @@ class _HomePageState extends State<HomePage> {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Hero(
-              tag: data.imageName,
+              tag: data.title,
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(
