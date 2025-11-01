@@ -6,7 +6,7 @@ class LocalDatabase {
   static Database? _myDatabase;
 
   Future<Database?> get myDataBase async{
-    if(_myDatabase != null){
+    if(_myDatabase == null){
       _myDatabase = await initialize();
       return _myDatabase;
     }else{
@@ -27,7 +27,7 @@ class LocalDatabase {
 
   initialize() async {
     String myPath = await getDatabasesPath();
-    String path = join(myPath, 'myDataBase.db');
+    String path = join(myPath, 'puffpal.db');
     Database myDb = await openDatabase(
         path, version: version, onCreate: (db, version) async {
       await db.execute('''
@@ -38,7 +38,7 @@ class LocalDatabase {
        phone TEXT NOT NULL,
        email TEXT NOT NULL UNIQUE,
        age INTEGER NOT NULL,
-       gender TEXT NOT NULL,
+       gender TEXT NOT NULL
        );
       ''');
     });
