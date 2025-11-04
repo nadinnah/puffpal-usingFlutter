@@ -70,4 +70,20 @@ class LocalDatabase {
       },
     );
   }
+
+  Future<String?> getNameByEmail(String email) async {
+    final db = await myDataBase;
+    var result = await db!.query(
+      'Users',
+      columns: ['name'],
+      where: 'email = ?',
+      whereArgs: [email],
+    );
+
+    if (result.isNotEmpty) {
+      return result.first['name'] as String;
+    }
+    return null;
+  }
+
 }

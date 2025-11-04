@@ -1,8 +1,10 @@
 import 'dart:ui';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:puffpal/services/sqlite_service.dart';
 import 'package:puffpal/views/profile_page.dart';
 import 'package:puffpal/views/track_symptoms_page.dart';
 import '../services/firestore_service.dart';
@@ -19,9 +21,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  FirebaseAuth auth = FirebaseAuth.instance;
   FirebaseServices firebaseServices = FirebaseServices();
+  LocalDatabase localDatabase = LocalDatabase();
+
   late PageController _pageController;
   int _currentPage = 0;
+  String userName='';
 
   @override
   void initState() {
@@ -31,6 +37,7 @@ class _HomePageState extends State<HomePage> {
       initialPage: _currentPage,
       viewportFraction: 0.8,
     );
+    getName();
   }
 
   @override
@@ -38,6 +45,13 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement dispose
     super.dispose();
     _pageController.dispose();
+  }
+
+  getName() async{
+    String? name= await localDatabase.getNameByEmail(auth.currentUser!.email!);
+    setState(() {
+      userName = name ?? 'Guest';
+    });
   }
 
   @override
@@ -51,7 +65,7 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(40, 115, 40, 20),
                 child: Text(
-                  'Hello x!',
+                  'Hello $userName!',
                   style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
