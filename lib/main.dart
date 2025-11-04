@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:puffpal/screens/onboarding_screen.dart';
+import 'package:puffpal/services/firebase_api.dart';
 import 'package:puffpal/views/common/app_shell.dart';
 import 'package:puffpal/views/home_page.dart';
 import 'package:puffpal/views/login_page.dart';
@@ -14,6 +15,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseApi().initNotification();
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   final initScreen = prefs.getBool("initScreen")?? false;

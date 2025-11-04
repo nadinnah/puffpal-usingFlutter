@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 
 class FirebaseServices{
@@ -13,6 +14,12 @@ class FirebaseServices{
         email: emailAddress,
         password: password,
       );
+      String? fcmToken = await FirebaseMessaging.instance.getToken();
+
+      await firestore.collection('Users').doc(credential.user!.uid).update({
+        'fcmToken': fcmToken,
+      });
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -33,6 +40,8 @@ class FirebaseServices{
           password: password
       );
 
+      String? fcmToken = await FirebaseMessaging.instance.getToken();
+
       await firestore.collection('Users').doc(credential.user!.uid).set({
         'name': name,
         'email': emailAddress,
@@ -40,6 +49,7 @@ class FirebaseServices{
         'age': age,
         'gender': gender,
         'uid': credential.user!.uid,
+        'fcmToken': fcmToken,
       });
 
       await localDb.insertUser({
