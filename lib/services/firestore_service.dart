@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 
+import 'firebase_api.dart';
+
 class FirebaseServices{
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   LocalDatabase localDb = LocalDatabase();
@@ -61,6 +63,8 @@ class FirebaseServices{
         'gender': gender,
         'firebaseId': credential.user!.uid,
       });
+
+      await FirebaseApi().initNotification();
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

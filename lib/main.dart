@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:puffpal/screens/onboarding_screen.dart';
 import 'package:puffpal/services/firebase_api.dart';
+import 'package:puffpal/services/local_notification_service.dart';
 import 'package:puffpal/views/common/app_shell.dart';
 import 'package:puffpal/views/home_page.dart';
 import 'package:puffpal/views/login_page.dart';
@@ -12,13 +14,18 @@ import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(fileName: ".env");
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  await FirebaseApi().initNotification();
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   final initScreen = prefs.getBool("initScreen")?? false;
+
+  await FirebaseApi().initNotification();
+  await LocalNotificationService().init();
 
   runApp(App(initScreen: initScreen));
 }

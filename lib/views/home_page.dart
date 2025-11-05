@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 import 'package:puffpal/views/profile_page.dart';
 import 'package:puffpal/views/track_symptoms_page.dart';
+import '../services/firebase_api.dart';
 import '../services/firestore_service.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:puffpal/models/carousel.dart';
@@ -78,6 +79,14 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+          TextButton(onPressed: ()async{
+            await FirebaseApi().sendNotificationToUser(
+                auth.currentUser!.uid,'Cold Weather Alert ❄️',
+              'The temperature today is 12°C — stay warm and avoid exposure.'
+
+            );
+
+          }, child: Text('Send notif')),
           Padding(
             padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
             child: Row(
