@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 
 import 'firebase_api.dart';
+import 'location_service.dart';
 
 class FirebaseServices{
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -21,6 +22,14 @@ class FirebaseServices{
       await firestore.collection('Users').doc(credential.user!.uid).update({
         'fcmToken': fcmToken,
       });
+
+      try {
+        await LocationService().requestAndSaveLocation();
+        print('User location updated on sign-in.');
+      } catch (e) {
+        print('Error updating user location: $e');
+      }
+
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -65,6 +74,14 @@ class FirebaseServices{
       });
 
       await FirebaseApi().initNotification();
+
+      try {
+        await LocationService().requestAndSaveLocation();
+        print('User location saved successfully.');
+      } catch (e) {
+        print('Failed to get user location: $e');
+      }
+
 
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

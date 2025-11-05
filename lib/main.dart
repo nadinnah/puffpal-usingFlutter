@@ -1,3 +1,4 @@
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:puffpal/screens/onboarding_screen.dart';
@@ -23,6 +24,8 @@ Future<void> main() async {
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   final initScreen = prefs.getBool("initScreen")?? false;
+
+  await AndroidAlarmManager.initialize();
 
   await FirebaseApi().initNotification();
   await LocalNotificationService().init();
