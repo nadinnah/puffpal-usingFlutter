@@ -2,15 +2,14 @@ name: 🌦️ Daily Weather Notifier
 
 on:
   schedule:
-    - cron: '0 7 * * *'  # Runs every day at 7 AM UTC (adjust later for your timezone)
-  workflow_dispatch:      # Allows manual trigger
+    - cron: '0 5 * * *'  # Runs every day at 5 AM UTC = 7 AM Cairo
+  workflow_dispatch:      # Allows manual run
 
 jobs:
   send-weather-alerts:
     runs-on: ubuntu-latest
 
     env:
-      FIREBASE_PROJECT_ID: puff-pal
       FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
       OPEN_METEO_API: "https://api.open-meteo.com/v1/forecast"
 
