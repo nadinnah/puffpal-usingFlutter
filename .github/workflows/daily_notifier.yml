@@ -1,0 +1,30 @@
+name: 🌦️ Daily Weather Notifier
+
+on:
+  schedule:
+    - cron: '0 7 * * *'  # Runs every day at 7 AM UTC (adjust later for your timezone)
+  workflow_dispatch:      # Allows manual trigger
+
+jobs:
+  send-weather-alerts:
+    runs-on: ubuntu-latest
+
+    env:
+      FIREBASE_PROJECT_ID: puff-pal
+      FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      OPEN_METEO_API: "https://api.open-meteo.com/v1/forecast"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install node-fetch@2 firebase-admin
+
+      - name: Run weather notification script
+        run: node .github/scripts/weatherNotifier.js
