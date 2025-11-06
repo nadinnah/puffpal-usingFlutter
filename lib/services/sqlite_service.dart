@@ -46,20 +46,39 @@ class LocalDatabase {
     return myDb;
   }
 
-  Future<void> updateUserFieldById(int id, Map<String, dynamic> fieldsToUpdate) async {
+  Future<void> updateUserFieldByEmail(String email, Map<String, dynamic> fieldsToUpdate) async {
     final db = await myDataBase;
 
     try {
       await db!.update(
         'Users',
         fieldsToUpdate,
-        where: 'id = ?',
-        whereArgs: [id],
+        where: 'email = ?',
+        whereArgs: [email],
       );
+
     } catch (e) {
       throw Exception("Failed to update user field(s) in SQLite.");
     }
   }
+
+  Future<Map<String, dynamic>> loadUserDataByEmail(String email) async {
+    final db = await myDataBase;
+    var result = await db!.query(
+      'Users',
+      where: 'email = ?',
+      whereArgs: [email],
+    );
+
+
+    if (result.isNotEmpty) {
+      return result.first;
+    } else {
+      throw Exception("User not found in SQLite.");
+    }
+  }
+
+
 
   Future<int> insertUser(Map<String, dynamic> userData) async {
     final db = await myDataBase;

@@ -24,8 +24,7 @@ Future<void> main() async {
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   final initScreen = prefs.getBool("initScreen")?? false;
-
-  await AndroidAlarmManager.initialize();
+  final notificationsEnabled= prefs.getBool("notificationsEnabled")?? false;
 
   await FirebaseApi().initNotification();
   await LocalNotificationService().init();
