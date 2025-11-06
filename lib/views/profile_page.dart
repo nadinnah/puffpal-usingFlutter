@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../services/local_notification_service.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
 
@@ -14,6 +16,11 @@ class _ProfilePageState extends State<ProfilePage> {
   LocalDatabase localdb = LocalDatabase();
   FirebaseAuth auth = FirebaseAuth.instance;
   Map<String, dynamic> userData = {};
+
+  final TextEditingController medNameController = TextEditingController();
+  TimeOfDay? selectedTime;
+  int? repeatHours;
+  final LocalNotificationService notificationService = LocalNotificationService();
 
   @override
   void initState() {
@@ -88,6 +95,102 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(height: 20),
 
           const Divider(),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Medication Reminders",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 10),
+                TextField(
+                  controller: medNameController,
+                  decoration: InputDecoration(
+                    labelText: "Medication Name",
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: () async {
+                          final time = await showTimePicker(
+                            context: context,
+                            initialTime: TimeOfDay.now(),
+                          );
+                          if (time != null) {
+                            setState(() => selectedTime = time);
+                          }
+                        },
+                        icon: Icon(Icons.access_time),
+                        label: Text(selectedTime == null
+                            ? "Select Start Time"
+                            : "Start: ${selectedTime!.format(context)}"),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: DropdownButtonFormField<int>(
+                        decoration: InputDecoration(
+                          labelText: "Repeat every (hours)",
+                          border: OutlineInputBorder(),
+                        ),
+                        value: repeatHours,
+                        items: [4, 6, 8, 12].map((h) {
+                          return DropdownMenuItem(
+                            value: h,
+                            child: Text("$h hours"),
+                          );
+                        }).toList(),
+                        onChanged: (value) => setState(() => repeatHours = value),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Center(
+                  child: ElevatedButton.icon(
+                    icon: Icon(Icons.alarm),
+                    label: Text("Set Reminder"),
+                    onPressed: () async {
+                      if (medNameController.text.isEmpty ||
+                          selectedTime == null ||
+                          repeatHours == null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Please fill all fields")),
+                        );
+                        return;
+                      }
+
+                      // Convert selected time to DateTime
+                      final now = DateTime.now();
+                      final start = DateTime(
+                        now.year,
+                        now.month,
+                        now.day,
+                        selectedTime!.hour,
+                        selectedTime!.minute,
+                      );
+
+                      await notificationService.scheduleRepeatingReminder(
+                        medNameController.text,
+                        start,
+                        repeatHours!,
+                      );
+
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Reminder set for ${medNameController.text}")),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

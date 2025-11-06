@@ -14,12 +14,19 @@ class LocalNotificationService {
     await flutterLocalNotificationsPlugin.initialize(initSettings);
   }
 
-  Future<void> scheduleMedicationReminder(String medName, DateTime time) async {
+  Future<void> scheduleRepeatingReminder(
+      String medName, DateTime startTime, int intervalHours) async {
+    final now = DateTime.now();
+    final scheduledTime = startTime.isBefore(now)
+        ? startTime.add(Duration(days: 1))
+        : startTime;
+
+    // Schedule the first notification
     await flutterLocalNotificationsPlugin.zonedSchedule(
       medName.hashCode,
       'Medication Reminder 💊',
       'Time to take your $medName',
-      tz.TZDateTime.from(time, tz.local),
+      tz.TZDateTime.from(scheduledTime, tz.local),
       const NotificationDetails(
         android: AndroidNotificationDetails(
           'med_channel',
@@ -29,9 +36,30 @@ class LocalNotificationService {
           priority: Priority.high,
         ),
       ),
-      // androidAllowWhileIdle: true,
-      // uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
-      matchDateTimeComponents: DateTimeComponents.time, androidScheduleMode: AndroidScheduleMode.exact, // repeats daily
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      matchDateTimeComponents: DateTimeComponents.time, // Repeats daily
     );
+
+    // Schedule subsequent reminders for that same day
+    for (int i = 1; i < 24 ~/ intervalHours; i++) {
+      final nextTime = scheduledTime.add(Duration(hours: intervalHours * i));
+      await flutterLocalNotificationsPlugin.zonedSchedule(
+        medName.hashCode + i,
+        'Medication Reminder 💊',
+        'Time to take your $medName',
+        tz.TZDateTime.from(nextTime, tz.local),
+        const NotificationDetails(
+          android: AndroidNotificationDetails(
+            'med_channel',
+            'Medication Reminders',
+            channelDescription: 'Reminders for medications',
+            importance: Importance.high,
+            priority: Priority.high,
+          ),
+        ),
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      );
+    }
   }
+
 }
