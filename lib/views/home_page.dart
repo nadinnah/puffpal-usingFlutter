@@ -7,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 import 'package:puffpal/views/profile_page.dart';
 import 'package:puffpal/views/track_symptoms_page.dart';
+import '../l10n/app_localizations.dart';
 import '../services/firebase_api.dart';
 import '../services/firestore_service.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -64,10 +65,9 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(40, 115, 40, 20),
-                child: Text(
-                  'Hello $userName!',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                padding: const EdgeInsets.fromLTRB(30, 135, 40, 20),
+                child: Text(AppLocalizations.of(context)!.hello(userName),
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
               ),
               Padding(
@@ -88,7 +88,7 @@ class _HomePageState extends State<HomePage> {
 
           }, child: Text('Send notif')),
           Padding(
-            padding: const EdgeInsets.fromLTRB(50, 0, 0, 0),
+            padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(45, 0, 45, 0),
+            padding: const EdgeInsets.fromLTRB(30, 0, 45, 0),
             child: GestureDetector(
               onTap: () {
                 Navigator.push(

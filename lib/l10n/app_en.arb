@@ -1,0 +1,17 @@
+{
+  "@@locale": "en",
+  "appTitle": "PuffPal",
+  "personalInfo": "Personal Information",
+  "email": "Email",
+  "phone": "Phone Number",
+  "gender": "Gender",
+  "age": "Age",
+  "hello": "Hello {userName}!",
+  "discoverText": "Discover how understanding your health can make every breath easier!",
+  "trackSymptoms": "Track Your Symptoms!",
+  "quickQuestions": "Quick questions",
+  "breatheBetter": "Breathe Better, learn More",
+  "quizzesTitle": "Quizzes and Games",
+  "setReminder": "Set Reminder",
+  "medicationReminders": "Medication Reminders"
+}

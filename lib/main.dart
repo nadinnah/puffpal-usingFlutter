@@ -11,7 +11,11 @@ import 'package:puffpal/views/profile_page.dart';
 import 'package:puffpal/views/signup_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'controllers/language_controller.dart';
 import 'firebase_options.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:puffpal/l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,17 +42,37 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'PuffPal',
-        routes: {
-          '/login': (context) => LoginPage(),
-          '/signup': (context) => SignupPage(),
-          '/appshell': (context) => AppShell(),
-          '/onboarding': (context) => OnboardingScreen()
+    return ChangeNotifierProvider(
+      create: (_) => LanguageController(),
+      child: Consumer<LanguageController>(
+        builder: (context, languageController, _) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'PuffPal',
+            locale: languageController.locale,
+            supportedLocales: const [
+              Locale('en'),
+              Locale('ar'),
+            ],
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            routes: {
+              '/login': (context) => LoginPage(),
+              '/signup': (context) => SignupPage(),
+              '/appshell': (context) => const AppShell(),
+              '/onboarding': (context) => const OnboardingScreen(),
+            },
+              //home: initScreen ? LoginPage() : OnboardingScreen());
+              home: initScreen ? AppShell() : OnboardingScreen());
+              //home: OnboardingScreen());
+              //home: initScreen ? const AppShell() : const OnboardingScreen(),
+
         },
-        //home: initScreen ? LoginPage() : OnboardingScreen());
-        home: initScreen ? AppShell() : OnboardingScreen());
-        //home: OnboardingScreen());
+      ),
+    );
   }
 }

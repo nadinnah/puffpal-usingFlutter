@@ -21,7 +21,8 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
             ),
           Container(
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(),
+            decoration: BoxDecoration(
+            ),
           )
           ],
         ),

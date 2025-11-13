@@ -1,0 +1,17 @@
+{
+  "@@locale": "ar",
+  "appTitle": "بَف بال",
+  "personalInfo": "المعلومات الشخصية",
+  "email": "البريد الإلكتروني",
+  "phone": "رقم الهاتف",
+  "gender": "النوع",
+  "age": "العمر",
+  "hello": "مرحباً {userName}!",
+  "discoverText": "اكتشف كيف يمكن أن يساعدك فهم صحتك على التنفس بسهولة أكبر!",
+  "trackSymptoms": "تتبع الأعراض الخاصة بك!",
+  "quickQuestions": "أسئلة سريعة",
+  "breatheBetter": "تنفس بشكل أفضل، وتعلم المزيد",
+  "quizzesTitle": "الاختبارات والألعاب",
+  "setReminder": "تعيين تذكير",
+  "medicationReminders": "تذكيرات الأدوية"
+}

@@ -55,6 +55,7 @@ dependencies:
   geocoding: ^4.0.0
   android_alarm_manager_plus: ^5.0.0
   http: ^1.5.0
+  flutter_localization: ^0.3.3
 
 dev_dependencies:
   flutter_test:
@@ -72,7 +73,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
