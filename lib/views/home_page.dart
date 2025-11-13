@@ -88,19 +88,18 @@ class _HomePageState extends State<HomePage> {
 
           }, child: Text('Send notif')),
           Padding(
-            padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
+            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
-                  'Breathe Better, learn More',
+                Text(AppLocalizations.of(context)!.breatheBetter,
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(30, 0, 45, 0),
+            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -119,9 +118,8 @@ class _HomePageState extends State<HomePage> {
                         'https://images.ctfassets.net/h8qzhh7m9m8u/3yLMtGnvAqt0mySfcZtkLi/5d195fa0b61f4f0f84d8fd6a47c03255/How_to_know_if_someone_is_having_an_asthma_attack__1_.png?fm=webp&w=2100&h=1200&fit=fill&bg=rgb:FFFFFF&q=70',
                       ),
                       ListTile(
-                        leading: Icon(Icons.medical_information),
-                        title: Text('Track Your Symptoms!'),
-                        subtitle: Text('quick questions'),
+                        title: Text(AppLocalizations.of(context)!.trackSymptoms),
+                        subtitle: Text(AppLocalizations.of(context)!.quickQuestions),
                       ),
                     ],
                   ),
@@ -130,12 +128,11 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(50, 50, 0, 0),
+            padding: const EdgeInsets.fromLTRB(50, 50, 50, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Text(
-                  'Breathe Better, learn More',
+                Text(AppLocalizations.of(context)!.breatheBetter,
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ],

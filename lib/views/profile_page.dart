@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../l10n/app_localizations.dart';
 import '../services/local_notification_service.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -46,13 +47,13 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(height: 120),
 
           Text(
-            "Personal Information",
+            AppLocalizations.of(context)!.personalInfo,
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 10),
           _buildEditableField(
             icon: Icons.person,
-            label: "Name",
+            label: AppLocalizations.of(context)!.name,
             value: userData.containsKey('name') ? userData['name'] : '',
             onSave: (newValue) => localdb.updateUserFieldByEmail(
               auth.currentUser!.email!,
@@ -61,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           ListTile(
             leading: Icon(Icons.email, color: Colors.black),
-            title: Text("Email", style: TextStyle(color: Colors.black)),
+            title: Text(AppLocalizations.of(context)!.email, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
             subtitle: Text(
               auth.currentUser!.email!,
               style: TextStyle(color: Colors.black),
@@ -69,7 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           _buildEditableField(
             icon: Icons.phone,
-            label: "Phone Number",
+            label: AppLocalizations.of(context)!.phone,
             value: userData.containsKey('number') ? userData['number'] : '',
             onSave: (newValue) => localdb.updateUserFieldByEmail(
               auth.currentUser!.email!,
@@ -78,7 +79,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           ListTile(
             leading: Icon(Icons.perm_identity, color: Colors.black),
-            title: Text("Gender", style: TextStyle(color: Colors.black)),
+            title:Text(AppLocalizations.of(context)!.gender, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
             subtitle: Text(
               userData.containsKey('gender') ? userData['gender'] : '',
               style: TextStyle(color: Colors.black),
@@ -86,7 +87,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           _buildEditableField(
             icon: Icons.calendar_today,
-            label: "Age",
+            label: AppLocalizations.of(context)!.age,
             value: userData.containsKey('age') ? userData['age'].toString() : '',
             onSave: (newValue) => localdb.updateUserFieldByEmail(
               auth.currentUser!.email!,
@@ -204,7 +205,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }) {
     return ListTile(
       leading: Icon(icon, color: Colors.black),
-      title: Text(label, style: TextStyle(color: Colors.black)),
+      title: Text(label, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
       subtitle: Text(value, style: TextStyle(color: Colors.black)),
       trailing: IconButton(
         icon: Icon(Icons.edit, color: Colors.black),

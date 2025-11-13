@@ -12,6 +12,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get appTitle => 'بَف بال';
 
   @override
+  String get name =>'الاسم';
+
+  @override
   String get personalInfo => 'المعلومات الشخصية';
 
   @override

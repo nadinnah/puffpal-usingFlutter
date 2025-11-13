@@ -12,6 +12,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appTitle => 'PuffPal';
 
   @override
+  String get name =>'Name';
+
+  @override
   String get personalInfo => 'Personal Information';
 
   @override

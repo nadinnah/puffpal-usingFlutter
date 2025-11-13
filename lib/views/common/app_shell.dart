@@ -43,7 +43,7 @@ class _AppShellState extends State<AppShell> {
           ),
         ),
         title: Padding(
-          padding: const EdgeInsets.fromLTRB(15, 0, 0, 0),
+          padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
           child: Text(
             'PuffPal',
             style: GoogleFonts.rubikBubbles(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../l10n/app_localizations.dart';
+
 class QuizzesGamesPage extends StatefulWidget {
   const QuizzesGamesPage({super.key});
 
@@ -16,7 +18,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
         child: Column(
           children: [
             Text(
-              'Quizzes and Games',
+              AppLocalizations.of(context)!.quizzesTitle,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           Container(

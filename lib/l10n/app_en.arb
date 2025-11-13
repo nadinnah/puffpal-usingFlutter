@@ -1,7 +1,7 @@
 {
   "@@locale": "en",
-  "appTitle": "PuffPal",
   "personalInfo": "Personal Information",
+  "name": "Name",
   "email": "Email",
   "phone": "Phone Number",
   "gender": "Gender",

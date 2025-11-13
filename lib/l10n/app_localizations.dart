@@ -103,6 +103,8 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'PuffPal'**
   String get appTitle;
+  String get name;
+
 
   /// No description provided for @personalInfo.
   ///
