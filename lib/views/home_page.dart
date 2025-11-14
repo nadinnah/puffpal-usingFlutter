@@ -13,6 +13,7 @@ import '../services/firestore_service.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:puffpal/models/carousel.dart';
 
+import '../widgets/flip_card_widget.dart';
 import 'carousel_details_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -70,23 +71,17 @@ class _HomePageState extends State<HomePage> {
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(40, 0, 40, 50),
-                child: Text(
-                  'Discover how understanding your health can make every breath easier!',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,)
-                ),
-              ),
-            ],
+              SizedBox(height: 10),
+              FlipCardWidget(frontText: 'Advice of the day',backText: "Asthma Advice",),
+            SizedBox(height: 40,)],
           ),
-          TextButton(onPressed: ()async{
-            await FirebaseApi().sendNotificationToUser(
-                auth.currentUser!.uid,'Cold Weather Alert ❄️',
-              'The temperature today is 12°C — stay warm and avoid exposure.'
-
-            );
-
-          }, child: Text('Send notif')),
+          // TextButton(onPressed: ()async{
+          //   await FirebaseApi().sendNotificationToUser(
+          //       auth.currentUser!.uid,'Cold Weather Alert ❄️',
+          //     'The temperature today is 12°C — stay warm and avoid exposure.'
+          //
+          //   );
+          //}, child: Text('Send notif')),
           Padding(
             padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
             child: Row(
