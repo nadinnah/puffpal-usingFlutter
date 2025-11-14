@@ -2,17 +2,49 @@ class QuizModel{
   final String title;
   final String noOfQuestions;
   final String question;
-  final String option1;
-  final String option2;
-  final String option3;
-  final String option4;
+  final List<String> options;
   final String answer;
+  final String image;
 
-  QuizModel(this.title, this.noOfQuestions, this.question, this.option1, this.option2, this.option3, this.option4, this.answer);
+  QuizModel({ required this.title,
+  required this.noOfQuestions,
+  required this.question,
+  required this.options,
+  required this.answer,
+  required this.image,});
 }
+
 List<QuizModel> quizList = [
-  QuizModel('title1', '10', 'question1','option1', 'option2', 'option3', 'option4', 'answer1'),
-  QuizModel('title2', '10', 'question2','option1', 'option2', 'option3', 'option4', 'answer2'),
-  QuizModel('title3', '10', 'question3','option1', 'option2', 'option3', 'option4', 'answer3'),
-  QuizModel('title4', '10', 'question4,','option1', 'option2', 'option3', 'option4', 'answer4')
+  QuizModel(
+    title: 'title1',
+    noOfQuestions: '10 questions',
+    question: 'question1',
+    options: ['option1', 'option2', 'option3', 'option4', 'option5', 'option6'],
+    answer: 'option1',
+    image: 'lib/assets/images/inhaler3.png',
+  ),
+  QuizModel(
+    title: 'title2',
+    noOfQuestions: '5 questions',
+    question: 'question2',
+    options: ['option1', 'option2', 'option3', 'option4', 'option5'],
+    answer: 'option2',
+    image: 'lib/assets/images/inhaler3.png',
+  ),
+  QuizModel(
+    title: 'title3',
+    noOfQuestions: '4 questions',
+    question: 'question3',
+    options: ['option1', 'option2', 'option3', 'option4'],
+    answer: 'option3',
+    image: 'lib/assets/images/inhaler3.png',
+  ),
+  QuizModel(
+    title: 'title4',
+    noOfQuestions: '5 questions',
+    question: 'question4',
+    options: ['option1', 'option2', 'option3', 'option4', 'option5'],
+    answer: 'option1',
+    image: 'lib/assets/images/inhaler3.png',
+  ),
 ];

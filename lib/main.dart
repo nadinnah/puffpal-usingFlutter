@@ -63,8 +63,8 @@ class App extends StatelessWidget {
             routes: {
               '/login': (context) => LoginPage(),
               '/signup': (context) => SignupPage(),
-              '/appshell': (context) => const AppShell(),
-              '/onboarding': (context) => const OnboardingScreen(),
+              '/appshell': (context) => AppShell(),
+              '/onboarding': (context) => OnboardingScreen(),
             },
               //home: initScreen ? LoginPage() : OnboardingScreen());
               home: initScreen ? AppShell() : OnboardingScreen());
