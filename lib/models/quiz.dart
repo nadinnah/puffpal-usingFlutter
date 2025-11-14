@@ -29,7 +29,7 @@ List<QuizModel> quizList = [
     question: 'question2',
     options: ['option1', 'option2', 'option3', 'option4', 'option5'],
     answer: 'option2',
-    image: 'lib/assets/images/inhaler3.png',
+    image: 'lib/assets/images/trialAsthma.png',
   ),
   QuizModel(
     title: 'title3',
@@ -37,7 +37,7 @@ List<QuizModel> quizList = [
     question: 'question3',
     options: ['option1', 'option2', 'option3', 'option4'],
     answer: 'option3',
-    image: 'lib/assets/images/inhaler3.png',
+    image: 'lib/assets/images/trialAsthma - Copy.png',
   ),
   QuizModel(
     title: 'title4',
@@ -45,6 +45,6 @@ List<QuizModel> quizList = [
     question: 'question4',
     options: ['option1', 'option2', 'option3', 'option4', 'option5'],
     answer: 'option1',
-    image: 'lib/assets/images/inhaler3.png',
+    image: 'lib/assets/images/trialAsthma - Copy (2).png',
   ),
 ];
