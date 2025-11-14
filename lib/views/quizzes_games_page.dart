@@ -24,26 +24,60 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
             ),
             GridView.count(
               padding: EdgeInsets.only(top: 10),
-              crossAxisCount: 2,
+              crossAxisCount: 1,
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
+              childAspectRatio: 2.4,
               crossAxisSpacing: 20,
               mainAxisSpacing: 20,
               children: List.generate(8, (index) {
-                return Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
-                      colors: [
-                        Color(0xFF39A3FA),
-                        Color(0xFF2F8AD5),
-                        Color(0xFF1E6096),
+                return Material(
+                  borderRadius:BorderRadius.circular(20),
+                  elevation:5,
+                  child: Container(
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+
+                        colors: [
+                          Color(0xFF39A3FA),
+                          Color(0xFF2F8AD5),
+                          Color(0xFF1E6096),
+                        ],
+                      ),borderRadius:BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white70),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Icon(Icons.done, color: Colors.white, size: 30),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Title 1',
+                          style: TextStyle(
+                            color: Color(0xE0FBFAFA),
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          '10 questions',
+                          style: TextStyle(
+                            color: Colors.white60,
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  child: Icon(Icons.done, color: Colors.white, size: 50),
                 );
               }),
             ),
