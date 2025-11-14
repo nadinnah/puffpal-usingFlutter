@@ -14,18 +14,40 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        margin: EdgeInsets.only(top: 300),
+        margin: EdgeInsets.only(top: 300, left: 30, right: 30),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               AppLocalizations.of(context)!.quizzesTitle,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
+            GridView.count(
+              padding: EdgeInsets.only(top: 10),
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20,
+              children: List.generate(8, (index) {
+                return Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [
+                        Color(0xFF39A3FA),
+                        Color(0xFF2F8AD5),
+                        Color(0xFF1E6096),
+                      ],
+                    ),
+                  ),
+                  child: Icon(Icons.done, color: Colors.white, size: 50),
+                );
+              }),
             ),
-          )
+            SizedBox(height: 80),
           ],
         ),
       ),

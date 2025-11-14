@@ -9,13 +9,10 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get appTitle => 'PuffPal';
-
-  @override
-  String get name =>'Name';
-
-  @override
   String get personalInfo => 'Personal Information';
+
+  @override
+  String get name => 'Name';
 
   @override
   String get email => 'Email';

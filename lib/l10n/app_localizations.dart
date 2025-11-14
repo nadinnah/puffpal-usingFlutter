@@ -98,19 +98,17 @@ abstract class AppLocalizations {
     Locale('en'),
   ];
 
-  /// No description provided for @appTitle.
-  ///
-  /// In en, this message translates to:
-  /// **'PuffPal'**
-  String get appTitle;
-  String get name;
-
-
   /// No description provided for @personalInfo.
   ///
   /// In en, this message translates to:
   /// **'Personal Information'**
   String get personalInfo;
+
+  /// No description provided for @name.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get name;
 
   /// No description provided for @email.
   ///
