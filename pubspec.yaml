@@ -56,6 +56,8 @@ dependencies:
   android_alarm_manager_plus: ^5.0.0
   http: ^1.5.0
   flutter_localization: ^0.3.3
+  pdfx: ^2.9.2
+  internet_file: ^1.3.0
 
 dev_dependencies:
   flutter_test:
