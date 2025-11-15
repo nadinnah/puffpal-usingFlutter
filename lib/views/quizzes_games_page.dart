@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pdfx/pdfx.dart';
+import 'package:puffpal/views/pdf_viewer_page.dart';
 import 'package:puffpal/views/questions_page.dart';
 
 import '../l10n/app_localizations.dart';
@@ -14,24 +15,6 @@ class QuizzesGamesPage extends StatefulWidget {
 
 class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
   final bool played = false;
-  static const int initialPage=1;
-  late PdfControllerPinch pdfController;
-
-  @override
-  void initState() {
-    super.initState();
-    pdfController = PdfControllerPinch(
-      document: PdfDocument.openAsset('assets/pdf/quizzes.pdf'), //make sure you add the pdf in asset
-      initialPage: initialPage,
-    );
-  }
-
-  @override
-  void dispose() {
-    // TODO: implement dispose
-    pdfController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,16 +25,56 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('pdf part'),
-            IconButton(onPressed: (){
-              pdfController.previousPage(duration: Duration(milliseconds: 100), curve: Curves.ease);
-            }, icon: Icon(Icons.navigate_before)),
-            PdfPageNumber(controller: pdfController, builder: (_, loadingState, pageNumber,totalPages)=>Container(
-              alignment: Alignment.center,
-              child: Text("$pageNumber/$totalPages"),
-            )),
-            IconButton(onPressed: (){
-              pdfController.nextPage(duration: Duration(milliseconds: 100), curve: Curves.ease);}, icon: Icon(Icons.navigate_next),),
-            IconButton(onPressed: ()=>pdfController.loadDocument(PdfDocument.openAsset('assets/pdf/quizzes.pdf')), icon: Icon(Icons.refresh)),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PdfViewerPage()),
+                );
+              },
+              child: Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [
+                      Color(0xFF39A3FA),
+                      Color(0xFF2F8AD5),
+                      Color(0xFF1E6096),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.picture_as_pdf, color: Colors.white, size: 32),
+                    SizedBox(width: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Asthma Action Plan",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "Open PDF",
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
             SizedBox(height: 40,),
             Text(
               AppLocalizations.of(context)!.quizzesTitle,
