@@ -20,11 +20,10 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(30.0, 100, 30, 0),
+        padding: const EdgeInsets.fromLTRB(30.0, 120, 30, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('pdf part'),
             GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -75,7 +74,9 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                 ),
               ),
             ),
-            SizedBox(height: 40,),
+            SizedBox(height: 30,),
+            const Divider(),
+            SizedBox(height: 10),
             Text(
               AppLocalizations.of(context)!.quizzesTitle,
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
@@ -99,7 +100,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                       child: Stack(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(top: 60),
+                            margin: EdgeInsets.only(top: index == 0 ? 30 : 60),
                             child: Material(
                               borderRadius: BorderRadius.circular(20),
                               elevation: 5,
@@ -161,8 +162,9 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(right: 0.0),
+                          Positioned(
+                            right: 0,
+                             top: index == 0 ? -30 : 0,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [

@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/local_notification_service.dart';
+import 'medication_reminder_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -18,10 +19,6 @@ class _ProfilePageState extends State<ProfilePage> {
   FirebaseAuth auth = FirebaseAuth.instance;
   Map<String, dynamic> userData = {};
 
-  final TextEditingController medNameController = TextEditingController();
-  TimeOfDay? selectedTime;
-  int? repeatHours;
-  final LocalNotificationService notificationService = LocalNotificationService();
 
   @override
   void initState() {
@@ -42,157 +39,78 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          const SizedBox(height: 120),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            const SizedBox(height: 120),
 
-          Text(
-            AppLocalizations.of(context)!.personalInfo,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          const SizedBox(height: 10),
-          _buildEditableField(
-            icon: Icons.person,
-            label: AppLocalizations.of(context)!.name,
-            value: userData.containsKey('name') ? userData['name'] : '',
-            onSave: (newValue) => localdb.updateUserFieldByEmail(
-              auth.currentUser!.email!,
-              {'name': newValue},
+            Text(
+              AppLocalizations.of(context)!.personalInfo,
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-          ),
-          ListTile(
-            leading: Icon(Icons.email, color: Colors.black),
-            title: Text(AppLocalizations.of(context)!.email, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
-            subtitle: Text(
-              auth.currentUser!.email!,
-              style: TextStyle(color: Colors.black),
+            const SizedBox(height: 10),
+            _buildEditableField(
+              icon: Icons.person,
+              label: AppLocalizations.of(context)!.name,
+              value: userData.containsKey('name') ? userData['name'] : '',
+              onSave: (newValue) => localdb.updateUserFieldByEmail(
+                auth.currentUser!.email!,
+                {'name': newValue},
+              ),
             ),
-          ),
-          _buildEditableField(
-            icon: Icons.phone,
-            label: AppLocalizations.of(context)!.phone,
-            value: userData.containsKey('number') ? userData['number'] : '',
-            onSave: (newValue) => localdb.updateUserFieldByEmail(
-              auth.currentUser!.email!,
-              {'number': newValue},
+            ListTile(
+              leading: Icon(Icons.email, color: Colors.black),
+              title: Text(AppLocalizations.of(context)!.email, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+              subtitle: Text(
+                auth.currentUser!.email!,
+                style: TextStyle(color: Colors.black),
+              ),
             ),
-          ),
-          ListTile(
-            leading: Icon(Icons.perm_identity, color: Colors.black),
-            title:Text(AppLocalizations.of(context)!.gender, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
-            subtitle: Text(
-              userData.containsKey('gender') ? userData['gender'] : '',
-              style: TextStyle(color: Colors.black),
+            _buildEditableField(
+              icon: Icons.phone,
+              label: AppLocalizations.of(context)!.phone,
+              value: userData.containsKey('number') ? userData['number'] : '',
+              onSave: (newValue) => localdb.updateUserFieldByEmail(
+                auth.currentUser!.email!,
+                {'number': newValue},
+              ),
             ),
-          ),
-          _buildEditableField(
-            icon: Icons.calendar_today,
-            label: AppLocalizations.of(context)!.age,
-            value: userData.containsKey('age') ? userData['age'].toString() : '',
-            onSave: (newValue) => localdb.updateUserFieldByEmail(
-              auth.currentUser!.email!,
-              {'age': int.parse(newValue)},
-            ),),
-          const SizedBox(height: 20),
+            ListTile(
+              leading: Icon(Icons.perm_identity, color: Colors.black),
+              title:Text(AppLocalizations.of(context)!.gender, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+              subtitle: Text(
+                userData.containsKey('gender') ? userData['gender'] : '',
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+            _buildEditableField(
+              icon: Icons.calendar_today,
+              label: AppLocalizations.of(context)!.age,
+              value: userData.containsKey('age') ? userData['age'].toString() : '',
+              onSave: (newValue) => localdb.updateUserFieldByEmail(
+                auth.currentUser!.email!,
+                {'age': int.parse(newValue)},
+              ),),
+            const SizedBox(height: 10),
+            Divider(),
+            const SizedBox(height: 40),
 
-          const Divider(),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            TextButton(onPressed: (){
+              //Navigator.pushNamed(context, '/medication_reminder');
+              Navigator.push(context, MaterialPageRoute(builder: (context) => MedicationReminderPage()));
+            }, child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Medication Reminders",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 10),
-                TextField(
-                  controller: medNameController,
-                  decoration: InputDecoration(
-                    labelText: "Medication Name",
-                    border: OutlineInputBorder(),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: () async {
-                          final time = await showTimePicker(
-                            context: context,
-                            initialTime: TimeOfDay.now(),
-                          );
-                          if (time != null) {
-                            setState(() => selectedTime = time);
-                          }
-                        },
-                        icon: Icon(Icons.access_time),
-                        label: Text(selectedTime == null
-                            ? "Select Start Time"
-                            : "Start: ${selectedTime!.format(context)}"),
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: DropdownButtonFormField<int>(
-                        decoration: InputDecoration(
-                          labelText: "Repeat every (hours)",
-                          border: OutlineInputBorder(),
-                        ),
-                        value: repeatHours,
-                        items: [4, 6, 8, 12].map((h) {
-                          return DropdownMenuItem(
-                            value: h,
-                            child: Text("$h hours"),
-                          );
-                        }).toList(),
-                        onChanged: (value) => setState(() => repeatHours = value),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 10),
-                Center(
-                  child: ElevatedButton.icon(
-                    icon: Icon(Icons.alarm),
-                    label: Text("Set Reminder"),
-                    onPressed: () async {
-                      if (medNameController.text.isEmpty ||
-                          selectedTime == null ||
-                          repeatHours == null) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Please fill all fields")),
-                        );
-                        return;
-                      }
-
-                      // Convert selected time to DateTime
-                      final now = DateTime.now();
-                      final start = DateTime(
-                        now.year,
-                        now.month,
-                        now.day,
-                        selectedTime!.hour,
-                        selectedTime!.minute,
-                      );
-
-                      await notificationService.scheduleRepeatingReminder(
-                        medNameController.text,
-                        start,
-                        repeatHours!,
-                      );
-
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Reminder set for ${medNameController.text}")),
-                      );
-                    },
-                  ),
-                ),
+                Text("go to medication reminder page", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18)),
+                SizedBox(width: 30),
+                Icon(Icons.navigate_next, color: Colors.black, size: 30)
               ],
-            ),
-          ),
-        ],
+            ))
+
+
+          ],
+        ),
       ),
     );
   }
