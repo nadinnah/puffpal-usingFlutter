@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../models/quiz.dart';
+import '../services/quiz_progress_service.dart';
 
 class QuestionsPage extends StatefulWidget {
   final QuizModel quiz;
@@ -12,21 +12,26 @@ class QuestionsPage extends StatefulWidget {
 }
 
 class _QuestionsPageState extends State<QuestionsPage> {
+  int currentQuestion = 0;
+  int score = 0;
+  String? selectedAnswer;
+  bool answered = false;
+
   @override
   Widget build(BuildContext context) {
+    final questionData = widget.quiz.questions[currentQuestion];
+
     return Scaffold(
-      appBar:AppBar(
+      appBar: AppBar(
         elevation: 0,
         leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Navigator.pop(context),
           icon: Icon(Icons.arrow_back_ios_new, color: Colors.black),
         ),
       ),
-
       body: Column(
         children: [
+          // QUIZ IMAGE
           Padding(
             padding: EdgeInsets.only(bottom: 20),
             child: Hero(
@@ -34,14 +39,99 @@ class _QuestionsPageState extends State<QuestionsPage> {
               child: Center(
                 child: Image.asset(
                   widget.quiz.image,
-                  height: 350,
-                  width: 350,
-                )
+                  height: 250,
+                  width: 250,
+                ),
               ),
             ),
           ),
 
+          // QUESTION TEXT
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              questionData.question,
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+          ),
 
+          // OPTIONS
+          ...questionData.options.map((option) {
+            final bool isCorrect = option == questionData.answer;
+            final bool isSelected = option == selectedAnswer;
+
+            Color getColor() {
+              if (!answered) return Colors.white;
+
+              if (isSelected && isCorrect) return Colors.green.shade300;
+              if (isSelected && !isCorrect) return Colors.red.shade300;
+              if (!isSelected && isCorrect) return Colors.green.shade200;
+
+              return Colors.white;
+            }
+
+            return GestureDetector(
+              onTap: answered
+                  ? null
+                  : () {
+                setState(() {
+                  selectedAnswer = option;
+                  answered = true;
+                  if (isCorrect) score++;
+                });
+
+                // Next question after 1 sec
+                Future.delayed(Duration(seconds: 1), () {
+                  if (currentQuestion + 1 < widget.quiz.questions.length) {
+                    setState(() {
+                      currentQuestion++;
+                      answered = false;
+                      selectedAnswer = null;
+                    });
+                  } else {
+                    _showScoreDialog(context);
+                  }
+                });
+              },
+              child: Container(
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: getColor(),
+                  borderRadius: BorderRadius.circular(12),
+                  border: Border.all(color: Colors.black12),
+                ),
+                child: Text(
+                  option,
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            );
+          }).toList(),
+        ],
+      ),
+    );
+  }
+
+  void _showScoreDialog(BuildContext context) async {
+    await QuizProgressService.markAsPlayed(widget.quiz.title);
+
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text("Quiz Completed!"),
+        content: Text("Your score is $score out of ${widget.quiz.questions.length}"),
+        actions: [
+          TextButton(
+            child: Text("OK"),
+            onPressed: () {
+              Navigator.pop(context); // Close dialog
+              Navigator.pop(context); // Go back to quiz list
+
+            },
+          )
         ],
       ),
     );

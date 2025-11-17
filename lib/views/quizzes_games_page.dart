@@ -5,6 +5,7 @@ import 'package:puffpal/views/questions_page.dart';
 
 import '../l10n/app_localizations.dart';
 import '../models/quiz.dart';
+import '../services/quiz_progress_service.dart';
 
 class QuizzesGamesPage extends StatefulWidget {
   const QuizzesGamesPage({super.key});
@@ -15,6 +16,22 @@ class QuizzesGamesPage extends StatefulWidget {
 
 class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
   final bool played = false;
+  Map<String, bool> playedQuizzes = {};
+
+  @override
+  void initState() {
+    super.initState();
+    loadProgress();
+  }
+
+  void loadProgress() async {
+    for (var quiz in quizList) {
+      bool played = await QuizProgressService.isPlayed(quiz.title);
+      playedQuizzes[quiz.title] = played;
+    }
+    setState(() {});
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -128,17 +145,10 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                                         border: Border.all(color: Colors.white70),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
-                                      child: played
-                                          ? Icon(
-                                              Icons.done,
-                                              color: Colors.white,
-                                              size: 30,
-                                            )
-                                          : Icon(
-                                              Icons.play_arrow,
-                                              color: Colors.white,
-                                              size: 30,
-                                            ),
+                                      child: playedQuizzes[quizList[index].title] == true
+                                          ? Icon(Icons.done, color: Colors.white, size: 30)
+                                          : Icon(Icons.play_arrow, color: Colors.white, size: 30),
+
                                     ),
                                     SizedBox(height: 10),
                                     Text(
