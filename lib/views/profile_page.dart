@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:puffpal/services/firestore_service.dart';
 import '../l10n/app_localizations.dart';
 import '../services/local_notification_service.dart';
 import 'medication_reminder_page.dart';
@@ -17,6 +18,9 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   LocalDatabase localdb = LocalDatabase();
   FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseServices firebaseServices = FirebaseServices();
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
+
   Map<String, dynamic> userData = {};
 
 
@@ -54,11 +58,12 @@ class _ProfilePageState extends State<ProfilePage> {
               icon: Icons.person,
               label: AppLocalizations.of(context)!.name,
               value: userData.containsKey('name') ? userData['name'] : '',
-              onSave: (newValue) => localdb.updateUserFieldByEmail(
-                auth.currentUser!.email!,
-                {'name': newValue},
-              ),
-            ),
+              onSave: (newValue) {
+                firebaseServices.updateFirebaseUserFieldByEmail(auth.currentUser!.email!, {'name': newValue});
+                return localdb.updateUserFieldByEmail(
+                  auth.currentUser!.email!,
+                  {'name': newValue},
+                );},),
             ListTile(
               leading: Icon(Icons.email, color: Colors.black),
               title: Text(AppLocalizations.of(context)!.email, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
@@ -71,11 +76,12 @@ class _ProfilePageState extends State<ProfilePage> {
               icon: Icons.phone,
               label: AppLocalizations.of(context)!.phone,
               value: userData.containsKey('number') ? userData['number'] : '',
-              onSave: (newValue) => localdb.updateUserFieldByEmail(
-                auth.currentUser!.email!,
-                {'number': newValue},
-              ),
-            ),
+              onSave: (newValue) {
+                firebaseServices.updateFirebaseUserFieldByEmail(auth.currentUser!.email!, {'number': newValue});
+                return localdb.updateUserFieldByEmail(
+                  auth.currentUser!.email!,
+                  {'number': newValue},
+                );},),
             ListTile(
               leading: Icon(Icons.perm_identity, color: Colors.black),
               title:Text(AppLocalizations.of(context)!.gender, style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
@@ -88,10 +94,12 @@ class _ProfilePageState extends State<ProfilePage> {
               icon: Icons.calendar_today,
               label: AppLocalizations.of(context)!.age,
               value: userData.containsKey('age') ? userData['age'].toString() : '',
-              onSave: (newValue) => localdb.updateUserFieldByEmail(
+              onSave: (newValue){
+                firebaseServices.updateFirebaseUserFieldByEmail(auth.currentUser!.email!, {'age': int.parse(newValue)});
+                return localdb.updateUserFieldByEmail(
                 auth.currentUser!.email!,
                 {'age': int.parse(newValue)},
-              ),),
+                  );},),
             const SizedBox(height: 10),
             Divider(),
             const SizedBox(height: 40),
@@ -152,6 +160,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         await onSave(newValue);
                         Navigator.pop(context);
                         _loadUserData(); // Refresh user data
+
                       }
                     },
                     child: Text("Save"),

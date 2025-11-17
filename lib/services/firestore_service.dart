@@ -9,6 +9,18 @@ import 'location_service.dart';
 class FirebaseServices{
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   LocalDatabase localDb = LocalDatabase();
+  FirebaseAuth auth = FirebaseAuth.instance;
+
+  Future<void> updateFirebaseUserFieldByEmail(String email, Map<String, dynamic> fieldsToUpdate) async {
+
+    try {
+      await firestore.collection('Users').doc(auth.currentUser!.uid).update(fieldsToUpdate);
+
+
+    } catch (e) {
+      throw Exception("Failed to update user field(s) in Firebase.");
+    }
+  }
 
   //Signs in a user with email and password
   Future<bool> signIn(String emailAddress, String password) async {
