@@ -15,7 +15,6 @@ class QuizzesGamesPage extends StatefulWidget {
 }
 
 class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
-  final bool played = false;
   Map<String, bool> playedQuizzes = {};
 
   @override
@@ -94,10 +93,47 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
             SizedBox(height: 30,),
             const Divider(),
             SizedBox(height: 10),
-            Text(
-              AppLocalizations.of(context)!.quizzesTitle,
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppLocalizations.of(context)!.quizzesTitle,
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                ),
+
+                GestureDetector(
+                  onTap: () async {
+                    await QuizProgressService.reset();
+                    setState(() {
+                      playedQuizzes.clear();   // remove ticks instantly
+                    });
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Color(0xFF39A3FA),
+                          Color(0xFF2F8AD5),
+                          Color(0xFF1E6096),
+                        ],
+                      ),
+                    ),
+                    child: Text(
+                      "Reset",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
+            SizedBox(height: 10),
             Column(
               children: List.generate(
                 quizList.length,
@@ -109,15 +145,17 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>
-                                QuestionsPage(quiz: quizList[index]),
+                            builder: (context) => QuestionsPage(quiz: quizList[index]),
                           ),
-                        );
+                        ).then((_) {
+                          loadProgress();   // refresh the ticks
+                        });
+
                       },
                       child: Stack(
                         children: [
                           Container(
-                            margin: EdgeInsets.only(top: index == 0 ? 30 : 60),
+                            margin: EdgeInsets.only(top: index == 0 ? 40 : 60),
                             child: Material(
                               borderRadius: BorderRadius.circular(20),
                               elevation: 5,

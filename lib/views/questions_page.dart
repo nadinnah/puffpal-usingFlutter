@@ -116,7 +116,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
   }
 
   void _showScoreDialog(BuildContext context) async {
-    await QuizProgressService.markAsPlayed(widget.quiz.title);
+    await QuizProgressService.setPlayed(widget.quiz.title);
 
     showDialog(
       context: context,

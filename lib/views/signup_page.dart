@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:puffpal/views/common/input_field.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../services/firestore_service.dart';
 import 'login_page.dart';
 
@@ -16,8 +16,6 @@ class _SignupPageState extends State<SignupPage> {
   final ageController = TextEditingController();
   String? _selectedGender;
 
-
-
   final formKey = GlobalKey<FormState>();
 
   bool isVisible = false;
@@ -27,13 +25,30 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    super.dispose();
     emailController.dispose();
     passwordController.dispose();
     nameController.dispose();
     phoneController.dispose();
     ageController.dispose();
+    super.dispose();
+  }
+
+  InputDecoration fieldDecoration(String hint, IconData icon) {
+    return InputDecoration(
+      prefixIcon: Icon(icon, color: Colors.black54),
+      filled: true,
+      fillColor: Colors.white60,
+      hintText: hint,
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.white),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: Color(0xFF1E6097)),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
+    );
   }
 
   @override
@@ -41,230 +56,190 @@ class _SignupPageState extends State<SignupPage> {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [
-              Color(0xFFFFFFFF),
-              Color(0xFFD9D1E6),
-              Color(0xFF837C9F),
-              Color(0xFF2F1C59),
-            ]),
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Color(0xFFD8D0E5),
+            Color(0xFFD9DBEF),
+            Color(0xFFA8ABCA),
+          ],
+        ),
       ),
       child: Scaffold(
-        backgroundColor: Color(0x00000000),
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
-          backgroundColor: Color(0x00000000),
-          title: Text(
-            'Sign Up',
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          title: Text('Sign Up',style: GoogleFonts.rubikBubbles(
+            fontSize: 30,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF1E6097),
           ),
-        ),
-        body: Stack(
-          children: [
-            Padding(
-              padding: EdgeInsets.fromLTRB(16, 75, 16, 0),
-              child: Form(
-                key: formKey,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      InputField(
-                        key: Key('name_field'),
-                        hint: 'Name',
-                        icon: Icon(Icons.person),
-                        controller: nameController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Name is required';
-                          }
-                          return null;
-                        },
-                      ),
-                      SizedBox(height: 15),
-                      InputField(
-                        key: Key('phone_field'),
-                        hint: 'Phone Number',
-                        icon: Icon(Icons.phone),
-                        controller: phoneController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Phone number is required';
-                          }
-                          if (value.length != 11) {
-                            return 'Phone number must be exactly 11 digits';
-                          }
-                          return null;
-                        },
-                      ),
-                      SizedBox(height: 15),
-                      TextFormField(
-                        controller: ageController,
-                        keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
-                          labelText: 'Age',
-                          hintText: 'Enter your age',
+        )),
+        body: Padding(
+          padding: EdgeInsets.fromLTRB(30, 50, 30, 0),
+          child: Form(
+            key: formKey,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  // NAME
+                  TextFormField(
+                    controller: nameController,
+                    decoration: fieldDecoration('Name', Icons.person),
+                    validator: (value) =>
+                    value!.isEmpty ? 'Name is required' : null,
+                  ),
+                  SizedBox(height: 20),
+
+                  // PHONE
+                  TextFormField(
+                    controller: phoneController,
+                    decoration:
+                    fieldDecoration('Phone Number', Icons.phone),
+                    keyboardType: TextInputType.phone,
+                    validator: (value) {
+                      if (value == null || value.isEmpty)
+                        return 'Phone number is required';
+                      if (value.length != 11)
+                        return 'Phone number must be exactly 11 digits';
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 20),
+
+                  // AGE
+                  TextFormField(
+                    controller: ageController,
+                    keyboardType: TextInputType.number,
+                    decoration: fieldDecoration('Age', Icons.cake),
+                    validator: (value) {
+                      if (value == null || value.isEmpty)
+                        return 'Please enter your age';
+                      final int? age = int.tryParse(value);
+                      if (age == null || age <= 0 || age > 120)
+                        return 'Enter a valid age (1-120)';
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 20),
+
+                  // GENDER
+                  DropdownButtonFormField<String>(
+                    decoration: fieldDecoration('Gender', Icons.person_2),
+                    value: _selectedGender,
+                    items: ['Male', 'Female'].map((String gender) {
+                      return DropdownMenuItem(
+                        value: gender,
+                        child: Text(gender),
+                      );
+                    }).toList(),
+                    onChanged: (value) => setState(() {
+                      _selectedGender = value;
+                    }),
+                    validator: (value) =>
+                    value == null ? 'Please select your gender' : null,
+                  ),
+                  SizedBox(height: 20),
+
+                  // EMAIL
+                  TextFormField(
+                    controller: emailController,
+                    decoration: fieldDecoration('Email', Icons.email),
+                    validator: (value) {
+                      if (value == null || value.isEmpty)
+                        return 'Email is required';
+                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                          .hasMatch(value)) return 'Invalid email format';
+                      return null;
+                    },
+                  ),
+                  SizedBox(height: 20),
+
+                  // PASSWORD
+                  TextFormField(
+                    controller: passwordController,
+                    obscureText: !isVisible,
+                    decoration: fieldDecoration('Password', Icons.lock).copyWith(
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          isVisible
+                              ? Icons.visibility
+                              : Icons.visibility_off,
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your age';
-                          }
-                          final int? age = int.tryParse(value);
-                          if (age == null || age <= 0 || age > 120) {
-                            return 'Please enter a valid age (1-120)';
-                          }
-                          return null;
-                        },
+                        onPressed: () =>
+                            setState(() => isVisible = !isVisible),
                       ),
-                      SizedBox(height: 15),
-                      DropdownButtonFormField<String>(
-                        decoration: InputDecoration(labelText: 'Gender'),
-                        value: _selectedGender,
-                        items: <String>['Male', 'Female'].map((String value) {
-                          return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
+                    ),
+                    validator: (value) =>
+                    value!.length < 6 ? 'Minimum 6 characters' : null,
+                  ),
+                  SizedBox(height: 40),
+
+                  // SIGNUP BUTTON
+                  ElevatedButton(
+                    onPressed: () async {
+                      if (formKey.currentState!.validate()) {
+                        try {
+                          bool result = await firebaseServices.signUp(
+                            emailController.text.trim(),
+                            passwordController.text.trim(),
+                            nameController.text.trim(),
+                            phoneController.text.trim(),
+                            int.parse(ageController.text.trim()),
+                            _selectedGender!,
                           );
-                        }).toList(),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            _selectedGender = newValue;
-                          });
-                        },
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please select your gender';
+
+                          if (result) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text('Sign-up successful! Please login.'),
+                                backgroundColor: Colors.green,
+                              ),
+                            );
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LoginPage()),
+                            );
                           }
-                          return null;
+                        } catch (e) {
+                          setState(() => errorMessage = e.toString());
+                        }
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF1E6097),
+                      foregroundColor: Colors.white,
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 50, vertical: 15),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12)),
+                    ),
+                    child: Text('Sign Up', style: TextStyle(fontSize: 18)),
+                  ),
+
+                  SizedBox(height: 15),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Already have an account?"),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(context, '/login');
                         },
+                        child: Text("Login"),
                       ),
-                      SizedBox(height: 15),
-                      InputField(
-                        key: Key('email_field2'),
-                        hint: 'Email',
-                        icon: Icon(Icons.email),
-                        controller: emailController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Email is required';
-                          }
-                          if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                              .hasMatch(value)) {
-                            return 'Enter a valid email';
-                          }
-                          return null;
-                        },
-                      ),
-                      SizedBox(height: 15),
-                      InputField(
-                        key: Key('password_field2'),
-                        hint: 'Password',
-                        icon: Icon(Icons.lock),
-                        controller: passwordController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Password is required';
-                          }
-                          if (value.length < 6) {
-                            return 'Password must be at least 6 characters long';
-                          }
-                          return null;
-                        },
-                        obscureText: !isVisible,
-                        isPassword: true,
-                        onVisibilityToggle: () {
-                          setState(() {
-                            isVisible = !isVisible;
-                          });
-                        },
-                      ),
-                      SizedBox(height: 60),
-                      ElevatedButton(
-                        key: Key('signup_button'),
-                        onPressed: () async {
-                          FocusScope.of(context).unfocus();
-                          if (formKey.currentState!.validate()) {
-                            String email = emailController.text.trim();
-                            String password = passwordController.text.trim();
-                            String name = nameController.text.trim();
-                            String phone = phoneController.text.trim();
-                            int age = int.parse(ageController.text.trim());
-                            String gender = _selectedGender!;
-                  
-                            try {
-                              bool result = await firebaseServices.signUp(
-                                  email, password, name, phone,age, gender);
-                  
-                              if (result) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content:
-                                    Text('Sign-up successful! Please login.'),
-                                    backgroundColor: Colors.green,
-                                  ),
-                                );
-                                Navigator.pushAndRemoveUntil(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => LoginPage()),
-                                      (Route<dynamic> route) => false,
-                                );
-                              } else {
-                                throw Exception(
-                                    'Sign-up failed! Please try again.');
-                              }
-                            } catch (e) {
-                              setState(() {
-                                errorMessage = e.toString();
-                              });
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(errorMessage),
-                                  backgroundColor: Colors.red,
-                                ),
-                              );
-                            }
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: Colors.white,
-                          backgroundColor: Color(0xff273331),
-                          padding:
-                          EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                        ),
-                        child: Text(
-                          'Sign Up',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("Already have an account?"),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/login');
-                            },
-                            child: Text("Login"),
-                          ),
-                        ],
-                      ),
-                      if (errorMessage.isNotEmpty)
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Text(
-                            errorMessage,
-                            style: TextStyle(color: Colors.red),
-                          ),
-                        ),
                     ],
                   ),
-                ),
+
+                  if (errorMessage.isNotEmpty)
+                    Text(errorMessage, style: TextStyle(color: Colors.red)),
+                ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

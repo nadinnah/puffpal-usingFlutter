@@ -76,7 +76,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
       width: 340,
       height: 200,
       decoration: BoxDecoration(
-        color: Color(0xfff4f4f4),
+        color: Color(0xffe6e8fb),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
@@ -95,7 +95,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
       width: 340,
       height: 200,
       decoration: BoxDecoration(
-        color: Color(0xfff4f4f4),
+        color: Color(0xffe6e8fb),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(

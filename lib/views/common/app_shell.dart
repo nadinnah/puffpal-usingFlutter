@@ -35,6 +35,7 @@ class _AppShellState extends State<AppShell> {
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         flexibleSpace: ClipRRect(
           child: BackdropFilter(

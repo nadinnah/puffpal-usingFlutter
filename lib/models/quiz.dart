@@ -37,4 +37,26 @@ List<QuizModel> quizList = [
       ),
     ],
   ),
+  QuizModel(
+    title: 'title2',
+    noOfQuestions: '3 questions',
+    image: 'lib/assets/images/trialAsthma.png',
+    questions: [
+      QuestionModel(
+        question: 'What is asthma?',
+        options: ['A lung disease', 'A stomach issue', 'A bone problem'],
+        answer: 'A lung disease',
+      ),
+      QuestionModel(
+        question: 'Which device helps people with asthma?',
+        options: ['Inhaler', 'Thermometer', 'Bandage'],
+        answer: 'Inhaler',
+      ),
+      QuestionModel(
+        question: 'Asthma affects:',
+        options: ['Lungs', 'Eyes', 'Feet'],
+        answer: 'Lungs',
+      ),
+    ],
+  ),
 ];

@@ -103,6 +103,8 @@ class _HomePageState extends State<HomePage> {
                 );
               },
               child: Card(
+                surfaceTintColor: Color(0xffd8d6ea),
+                color: Color(0xffe6e8fb),
                 elevation: 3,
                 child: Padding(
                   padding: const EdgeInsets.all(14.0),
