@@ -3,7 +3,7 @@ import '../models/quiz.dart';
 import '../services/quiz_progress_service.dart';
 
 class QuestionsPage extends StatefulWidget {
-  final QuizModel quiz;
+  final Quiz quiz;
 
   const QuestionsPage({super.key, required this.quiz});
 
@@ -12,6 +12,7 @@ class QuestionsPage extends StatefulWidget {
 }
 
 class _QuestionsPageState extends State<QuestionsPage> {
+  
   int currentQuestion = 0;
   int score = 0;
   String? selectedAnswer;
@@ -19,7 +20,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final questionData = widget.quiz.questions[currentQuestion];
+    final quizQuestion = widget.quiz.questions[currentQuestion];
 
     return Scaffold(
       appBar: AppBar(
@@ -50,15 +51,15 @@ class _QuestionsPageState extends State<QuestionsPage> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Text(
-              questionData.question,
+              quizQuestion.text,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
 
           // OPTIONS
-          ...questionData.options.map((option) {
-            final bool isCorrect = option == questionData.answer;
+          ...quizQuestion.answers.map((option) {
+            final bool isCorrect = option == quizQuestion.answers[0];
             final bool isSelected = option == selectedAnswer;
 
             Color getColor() {

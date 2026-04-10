@@ -1,12 +1,12 @@
 import 'package:puffpal/models/question.dart';
 
-class QuizModel {
+class Quiz {
   final String title;
   final String noOfQuestions;
   final String image;
   final List<Question> questions;
 
-  QuizModel({
+  Quiz({
     required this.title,
     required this.noOfQuestions,
     required this.image,
@@ -14,8 +14,8 @@ class QuizModel {
   });
 }
 
-List<QuizModel> quizList = [
-  QuizModel(
+List<Quiz> quizList = [
+  Quiz(
     title: 'title1',
     noOfQuestions: '3 questions',
     image: 'lib/assets/images/inhaler3.png',
@@ -40,7 +40,7 @@ List<QuizModel> quizList = [
       ),
     ],
   ),
-  QuizModel(
+  Quiz(
     title: 'title2',
     noOfQuestions: '3 questions',
     image: 'lib/assets/images/trialAsthma.png',
