@@ -23,14 +23,14 @@ class _AppShellState extends State<AppShell> {
 
   final List<Widget> pages = [HomePage(), ProfilePage(), QuizzesGamesPage()];
 
+  final items = [
+    Icon(Icons.home_filled, size: 30),
+    Icon(Icons.person, size: 30),
+    Icon(Icons.medical_information, size: 30),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    final items = [
-      Icon(Icons.home_filled, size: 30),
-      Icon(Icons.person, size: 30),
-      Icon(Icons.medical_information, size: 30),
-    ];
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
@@ -115,7 +115,10 @@ class _AppShellState extends State<AppShell> {
               ),
             ),
           ),
-          pages[index],
+          IndexedStack(
+          index: index,
+          children: pages,
+          ),
         ],
       ),
     );

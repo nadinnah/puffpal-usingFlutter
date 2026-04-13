@@ -12,15 +12,26 @@ class QuestionsPage extends StatefulWidget {
 }
 
 class _QuestionsPageState extends State<QuestionsPage> {
-  
-  int currentQuestion = 0;
+
+  int currentQuestionIndex = 0;
   int score = 0;
   String? selectedAnswer;
   bool answered = false;
+  List<String> currentShuffledOptions=[];
+
+  @override
+  void initState() {
+    super.initState();
+    shuffledQuestions();
+  }
+
+  void shuffledQuestions(){
+    currentShuffledOptions = widget.quiz.questions[currentQuestionIndex].getShuffledAnswers();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final quizQuestion = widget.quiz.questions[currentQuestion];
+    final currentQuizQuestion = widget.quiz.questions[currentQuestionIndex];
 
     return Scaffold(
       appBar: AppBar(
@@ -51,22 +62,22 @@ class _QuestionsPageState extends State<QuestionsPage> {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Text(
-              quizQuestion.text,
+              currentQuizQuestion.text,
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
           ),
 
           // OPTIONS
-          ...quizQuestion.answers.map((option) {
-            final bool isCorrect = option == quizQuestion.answers[0];
+          ...currentShuffledOptions.map((option) {
+            final bool isCorrect = option == currentQuizQuestion.answers[0];
             final bool isSelected = option == selectedAnswer;
 
             Color getColor() {
               if (!answered) return Colors.white;
 
-              if (isSelected && isCorrect) return Colors.green.shade300;
-              if (isSelected && !isCorrect) return Colors.red.shade300;
+              if (isSelected && isCorrect) return Colors.green;
+              if (isSelected && !isCorrect) return Colors.red;
               if (!isSelected && isCorrect) return Colors.green.shade200;
 
               return Colors.white;
@@ -80,15 +91,17 @@ class _QuestionsPageState extends State<QuestionsPage> {
                   selectedAnswer = option;
                   answered = true;
                   if (isCorrect) score++;
+
                 });
 
                 // Next question after 1 sec
                 Future.delayed(Duration(seconds: 1), () {
-                  if (currentQuestion + 1 < widget.quiz.questions.length) {
+                  if (currentQuestionIndex + 1 < widget.quiz.questions.length) {
                     setState(() {
-                      currentQuestion++;
+                      currentQuestionIndex++;
                       answered = false;
                       selectedAnswer = null;
+                      shuffledQuestions();
                     });
                   } else {
                     _showScoreDialog(context);
