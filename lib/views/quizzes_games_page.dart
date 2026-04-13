@@ -24,7 +24,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
   }
 
   void loadProgress() async {
-    for (var quiz in quizList) {
+    for (var quiz in quizzes) {
       bool played = await QuizProgressService.isPlayed(quiz.title);
       playedQuizzes[quiz.title] = played;
     }
@@ -136,16 +136,16 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
             SizedBox(height: 10),
             Column(
               children: List.generate(
-                quizList.length,
+                quizzes.length,
                  (index) {
                   return Hero(
-                    tag: quizList[index].image,
+                    tag: quizzes[index].image,
                     child: GestureDetector(
                       onTap: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => QuestionsPage(quiz: quizList[index]),
+                            builder: (context) => QuestionsPage(quiz: quizzes[index]),
                           ),
                         ).then((_) {
                           loadProgress();   // refresh the ticks
@@ -183,14 +183,14 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                                         border: Border.all(color: Colors.white70),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
-                                      child: playedQuizzes[quizList[index].title] == true
+                                      child: playedQuizzes[quizzes[index].title] == true
                                           ? Icon(Icons.done, color: Colors.white, size: 30)
                                           : Icon(Icons.play_arrow, color: Colors.white, size: 30),
 
                                     ),
                                     SizedBox(height: 10),
                                     Text(
-                                      quizList[index].title,
+                                      quizzes[index].title,
                                       style: TextStyle(
                                         color: Color(0xE0FBFAFA),
                                         fontSize: 28,
@@ -198,7 +198,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                                       ),
                                     ),
                                     Text(
-                                      quizList[index].noOfQuestions,
+                                      quizzes[index].noOfQuestions,
                                       style: TextStyle(
                                         color: Colors.white60,
                                         fontSize: 14,
@@ -217,7 +217,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Image.asset(
-                                  quizList[index].image,
+                                  quizzes[index].image,
                                   height: 150,
                                   width: 150,
                                 ),

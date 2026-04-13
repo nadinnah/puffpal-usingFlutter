@@ -41,18 +41,19 @@ class FirebaseServices{
       } catch (e) {
         print('Error updating user location: $e');
       }
-
-
+      return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
         print('The account already exists for that email.');
       }
+      return false;
     } catch (e) {
       print(e);
+      return false;
     }
-    return true;
+
   }
 
   //Signs up a new user with email, password, name, and phone.
@@ -93,6 +94,7 @@ class FirebaseServices{
       } catch (e) {
         print('Failed to get user location: $e');
       }
+      return true;
 
 
     } on FirebaseAuthException catch (e) {
@@ -101,8 +103,12 @@ class FirebaseServices{
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
       }
+      return false;
+    } catch (e) {
+      print(e);
+      return false;
     }
-    return true;
+
   }
 
   //Signs out the currently logged-in user.

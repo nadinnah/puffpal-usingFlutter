@@ -2,23 +2,22 @@ import 'package:puffpal/models/question.dart';
 
 class Quiz {
   final String title;
-  final String noOfQuestions;
   final String image;
   final List<Question> questions;
 
   Quiz({
     required this.title,
-    required this.noOfQuestions,
     required this.image,
     required this.questions,
   });
+
+  String get noOfQuestions => '${questions.length} questions';
 }
 
-List<Quiz> quizList = [
+List<Quiz> quizzes = [
   Quiz(
     title: 'title1',
-    noOfQuestions: '3 questions',
-    image: 'lib/assets/images/inhaler3.png',
+    image: 'assets/images/inhaler3.png',
     questions: [
       Question(
         "What is asthma?",
@@ -42,8 +41,7 @@ List<Quiz> quizList = [
   ),
   Quiz(
     title: 'title2',
-    noOfQuestions: '3 questions',
-    image: 'lib/assets/images/trialAsthma.png',
+    image: 'assets/images/trialAsthma.png',
     questions: [
       Question(
         "What can trigger an asthma attack?",
