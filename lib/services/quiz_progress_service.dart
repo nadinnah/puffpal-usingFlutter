@@ -1,22 +1,28 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class QuizProgressService {
-  static const String playedKey = "played_quizzes";
+  static const String playedKey = "played_quizzes_scores";
 
-  static Future<void> setPlayed(String quizTitle) async {
+  static Future<void> setScore(String quizTitle, int score) async {
     final prefs = await SharedPreferences.getInstance();
-    List<String> playedList = prefs.getStringList(playedKey) ?? [];
+    List<String> scoresList = prefs.getStringList(playedKey) ?? [];
 
-    if (!playedList.contains(quizTitle)) {
-      playedList.add(quizTitle);
-      prefs.setStringList(playedKey, playedList);
-    }
+    scoresList.removeWhere((item) => item.startsWith("$quizTitle:"));
+
+    scoresList.add("$quizTitle:$score");
+    await prefs.setStringList(playedKey, scoresList);
   }
 
-  static Future<bool> isPlayed(String quizTitle) async {
+  static Future<int?> getScore(String quizTitle) async {
     final prefs = await SharedPreferences.getInstance();
-    List<String> playedList = prefs.getStringList(playedKey) ?? [];
-    return playedList.contains(quizTitle);
+    List<String> scoresList = prefs.getStringList(playedKey) ?? [];
+
+    for (var item in scoresList) {
+      if (item.startsWith("$quizTitle:")) {
+        return int.parse(item.split(":")[1]);
+      }
+    }
+    return null;
   }
 
   static Future<void> reset() async {

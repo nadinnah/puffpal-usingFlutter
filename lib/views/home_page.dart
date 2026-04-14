@@ -1,14 +1,9 @@
 import 'dart:ui';
-
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:puffpal/services/sqlite_service.dart';
-import 'package:puffpal/views/profile_page.dart';
 import 'package:puffpal/views/track_symptoms_page.dart';
 import '../l10n/app_localizations.dart';
-import '../services/firebase_api.dart';
 import '../services/firestore_service.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:puffpal/models/carousel.dart';
@@ -34,7 +29,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _pageController = PageController(
       initialPage: _currentPage,
@@ -45,7 +39,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _pageController.dispose();
   }
@@ -136,16 +129,17 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           AspectRatio(
-            aspectRatio: 1.7,
-            child: PageView.builder(
-              itemCount: carouselDataList.length,
-              physics: ClampingScrollPhysics(),
-              controller: _pageController,
-              itemBuilder: (BuildContext context, int index) {
-                return carouselView(index);
-              },
+              aspectRatio: 1.7,
+              child: PageView.builder(
+                itemCount: carouselDataList.length,
+                physics: ClampingScrollPhysics(),
+                controller: _pageController,
+                itemBuilder: (BuildContext context, int index) {
+                  return carouselView(index);
+                },
+              ),
             ),
-          ),
+
           SmoothPageIndicator(
             controller: _pageController,
             count: 6,

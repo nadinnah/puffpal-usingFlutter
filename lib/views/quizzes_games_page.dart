@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pdfx/pdfx.dart';
 import 'package:puffpal/views/pdf_viewer_page.dart';
 import 'package:puffpal/views/questions_page.dart';
 
@@ -15,7 +14,7 @@ class QuizzesGamesPage extends StatefulWidget {
 }
 
 class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
-  Map<String, bool> playedQuizzes = {};
+  Map<String, int?> quizScores = {};
 
   @override
   void initState() {
@@ -24,13 +23,15 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
   }
 
   void loadProgress() async {
+    Map<String, int?> tempScores = {};
     for (var quiz in quizzes) {
-      bool played = await QuizProgressService.isPlayed(quiz.title);
-      playedQuizzes[quiz.title] = played;
+      int? score = await QuizProgressService.getScore(quiz.title);
+      tempScores[quiz.title] = score;
     }
-    setState(() {});
+    setState(() {
+      quizScores = tempScores;
+    });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +56,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                     begin: Alignment.topRight,
                     end: Alignment.bottomLeft,
                     colors: [
-                      Color(0xFF39A3FA),
-                      Color(0xFF2F8AD5),
+                      Color(0xF54D97D5),
                       Color(0xFF1E6096),
                     ],
                   ),
@@ -79,10 +79,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                         ),
                         Text(
                           "Open PDF",
-                          style: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 14,
-                          ),
+                          style: TextStyle(color: Colors.white70, fontSize: 14),
                         ),
                       ],
                     ),
@@ -90,7 +87,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                 ),
               ),
             ),
-            SizedBox(height: 30,),
+            SizedBox(height: 30),
             const Divider(),
             SizedBox(height: 10),
             Row(
@@ -100,58 +97,46 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                   AppLocalizations.of(context)!.quizzesTitle,
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
-
-                GestureDetector(
-                  onTap: () async {
-                    await QuizProgressService.reset();
-                    setState(() {
-                      playedQuizzes.clear();   // remove ticks instantly
-                    });
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 18, vertical: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      gradient: LinearGradient(
-                        begin: Alignment.topRight,
-                        end: Alignment.bottomLeft,
-                        colors: [
-                          Color(0xFF39A3FA),
-                          Color(0xFF2F8AD5),
-                          Color(0xFF1E6096),
-                        ],
-                      ),
-                    ),
-                    child: Text(
-                      "Reset",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 5, top: 5),
+                  child: IconButton(
+                    icon: Icon(Icons.refresh),
+                    color: Colors.black,
+                    iconSize: 30,
+                    onPressed: () async {
+                      await QuizProgressService.reset();
+                      setState(() {
+                        quizScores.clear(); // remove ticks instantly
+                      });
+                    },
                   ),
                 ),
               ],
             ),
             SizedBox(height: 10),
             Column(
-              children: List.generate(
-                quizzes.length,
-                 (index) {
-                  return Hero(
+              children: List.generate(quizzes.length, (index) {
+                final quiz = quizzes[index];
+                final bool isPlayed = quizScores[quiz.title] != null;
+                final int? score = quizScores[quiz.title];
+                return Opacity(
+                  opacity: isPlayed ? 0.7 : 1,
+                  child: Hero(
                     tag: quizzes[index].image,
                     child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => QuestionsPage(quiz: quizzes[index]),
-                          ),
-                        ).then((_) {
-                          loadProgress();   // refresh the ticks
-                        });
-
-                      },
+                      onTap: isPlayed
+                          ? null
+                          : () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      QuestionsPage(quiz: quizzes[index]),
+                                ),
+                              ).then((_) {
+                                loadProgress(); // refresh the ticks
+                              });
+                            },
                       child: Stack(
                         children: [
                           Container(
@@ -167,8 +152,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                                     begin: Alignment.topRight,
                                     end: Alignment.bottomLeft,
                                     colors: [
-                                      Color(0xFF39A3FA),
-                                      Color(0xFF2F8AD5),
+                                      Color(0xF54D97D5),
                                       Color(0xFF1E6096),
                                     ],
                                   ),
@@ -180,13 +164,22 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                                     Container(
                                       padding: EdgeInsets.all(5),
                                       decoration: BoxDecoration(
-                                        border: Border.all(color: Colors.white70),
+                                        border: Border.all(
+                                          color: Colors.white70,
+                                        ),
                                         borderRadius: BorderRadius.circular(10),
                                       ),
-                                      child: playedQuizzes[quizzes[index].title] == true
-                                          ? Icon(Icons.done, color: Colors.white, size: 30)
-                                          : Icon(Icons.play_arrow, color: Colors.white, size: 30),
-
+                                      child: isPlayed
+                                          ? Icon(
+                                              Icons.done,
+                                              color: Colors.white,
+                                              size: 30,
+                                            )
+                                          : Icon(
+                                              Icons.play_arrow,
+                                              color: Colors.white,
+                                              size: 30,
+                                            ),
                                     ),
                                     SizedBox(height: 10),
                                     Text(
@@ -197,13 +190,33 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    Text(
-                                      quizzes[index].noOfQuestions,
-                                      style: TextStyle(
-                                        color: Colors.white60,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.bold,
-                                      ),
+                                    Row(
+                                      children: [
+                                        Text(
+                                          quiz.noOfQuestions,
+                                          style: const TextStyle(
+                                            color: Colors.white60,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        if (isPlayed) ...[
+                                          const Text(
+                                            " • ",
+                                            style: TextStyle(
+                                              color: Colors.white60,
+                                            ),
+                                          ),
+                                          Text(
+                                            "Score: $score/${quiz.questions.length}",
+                                            style: const TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ],
+                                      ],
                                     ),
                                   ],
                                 ),
@@ -212,7 +225,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                           ),
                           Positioned(
                             right: 0,
-                             top: index == 0 ? -30 : 0,
+                            top: index == 0 ? -30 : 0,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
@@ -227,11 +240,11 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                         ],
                       ),
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              }),
             ),
-      
+
             SizedBox(height: 80),
           ],
         ),
