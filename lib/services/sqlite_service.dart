@@ -5,22 +5,22 @@ import 'package:path/path.dart';
 class LocalDatabase {
   static Database? _myDatabase;
 
-  Future<Database?> get myDataBase async{
-    if(_myDatabase == null){
+  Future<Database?> get myDataBase async {
+    if (_myDatabase == null) {
       _myDatabase = await initialize();
       return _myDatabase;
-    }else{
+    } else {
       return _myDatabase;
     }
   }
 
-  int version=1;
+  int version = 3;
 
-  Future<void> deleteOldDatabase() async{
-    String myPath= await getDatabasesPath();
-    String path= join(myPath, 'puffpal1.db');
+  Future<void> deleteOldDatabase() async {
+    String myPath = await getDatabasesPath();
+    String path = join(myPath, 'puffpal1.db');
 
-    if(await databaseExists(path)){
+    if (await databaseExists(path)) {
       await deleteDatabase(path);
     }
   }
@@ -29,8 +29,10 @@ class LocalDatabase {
     String myPath = await getDatabasesPath();
     String path = join(myPath, 'puffpal2.db');
     Database myDb = await openDatabase(
-        path, version: version, onCreate: (db, version) async {
-      await db.execute('''
+      path,
+      version: version,
+      onCreate: (db, version) async {
+        await db.execute('''
        CREATE TABLE IF NOT EXISTS Users (
        id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
        firebaseId TEXT,
@@ -42,11 +44,40 @@ class LocalDatabase {
        gender TEXT NOT NULL
        );
       ''');
-    });
+        await db.execute('''
+          CREATE TABLE IF NOT EXISTS Symptoms (
+            id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            email TEXT NOT NULL,
+            date TEXT NOT NULL,
+            result TEXT,
+            UNIQUE(email, date)
+          );
+        ''');
+      },
+
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion < 3) {
+          try {
+            await db.execute('ALTER TABLE Symptoms ADD COLUMN result TEXT');
+          } catch (e) {
+          await db.execute('''
+            CREATE TABLE IF NOT EXISTS Symptoms (
+              id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+              email TEXT NOT NULL,
+              date TEXT NOT NULL,
+              UNIQUE(email, date)
+            );
+          ''');
+        }
+      }},
+    );
     return myDb;
   }
 
-  Future<void> updateUserFieldByEmail(String email, Map<String, dynamic> fieldsToUpdate) async {
+  Future<void> updateUserFieldByEmail(
+    String email,
+    Map<String, dynamic> fieldsToUpdate,
+  ) async {
     final db = await myDataBase;
 
     try {
@@ -56,7 +87,6 @@ class LocalDatabase {
         where: 'email = ?',
         whereArgs: [email],
       );
-
     } catch (e) {
       throw Exception("Failed to update user field(s) in SQLite.");
     }
@@ -70,7 +100,6 @@ class LocalDatabase {
       whereArgs: [email],
     );
 
-
     if (result.isNotEmpty) {
       return result.first;
     } else {
@@ -78,16 +107,9 @@ class LocalDatabase {
     }
   }
 
-
-
   Future<int> insertUser(Map<String, dynamic> userData) async {
     final db = await myDataBase;
-    return await db!.insert(
-      'Users',
-      {
-        ...userData,
-      },
-    );
+    return await db!.insert('Users', {...userData});
   }
 
   Future<String?> getNameByEmail(String email) async {
@@ -105,4 +127,63 @@ class LocalDatabase {
     return null;
   }
 
+  Future<void> logSymptom(String email, String resultText) async {
+    final db = await myDataBase;
+    String today = DateTime.now().toString().split(' ')[0];
+
+    await db!.insert(
+      'Symptoms',
+      {
+        'email': email,
+        'date': today,
+        'result': resultText // Save the specific advice given
+      },
+      conflictAlgorithm: ConflictAlgorithm.replace, // Overwrite if they somehow track twice
+    );
+  }
+
+  Future<bool> hasTrackedToday(String email) async {
+    final db = await myDataBase;
+    String today = DateTime.now().toString().split(' ')[0];
+
+    var result = await db!.query(
+      'Symptoms',
+      where: 'email = ? AND date = ?',
+      whereArgs: [email, today],
+    );
+    return result.isNotEmpty;
+  }
+
+  Future<Map<DateTime, int>> getSymptomHistory(String email) async {
+    final db = await myDataBase;
+    var result = await db!.query(
+      'Symptoms',
+      where: 'email = ?',
+      whereArgs: [email],
+    );
+
+    Map<DateTime, int> history = {};
+    for (var row in result) {
+      DateTime date = DateTime.parse(row['date'] as String);
+      // HeatMap package expects a value; 1 = tracked
+      history[date] = 1;
+    }
+    return history;
+  }
+
+  Future<String?> getResultForDate(String email, DateTime date) async {
+    final db = await myDataBase;
+    String formattedDate = date.toString().split(' ')[0];
+
+    var result = await db!.query(
+      'Symptoms',
+      where: 'email = ? AND date = ?',
+      whereArgs: [email, formattedDate],
+    );
+
+    if (result.isNotEmpty) {
+      return result.first['result'] as String;
+    }
+    return null;
+  }
 }
