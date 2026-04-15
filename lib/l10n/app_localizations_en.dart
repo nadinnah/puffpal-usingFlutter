@@ -52,4 +52,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get medicationReminders => 'Medication Reminders';
+
+  @override
+  String get advice_title => 'Advice of the Day';
+
+  @override
+  String get advice_inhaler =>
+      'Always keep your rescue inhaler with you, even if you feel fine.';
+
+  @override
+  String get advice_dust =>
+      'Wash your bedding in hot water (60°C) once a week to kill dust mites.';
+
+  @override
+  String get advice_cold =>
+      'In cold weather, breathe through a scarf to warm the air before it hits your lungs.';
+
+  @override
+  String get advice_water =>
+      'Drink plenty of water; it helps keep the mucus in your lungs thinner.';
+
+  @override
+  String get advice_exercise =>
+      'Warm up for 10 minutes before exercising to prevent exercise-induced asthma.';
+
+  @override
+  String get advice_pollen =>
+      'Keep windows closed during high pollen days or sandstorms.';
 }

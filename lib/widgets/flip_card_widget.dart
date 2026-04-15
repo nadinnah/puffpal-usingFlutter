@@ -92,6 +92,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
     }
     Widget buildBackCard() {
     return Container(
+      padding: EdgeInsets.all(20),
       width: 340,
       height: 200,
       decoration: BoxDecoration(
@@ -105,7 +106,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
           ),
         ],),
       alignment: Alignment.center,
-      child: Text(widget.backText),
+      child: Text(widget.backText, textAlign: TextAlign.center,style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xff454545)),),
     );
     }
 }

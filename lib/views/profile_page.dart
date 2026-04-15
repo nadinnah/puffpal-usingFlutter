@@ -49,11 +49,11 @@ class _ProfilePageState extends State<ProfilePage> {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            const SizedBox(height: 120),
+            const SizedBox(height: 100),
 
             Text(
               AppLocalizations.of(context)!.personalInfo,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
             _buildEditableField(

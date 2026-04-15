@@ -13,5 +13,7 @@
   "breatheBetter": "تنفس بشكل أفضل، وتعلم المزيد",
   "quizzesTitle": "الاختبارات والألعاب",
   "setReminder": "تعيين تذكير",
-  "medicationReminders": "تذكيرات الأدوية"
-}
+  "medicationReminders": "تذكيرات الأدوية",
+
+  "advice_title": "نصيحة اليوم"
+  }

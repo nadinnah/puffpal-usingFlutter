@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 import 'package:puffpal/views/track_symptoms_page.dart';
 import '../l10n/app_localizations.dart';
+import '../services/advice_service.dart';
+import '../services/advice_service.dart' as AdviceService;
 import '../services/firestore_service.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:puffpal/models/carousel.dart';
@@ -25,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   FirebaseServices firebaseServices = FirebaseServices();
   LocalDatabase localDatabase = LocalDatabase();
 
+
   late PageController _pageController;
   int _currentPage = 0;
   String userName='';
@@ -37,6 +40,7 @@ class _HomePageState extends State<HomePage> {
       viewportFraction: 0.8,
     );
     _initializeUser();
+
   }
 
   @override
@@ -52,9 +56,12 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     final userName = context.watch<UserProvider>().userName;
+
+
 
     return SingleChildScrollView(
       child: Column(
@@ -63,14 +70,23 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.fromLTRB(30, 135, 40, 20),
+                padding: const EdgeInsets.fromLTRB(30, 100, 40, 20),
                 child: Text(AppLocalizations.of(context)!.hello(userName),
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
               ),
               SizedBox(height: 10),
-              FlipCardWidget(frontText: 'Advice of the day',backText: "Asthma Advice",),
-            SizedBox(height: 40,)],
+              FutureBuilder<String>(
+                future: AdviceService.getAdviceFromJson(context),
+                builder: (context, snapshot) {
+                  return FlipCardWidget(
+                    frontText: AppLocalizations.of(context)!.advice_title,
+                    // If the future isn't done, show "...", otherwise show the translated text
+                    backText: snapshot.data ?? "...",
+                  );
+                },
+              ),
+            SizedBox(height: 20,)],
           ),
           // TextButton(onPressed: ()async{
           //   await FirebaseApi().sendNotificationToUser(
@@ -122,7 +138,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(30, 50, 50, 0),
+            padding: const EdgeInsets.fromLTRB(30, 30, 50, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
