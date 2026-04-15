@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 import 'package:puffpal/views/track_symptoms_page.dart';
 import '../l10n/app_localizations.dart';
@@ -8,6 +9,7 @@ import '../services/firestore_service.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:puffpal/models/carousel.dart';
 
+import '../services/user_provider.dart';
 import '../widgets/flip_card_widget.dart';
 import 'carousel_details_page.dart';
 
@@ -34,7 +36,7 @@ class _HomePageState extends State<HomePage> {
       initialPage: _currentPage,
       viewportFraction: 0.8,
     );
-    getName();
+    _initializeUser();
   }
 
   @override
@@ -43,15 +45,17 @@ class _HomePageState extends State<HomePage> {
     _pageController.dispose();
   }
 
-  getName() async{
-    String? name= await localDatabase.getNameByEmail(auth.currentUser!.email!);
-    setState(() {
-      userName = name ?? 'Guest';
-    });
+  void _initializeUser() async {
+    String? name = await localDatabase.getNameByEmail(auth.currentUser!.email!);
+    if (mounted) {
+      context.read<UserProvider>().updateName(name ?? 'Guest');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    final userName = context.watch<UserProvider>().userName;
+
     return SingleChildScrollView(
       child: Column(
         children: [

@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:puffpal/screens/onboarding_screen.dart';
 import 'package:puffpal/services/firebase_api.dart';
 import 'package:puffpal/services/local_notification_service.dart';
+import 'package:puffpal/services/user_provider.dart';
 import 'package:puffpal/views/common/app_shell.dart';
 import 'package:puffpal/views/home_page.dart';
 import 'package:puffpal/views/login_page.dart';
@@ -34,7 +35,11 @@ Future<void> main() async {
   await FirebaseApi().initNotification();
   await LocalNotificationService().init();
 
-  runApp(App(initScreen: initScreen));
+  runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => LanguageController()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+      ], child: App(initScreen: initScreen)));
 }
 
 class App extends StatelessWidget {
@@ -43,40 +48,35 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => LanguageController(),
-      child: Consumer<LanguageController>(
-        builder: (context, languageController, _) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'PuffPal',
-            locale: languageController.locale,
-            supportedLocales: const [
-              Locale('en'),
-              Locale('ar'),
-            ],
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            routes: {
-              '/login': (context) => LoginPage(),
-              '/signup': (context) => SignupPage(),
-              '/home': (context) => HomePage(),
-              '/profile': (context) => ProfilePage(),
-              '/quizzes': (context) => QuizzesGamesPage(),
-              '/appshell': (context) => AppShell(),
-              '/onboarding': (context) => OnboardingScreen(),
-            },
-              //home: initScreen ? LoginPage() : OnboardingScreen());
-              home: initScreen ? AppShell() : OnboardingScreen());
-              //home: OnboardingScreen());
-              //home: initScreen ? const AppShell() : const OnboardingScreen(),
+    final languageController = context.watch<LanguageController>();
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'PuffPal',
+          locale: languageController.locale,
+          supportedLocales: const [
+            Locale('en'),
+            Locale('ar'),
+          ],
+          localizationsDelegates: const [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          routes: {
+            '/login': (context) => LoginPage(),
+            '/signup': (context) => SignupPage(),
+            '/home': (context) => HomePage(),
+            '/profile': (context) => ProfilePage(),
+            '/quizzes': (context) => QuizzesGamesPage(),
+            '/appshell': (context) => AppShell(),
+            '/onboarding': (context) => OnboardingScreen(),
+          },
+            //home: initScreen ? LoginPage() : OnboardingScreen());
+            home: initScreen ? AppShell() : OnboardingScreen());
+            //home: OnboardingScreen());
+            //home: initScreen ? const AppShell() : const OnboardingScreen(),
 
-        },
-      ),
-    );
+
   }
 }

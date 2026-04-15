@@ -56,39 +56,50 @@ class _AppShellState extends State<AppShell> {
         ),
         elevation: 0,
         actions: [
-          Row(
-            children: [
-              PopupMenuButton<String>(
-                onSelected: (value) {
-                  final langController = Provider.of<LanguageController>(context, listen: false);
-                  langController.changeLanguage(value);
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5),
+            child: SizedBox(
+              width: 60,
+              child: DropdownButtonFormField<String>(
+                icon: Padding(
+                  padding: const EdgeInsets.only(top: 2.0),
+                  child: const Icon(Icons.language, color: Colors.black),
+                ),
+                style: const TextStyle(fontSize: 16, color: Colors.black), // Smaller font for AppBar
+                decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                    border: InputBorder.none,
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                ),
+                value: Localizations.localeOf(context).languageCode,
+                items: [
+                  const DropdownMenuItem(value: 'en', child: Text('EN')),
+                  const DropdownMenuItem(value: 'ar', child: Text('AR')),
+                ],
+                onChanged: (String? newValue) {
+                  if (newValue != null) {
+                    final langController = Provider.of<LanguageController>(context, listen: false);
+                    langController.changeLanguage(newValue);
+                  }
                 },
-                itemBuilder: (BuildContext context) {
-                  return [
-                    const PopupMenuItem<String>(value: 'en', child: Text('English')),
-                    const PopupMenuItem<String>(value: 'ar', child: Text('العربية')),
-                  ];
-                },
-                child: Text(
-                  Localizations.localeOf(context).languageCode == 'ar' ? 'العربية' : 'English',
-                  style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: IconButton(
+                  iconSize: 20,
+                  color: Colors.black,
+                  onPressed: () {
+                    firebaseServices.signOut();
+                    Navigator.pushReplacementNamed(context, '/login');
+                  },
+                  icon: Icon(Icons.logout),
                 ),
               ),
-              Icon(Icons.arrow_drop_down, size: 30,),
-              SizedBox(width: 30,),
-
-              IconButton(
-                iconSize: 20,
-                color: Colors.black,
-                onPressed: () {
-                  firebaseServices.signOut();
-                  Navigator.pushReplacementNamed(context, '/login');
-                },
-                icon: Icon(Icons.logout),
-              ),
             ],
-          ),
-        ],
+
       ),
       bottomNavigationBar: CurvedNavigationBar(
         animationDuration: Duration(milliseconds: 300),

@@ -223,8 +223,8 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                               ),
                             ),
                           ),
-                          Positioned(
-                            right: 0,
+                          PositionedDirectional(
+                            end: 0,
                             top: index == 0 ? -30 : 0,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,

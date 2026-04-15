@@ -86,6 +86,7 @@ flutter:
   assets:
     - assets/images/
     - assets/pdf/
+    - assets/pdf/quizzes.pdf
     - .env
   #   - images/a_dot_ham.jpeg
 

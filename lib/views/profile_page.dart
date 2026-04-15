@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:puffpal/services/firestore_service.dart';
 import '../l10n/app_localizations.dart';
 import '../services/local_notification_service.dart';
+import '../services/user_provider.dart';
 import 'medication_reminder_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -102,19 +104,22 @@ class _ProfilePageState extends State<ProfilePage> {
                   );},),
             const SizedBox(height: 10),
             Divider(),
-            const SizedBox(height: 40),
+            const SizedBox(height: 10),
 
-            TextButton(onPressed: (){
-              //Navigator.pushNamed(context, '/medication_reminder');
-              Navigator.push(context, MaterialPageRoute(builder: (context) => MedicationReminderPage()));
-            }, child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("go to medication reminder page", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18)),
-                SizedBox(width: 30),
-                Icon(Icons.navigate_next, color: Colors.black, size: 30)
-              ],
-            ))
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextButton(onPressed: (){
+                //Navigator.pushNamed(context, '/medication_reminder');
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MedicationReminderPage()));
+              }, child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("go to medication reminder page", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18)),
+                  SizedBox(width: 30),
+                  Icon(Icons.navigate_next, color: Colors.black, size: 30)
+                ],
+              )),
+            )
 
 
           ],
@@ -158,6 +163,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       String newValue = _controller.text.trim();
                       if (newValue.isNotEmpty) {
                         await onSave(newValue);
+                        if (label == AppLocalizations.of(context)!.name) {
+                          Provider.of<UserProvider>(context, listen: false).updateName(newValue);
+                        }
                         Navigator.pop(context);
                         _loadUserData(); // Refresh user data
 
