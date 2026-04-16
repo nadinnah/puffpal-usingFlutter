@@ -26,6 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Map<String, dynamic> userData = {};
 
 
+
   @override
   void initState() {
     super.initState();
@@ -44,6 +45,12 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    if (userData.isEmpty || l10n == null) {
+      return const Scaffold(
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(10.0),

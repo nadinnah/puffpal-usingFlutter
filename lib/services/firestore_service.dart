@@ -29,6 +29,25 @@ class FirebaseServices{
         email: emailAddress,
         password: password,
       );
+      DocumentSnapshot userDoc = await firestore
+          .collection('Users')
+          .doc(credential.user!.uid)
+          .get();
+
+      if (userDoc.exists) {
+        Map<String, dynamic> data = userDoc.data() as Map<String, dynamic>;
+
+        // 2. Sync to Local Database so ProfilePage can find it
+        await localDb.insertUser({
+          'name': data['name'],
+          'email': data['email'],
+          'password': password, // Note: You don't have the original pw in Firestore
+          'number': data['phone'],
+          'age': data['age'],
+          'gender': data['gender'],
+          'firebaseId': credential.user!.uid,
+        });
+      }
       String? fcmToken = await FirebaseMessaging.instance.getToken();
 
       await firestore.collection('Users').doc(credential.user!.uid).update({

@@ -14,7 +14,7 @@ class LocalDatabase {
     }
   }
 
-  int version = 3;
+  int version = 5;
 
   Future<void> deleteOldDatabase() async {
     String myPath = await getDatabasesPath();
@@ -53,14 +53,23 @@ class LocalDatabase {
             UNIQUE(email, date)
           );
         ''');
+        await db.execute('''
+          CREATE TABLE IF NOT EXISTS Medications (
+            id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+            userEmail TEXT NOT NULL,
+            name TEXT NOT NULL,
+            startTime TEXT NOT NULL,
+            interval INTEGER NOT NULL
+          );
+        ''');
       },
 
       onUpgrade: (db, oldVersion, newVersion) async {
-        if (oldVersion < 3) {
+        if (oldVersion < 5) {
           try {
             await db.execute('ALTER TABLE Symptoms ADD COLUMN result TEXT');
           } catch (e) {
-          await db.execute('''
+            await db.execute('''
             CREATE TABLE IF NOT EXISTS Symptoms (
               id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
               email TEXT NOT NULL,
@@ -68,8 +77,9 @@ class LocalDatabase {
               UNIQUE(email, date)
             );
           ''');
+          }
         }
-      }},
+      },
     );
     return myDb;
   }
@@ -109,7 +119,7 @@ class LocalDatabase {
 
   Future<int> insertUser(Map<String, dynamic> userData) async {
     final db = await myDataBase;
-    return await db!.insert('Users', {...userData});
+    return await db!.insert('Users', {...userData}, conflictAlgorithm: ConflictAlgorithm.replace,);
   }
 
   Future<String?> getNameByEmail(String email) async {
@@ -136,9 +146,10 @@ class LocalDatabase {
       {
         'email': email,
         'date': today,
-        'result': resultText // Save the specific advice given
+        'result': resultText, // Save the specific advice given
       },
-      conflictAlgorithm: ConflictAlgorithm.replace, // Overwrite if they somehow track twice
+      conflictAlgorithm:
+          ConflictAlgorithm.replace, // Overwrite if they somehow track twice
     );
   }
 
@@ -185,5 +196,31 @@ class LocalDatabase {
       return result.first['result'] as String;
     }
     return null;
+  }
+
+  Future<void> insertMedication(Map<String, dynamic> medData) async {
+    final db = await myDataBase;
+    await db!.insert(
+      'Medications',
+      medData,
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+  }
+  Future<List<Map<String, dynamic>>> getMedicationsForUser(String email) async {
+    final db = await myDataBase;
+    return await db!.query(
+      'Medications',
+      where: 'userEmail = ?',
+      whereArgs: [email],
+    );
+  }
+
+  Future<void> deleteMedication(int id) async {
+    final db = await myDataBase;
+    await db!.delete(
+      'Medications',
+      where: 'id = ?',
+      whereArgs: [id],
+    );
   }
 }

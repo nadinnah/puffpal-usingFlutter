@@ -187,42 +187,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Advice of the Day'**
   String get advice_title;
-
-  /// No description provided for @advice_inhaler.
-  ///
-  /// In en, this message translates to:
-  /// **'Always keep your rescue inhaler with you, even if you feel fine.'**
-  String get advice_inhaler;
-
-  /// No description provided for @advice_dust.
-  ///
-  /// In en, this message translates to:
-  /// **'Wash your bedding in hot water (60°C) once a week to kill dust mites.'**
-  String get advice_dust;
-
-  /// No description provided for @advice_cold.
-  ///
-  /// In en, this message translates to:
-  /// **'In cold weather, breathe through a scarf to warm the air before it hits your lungs.'**
-  String get advice_cold;
-
-  /// No description provided for @advice_water.
-  ///
-  /// In en, this message translates to:
-  /// **'Drink plenty of water; it helps keep the mucus in your lungs thinner.'**
-  String get advice_water;
-
-  /// No description provided for @advice_exercise.
-  ///
-  /// In en, this message translates to:
-  /// **'Warm up for 10 minutes before exercising to prevent exercise-induced asthma.'**
-  String get advice_exercise;
-
-  /// No description provided for @advice_pollen.
-  ///
-  /// In en, this message translates to:
-  /// **'Keep windows closed during high pollen days or sandstorms.'**
-  String get advice_pollen;
 }
 
 class _AppLocalizationsDelegate

@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import '../data/medication_entry.dart';
 import '../services/local_notification_service.dart';
+import '../services/sqlite_service.dart'; // Ensure this path is correct
 
 class MedicationReminderPage extends StatefulWidget {
   const MedicationReminderPage({super.key});
@@ -10,10 +12,43 @@ class MedicationReminderPage extends StatefulWidget {
 }
 
 class _MedicationReminderPageState extends State<MedicationReminderPage> {
-  final TextEditingController medNameController = TextEditingController();
-  TimeOfDay? selectedTime;
-  int? repeatHours;
+  // We use the LocalDatabase instance
+  final LocalDatabase localDatabase = LocalDatabase();
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  final String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
+
+  List<MedicationEntry> _medications = [
+    MedicationEntry(controller: TextEditingController())
+  ];
+
   final LocalNotificationService notificationService = LocalNotificationService();
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize notification service if not done in main.dart
+    notificationService.init();
+  }
+
+  void _addNewMedicationField() {
+    if (_medications.length < 5) {
+      setState(() {
+        _medications.add(MedicationEntry(controller: TextEditingController()));
+      });
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Maximum 5 medications allowed")),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    for (var med in _medications) {
+      med.controller.dispose();
+    }
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,111 +62,234 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
         ),
       ),
-      // Background gradient to match your Home Page
       body: Container(
-          padding: EdgeInsets.only(top: 70),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [
-                Color(0xFFD8D0E5),
-                Color(0xFFD9DBEF),
-                Color(0xFFA8ABCA),
-              ],
-            ),
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [Color(0xFFD8D0E5), Color(0xFFD9DBEF), Color(0xFFA8ABCA)],
           ),
-          child: Padding(
-          padding: const EdgeInsets.all(30),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 80),
-              Text("Medication Reminders:", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-              TextField(
-                controller: medNameController,
-                decoration: InputDecoration(
-                  labelText: "Medication Name",
-                  border: OutlineInputBorder(),
+        ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "Medication Reminders",
+                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
                 ),
-              ),
-              const SizedBox(height: 10),
-              Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton.icon(
-                      onPressed: () async {
-                        final time = await showTimePicker(
-                          context: context,
-                          initialTime: TimeOfDay.now(),
-                        );
-                        if (time != null) {
-                          setState(() => selectedTime = time);
-                        }
-                      },
-                      icon: Icon(Icons.access_time),
-                      label: Text(selectedTime == null
-                          ? "Select Start Time"
-                          : "Start: ${selectedTime!.format(context)}"),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: DropdownButtonFormField<int>(
-                      decoration: InputDecoration(
-                        labelText: "Repeat every (hours)",
-                        border: OutlineInputBorder(),
+                const SizedBox(height: 8),
+                const Text(
+                  "Set the start time and how often to repeat for each medicine.",
+                  style: TextStyle(fontSize: 14, color: Colors.black54),
+                ),
+                const SizedBox(height: 30),
+
+                // Map through the medication entries
+                ..._medications.asMap().entries.map((entry) {
+                  int index = entry.key;
+                  MedicationEntry med = entry.value;
+
+                  return Card(
+                    margin: const EdgeInsets.only(bottom: 20),
+                    color: Colors.white.withOpacity(0.7),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                child: TextField(
+                                  controller: med.controller,
+                                  decoration: InputDecoration(
+                                    labelText: "Medicine ${index + 1} Name",
+                                    prefixIcon: const Icon(Icons.medication),
+                                    border: const OutlineInputBorder(),
+                                  ),
+                                ),
+                              ),
+                              if (_medications.length > 1)
+                                IconButton(
+                                  icon: const Icon(Icons.remove_circle, color: Colors.redAccent),
+                                  onPressed: () => setState(() => _medications.removeAt(index)),
+                                ),
+                            ],
+                          ),
+                          const SizedBox(height: 15),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: OutlinedButton.icon(
+                                  onPressed: () async {
+                                    final picked = await showTimePicker(
+                                      context: context,
+                                      initialTime: TimeOfDay.now(),
+                                    );
+                                    if (picked != null) {
+                                      setState(() => med.time = picked);
+                                    }
+                                  },
+                                  icon: const Icon(Icons.access_time),
+                                  label: Text(med.time == null
+                                      ? "First Dose"
+                                      : med.time!.format(context)),
+                                ),
+                              ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: DropdownButtonFormField<int>(
+                                  decoration: const InputDecoration(
+                                    contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                                    labelText: "Repeat Every",
+                                    border: OutlineInputBorder(),
+                                  ),
+                                  value: med.interval,
+                                  items: [4, 6, 8, 12, 24].map((h) {
+                                    return DropdownMenuItem(
+                                      value: h,
+                                      child: Text("$h hrs"),
+                                    );
+                                  }).toList(),
+                                  onChanged: (val) => setState(() => med.interval = val),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      value: repeatHours,
-                      items: [4, 6, 8, 12].map((h) {
-                        return DropdownMenuItem(
-                          value: h,
-                          child: Text("$h hours"),
-                        );
-                      }).toList(),
-                      onChanged: (value) => setState(() => repeatHours = value),
+                    ),
+                  );
+                }).toList(),
+
+                if (_medications.length < 5)
+                  Center(
+                    child: TextButton.icon(
+                      onPressed: _addNewMedicationField,
+                      icon: const Icon(Icons.add_circle_outline),
+                      label: const Text("Add Another Medication"),
                     ),
                   ),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Center(
-                child: ElevatedButton.icon(
-                  icon: Icon(Icons.alarm),
-                  label: Text("Set Reminder"),
-                  onPressed: () async {
-                    if (medNameController.text.isEmpty ||
-                        selectedTime == null ||
-                        repeatHours == null) {
+
+                const SizedBox(height: 40),
+
+                SizedBox(
+                  width: double.infinity,
+                  height: 55,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF1E6096),
+                      foregroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                    ),
+                    onPressed: () async {
+                      print("Button Pressed!"); // Debug point 1
+                      await notificationService.requestPermissions();
+                      final String? activeEmail = FirebaseAuth.instance.currentUser?.email;
+
+
+                      bool allValid = _medications.every((m) =>
+                      m.controller.text.trim().isNotEmpty && m.time != null && m.interval != null);
+
+                      if (!allValid) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text("Please fill all details.")),
+                        );
+                        return;
+                      }
+
+
+                      for (var med in _medications) {
+
+                        final medName = med.controller.text.trim();
+                        final startTimeStr = med.time!.format(context);
+                        final interval = med.interval!;
+
+                        final now = DateTime.now();
+                        DateTime firstDose = DateTime(now.year, now.month, now.day, med.time!.hour, med.time!.minute);
+                        if (firstDose.isBefore(now)) firstDose = firstDose.add(const Duration(days: 1));
+
+                        // 1. System Notification
+                        await notificationService.scheduleRepeatingReminder(medName, firstDose, interval);
+
+                        // 2. SQLite
+                        await localDatabase.insertMedication({
+                          'userEmail': currentUserEmail, // This fixes the NOT NULL constraint error
+                          'name': medName,
+                          'startTime': startTimeStr,
+                          'interval': interval,
+                        });
+                      }
+
+                      setState(() {
+                        _medications = [MedicationEntry(controller: TextEditingController())];
+                      });
+
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Please fill all fields")),
+                        const SnackBar(content: Text("Reminders saved and active!")),
                       );
-                      return;
+                    },
+                    child: const Text("Set Timers",
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  ),
+                ),
+
+                const SizedBox(height: 40),
+                const Text("Active Reminders", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                const Divider(color: Colors.black26),
+                const SizedBox(height: 10),
+
+                FutureBuilder<List<Map<String, dynamic>>>(
+                  future: localDatabase.getMedicationsForUser(auth.currentUser!.email!),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                      return const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 20),
+                        child: Text("No active reminders."),
+                      );
                     }
 
-                    // Convert selected time to DateTime
-                    final now = DateTime.now();
-                    final start = DateTime(
-                      now.year,
-                      now.month,
-                      now.day,
-                      selectedTime!.hour,
-                      selectedTime!.minute,
-                    );
-
-                    await notificationService.scheduleRepeatingReminder(
-                      medNameController.text,
-                      start,
-                      repeatHours!,
-                    );
-
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Reminder set for ${medNameController.text}")),
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        final med = snapshot.data![index];
+                        return Card(
+                          margin: const EdgeInsets.only(bottom: 10),
+                          color: Colors.white.withOpacity(0.5),
+                          child: ListTile(
+                            leading: const Icon(Icons.alarm_on, color: Color(0xFF1E6096)),
+                            title: Text(med['name'], style: const TextStyle(fontWeight: FontWeight.bold)),
+                            subtitle: Text("Starts at ${med['startTime']} • Every ${med['interval']}h"),
+                            trailing: IconButton(
+                              icon: const Icon(Icons.delete_sweep, color: Colors.red),
+                              onPressed: () async {
+                                await notificationService.cancelMedicationReminder(med['name']);
+                                await localDatabase.deleteMedication(med['id']);
+                                setState(() {});
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(content: Text("${med['name']} reminder removed")),
+                                );
+                              },
+                            ),
+                          ),
+                        );
+                      },
                     );
                   },
                 ),
-              ),
-            ],
+                const SizedBox(height: 50),
+              ],
+            ),
           ),
         ),
       ),
