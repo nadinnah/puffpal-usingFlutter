@@ -23,11 +23,11 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
   @override
   void initState() {
     super.initState();
-    _loadStatus();
+    loadStatus();
   }
 
   // Check if today is done and fetch the history map for the heatmap
-  Future<void> _loadStatus() async {
+  Future<void> loadStatus() async {
     bool tracked = await _localDb.hasTrackedToday(_email);
     Map<DateTime, int> history = await _localDb.getSymptomHistory(_email);
     setState(() {
@@ -167,7 +167,7 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
         else
         // button to finally switch to calendar view after reading result
           ElevatedButton(
-            onPressed: _loadStatus,
+            onPressed: loadStatus,
             child: const Text("View My History"),
           ),
       ],
