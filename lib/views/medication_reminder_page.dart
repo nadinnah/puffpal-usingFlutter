@@ -96,7 +96,7 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
 
                   return Card(
                     margin: const EdgeInsets.only(bottom: 20),
-                    color: Colors.white.withOpacity(0.7),
+                    color: Colors.white,
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
@@ -108,8 +108,8 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                                 child: TextField(
                                   controller: med.controller,
                                   decoration: InputDecoration(
-                                    labelText: "Medicine ${index + 1} Name",
-                                    prefixIcon: const Icon(Icons.medication),
+                                    labelText: "Enter Medicine ${index + 1}",
+                                    prefixIcon: const Icon(Icons.medical_services_sharp, color: Colors.black),
                                     border: const OutlineInputBorder(),
                                   ),
                                 ),
@@ -124,24 +124,22 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                           const SizedBox(height: 15),
                           Row(
                             children: [
-                              Expanded(
-                                child: OutlinedButton.icon(
-                                  onPressed: () async {
-                                    final picked = await showTimePicker(
-                                      context: context,
-                                      initialTime: TimeOfDay.now(),
-                                    );
-                                    if (picked != null) {
-                                      setState(() => med.time = picked);
-                                    }
-                                  },
-                                  icon: const Icon(Icons.access_time),
-                                  label: Text(med.time == null
-                                      ? "First Dose"
-                                      : med.time!.format(context)),
-                                ),
+                              OutlinedButton.icon(
+                                onPressed: () async {
+                                  final picked = await showTimePicker(
+                                    context: context,
+                                    initialTime: TimeOfDay.now(),
+                                  );
+                                  if (picked != null) {
+                                    setState(() => med.time = picked);
+                                  }
+                                },
+                                icon: const Icon(Icons.access_time),
+                                label: Text(med.time == null
+                                    ? "First Dose"
+                                    : med.time!.format(context)),
                               ),
-                              const SizedBox(width: 10),
+                              const SizedBox(width: 30),
                               Expanded(
                                 child: DropdownButtonFormField<int>(
                                   decoration: const InputDecoration(
@@ -149,7 +147,7 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                                     labelText: "Repeat Every",
                                     border: OutlineInputBorder(),
                                   ),
-                                  value: med.interval,
+                                  initialValue: med.interval,
                                   items: [4, 6, 8, 12, 24].map((h) {
                                     return DropdownMenuItem(
                                       value: h,
@@ -265,13 +263,13 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                         final med = snapshot.data![index];
                         return Card(
                           margin: const EdgeInsets.only(bottom: 10),
-                          color: Colors.white.withOpacity(0.5),
+                          color: Colors.white,
                           child: ListTile(
                             leading: const Icon(Icons.alarm_on, color: Color(0xFF1E6096)),
                             title: Text(med['name'], style: const TextStyle(fontWeight: FontWeight.bold)),
-                            subtitle: Text("Starts at ${med['startTime']} • Every ${med['interval']}h"),
+                            subtitle: Text("Started at ${med['startTime']} • Every ${med['interval']}h"),
                             trailing: IconButton(
-                              icon: const Icon(Icons.delete_sweep, color: Colors.red),
+                              icon: const Icon(Icons.delete, color: Colors.red),
                               onPressed: () async {
                                 await notificationService.cancelMedicationReminder(med['name']);
                                 await localDatabase.deleteMedication(med['id']);
