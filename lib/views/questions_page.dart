@@ -12,7 +12,6 @@ class QuestionsPage extends StatefulWidget {
 }
 
 class _QuestionsPageState extends State<QuestionsPage> {
-
   int currentQuestionIndex = 0;
   int score = 0;
   String? selectedAnswer;
@@ -29,6 +28,27 @@ class _QuestionsPageState extends State<QuestionsPage> {
     currentShuffledOptions = widget.quiz.questions[currentQuestionIndex].getShuffledAnswers();
   }
 
+  void _showScoreDialog(BuildContext context) async {
+    await QuizProgressService.setScore(widget.quiz.title, score);
+
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: Text("Quiz Completed!"),
+        content: Text("Your score is $score out of ${widget.quiz.questions.length}"),
+        actions: [
+          TextButton(
+            child: Text("OK"),
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
+
+            },
+          )
+        ],
+      ),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     final currentQuizQuestion = widget.quiz.questions[currentQuestionIndex];
@@ -136,28 +156,6 @@ class _QuestionsPageState extends State<QuestionsPage> {
             }).toList(),
           ],
         ),
-      ),
-    );
-  }
-
-  void _showScoreDialog(BuildContext context) async {
-    await QuizProgressService.setScore(widget.quiz.title, score);
-
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        title: Text("Quiz Completed!"),
-        content: Text("Your score is $score out of ${widget.quiz.questions.length}"),
-        actions: [
-          TextButton(
-            child: Text("OK"),
-            onPressed: () {
-              Navigator.pop(context); // Close dialog
-              Navigator.pop(context); // Go back to quiz list
-
-            },
-          )
-        ],
       ),
     );
   }

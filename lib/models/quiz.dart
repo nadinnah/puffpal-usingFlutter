@@ -91,7 +91,7 @@ List<Quiz> quizzes = [
     ],
   ),
   Quiz(
-    title: 'title1',
+    title: 'title3',
     image: 'assets/images/inhaler3.png',
     questions: [
       Question(
@@ -115,7 +115,7 @@ List<Quiz> quizzes = [
     ],
   ),
   Quiz(
-    title: 'title2',
+    title: 'title4',
     image: 'assets/images/trialAsthma.png',
     questions: [
       Question(
