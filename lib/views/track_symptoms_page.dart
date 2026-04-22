@@ -51,21 +51,25 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
         ),
       ),
       // Background gradient to match your Home Page
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topRight,
-            end: Alignment.bottomLeft,
-            colors: [Color(0xFFD8D0E5), Color(0xFFD9DBEF), Color(0xFFA8ABCA)],
+      body: SafeArea(
+        top: false,
+        bottom: true,
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [Color(0xFFD8D0E5), Color(0xFFD9DBEF), Color(0xFFA8ABCA)],
+            ),
           ),
-        ),
-        child: isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: alreadyTracked ? _buildHistoryView() : _buildTreeView(),
+          child: isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: alreadyTracked ? _buildHistoryView() : _buildTreeView(),
+          ),
         ),
       ),
     );

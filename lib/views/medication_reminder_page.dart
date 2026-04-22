@@ -285,6 +285,7 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                     );
                   },
                 ),
+
                 const SizedBox(height: 50),
               ],
             ),

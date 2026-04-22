@@ -45,12 +45,16 @@ class _AppShellState extends State<AppShell> {
         ),
         title: Padding(
           padding: const EdgeInsets.fromLTRB(15, 0, 15, 0),
-          child: Text(
-            'PuffPal',
-            style: GoogleFonts.rubikBubbles(
-              fontSize: 30,
-              fontWeight: FontWeight.w600,
-              color: Color(0xFF1E6097),
+          child: SafeArea(
+            top: false,
+            bottom: true,
+            child: Text(
+              'PuffPal',
+              style: GoogleFonts.rubikBubbles(
+                fontSize: 30,
+                fontWeight: FontWeight.w600,
+                color: Color(0xFF1E6097),
+              ),
             ),
           ),
         ),
@@ -65,12 +69,13 @@ class _AppShellState extends State<AppShell> {
                   padding: const EdgeInsets.only(top: 2.0),
                   child: const Icon(Icons.language, color: Colors.black),
                 ),
-                style: const TextStyle(fontSize: 16, color: Colors.black), // Smaller font for AppBar
+                style: const TextStyle(fontSize: 16, color: Colors.black),
+                // Smaller font for AppBar
                 decoration: InputDecoration(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 10),
-                    border: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    focusedBorder: InputBorder.none,
+                  border: InputBorder.none,
+                  enabledBorder: InputBorder.none,
+                  focusedBorder: InputBorder.none,
                 ),
                 value: Localizations.localeOf(context).languageCode,
                 items: [
@@ -79,37 +84,47 @@ class _AppShellState extends State<AppShell> {
                 ],
                 onChanged: (String? newValue) {
                   if (newValue != null) {
-                    final langController = Provider.of<LanguageController>(context, listen: false);
+                    final langController = Provider.of<LanguageController>(
+                      context,
+                      listen: false,
+                    );
                     langController.changeLanguage(newValue);
                   }
                 },
               ),
             ),
           ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                child: IconButton(
-                  iconSize: 20,
-                  color: Colors.black,
-                  onPressed: () {
-                    firebaseServices.signOut();
-                    Navigator.pushReplacementNamed(context, '/login');
-                  },
-                  icon: Icon(Icons.logout),
-                ),
-              ),
-            ],
-
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: IconButton(
+              iconSize: 20,
+              color: Colors.black,
+              onPressed: () {
+                firebaseServices.signOut();
+                Navigator.pushReplacementNamed(context, '/login');
+              },
+              icon: Icon(Icons.logout),
+            ),
+          ),
+        ],
       ),
-      bottomNavigationBar: CurvedNavigationBar(
-        animationDuration: Duration(milliseconds: 300),
-        items: items,
-        index: index,
-        height: 60,
-        color: Color(0xffd7d2e7),
-        backgroundColor: Colors.transparent,
-        buttonBackgroundColor: Color(0xffd7d2e7),
-        onTap: (selectedIndex) => setState(() => this.index = selectedIndex),
+      bottomNavigationBar: Theme(
+        // This prevents the background of the nav bar from fighting with the Scaffold
+        data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
+        child: SafeArea(
+          top: false,
+          child: CurvedNavigationBar(
+            animationDuration: Duration(milliseconds: 300),
+            items: items,
+            index: index,
+            height: 60,
+            color: Color(0xffd7d2e7),
+            backgroundColor: Colors.transparent,
+            buttonBackgroundColor: Color(0xffd7d2e7),
+            onTap: (selectedIndex) =>
+                setState(() => this.index = selectedIndex),
+          ),
+        ),
       ),
       body: Stack(
         children: [
@@ -126,10 +141,7 @@ class _AppShellState extends State<AppShell> {
               ),
             ),
           ),
-          IndexedStack(
-          index: index,
-          children: pages,
-          ),
+          IndexedStack(index: index, children: pages),
         ],
       ),
     );

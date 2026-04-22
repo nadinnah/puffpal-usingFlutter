@@ -27,10 +27,9 @@ class _HomePageState extends State<HomePage> {
   FirebaseServices firebaseServices = FirebaseServices();
   LocalDatabase localDatabase = LocalDatabase();
 
-
   late PageController _pageController;
   int _currentPage = 0;
-  String userName='';
+  String userName = '';
 
   @override
   void initState() {
@@ -40,7 +39,6 @@ class _HomePageState extends State<HomePage> {
       viewportFraction: 0.8,
     );
     _initializeUser();
-
   }
 
   @override
@@ -56,24 +54,27 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     final userName = context.watch<UserProvider>().userName;
 
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
 
+    final double horizontalPadding = screenWidth * 0.08;
+
+    final double verticalSpacing = screenHeight * 0.1;
 
     return SingleChildScrollView(
+      padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalSpacing),
       child: Column(
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(30, 100, 40, 20),
-                child: Text(AppLocalizations.of(context)!.hello(userName),
-                  style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-                ),
+              Text(
+                AppLocalizations.of(context)!.hello(userName),
+                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
               ),
               SizedBox(height: 10),
               FutureBuilder<String>(
@@ -86,7 +87,8 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-            SizedBox(height: 20,)],
+              SizedBox(height: verticalSpacing),
+            ],
           ),
           // TextButton(onPressed: ()async{
           //   await FirebaseApi().sendNotificationToUser(
@@ -95,70 +97,75 @@ class _HomePageState extends State<HomePage> {
           //
           //   );
           //}, child: Text('Send notif')),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(AppLocalizations.of(context)!.breatheBetter,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                AppLocalizations.of(context)!.breatheBetter,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ],
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TrackSymptomsPage()),
-                );
-              },
-              child: Card(
-                surfaceTintColor: Color(0xffd8d6ea),
-                color: Color(0xffe6e8fb),
-                elevation: 3,
-                child: Padding(
-                  padding: const EdgeInsets.all(14.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Image.network(
-                        'https://images.ctfassets.net/h8qzhh7m9m8u/3yLMtGnvAqt0mySfcZtkLi/5d195fa0b61f4f0f84d8fd6a47c03255/How_to_know_if_someone_is_having_an_asthma_attack__1_.png?fm=webp&w=2100&h=1200&fit=fill&bg=rgb:FFFFFF&q=70',
+
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => TrackSymptomsPage()),
+              );
+            },
+            child: Card(
+              surfaceTintColor: Color(0xffd8d6ea),
+              color: Color(0xffe6e8fb),
+              elevation: 3,
+              child: Padding(
+                padding: const EdgeInsets.all(14.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Image.network(
+                      'https://images.ctfassets.net/h8qzhh7m9m8u/3yLMtGnvAqt0mySfcZtkLi/5d195fa0b61f4f0f84d8fd6a47c03255/How_to_know_if_someone_is_having_an_asthma_attack__1_.png?fm=webp&w=2100&h=1200&fit=fill&bg=rgb:FFFFFF&q=70',
+                    ),
+                    ListTile(
+                      title: Text(
+                        AppLocalizations.of(context)!.trackSymptoms,
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      ListTile(
-                        title: Text(AppLocalizations.of(context)!.trackSymptoms, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                        subtitle: Text(AppLocalizations.of(context)!.quickQuestions,style: TextStyle(fontSize: 16)),
+                      subtitle: Text(
+                        AppLocalizations.of(context)!.quickQuestions,
+                        style: TextStyle(fontSize: 16),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(30, 30, 50, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(AppLocalizations.of(context)!.breatheBetter,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-              ],
-            ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Text(
+                AppLocalizations.of(context)!.breatheBetter,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ],
           ),
+
           AspectRatio(
-              aspectRatio: 1.7,
-              child: PageView.builder(
-                itemCount: carouselDataList.length,
-                physics: ClampingScrollPhysics(),
-                controller: _pageController,
-                itemBuilder: (BuildContext context, int index) {
-                  return carouselView(index);
-                },
-              ),
+            aspectRatio: 1.2,
+            child: PageView.builder(
+              itemCount: carouselDataList.length,
+              physics: ClampingScrollPhysics(),
+              controller: _pageController,
+              itemBuilder: (BuildContext context, int index) {
+                return carouselView(index);
+              },
             ),
+          ),
 
           SmoothPageIndicator(
             controller: _pageController,
@@ -185,35 +192,32 @@ class _HomePageState extends State<HomePage> {
       children: [
         SizedBox(
           height: 200,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Hero(
-              tag: data.title,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          CarouselDetailsPage(carouselData: data),
-                    ),
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: AssetImage(data.imageName),
-                      fit: BoxFit.fill,
-                    ),
-                    boxShadow: [
-                      BoxShadow(
-                        offset: Offset(0, 2),
-                        blurRadius: 5,
-                        color: Color(0xff615f5f),
-                      ),
-                    ],
+          child: Hero(
+            tag: data.title,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        CarouselDetailsPage(carouselData: data),
                   ),
+                );
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  image: DecorationImage(
+                    image: AssetImage(data.imageName),
+                    fit: BoxFit.fill,
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      offset: Offset(0, 2),
+                      blurRadius: 5,
+                      color: Color(0xff615f5f),
+                    ),
+                  ],
                 ),
               ),
             ),

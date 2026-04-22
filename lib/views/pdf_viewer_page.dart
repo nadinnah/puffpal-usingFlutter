@@ -75,15 +75,19 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
           ),
         ],
       ),
-      body: PdfViewPinch(
-        controller: pdfController,
-        scrollDirection: Axis.vertical,
-        builders: PdfViewPinchBuilders<DefaultBuilderOptions>(
-          options: DefaultBuilderOptions(),
-          documentLoaderBuilder: (_) =>
-              Center(child: CircularProgressIndicator()),
-          pageLoaderBuilder: (_) => Center(child: CircularProgressIndicator()),
-          errorBuilder: (_, error) => Center(child: Text(error.toString())),
+      body: SafeArea(
+        top: false,
+        bottom: true,
+        child: PdfViewPinch(
+          controller: pdfController,
+          scrollDirection: Axis.vertical,
+          builders: PdfViewPinchBuilders<DefaultBuilderOptions>(
+            options: DefaultBuilderOptions(),
+            documentLoaderBuilder: (_) =>
+                Center(child: CircularProgressIndicator()),
+            pageLoaderBuilder: (_) => Center(child: CircularProgressIndicator()),
+            errorBuilder: (_, error) => Center(child: Text(error.toString())),
+          ),
         ),
       ),
     );

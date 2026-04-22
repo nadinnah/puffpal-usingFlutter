@@ -21,6 +21,7 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await AndroidAlarmManager.initialize();
 
   await dotenv.load(fileName: ".env");
 
@@ -33,7 +34,10 @@ Future<void> main() async {
   final notificationsEnabled= prefs.getBool("notificationsEnabled")?? false;
 
   await FirebaseApi().initNotification();
-  await LocalNotificationService().init();
+  final notificationService = LocalNotificationService(); // Use the singleton
+  await notificationService.init();
+  await notificationService.requestPermissions();
+
 
   runApp(MultiProvider(
       providers: [

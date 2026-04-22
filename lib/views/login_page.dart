@@ -53,126 +53,130 @@ class _LoginPageState extends State<LoginPage> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(30, 120, 30, 0),
-            child: Form(
-              key: formKey,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    SizedBox(height: 80),
-                    Text(
-                      "PuffPal Login",
-                      style: GoogleFonts.rubikBubbles(
-                        fontSize: 35,
-                        fontWeight: FontWeight.w600,
-                        color: Color(0xFF1E6097),
-                      ),
-                    ),
-                    SizedBox(height: 80),
-
-                    TextFormField(
-                      key: Key('custom_email_field'),
-                      controller: emailController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty)
-                          return 'Email is required';
-                        if (!value.contains('@') || !value.contains('.'))
-                          return 'Invalid email';
-                        return null;
-                      },
-                      decoration: fieldDecoration('Email', Icons.email),
-                    ),
-
-                    SizedBox(height: 20),
-
-                    /// PASSWORD
-                    TextFormField(
-                      key: Key('custom_password_field'),
-                      controller: passwordController,
-                      obscureText: !isVisible,
-                      validator: (value) =>
-                      value!.isEmpty ? 'Password is required' : null,
-                      decoration: fieldDecoration('Password', Icons.lock)
-                          .copyWith(
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            isVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                          ),
-                          onPressed: () =>
-                              setState(() => isVisible = !isVisible),
+        body: SafeArea(
+          top: false,
+          bottom: true,
+          child: GestureDetector(
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(30, 120, 30, 0),
+              child: Form(
+                key: formKey,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      SizedBox(height: 80),
+                      Text(
+                        "PuffPal Login",
+                        style: GoogleFonts.rubikBubbles(
+                          fontSize: 35,
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xFF1E6097),
                         ),
                       ),
-                    ),
-
-                    SizedBox(height: 60),
-
-                    /// LOGIN BUTTON
-                    ElevatedButton(
-                      key: Key('login_button'),
-                      onPressed: () async {
-                        try {
-                          String email = emailController.text.trim();
-                          String password = passwordController.text.trim();
-
-                          if (formKey.currentState!.validate()) {
-                            bool status =
-                            await firebaseServices.signIn(email, password);
-
-                            if (status) {
-                              Navigator.pushReplacementNamed(
-                                  context, '/appshell');
-                            } else {
-                              throw Exception(
-                                  'Login failed: Invalid credentials');
-                            }
-                          }
-                        } catch (e) {
-                          setState(() => errorMessage = e.toString());
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text(errorMessage),
-                              backgroundColor: Colors.red,
+                      SizedBox(height: 80),
+          
+                      TextFormField(
+                        key: Key('custom_email_field'),
+                        controller: emailController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty)
+                            return 'Email is required';
+                          if (!value.contains('@') || !value.contains('.'))
+                            return 'Invalid email';
+                          return null;
+                        },
+                        decoration: fieldDecoration('Email', Icons.email),
+                      ),
+          
+                      SizedBox(height: 20),
+          
+                      /// PASSWORD
+                      TextFormField(
+                        key: Key('custom_password_field'),
+                        controller: passwordController,
+                        obscureText: !isVisible,
+                        validator: (value) =>
+                        value!.isEmpty ? 'Password is required' : null,
+                        decoration: fieldDecoration('Password', Icons.lock)
+                            .copyWith(
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              isVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
                             ),
-                          );
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF1E6097),
-                        foregroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 50, vertical: 15),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12)),
-                      ),
-                      child: Text('Login', style: TextStyle(fontSize: 18)),
-                    ),
-
-                    SizedBox(height: 20),
-
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("Don't have an account?"),
-                        TextButton(
-                          onPressed: () =>
-                              Navigator.pushNamed(context, '/signup'),
-                          child: Text("Signup"),
+                            onPressed: () =>
+                                setState(() => isVisible = !isVisible),
+                          ),
                         ),
-                      ],
-                    ),
-
-                    if (errorMessage.isNotEmpty)
-                      Padding(
-                        padding: EdgeInsets.only(top: 8),
-                        child: Text(errorMessage,
-                            style: TextStyle(color: Colors.red)),
                       ),
-                  ],
+          
+                      SizedBox(height: 60),
+          
+                      /// LOGIN BUTTON
+                      ElevatedButton(
+                        key: Key('login_button'),
+                        onPressed: () async {
+                          try {
+                            String email = emailController.text.trim();
+                            String password = passwordController.text.trim();
+          
+                            if (formKey.currentState!.validate()) {
+                              bool status =
+                              await firebaseServices.signIn(email, password);
+          
+                              if (status) {
+                                Navigator.pushReplacementNamed(
+                                    context, '/appshell');
+                              } else {
+                                throw Exception(
+                                    'Login failed: Invalid credentials');
+                              }
+                            }
+                          } catch (e) {
+                            setState(() => errorMessage = e.toString());
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(errorMessage),
+                                backgroundColor: Colors.red,
+                              ),
+                            );
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF1E6097),
+                          foregroundColor: Colors.white,
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 50, vertical: 15),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
+                        ),
+                        child: Text('Login', style: TextStyle(fontSize: 18)),
+                      ),
+          
+                      SizedBox(height: 20),
+          
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Don't have an account?"),
+                          TextButton(
+                            onPressed: () =>
+                                Navigator.pushNamed(context, '/signup'),
+                            child: Text("Signup"),
+                          ),
+                        ],
+                      ),
+          
+                      if (errorMessage.isNotEmpty)
+                        Padding(
+                          padding: EdgeInsets.only(top: 8),
+                          child: Text(errorMessage,
+                              style: TextStyle(color: Colors.red)),
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ),

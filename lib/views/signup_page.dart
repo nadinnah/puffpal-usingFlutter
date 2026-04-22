@@ -76,167 +76,171 @@ class _SignupPageState extends State<SignupPage> {
             color: Color(0xFF1E6097),
           ),
         )),
-        body: Padding(
-          padding: EdgeInsets.fromLTRB(30, 50, 30, 0),
-          child: Form(
-            key: formKey,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  // NAME
-                  TextFormField(
-                    controller: nameController,
-                    decoration: fieldDecoration('Name', Icons.person),
-                    validator: (value) =>
-                    value!.isEmpty ? 'Name is required' : null,
-                  ),
-                  SizedBox(height: 20),
-
-                  // PHONE
-                  TextFormField(
-                    controller: phoneController,
-                    decoration:
-                    fieldDecoration('Phone Number', Icons.phone),
-                    keyboardType: TextInputType.phone,
-                    validator: (value) {
-                      if (value == null || value.isEmpty)
-                        return 'Phone number is required';
-                      if (value.length != 11)
-                        return 'Phone number must be exactly 11 digits';
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 20),
-
-                  // AGE
-                  TextFormField(
-                    controller: ageController,
-                    keyboardType: TextInputType.number,
-                    decoration: fieldDecoration('Age', Icons.cake),
-                    validator: (value) {
-                      if (value == null || value.isEmpty)
-                        return 'Please enter your age';
-                      final int? age = int.tryParse(value);
-                      if (age == null || age <= 0 || age > 120)
-                        return 'Enter a valid age (1-120)';
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 20),
-
-                  // GENDER
-                  DropdownButtonFormField<String>(
-                    decoration: fieldDecoration('Gender', Icons.person_2),
-                    value: _selectedGender,
-                    items: ['Male', 'Female'].map((String gender) {
-                      return DropdownMenuItem(
-                        value: gender,
-                        child: Text(gender),
-                      );
-                    }).toList(),
-                    onChanged: (value) => setState(() {
-                      _selectedGender = value;
-                    }),
-                    validator: (value) =>
-                    value == null ? 'Please select your gender' : null,
-                  ),
-                  SizedBox(height: 20),
-
-                  // EMAIL
-                  TextFormField(
-                    controller: emailController,
-                    decoration: fieldDecoration('Email', Icons.email),
-                    validator: (value) {
-                      if (value == null || value.isEmpty)
-                        return 'Email is required';
-                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                          .hasMatch(value)) return 'Invalid email format';
-                      return null;
-                    },
-                  ),
-                  SizedBox(height: 20),
-
-                  // PASSWORD
-                  TextFormField(
-                    controller: passwordController,
-                    obscureText: !isVisible,
-                    decoration: fieldDecoration('Password', Icons.lock).copyWith(
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          isVisible
-                              ? Icons.visibility
-                              : Icons.visibility_off,
+        body: SafeArea(
+          top: false,
+          bottom: true,
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(30, 50, 30, 0),
+            child: Form(
+              key: formKey,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    // NAME
+                    TextFormField(
+                      controller: nameController,
+                      decoration: fieldDecoration('Name', Icons.person),
+                      validator: (value) =>
+                      value!.isEmpty ? 'Name is required' : null,
+                    ),
+                    SizedBox(height: 20),
+          
+                    // PHONE
+                    TextFormField(
+                      controller: phoneController,
+                      decoration:
+                      fieldDecoration('Phone Number', Icons.phone),
+                      keyboardType: TextInputType.phone,
+                      validator: (value) {
+                        if (value == null || value.isEmpty)
+                          return 'Phone number is required';
+                        if (value.length != 11)
+                          return 'Phone number must be exactly 11 digits';
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 20),
+          
+                    // AGE
+                    TextFormField(
+                      controller: ageController,
+                      keyboardType: TextInputType.number,
+                      decoration: fieldDecoration('Age', Icons.cake),
+                      validator: (value) {
+                        if (value == null || value.isEmpty)
+                          return 'Please enter your age';
+                        final int? age = int.tryParse(value);
+                        if (age == null || age <= 0 || age > 120)
+                          return 'Enter a valid age (1-120)';
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 20),
+          
+                    // GENDER
+                    DropdownButtonFormField<String>(
+                      decoration: fieldDecoration('Gender', Icons.person_2),
+                      value: _selectedGender,
+                      items: ['Male', 'Female'].map((String gender) {
+                        return DropdownMenuItem(
+                          value: gender,
+                          child: Text(gender),
+                        );
+                      }).toList(),
+                      onChanged: (value) => setState(() {
+                        _selectedGender = value;
+                      }),
+                      validator: (value) =>
+                      value == null ? 'Please select your gender' : null,
+                    ),
+                    SizedBox(height: 20),
+          
+                    // EMAIL
+                    TextFormField(
+                      controller: emailController,
+                      decoration: fieldDecoration('Email', Icons.email),
+                      validator: (value) {
+                        if (value == null || value.isEmpty)
+                          return 'Email is required';
+                        if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                            .hasMatch(value)) return 'Invalid email format';
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: 20),
+          
+                    // PASSWORD
+                    TextFormField(
+                      controller: passwordController,
+                      obscureText: !isVisible,
+                      decoration: fieldDecoration('Password', Icons.lock).copyWith(
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            isVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                          onPressed: () =>
+                              setState(() => isVisible = !isVisible),
                         ),
-                        onPressed: () =>
-                            setState(() => isVisible = !isVisible),
                       ),
+                      validator: (value) =>
+                      value!.length < 6 ? 'Minimum 6 characters' : null,
                     ),
-                    validator: (value) =>
-                    value!.length < 6 ? 'Minimum 6 characters' : null,
-                  ),
-                  SizedBox(height: 40),
-
-                  // SIGNUP BUTTON
-                  ElevatedButton(
-                    onPressed: () async {
-                      if (formKey.currentState!.validate()) {
-                        try {
-                          bool result = await firebaseServices.signUp(
-                            emailController.text.trim(),
-                            passwordController.text.trim(),
-                            nameController.text.trim(),
-                            phoneController.text.trim(),
-                            int.parse(ageController.text.trim()),
-                            _selectedGender!,
-                          );
-
-                          if (result) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('Sign-up successful! Please login.'),
-                                backgroundColor: Colors.green,
-                              ),
+                    SizedBox(height: 40),
+          
+                    // SIGNUP BUTTON
+                    ElevatedButton(
+                      onPressed: () async {
+                        if (formKey.currentState!.validate()) {
+                          try {
+                            bool result = await firebaseServices.signUp(
+                              emailController.text.trim(),
+                              passwordController.text.trim(),
+                              nameController.text.trim(),
+                              phoneController.text.trim(),
+                              int.parse(ageController.text.trim()),
+                              _selectedGender!,
                             );
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginPage()),
-                            );
+          
+                            if (result) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Sign-up successful! Please login.'),
+                                  backgroundColor: Colors.green,
+                                ),
+                              );
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginPage()),
+                              );
+                            }
+                          } catch (e) {
+                            setState(() => errorMessage = e.toString());
                           }
-                        } catch (e) {
-                          setState(() => errorMessage = e.toString());
                         }
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF1E6097),
-                      foregroundColor: Colors.white,
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 50, vertical: 15),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
-                    ),
-                    child: Text('Sign Up', style: TextStyle(fontSize: 18)),
-                  ),
-
-                  SizedBox(height: 15),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Already have an account?"),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(context, '/login');
-                        },
-                        child: Text("Login"),
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF1E6097),
+                        foregroundColor: Colors.white,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 50, vertical: 15),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12)),
                       ),
-                    ],
-                  ),
-
-                  if (errorMessage.isNotEmpty)
-                    Text(errorMessage, style: TextStyle(color: Colors.red)),
-                ],
+                      child: Text('Sign Up', style: TextStyle(fontSize: 18)),
+                    ),
+          
+                    SizedBox(height: 15),
+          
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("Already have an account?"),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(context, '/login');
+                          },
+                          child: Text("Login"),
+                        ),
+                      ],
+                    ),
+          
+                    if (errorMessage.isNotEmpty)
+                      Text(errorMessage, style: TextStyle(color: Colors.red)),
+                  ],
+                ),
               ),
             ),
           ),
