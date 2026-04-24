@@ -61,12 +61,12 @@ class _HomePageState extends State<HomePage> {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
 
-    final double horizontalPadding = screenWidth * 0.08;
+    final double horizontalPadding = screenWidth * 0.05;
 
     final double verticalSpacing = screenHeight * 0.1;
 
     return SingleChildScrollView(
-      padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalSpacing),
+      padding: EdgeInsets.fromLTRB(horizontalPadding, verticalSpacing, horizontalPadding, 0),
       child: Column(
         children: [
           Column(
@@ -87,7 +87,6 @@ class _HomePageState extends State<HomePage> {
                   );
                 },
               ),
-              SizedBox(height: verticalSpacing),
             ],
           ),
           // TextButton(onPressed: ()async{

@@ -4,7 +4,11 @@ class FlipCardWidget extends StatefulWidget {
   final String frontText;
   final String backText;
 
-  const FlipCardWidget({super.key, required this.frontText, required this.backText});
+  const FlipCardWidget({
+    super.key,
+    required this.frontText,
+    required this.backText,
+  });
 
   @override
   State<FlipCardWidget> createState() => _FlipCardWidgetState();
@@ -49,52 +53,38 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Center(child: GestureDetector(onTap: _toggleCard
-                , child: AnimatedBuilder(
-                    animation: animation,
-                    builder: (context, child) {
-                      return Transform(
-                          alignment: Alignment.center,
-                          transform: Matrix4.rotationY(animation.value * 3.14159),
-                          child:animation.value<0.5?buildFrontCard():Transform.scale(scaleX: -1,scaleY: 1,child: buildBackCard(),),
-        
-                      );})
+        Center(
+          child: GestureDetector(
+            onTap: _toggleCard,
+            child: AnimatedBuilder(
+              animation: animation,
+              builder: (context, child) {
+                return Transform(
+                  alignment: Alignment.center,
+                  transform: Matrix4.rotationY(animation.value * 3.14159),
+                  child: animation.value < 0.5
+                      ? buildFrontCard()
+                      : Transform.scale(
+                          scaleX: -1,
+                          scaleY: 1,
+                          child: buildBackCard(),
+                        ),
+                );
+              },
             ),
-            ),
-      SizedBox(height: 20,)
-      // ,TextButton(onPressed: _toggleCard, style: TextButton.styleFrom(backgroundColor: Color(
-      //       0xff1e6096)), child: Padding(
-      //   padding: const EdgeInsets.fromLTRB(18,0,18,0),
-      //   child: Text('Flip',style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,color: Colors.white),),
-      // ),
-      //   )
+          ),
+        ),
       ],
     );
-    }
-    Widget buildFrontCard() {
-    return Container(
-      width: 340,
-      height: 200,
-      decoration: BoxDecoration(
-        color: Color(0xffe6e8fb),
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0, 2),
-            blurRadius: 10,
-            color: Color(0xffaaa9a9),
-          ),
-        ],),
-      alignment: Alignment.center,
-      child: Text(widget.frontText,style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xff454545)),),
-    );
+  }
 
-    }
-    Widget buildBackCard() {
+  Widget buildFrontCard() {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double verticalSpacing = screenHeight * 0.25;
+
     return Container(
-      padding: EdgeInsets.all(20),
-      width: 340,
-      height: 200,
+      width: double.infinity,
+      height: verticalSpacing,
       decoration: BoxDecoration(
         color: Color(0xffe6e8fb),
         borderRadius: BorderRadius.circular(10),
@@ -104,9 +94,48 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
             blurRadius: 10,
             color: Color(0xffaaa9a9),
           ),
-        ],),
+        ],
+      ),
       alignment: Alignment.center,
-      child: Text(widget.backText, textAlign: TextAlign.center,style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Color(0xff454545)),),
+      child: Text(
+        widget.frontText,
+        style: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.bold,
+          color: Color(0xff454545),
+        ),
+      ),
     );
-    }
+  }
+
+  Widget buildBackCard() {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double verticalSpacing = screenHeight * 0.25;
+
+    return Container(
+      width: double.infinity,
+      height: verticalSpacing,
+      decoration: BoxDecoration(
+        color: Color(0xffe6e8fb),
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, 2),
+            blurRadius: 10,
+            color: Color(0xffaaa9a9),
+          ),
+        ],
+      ),
+      alignment: Alignment.center,
+      child: Text(
+        widget.backText,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.bold,
+          color: Color(0xff454545),
+        ),
+      ),
+    );
+  }
 }

@@ -19,6 +19,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:puffpal/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
+
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AndroidAlarmManager.initialize();
@@ -52,6 +54,9 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+
     final languageController = context.watch<LanguageController>();
         return MaterialApp(
           debugShowCheckedModeBanner: false,

@@ -43,8 +43,16 @@ class _ProfilePageState extends State<ProfilePage> {
     return data;
   }
 
+
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+
+    final double horizontalPadding = screenWidth * 0.05;
+
+    final double verticalSpacing = screenHeight * 0.1;
+
     final l10n = AppLocalizations.of(context);
     if (userData.isEmpty || l10n == null) {
       return const Scaffold(
@@ -53,11 +61,9 @@ class _ProfilePageState extends State<ProfilePage> {
     }
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: EdgeInsets.fromLTRB(horizontalPadding, verticalSpacing, horizontalPadding, 0),
         child: Column(
           children: [
-            const SizedBox(height: 100),
-
             Text(
               AppLocalizations.of(context)!.personalInfo,
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),

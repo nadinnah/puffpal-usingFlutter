@@ -19,6 +19,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+
+    final double horizontalPadding = screenWidth * 0.05;
+
+    final double verticalSpacing = screenHeight * 0.1;
     return Scaffold(
       body: SafeArea(
         top: false,
