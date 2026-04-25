@@ -1,12 +1,28 @@
+require('dotenv').config();
 const fetch = require("node-fetch");
 const admin = require("firebase-admin");
 
 async function main() {
   try {
-    console.log("🚀 Starting Egypt Weather Notification Job...");
+    console.log("🚀 Starting Egypt Weather Job...");
 
-    // 1. Initialize Firebase
-    const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+    // Mapping your .env keys to the Firebase Service Account object
+    const serviceAccount = {
+      type: process.env.FIREBASE_TYPE,
+      project_id: process.env.FIREBASE_PROJECT_ID,
+      private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
+      // We use .replace for Node.js to handle the newline characters correctly
+      private_key: process.env.FIREBASE_PRIVATE_KEY ? process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n') : undefined,
+      client_email: process.env.FIREBASE_CLIENT_EMAIL,
+      client_id: process.env.FIREBASE_CLIENT_ID,
+      auth_uri: process.env.FIREBASE_AUTH_URI,
+      token_uri: process.env.FIREBASE_TOKEN_URI,
+      auth_provider_x509_cert_url: process.env.FIREBASE_AUTH_PROVIDER,
+      client_x509_cert_url: process.env.FIREBASE_CLIENT_CERT_URL,
+      universe_domain: process.env.FIREBASE_UNIVERSE_DOMAIN,
+    };
+
+    // Initialize Firebase Admin SDK
     if (!admin.apps.length) {
       admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
@@ -14,6 +30,10 @@ async function main() {
     }
 
     const db = admin.firestore();
+
+    // --- TEST MODE: SET TO TRUE TO BYPASS WEATHER CHECK ---
+    const TEST_MODE = true;
+
     const usersSnapshot = await db.collection("Users").get();
 
     if (usersSnapshot.empty) {
@@ -25,81 +45,43 @@ async function main() {
       const user = userDoc.data();
       if (!user.fcmToken) continue;
 
-      // Default to Cairo, Egypt coordinates
-      const lat = user.latitude || 30.0444;
-      const lon = user.longitude || 31.2357;
+      let triggers = [];
 
-      /**
-       * We use two different API endpoints because Open-Meteo splits
-       * standard weather from air quality (Dust/Pollen).
-       */
-      const forecastUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m&forecast_days=1`;
-      const airQualityUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&hourly=dust,pollen_pollen_grass&forecast_days=1`;
+      if (TEST_MODE) {
+        triggers = ["Test-Cold", "Test-Dust"];
+      } else {
+        const lat = user.latitude || 30.0444; // Default Cairo
+        const lon = user.longitude || 31.2357;
 
-      // Fetch both simultaneously to save time
-      const [weatherRes, airRes] = await Promise.all([
-        fetch(forecastUrl).then(res => res.json()),
-        fetch(airQualityUrl).then(res => res.json())
-      ]);
+        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m&forecast_days=1`;
+        const airQualityUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&hourly=dust,pollen_pollen_grass&forecast_days=1`;
 
-      const triggers = [];
+        const [wRes, aRes] = await Promise.all([
+          fetch(weatherUrl).then(r => r.json()),
+          fetch(airQualityUrl).then(r => r.json())
+        ]);
 
-      // TRIGGER: Cold Air (Higher threshold for Egypt: < 16°C)
-      const hourlyTemps = weatherRes.hourly?.temperature_2m || [];
-      if (hourlyTemps.some(t => t < 16)) {
-        triggers.push("chilly air");
+        if (wRes.hourly?.temperature_2m?.some(t => t < 16)) triggers.push("chilly air");
+        if (aRes.hourly?.dust?.some(d => d > 80)) triggers.push("dust");
       }
 
-      // TRIGGER: Dust (Threshold for Egypt: > 80 μg/m³)
-      // Egypt is naturally dustier, so 50 might be too sensitive.
-      const hourlyDust = airRes.hourly?.dust || [];
-      if (hourlyDust.some(d => d > 80)) {
-        triggers.push("dust/sand");
-      }
-
-      // TRIGGER: Pollen (Note: May be 0 in Egypt depending on season/model)
-      const hourlyPollen = airRes.hourly?.pollen_pollen_grass || [];
-      if (hourlyPollen.some(p => p > 30)) {
-        triggers.push("pollen");
-      }
-
-      // 2. Send Notification if triggers are detected
       if (triggers.length > 0) {
-        const message = `Alert: Today's conditions (${triggers.join(", ")}) may trigger asthma. Stay safe!`;
-
         try {
           await admin.messaging().send({
             token: user.fcmToken,
             notification: {
-              title: "🌬️ Asthma Health Alert",
-              body: message,
-            },
-            android: {
-              priority: "high",
-              notification: {
-                sound: "default",
-                channelId: "health_alerts"
-              }
-            },
-            apns: {
-              payload: {
-                aps: { sound: "default" }
-              }
+              title: "🌬️ Asthma Alert",
+              body: `Conditions: ${triggers.join(", ")}. Stay safe!`
             }
           });
-          console.log(`✅ Alert sent to ${user.name || "User"} in Egypt: ${message}`);
+          console.log(`✅ Success: Notification sent to ${user.email || userDoc.id}`);
         } catch (fcmError) {
-          console.error(`❌ FCM error for ${user.email || userDoc.id}:`, fcmError.message);
+          console.error(`❌ FCM Error for ${user.email}:`, fcmError.message);
         }
-      } else {
-        console.log(`🌤️ No triggers for ${user.name || "User"} (Cairo coordinates)`);
       }
     }
-
-    console.log("🎉 Job finished successfully.");
   } catch (error) {
-    console.error("❌ Critical Job Failure:", error);
-    process.exit(1);
+    console.error("❌ Fatal Error:", error);
   }
 }
 

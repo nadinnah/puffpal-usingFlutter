@@ -1,4 +1,5 @@
 import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:puffpal/screens/onboarding_screen.dart';
@@ -30,6 +31,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseAnalytics.instance;
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   final initScreen = prefs.getBool("initScreen")?? false;
