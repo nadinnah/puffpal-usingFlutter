@@ -59,7 +59,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       OnboardingPage(
                         animationUrl:
                             'https://lottie.host/5cf639ad-7a01-4c6d-94e3-76c986dd6e9c/jFLyI97OUg.json',
-                        title: Row(mainAxisAlignment: MainAxisAlignment.center,children:[Text('Welcome to', style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold,  color: Color(0xFF3D4853) )),SizedBox(width: 10,) , Text('PuffPal', style: GoogleFonts.rubikBubbles(fontSize: 40, fontWeight: FontWeight.w600, color: Color(
+                        title: Row(mainAxisAlignment: MainAxisAlignment.center,children:[Text('Welcome to', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,  color: Color(0xFF3D4853) )),SizedBox(width: 10,) , Text('PuffPal', style: GoogleFonts.rubikBubbles(fontSize: 40, fontWeight: FontWeight.w600, color: Color(
                             0xFF1E6097)),)]),
                         description: 'description',
                       ),
