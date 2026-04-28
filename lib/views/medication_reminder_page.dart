@@ -18,10 +18,11 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
   final String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
 
   List<MedicationEntry> _medications = [
-    MedicationEntry(controller: TextEditingController())
+    MedicationEntry(controller: TextEditingController()),
   ];
 
-  final LocalNotificationService notificationService = LocalNotificationService();
+  final LocalNotificationService notificationService =
+      LocalNotificationService();
 
   @override
   void initState() {
@@ -97,7 +98,9 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                   return Card(
                     margin: const EdgeInsets.only(bottom: 20),
                     color: Colors.white,
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
                     child: Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Column(
@@ -109,15 +112,23 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                                   controller: med.controller,
                                   decoration: InputDecoration(
                                     labelText: "Enter Medicine ${index + 1}",
-                                    prefixIcon: const Icon(Icons.medical_services_sharp, color: Colors.black),
+                                    prefixIcon: const Icon(
+                                      Icons.medical_services_sharp,
+                                      color: Colors.black,
+                                    ),
                                     border: const OutlineInputBorder(),
                                   ),
                                 ),
                               ),
                               if (_medications.length > 1)
                                 IconButton(
-                                  icon: const Icon(Icons.remove_circle, color: Colors.redAccent),
-                                  onPressed: () => setState(() => _medications.removeAt(index)),
+                                  icon: const Icon(
+                                    Icons.remove_circle,
+                                    color: Colors.redAccent,
+                                  ),
+                                  onPressed: () => setState(
+                                    () => _medications.removeAt(index),
+                                  ),
                                 ),
                             ],
                           ),
@@ -135,15 +146,19 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                                   }
                                 },
                                 icon: const Icon(Icons.access_time),
-                                label: Text(med.time == null
-                                    ? "First Dose"
-                                    : med.time!.format(context)),
+                                label: Text(
+                                  med.time == null
+                                      ? "First Dose"
+                                      : med.time!.format(context),
+                                ),
                               ),
                               const SizedBox(width: 30),
                               Expanded(
                                 child: DropdownButtonFormField<int>(
                                   decoration: const InputDecoration(
-                                    contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                                    contentPadding: EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                    ),
                                     labelText: "Repeat Every",
                                     border: OutlineInputBorder(),
                                   ),
@@ -154,7 +169,8 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                                       child: Text("$h hrs"),
                                     );
                                   }).toList(),
-                                  onChanged: (val) => setState(() => med.interval = val),
+                                  onChanged: (val) =>
+                                      setState(() => med.interval = val),
                                 ),
                               ),
                             ],
@@ -183,41 +199,62 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF1E6096),
                       foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
                     ),
                     onPressed: () async {
                       print("Button Pressed!"); // Debug point 1
                       await notificationService.requestPermissions();
-                      final String? activeEmail = FirebaseAuth.instance.currentUser?.email;
+                      final String? activeEmail =
+                          FirebaseAuth.instance.currentUser?.email;
 
-
-                      bool allValid = _medications.every((m) =>
-                      m.controller.text.trim().isNotEmpty && m.time != null && m.interval != null);
+                      bool allValid = _medications.every(
+                        (m) =>
+                            m.controller.text.trim().isNotEmpty &&
+                            m.time != null &&
+                            m.interval != null,
+                      );
 
                       if (!allValid) {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text("Please fill all details.")),
+                          const SnackBar(
+                            content: Text("Please fill all details."),
+                          ),
                         );
                         return;
                       }
 
-
                       for (var med in _medications) {
-
                         final medName = med.controller.text.trim();
                         final startTimeStr = med.time!.format(context);
                         final interval = med.interval!;
 
                         final now = DateTime.now();
-                        DateTime firstDose = DateTime(now.year, now.month, now.day, med.time!.hour, med.time!.minute);
-                        if (firstDose.isBefore(now)) firstDose = firstDose.add(const Duration(days: 1));
+                        DateTime firstDose = DateTime(
+                          now.year,
+                          now.month,
+                          now.day,
+                          med.time!.hour,
+                          med.time!.minute,
+                        );
+                        if (firstDose.isBefore(now)){
+                          while (firstDose.isBefore(now)) {
+                            firstDose = firstDose.add(Duration(hours: interval));
+                          }
+                        }
 
                         // 1. System Notification
-                        await notificationService.scheduleRepeatingReminder(medName, firstDose, interval);
+                        await notificationService.scheduleRepeatingReminder(
+                          medName,
+                          firstDose,
+                          interval,
+                        );
 
                         // 2. SQLite
                         await localDatabase.insertMedication({
-                          'userEmail': currentUserEmail, // This fixes the NOT NULL constraint error
+                          'userEmail': currentUserEmail,
+                          // This fixes the NOT NULL constraint error
                           'name': medName,
                           'startTime': startTimeStr,
                           'interval': interval,
@@ -225,25 +262,39 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                       }
 
                       setState(() {
-                        _medications = [MedicationEntry(controller: TextEditingController())];
+                        _medications = [
+                          MedicationEntry(controller: TextEditingController()),
+                        ];
                       });
 
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(content: Text("Reminders saved and active!")),
+                        const SnackBar(
+                          content: Text("Reminders saved and active!"),
+                        ),
                       );
                     },
-                    child: const Text("Set Timers",
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                    child: const Text(
+                      "Set Timers",
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ),
 
                 const SizedBox(height: 40),
-                const Text("Active Reminders", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                const Text(
+                  "Active Reminders",
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
                 const Divider(color: Colors.black26),
                 const SizedBox(height: 10),
 
                 FutureBuilder<List<Map<String, dynamic>>>(
-                  future: localDatabase.getMedicationsForUser(auth.currentUser!.email!),
+                  future: localDatabase.getMedicationsForUser(
+                    auth.currentUser!.email!,
+                  ),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
@@ -264,27 +315,105 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                         return Dismissible(
                           key: ValueKey(med['id']),
                           onDismissed: (direction) async {
-                            await notificationService.cancelMedicationReminder(med['name']);
-                            await localDatabase.deleteMedication(med['id']);
+                            final messenger = ScaffoldMessenger.of(context);
+                            final deletedMed = med;
+                            await notificationService.cancelMedicationReminder(
+                              deletedMed['name'],
+                            );
+                            await localDatabase.deleteMedication(deletedMed['id']);
                             setState(() {});
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(content: Text("${med['name']} reminder removed")),
-                            );},
+                            messenger.showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  "${deletedMed['name']} reminder removed",
+                                ),
+                                action: SnackBarAction(
+                                  label: 'Undo',
+                                  onPressed: () {
+                                    localDatabase.insertMedication({
+                                      'userEmail': currentUserEmail,
+                                      'name': deletedMed['name'],
+                                      'startTime': deletedMed['startTime'],
+                                      'interval': deletedMed['interval'],
+                                    });
+                                    notificationService
+                                        .scheduleRepeatingReminder(
+                                          deletedMed['name'],
+                                          DateTime.now(),
+                                          deletedMed['interval'],
+                                        );
+                                    setState(() {});
+
+                                    messenger.showSnackBar(
+                                      const SnackBar(
+                                        content: Text("Reminder restored"),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            );
+                          },
                           child: Card(
                             margin: const EdgeInsets.only(bottom: 10),
                             color: Colors.white,
                             child: ListTile(
-                              leading: const Icon(Icons.alarm_on, color: Color(0xFF1E6096)),
-                              title: Text(med['name'], style: const TextStyle(fontWeight: FontWeight.bold)),
-                              subtitle: Text("Started at ${med['startTime']} • Every ${med['interval']}h"),
+                              leading: const Icon(
+                                Icons.alarm_on,
+                                color: Color(0xFF1E6096),
+                              ),
+                              title: Text(
+                                med['name'],
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              subtitle: Text(
+                                "Started at ${med['startTime']} • Every ${med['interval']}h",
+                              ),
                               trailing: IconButton(
-                                icon: const Icon(Icons.delete, color: Colors.red),
+                                icon: const Icon(
+                                  Icons.delete,
+                                  color: Colors.red,
+                                ),
                                 onPressed: () async {
-                                  await notificationService.cancelMedicationReminder(med['name']);
-                                  await localDatabase.deleteMedication(med['id']);
+                                  final messenger = ScaffoldMessenger.of(context);
+                                  final deletedMed = med;
+                                  await notificationService.cancelMedicationReminder(
+                                    deletedMed['name'],
+                                  );
+                                  await localDatabase.deleteMedication(deletedMed['id']);
                                   setState(() {});
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text("${med['name']} reminder removed")),
+                                  messenger.showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        "${deletedMed['name']} reminder removed",
+                                      ),
+                                      action: SnackBarAction(
+                                        label: 'Undo',
+                                        onPressed: () {
+                                          localDatabase.insertMedication({
+                                            'userEmail': currentUserEmail,
+                                            'name': deletedMed['name'],
+                                            'startTime': deletedMed['startTime'],
+                                            'interval': deletedMed['interval'],
+                                          });
+                                          notificationService
+                                              .scheduleRepeatingReminder(
+                                            deletedMed['name'],
+                                            DateTime.now(),
+                                            deletedMed['interval'],
+                                          );
+                                          setState(() {});
+
+                                          messenger.showSnackBar(
+                                            const SnackBar(
+                                              content: Text("Reminder restored"),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
                                   );
                                 },
                               ),

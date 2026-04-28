@@ -51,7 +51,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     final double horizontalPadding = screenWidth * 0.05;
 
-    final double verticalSpacing = screenHeight * 0.1;
+    final double verticalSpacing = screenHeight * 0.12;
 
     final l10n = AppLocalizations.of(context);
     if (userData.isEmpty || l10n == null) {
@@ -125,10 +125,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 //Navigator.pushNamed(context, '/medication_reminder');
                 Navigator.push(context, MaterialPageRoute(builder: (context) => MedicationReminderPage()));
               }, child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("go to medication reminder page", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18)),
-                  SizedBox(width: 30),
+                  Text("Medication Reminders", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18)),
+                  Spacer(),
                   Icon(Icons.navigate_next, color: Colors.black, size: 30)
                 ],
               )),

@@ -100,7 +100,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
       child: Text(
         widget.frontText,
         style: TextStyle(
-          fontSize: 22,
+          fontSize: 20,
           fontWeight: FontWeight.bold,
           color: Color(0xff454545),
         ),
@@ -111,6 +111,8 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
   Widget buildBackCard() {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double verticalSpacing = screenHeight * 0.25;
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double horizontalPadding = screenWidth * 0.09;
 
     return Container(
       width: double.infinity,
@@ -127,13 +129,16 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
         ],
       ),
       alignment: Alignment.center,
-      child: Text(
-        widget.backText,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontSize: 22,
-          fontWeight: FontWeight.bold,
-          color: Color(0xff454545),
+      child: Padding(
+        padding: EdgeInsets.all(horizontalPadding),
+        child: Text(
+          widget.backText,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Color(0xff454545),
+          ),
         ),
       ),
     );

@@ -32,6 +32,7 @@ class _AppShellState extends State<AppShell> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:Color(0xFFA8ABCA) ,
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: AppBar(

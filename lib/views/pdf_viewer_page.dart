@@ -31,11 +31,15 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+
+    final double horizontalPadding = screenWidth * 0.05;
     return Scaffold(
+      backgroundColor: Color(0xffd8d6ea),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0xffd8d6ea),
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
@@ -67,12 +71,8 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
             },
             icon: Icon(Icons.navigate_next),
           ),
-          IconButton(
-            onPressed: () => pdfController.loadDocument(
-              PdfDocument.openAsset('assets/pdf/quizzes.pdf'),
-            ),
-            icon: Icon(Icons.refresh),
-          ),
+          SizedBox(width: horizontalPadding),
+
         ],
       ),
       body: SafeArea(
