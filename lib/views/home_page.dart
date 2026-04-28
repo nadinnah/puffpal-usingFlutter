@@ -10,7 +10,6 @@ import '../services/advice_service.dart' as AdviceService;
 import '../services/firestore_service.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:puffpal/models/carousel.dart';
-
 import '../services/user_provider.dart';
 import '../widgets/flip_card_widget.dart';
 import 'carousel_details_page.dart';

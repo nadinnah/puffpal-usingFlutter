@@ -261,23 +261,33 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         final med = snapshot.data![index];
-                        return Card(
-                          margin: const EdgeInsets.only(bottom: 10),
-                          color: Colors.white,
-                          child: ListTile(
-                            leading: const Icon(Icons.alarm_on, color: Color(0xFF1E6096)),
-                            title: Text(med['name'], style: const TextStyle(fontWeight: FontWeight.bold)),
-                            subtitle: Text("Started at ${med['startTime']} • Every ${med['interval']}h"),
-                            trailing: IconButton(
-                              icon: const Icon(Icons.delete, color: Colors.red),
-                              onPressed: () async {
-                                await notificationService.cancelMedicationReminder(med['name']);
-                                await localDatabase.deleteMedication(med['id']);
-                                setState(() {});
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(content: Text("${med['name']} reminder removed")),
-                                );
-                              },
+                        return Dismissible(
+                          key: ValueKey(med['id']),
+                          onDismissed: (direction) async {
+                            await notificationService.cancelMedicationReminder(med['name']);
+                            await localDatabase.deleteMedication(med['id']);
+                            setState(() {});
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("${med['name']} reminder removed")),
+                            );},
+                          child: Card(
+                            margin: const EdgeInsets.only(bottom: 10),
+                            color: Colors.white,
+                            child: ListTile(
+                              leading: const Icon(Icons.alarm_on, color: Color(0xFF1E6096)),
+                              title: Text(med['name'], style: const TextStyle(fontWeight: FontWeight.bold)),
+                              subtitle: Text("Started at ${med['startTime']} • Every ${med['interval']}h"),
+                              trailing: IconButton(
+                                icon: const Icon(Icons.delete, color: Colors.red),
+                                onPressed: () async {
+                                  await notificationService.cancelMedicationReminder(med['name']);
+                                  await localDatabase.deleteMedication(med['id']);
+                                  setState(() {});
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(content: Text("${med['name']} reminder removed")),
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         );
