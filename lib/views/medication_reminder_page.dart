@@ -312,110 +312,120 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         final med = snapshot.data![index];
-                        return Dismissible(
-                          key: ValueKey(med['id']),
-                          onDismissed: (direction) async {
-                            final messenger = ScaffoldMessenger.of(context);
-                            final deletedMed = med;
-                            await notificationService.cancelMedicationReminder(
-                              deletedMed['name'],
-                            );
-                            await localDatabase.deleteMedication(deletedMed['id']);
-                            setState(() {});
-                            messenger.showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  "${deletedMed['name']} reminder removed",
-                                ),
-                                action: SnackBarAction(
-                                  label: 'Undo',
-                                  onPressed: () {
-                                    localDatabase.insertMedication({
-                                      'userEmail': currentUserEmail,
-                                      'name': deletedMed['name'],
-                                      'startTime': deletedMed['startTime'],
-                                      'interval': deletedMed['interval'],
-                                    });
-                                    notificationService
-                                        .scheduleRepeatingReminder(
-                                          deletedMed['name'],
-                                          DateTime.now(),
-                                          deletedMed['interval'],
-                                        );
-                                    setState(() {});
-
-                                    messenger.showSnackBar(
-                                      const SnackBar(
-                                        content: Text("Reminder restored"),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                            );
-                          },
-                          child: Card(
-                            margin: const EdgeInsets.only(bottom: 10),
-                            color: Colors.white,
-                            child: ListTile(
-                              leading: const Icon(
-                                Icons.alarm_on,
-                                color: Color(0xFF1E6096),
-                              ),
-                              title: Text(
-                                med['name'],
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              subtitle: Text(
-                                "Started at ${med['startTime']} • Every ${med['interval']}h",
-                              ),
-                              trailing: IconButton(
-                                icon: const Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
-                                ),
-                                onPressed: () async {
-                                  final messenger = ScaffoldMessenger.of(context);
-                                  final deletedMed = med;
-                                  await notificationService.cancelMedicationReminder(
-                                    deletedMed['name'],
-                                  );
-                                  await localDatabase.deleteMedication(deletedMed['id']);
-                                  setState(() {});
-                                  messenger.showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        "${deletedMed['name']} reminder removed",
-                                      ),
-                                      action: SnackBarAction(
-                                        label: 'Undo',
-                                        onPressed: () {
-                                          localDatabase.insertMedication({
-                                            'userEmail': currentUserEmail,
-                                            'name': deletedMed['name'],
-                                            'startTime': deletedMed['startTime'],
-                                            'interval': deletedMed['interval'],
-                                          });
-                                          notificationService
-                                              .scheduleRepeatingReminder(
+                        return ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Dismissible(
+                            background: Container(
+                            margin: EdgeInsets.symmetric(vertical:5),
+                            color: Colors.red,
+                            ),
+                            key: ValueKey(med['id']),
+                            onDismissed: (direction) async {
+                              final messenger = ScaffoldMessenger.of(context);
+                              final deletedMed = med;
+                              await notificationService.cancelMedicationReminder(
+                                deletedMed['name'],
+                              );
+                              await localDatabase.deleteMedication(deletedMed['id']);
+                              setState(() {});
+                              messenger.showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    "${deletedMed['name']} reminder removed",
+                                  ),
+                                  action: SnackBarAction(
+                                    label: 'Undo',
+                                    onPressed: () {
+                                      localDatabase.insertMedication({
+                                        'userEmail': currentUserEmail,
+                                        'name': deletedMed['name'],
+                                        'startTime': deletedMed['startTime'],
+                                        'interval': deletedMed['interval'],
+                                      });
+                                      notificationService
+                                          .scheduleRepeatingReminder(
                                             deletedMed['name'],
                                             DateTime.now(),
                                             deletedMed['interval'],
                                           );
-                                          setState(() {});
+                                      setState(() {});
 
-                                          messenger.showSnackBar(
-                                            const SnackBar(
-                                              content: Text("Reminder restored"),
-                                            ),
-                                          );
-                                        },
-                                      ),
+                                      messenger.showSnackBar(
+                                        const SnackBar(
+                                          content: Text("Reminder restored"),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              child: Card(
+                                margin: EdgeInsets.zero,
+                                color: Colors.white,
+                                child: ListTile(
+                                  leading: const Icon(
+                                    Icons.alarm_on,
+                                    color: Color(0xFF1E6096),
+                                  ),
+                                  title: Text(
+                                    med['name'],
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                  );
-                                },
+                                  ),
+                                  subtitle: Text(
+                                    "Started at ${med['startTime']} • Every ${med['interval']}h",
+                                  ),
+                                  trailing: IconButton(
+                                    icon: const Icon(
+                                      Icons.delete,
+                                      color: Colors.red,
+                                    ),
+                                    onPressed: () async {
+                                      final messenger = ScaffoldMessenger.of(context);
+                                      final deletedMed = med;
+                                      await notificationService.cancelMedicationReminder(
+                                        deletedMed['name'],
+                                      );
+                                      await localDatabase.deleteMedication(deletedMed['id']);
+                                      setState(() {});
+                                      messenger.showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            "${deletedMed['name']} reminder removed",
+                                          ),
+                                          action: SnackBarAction(
+                                            label: 'Undo',
+                                            onPressed: () {
+                                              localDatabase.insertMedication({
+                                                'userEmail': currentUserEmail,
+                                                'name': deletedMed['name'],
+                                                'startTime': deletedMed['startTime'],
+                                                'interval': deletedMed['interval'],
+                                              });
+                                              notificationService
+                                                  .scheduleRepeatingReminder(
+                                                deletedMed['name'],
+                                                DateTime.now(),
+                                                deletedMed['interval'],
+                                              );
+                                              setState(() {});
+
+                                              messenger.showSnackBar(
+                                                const SnackBar(
+                                                  content: Text("Reminder restored"),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
                               ),
                             ),
                           ),

@@ -40,7 +40,7 @@ async function main() {
     const db = admin.firestore();
 
     // --- TEST MODE: SET TO TRUE TO BYPASS WEATHER CHECK ---
-    const TEST_MODE = true;
+    const TEST_MODE = false;
 
     const usersSnapshot = await db.collection("Users").get();
 
