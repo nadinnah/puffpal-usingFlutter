@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import '../models/quiz.dart';
 import '../services/quiz_progress_service.dart';
 
@@ -28,12 +30,25 @@ class _QuestionsPageState extends State<QuestionsPage> {
     currentShuffledOptions = widget.quiz.questions[currentQuestionIndex].getShuffledAnswers();
   }
 
-  void _showScoreDialog(BuildContext context) async {
-    await QuizProgressService.setScore(widget.quiz.title, score);
+  void _showDialogue(){
+    if(Platform.isIOS){
+      showCupertinoDialog(context: context, builder: (ctx)=>CupertinoAlertDialog(
+        content: Text("Your score is $score out of ${widget.quiz.questions.length}"),
+        actions: [
+          TextButton(
+            child: Text("OK"),
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
 
-    showDialog(
+            },
+          )
+        ],
+      ));
+    }
+    else {showDialog(
       context: context,
-      builder: (_) => AlertDialog(
+      builder: (ctx) => AlertDialog(
         title: Text("Quiz Completed!"),
         content: Text("Your score is $score out of ${widget.quiz.questions.length}"),
         actions: [
@@ -47,7 +62,13 @@ class _QuestionsPageState extends State<QuestionsPage> {
           )
         ],
       ),
-    );
+    );}
+
+  }
+
+  void _showScoreDialog(BuildContext context) async {
+    await QuizProgressService.setScore(widget.quiz.title, score);
+    _showDialogue();
   }
   @override
   Widget build(BuildContext context) {
