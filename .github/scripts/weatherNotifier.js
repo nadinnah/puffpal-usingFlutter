@@ -8,7 +8,6 @@ async function main() {
 
     let serviceAccount;
 
-    // 1. Try to load from the single JSON string (GitHub Actions)
     if (process.env.FIREBASE_SERVICE_ACCOUNT) {
       serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
     }

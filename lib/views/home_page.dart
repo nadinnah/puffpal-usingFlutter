@@ -193,7 +193,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(height: 15),
               SmoothPageIndicator(
                 controller: _pageController,
-                count: 6,
+                count: carouselDataList.length,
                 effect: ExpandingDotsEffect(
                   dotWidth: 10,
                   dotHeight: 10,

@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
-import 'package:puffpal/models/SymptomNode.dart';
+import 'package:puffpal/models/symptom_tracking_questions.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 
 class TrackSymptomsPage extends StatefulWidget {
@@ -12,6 +12,7 @@ class TrackSymptomsPage extends StatefulWidget {
 }
 
 class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
+  int currentIndex = 0;
   final LocalDatabase _localDb = LocalDatabase();
   final String _email = FirebaseAuth.instance.currentUser!.email!;
 
@@ -33,8 +34,8 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
     setState(() {
       alreadyTracked = tracked;
       heatmapData = history;
-      currentNode = asthmaTree; // Reset the tree to the root
       isLoading = false;
+      currentIndex = 0;
     });
   }
 
@@ -68,7 +69,7 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
               ? const Center(child: CircularProgressIndicator())
               : Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: alreadyTracked ? _buildHistoryView() : _buildTreeView(),
+            child: alreadyTracked ? _buildHistoryView() : _buildQuestionnaireView(),
           ),
         ),
       ),
@@ -123,74 +124,145 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
     );
   }
 
-  // --- VIEW 2: DECISION TREE ---
-  Widget _buildTreeView() {
+  Widget _buildQuestionnaireView() {
+    final question = questions[currentIndex];
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // Question Text
-        if (currentNode is QuestionNode)
-          Text(
-            (currentNode as QuestionNode).question,
-            style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          )
-        else if (currentNode is ResultNode)
-          _buildFinalResultCard(),
-
         const SizedBox(height: 40),
 
-        // Buttons
-        if (currentNode is QuestionNode)
-          ...(currentNode as QuestionNode).options.entries.map((entry) {
-            return Padding(
-              padding: const EdgeInsets.only(bottom: 15),
-              child: SizedBox(
-                width: double.infinity,
-                height: 55,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF1E6096),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+        Text(
+          "Question ${currentIndex + 1} of ${questions.length}",
+          style: const TextStyle(fontSize: 16, color: Colors.black54),
+        ),
+
+        const SizedBox(height: 20),
+
+        Card(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                Text(
+                  question.question,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
-                  onPressed: () async {
-                    if (entry.value is ResultNode) {
-                      // Save text to DB before moving
-                      String resultText = (entry.value as ResultNode).result;
-                      await _localDb.logSymptom(_email, resultText);
-                    }
+                ),
+
+                const SizedBox(height: 30),
+
+                RadioListTile<bool>(
+                  title: const Text("Yes"),
+                  value: true,
+                  groupValue: question.answer,
+                  onChanged: (value) {
                     setState(() {
-                      currentNode = entry.value;
+                      question.answer = value;
                     });
                   },
-                  child: Text(entry.key, style: const TextStyle(color: Colors.white, fontSize: 18)),
                 ),
-              ),
-            );
-          }).toList()
-        else
-        // button to finally switch to calendar view after reading result
-          ElevatedButton(
-            onPressed: loadStatus,
-            child: const Text("View My History"),
-          ),
-      ],
-    );
-  }
 
-  Widget _buildFinalResultCard() {
-    return Column(
-      children: [
-        const Icon(Icons.info_outline, size: 70, color: Color(0xFF1E6096)),
-        const SizedBox(height: 20),
-        Text(
-          (currentNode as ResultNode).result,
-          style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-          textAlign: TextAlign.center,
+                RadioListTile<bool>(
+                  title: const Text("No"),
+                  value: false,
+                  groupValue: question.answer,
+                  onChanged: (value) {
+                    setState(() {
+                      question.answer = value;
+                    });
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+
+        const SizedBox(height: 30),
+
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            if (currentIndex > 0)
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    currentIndex--;
+                  });
+                },
+                child: const Text("Back"),
+              ),
+
+            ElevatedButton(
+              onPressed: () async {
+                // if last question → submit
+                if (currentIndex == questions.length - 1) {
+                  String result = calculateResult();
+
+                  await _localDb.logSymptom(_email, result);
+
+                  showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                      title: const Text("Assessment Result"),
+                      content: Text(result),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                            loadStatus();
+                          },
+                          child: const Text("OK"),
+                        ),
+                      ],
+                    ),
+                  );
+
+                } else {
+                  // go next question
+                  setState(() {
+                    currentIndex++;
+                  });
+                }
+              },
+              child: Text(
+                currentIndex == questions.length - 1
+                    ? "Submit"
+                    : "Next",
+              ),
+            ),
+          ],
         ),
       ],
     );
   }
+
+  String calculateResult() {
+
+    int yesCount = questions
+        .where((q) => q.answer == true)
+        .length;
+
+    if (yesCount == 0) {
+
+      return "Well Controlled Asthma";
+    }
+
+    if (yesCount <= 2) {
+
+      return "Partly Controlled Asthma";
+    }
+
+    return "Uncontrolled Asthma";
+  }
+
 
   void _showResultDialog(DateTime date, String result) {
     showDialog(
