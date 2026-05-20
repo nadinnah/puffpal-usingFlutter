@@ -65,7 +65,7 @@ class _HomePageState extends State<HomePage> {
     final double verticalSpacing = screenHeight * 0.12;
 
     return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(0, verticalSpacing, 0, 0),
+      padding: EdgeInsets.fromLTRB(0, verticalSpacing, 0, 0.75*verticalSpacing),
       child: Column(
         children: [
           Padding(
@@ -204,7 +204,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
 
-          SizedBox(height: 130),
+
         ],
       ),
     );

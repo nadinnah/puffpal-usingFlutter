@@ -14,7 +14,7 @@ class LocalDatabase {
     }
   }
 
-  int version = 5;
+  int version = 6;
 
   Future<void> deleteOldDatabase() async {
     String myPath = await getDatabasesPath();
@@ -50,6 +50,7 @@ class LocalDatabase {
             email TEXT NOT NULL,
             date TEXT NOT NULL,
             result TEXT,
+            severity INTEGER,
             UNIQUE(email, date)
           );
         ''');
@@ -65,15 +66,16 @@ class LocalDatabase {
       },
 
       onUpgrade: (db, oldVersion, newVersion) async {
-        if (oldVersion < 5) {
+        if (oldVersion < 6) {
           try {
-            await db.execute('ALTER TABLE Symptoms ADD COLUMN result TEXT');
+            await db.execute('ALTER TABLE Symptoms ADD COLUMN severity INTEGER;');
           } catch (e) {
             await db.execute('''
             CREATE TABLE IF NOT EXISTS Symptoms (
               id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
               email TEXT NOT NULL,
               date TEXT NOT NULL,
+              result TEXT,
               UNIQUE(email, date)
             );
           ''');
@@ -137,7 +139,7 @@ class LocalDatabase {
     return null;
   }
 
-  Future<void> logSymptom(String email, String resultText) async {
+  Future<void> logSymptom(String email, String resultText, int severity) async {
     final db = await myDataBase;
     String today = DateTime.now().toString().split(' ')[0];
 
@@ -146,7 +148,9 @@ class LocalDatabase {
       {
         'email': email,
         'date': today,
-        'result': resultText, // Save the specific advice given
+        'result': resultText,
+        'severity': severity,
+        // Save the specific advice given
       },
       conflictAlgorithm:
           ConflictAlgorithm.replace, // Overwrite if they somehow track twice
@@ -176,8 +180,11 @@ class LocalDatabase {
     Map<DateTime, int> history = {};
     for (var row in result) {
       DateTime date = DateTime.parse(row['date'] as String);
-      // HeatMap package expects a value; 1 = tracked
-      history[date] = 1;
+
+      // Extract the true severity value, fallback to 1 if null
+      int severity = (row['severity'] as int?) ?? 1;
+
+      history[date] = severity;
     }
     return history;
   }

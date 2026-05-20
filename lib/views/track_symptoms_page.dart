@@ -4,6 +4,14 @@ import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
 import 'package:puffpal/models/symptom_tracking_questions.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 
+class AsthmaResult {
+  final int severity; // 1,2,3 for heatmap
+  final String label; // text for dialog / DB display
+  final Color color;
+
+  AsthmaResult(this.severity, this.label, this.color);
+}
+
 class TrackSymptomsPage extends StatefulWidget {
   const TrackSymptomsPage({super.key});
 
@@ -15,8 +23,6 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
   int currentIndex = 0;
   final LocalDatabase _localDb = LocalDatabase();
   final String _email = FirebaseAuth.instance.currentUser!.email!;
-
-  late SymptomNode currentNode;
   bool alreadyTracked = false;
   Map<DateTime, int> heatmapData = {};
   bool isLoading = true;
@@ -97,13 +103,15 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
             padding: const EdgeInsets.all(12.0),
             child: HeatMap(
               datasets: heatmapData,
-              colorMode: ColorMode.opacity,
+              colorMode: ColorMode.color,
               defaultColor: Colors.grey.shade200,
               textColor: Colors.black,
               showColorTip: false,
               scrollable: true,
               colorsets: const {
-                1: Color(0xFF1E6096),
+                1: Colors.green,
+                2: Colors.orange,
+                3: Colors.red,
               },
               // THE CLICK ACTION
               onClick: (date) async {
@@ -204,15 +212,15 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
               onPressed: () async {
                 // if last question → submit
                 if (currentIndex == questions.length - 1) {
-                  String result = calculateResult();
+                  AsthmaResult  result = calculateResult();
 
-                  await _localDb.logSymptom(_email, result);
+                  await _localDb.logSymptom(_email, result.label, result.severity);
 
                   showDialog(
                     context: context,
                     builder: (_) => AlertDialog(
                       title: const Text("Assessment Result"),
-                      content: Text(result),
+                      content: Text(result.label),
                       actions: [
                         TextButton(
                           onPressed: () {
@@ -244,23 +252,30 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
     );
   }
 
-  String calculateResult() {
-
-    int yesCount = questions
-        .where((q) => q.answer == true)
-        .length;
+  AsthmaResult calculateResult() {
+    int yesCount = questions.where((q) => q.answer == true).length;
 
     if (yesCount == 0) {
-
-      return "Well Controlled Asthma";
+      return AsthmaResult(
+        1,
+        "Well Controlled Asthma",
+        Colors.green,
+      );
     }
 
     if (yesCount <= 2) {
-
-      return "Partly Controlled Asthma";
+      return AsthmaResult(
+        2,
+        "Partly Controlled Asthma",
+        Colors.orange,
+      );
     }
 
-    return "Uncontrolled Asthma";
+    return AsthmaResult(
+      3,
+      "Uncontrolled Asthma",
+      Colors.red,
+    );
   }
 
 
