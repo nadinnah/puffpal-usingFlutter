@@ -8,61 +8,61 @@ class InhalerTechniquesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16),
+      backgroundColor: Colors.transparent,
+        body: Padding(
+          padding: const EdgeInsets.all(16),
 
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text("Inhaler Techniques", style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold)),
-              ],
-            ),
-            const SizedBox(height: 20),
+          child: Column(
+            children: [
 
-            inhalerButton(
-              context,
-              title: "MDI Inhaler",
-              type: "Inhaler",
-              image: "assets/images/mdi.jpg",
-              steps: [
-                "Shake inhaler",
-                "Breathe out fully",
-                "Press inhaler once",
-                "Inhale slowly",
-              ],
-              video: 'assets/videos/mdi.mp4',
-            ),
+              const SizedBox(height: 20),
 
-            const SizedBox(height: 16),
+              inhalerButton(
+                context,
+                title: "MDI Inhaler",
+                type: "Inhaler",
+                image: "assets/images/mdi.jpg",
+                steps: [
+                  "Shake inhaler",
+                  "Breathe out fully",
+                  "Press inhaler once",
+                  "Inhale slowly",
+                ],
+                video: 'assets/videos/mdi.mp4',
+              ),
 
-            inhalerButton(
-              context,
-              title: "Spacer",
-              type: "Inhaler",
-              image: "assets/images/spacer.jpg",
-              steps: [
-                "Attach inhaler to spacer",
-                "Press inhaler once",
-                "Breathe slowly",
-              ],
-              video: 'assets/videos/spacer.mp4',
-            ),
+              const SizedBox(height: 16),
 
-            const SizedBox(height: 16),
+              inhalerButton(
+                context,
+                title: "Spacer",
+                type: "Inhaler",
+                image: "assets/images/spacer.jpg",
+                steps: [
+                  "Attach inhaler to spacer",
+                  "Press inhaler once",
+                  "Breathe slowly",
+                ],
+                video: 'assets/videos/spacer.mp4',
+              ),
 
-            inhalerButton(
-              context,
-              title: "Nebulizer",
-              type: "Inhaler",
-              image: "assets/images/nebulizer.jpg",
-              steps: ["Add medication", "Turn machine on", "Breathe normally"],
-              video: 'assets/videos/nebulizer.mp4',
-            ),
-          ],
+              const SizedBox(height: 16),
+
+              inhalerButton(
+                context,
+                title: "Nebulizer",
+                type: "Inhaler",
+                image: "assets/images/nebulizer.jpg",
+                steps: [
+                  "Add medication",
+                  "Turn machine on",
+                  "Breathe normally",
+                ],
+                video: 'assets/videos/nebulizer.mp4',
+              ),
+            ],
+          ),
         ),
-      ),
     );
   }
 

@@ -21,17 +21,31 @@ class InhalerDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+    return Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Color(0xFFD8D0E5),
+              Color(0xFFD9DBEF),
+              Color(0xFFA8ABCA),
+            ],
+          ),
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
 
       appBar: AppBar(
-        title: Text(title),
+        backgroundColor: Colors.transparent,
+        title: Text(title, style: TextStyle(fontWeight: FontWeight.bold),),
       ),
 
       body: SingleChildScrollView(
 
         padding: const EdgeInsets.all(16),
 
-        child: Column(
+        child:  Column(
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
@@ -103,6 +117,6 @@ class InhalerDetailsPage extends StatelessWidget {
           ],
         ),
       ),
-    );
+      ));
   }
 }
