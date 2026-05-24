@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/carousel.dart';
+import '../../models/carousel.dart';
 
 class CarouselDetailsPage extends StatelessWidget {
   final CarouselDataModel carouselData;

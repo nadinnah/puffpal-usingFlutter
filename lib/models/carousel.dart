@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../views/asthma_education_page.dart';
-import '../views/inhaler_techniques.dart';
+import '../views/carousel items/asthma_basics.dart';
+import '../views/carousel items/asthma_education_page.dart';
+import '../views/carousel items/inhaler_techniques.dart';
 
 class CarouselDataModel {
   final String title;
@@ -18,21 +19,30 @@ class CarouselDataModel {
 
 List<CarouselDataModel> carouselDataList = [
   CarouselDataModel(
+    title: "Asthma Basics",
+    imageName: "assets/images/asthma_basics.jpg",
+    subtitle: "Learn the basics of asthma and its symptoms.",
+    detailsPage: AsthmaBasicsPage(),
+  ),
+  CarouselDataModel(
     title: "Asthma Triggers",
     imageName: "assets/images/asthmaKids.jpg",
-    subtitle: "Identify and minimize daily irritants to keep your lungs healthy.",
+    subtitle:
+        "Identify and minimize daily irritants to keep your lungs healthy.",
     detailsPage: AsthmaEducationPage(mode: EducationMode.triggers),
   ),
   CarouselDataModel(
     title: "When to Seek Help",
     imageName: "assets/images/asthma_alert.jpg",
-    subtitle: "Learn the warning signs of worsening asthma and when to seek care.",
+    subtitle:
+        "Learn the warning signs of worsening asthma and when to seek care.",
     detailsPage: AsthmaEducationPage(mode: EducationMode.referral),
   ),
   CarouselDataModel(
     title: "Inhaler Techniques",
     imageName: "assets/images/Asthma_Inhaler.jpg",
-    subtitle: "Master your proper inhaler usage step-by-step for better relief.",
+    subtitle:
+        "Master your proper inhaler usage step-by-step for better relief.",
     detailsPage: InhalerTechniquesPage(),
   ),
 ];

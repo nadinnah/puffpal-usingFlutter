@@ -12,7 +12,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:puffpal/models/carousel.dart';
 import '../services/user_provider.dart';
 import '../widgets/flip_card_widget.dart';
-import 'carousel_details_page.dart';
+import 'carousel items/carousel_details_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

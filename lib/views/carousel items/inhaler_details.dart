@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/video_player.dart';
+import '../../widgets/video_player.dart';
 
 class InhalerDetailsPage extends StatelessWidget {
 

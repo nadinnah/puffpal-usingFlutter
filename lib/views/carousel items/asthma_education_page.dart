@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/carousel.dart';
+import '../../models/carousel.dart';
 
 class AsthmaEducationPage extends StatelessWidget {
   final EducationMode mode;
