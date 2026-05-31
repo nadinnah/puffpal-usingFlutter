@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../l10n/app_localizations.dart';
+
 class AsthmaBasicsPage extends StatefulWidget {
   const AsthmaBasicsPage({super.key});
 
@@ -10,14 +12,16 @@ class AsthmaBasicsPage extends StatefulWidget {
 class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
   @override
   Widget build(BuildContext context) {
+    final loc = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
 
+          children: [
             /// HEADER
             Container(
               padding: const EdgeInsets.all(20),
@@ -25,27 +29,23 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
                 color: const Color(0xFF1E6096),
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const Column(
+              child: Column(
                 children: [
-                  Icon(
-                    Icons.air,
-                    color: Colors.white,
-                    size: 60,
-                  ),
-                  SizedBox(height: 10),
+                  const Icon(Icons.air, color: Colors.white, size: 60),
+                  const SizedBox(height: 10),
                   Text(
-                    "Understanding Asthma",
-                    style: TextStyle(
+                    loc.understandingAsthma,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
-                    "Think of your airways as roads. Asthma causes traffic jams by making them swollen, narrow, and filled with mucus.",
+                    loc.asthmaHeaderDescription,
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ],
               ),
@@ -54,68 +54,62 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
             const SizedBox(height: 24),
 
             /// QUICK FACTS
-            _sectionTitle("Asthma Basics"),
+            _sectionTitle(loc.asthmaBasicsSection),
 
-            _infoCard(
-              Icons.info_outline,
-              [
-                "Asthma is a chronic condition.",
-                "You live with it every day.",
-                "It can be serious and even life-threatening.",
-                "There is no cure, but it can be managed successfully.",
-              ],
-            ),
+            _infoCard(Icons.info_outline, [
+              loc.asthmaFact1,
+              loc.asthmaFact2,
+              loc.asthmaFact3,
+              loc.asthmaFact4,
+            ]),
 
             const SizedBox(height: 24),
 
             /// WHAT HAPPENS
-            _sectionTitle("What Happens During Asthma?"),
+            _sectionTitle(loc.whatHappensTitle),
 
-            _infoCard(
-              Icons.air,
-              [
-                "Airways become swollen",
-                "Muscles tighten around them",
-                "More mucus forms",
-                "Airways become narrow",
-              ],
-            ),
+            _infoCard(Icons.air, [
+              loc.airwaySwollen,
+              loc.musclesTighten,
+              loc.moreMucus,
+              loc.airwaysNarrow,
+            ]),
 
             const SizedBox(height: 24),
 
             /// SYMPTOMS
-            _sectionTitle("Common Symptoms"),
+            _sectionTitle(loc.commonSymptoms),
 
             Wrap(
               spacing: 10,
               runSpacing: 10,
-              children: const [
-                Chip(label: Text("Cough")),
-                Chip(label: Text("Wheezing")),
-                Chip(label: Text("Chest Tightness")),
-                Chip(label: Text("Shortness of Breath")),
+              children: [
+                Chip(label: Text(loc.cough)),
+                Chip(label: Text(loc.wheezing)),
+                Chip(label: Text(loc.chestTightness)),
+                Chip(label: Text(loc.shortnessBreath)),
               ],
             ),
 
             const SizedBox(height: 24),
 
             /// TYPES
-            _sectionTitle("Types of Asthma"),
+            _sectionTitle(loc.typesOfAsthma),
 
             Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
               child: ExpansionTile(
-                title: const Text("View Asthma Types"),
-                children: const [
-                  ListTile(title: Text("Allergic Asthma")),
-                  ListTile(title: Text("Aspirin-Induced Asthma")),
-                  ListTile(title: Text("Cough-Variant Asthma")),
-                  ListTile(title: Text("Exercise-Induced Asthma")),
-                  ListTile(title: Text("Nighttime Asthma")),
-                  ListTile(title: Text("Steroid-Resistant Asthma")),
-                  ListTile(title: Text("Occupational Asthma")),
+                title: Text(loc.viewAsthmaTypes),
+                children: [
+                  ListTile(title: Text(loc.allergicAsthma)),
+                  ListTile(title: Text(loc.aspirinAsthma)),
+                  ListTile(title: Text(loc.coughVariantAsthma)),
+                  ListTile(title: Text(loc.exerciseAsthma)),
+                  ListTile(title: Text(loc.nighttimeAsthma)),
+                  ListTile(title: Text(loc.steroidAsthma)),
+                  ListTile(title: Text(loc.occupationalAsthma)),
                 ],
               ),
             ),
@@ -123,30 +117,29 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
             const SizedBox(height: 24),
 
             /// DAILY HABITS
-            _sectionTitle("Daily Management Tips"),
+            _sectionTitle(loc.dailyManagementTips),
 
             _checklistCard([
-              "Take medications exactly as prescribed",
-              "Carry your rescue inhaler",
-              "Avoid smoke, dust, and pollution",
-              "Keep your home clean",
-              "Wash bedding regularly",
-              "Stay active",
-              "Warm up before exercise",
-              "Drink enough water",
-              "Manage stress",
-              "Get enough sleep",
-              "Avoid smoking",
-              "Get recommended vaccines",
-              "Monitor symptoms",
-              "Follow your asthma action plan",
+              loc.tip1,
+              loc.tip2,
+              loc.tip3,
+              loc.tip4,
+              loc.tip5,
+              loc.tip6,
+              loc.tip7,
+              loc.tip8,
+              loc.tip9,
+              loc.tip10,
+              loc.tip11,
+              loc.tip12,
+              loc.tip13,
+              loc.tip14,
             ]),
 
             const SizedBox(height: 24),
 
             /// RELIEVER VS CONTROLLER
-
-            _sectionTitle("Know Your Inhalers"),
+            _sectionTitle(loc.knowYourInhalers),
 
             Row(
               children: [
@@ -154,9 +147,8 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
                   child: _medicineCard(
                     color: Colors.green,
                     icon: Icons.flash_on,
-                    title: "Reliever",
-                    subtitle:
-                    "Works fast during symptoms or before exercise.",
+                    title: loc.reliever,
+                    subtitle: loc.relieverDescription,
                   ),
                 ),
                 const SizedBox(width: 12),
@@ -164,9 +156,8 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
                   child: _medicineCard(
                     color: Colors.blue,
                     icon: Icons.shield,
-                    title: "Controller",
-                    subtitle:
-                    "Used every day to prevent attacks.",
+                    title: loc.controller,
+                    subtitle: loc.controllerDescription,
                   ),
                 ),
               ],
@@ -174,36 +165,30 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
 
             const SizedBox(height: 24),
 
-            /// ACTION PLAN
-
             Container(
+              alignment: Alignment.center,
               padding: const EdgeInsets.all(18),
               decoration: BoxDecoration(
                 color: Colors.orange.shade100,
                 borderRadius: BorderRadius.circular(16),
               ),
-              child: const Column(
+              child: Column(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.warning_amber_rounded,
                     color: Colors.orange,
                     size: 40,
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
-                    "Quick Reminder",
-                    style: TextStyle(
+                    loc.quickReminder,
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Text(
-                    "Feeling well? Take your Controller as prescribed.\n\n"
-                        "Starting to cough, wheeze, or feel tight-chested?\n"
-                        "Use your Reliever and follow your asthma action plan.",
-                    textAlign: TextAlign.center,
-                  ),
+                  const SizedBox(height: 10),
+                  Text(loc.reminderText, textAlign: TextAlign.center),
                 ],
               ),
             ),
@@ -220,29 +205,19 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
       padding: const EdgeInsets.only(bottom: 12),
       child: Text(
         title,
-        style: const TextStyle(
-          fontSize: 22,
-          fontWeight: FontWeight.bold,
-        ),
+        style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
       ),
     );
   }
 
   Widget _infoCard(IconData icon, List<String> items) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: items
-              .map(
-                (e) => ListTile(
-              leading: Icon(icon),
-              title: Text(e),
-            ),
-          )
+              .map((e) => ListTile(leading: Icon(icon), title: Text(e)))
               .toList(),
         ),
       ),
@@ -251,22 +226,17 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
 
   Widget _checklistCard(List<String> items) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
           children: items
               .map(
                 (e) => ListTile(
-              leading: const Icon(
-                Icons.check_circle,
-                color: Colors.green,
-              ),
-              title: Text(e),
-            ),
-          )
+                  leading: const Icon(Icons.check_circle, color: Colors.green),
+                  title: Text(e),
+                ),
+              )
               .toList(),
         ),
       ),
@@ -295,10 +265,7 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
               ),
             ),
             const SizedBox(height: 8),
-            Text(
-              subtitle,
-              textAlign: TextAlign.center,
-            ),
+            Text(subtitle, textAlign: TextAlign.center),
           ],
         ),
       ),

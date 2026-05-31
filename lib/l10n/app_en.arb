@@ -14,5 +14,71 @@
   "quizzesTitle": "Quizzes and Games",
   "setReminder": "Set Reminder",
   "medicationReminders": "Medication Reminders",
-  "advice_title": "Advice of the Day"
+  "advice_title": "Advice of the Day",
+
+  "asthmaBasicsTitle": "Asthma Basics",
+  "understandingAsthma": "Understanding Asthma",
+  "asthmaHeaderDescription": "Think of your airways as roads. Asthma causes traffic jams by making them swollen, narrow, and filled with mucus.",
+
+  "asthmaBasicsSection": "Asthma Basics",
+
+  "asthmaFact1": "Asthma is a chronic condition.",
+  "asthmaFact2": "You live with it every day.",
+  "asthmaFact3": "It can be serious and even life-threatening.",
+  "asthmaFact4": "There is no cure, but it can be managed successfully.",
+
+  "whatHappensTitle": "What Happens During Asthma?",
+
+  "airwaySwollen": "Airways become swollen",
+  "musclesTighten": "Muscles tighten around them",
+  "moreMucus": "More mucus forms",
+  "airwaysNarrow": "Airways become narrow",
+
+  "commonSymptoms": "Common Symptoms",
+
+  "cough": "Cough",
+  "wheezing": "Wheezing",
+  "chestTightness": "Chest Tightness",
+  "shortnessBreath": "Shortness of Breath",
+
+  "typesOfAsthma": "Types of Asthma",
+  "viewAsthmaTypes": "View Asthma Types",
+
+  "allergicAsthma": "Allergic Asthma",
+  "aspirinAsthma": "Aspirin-Induced Asthma",
+  "coughVariantAsthma": "Cough-Variant Asthma",
+  "exerciseAsthma": "Exercise-Induced Asthma",
+  "nighttimeAsthma": "Nighttime Asthma",
+  "steroidAsthma": "Steroid-Resistant Asthma",
+  "occupationalAsthma": "Occupational Asthma",
+
+  "dailyManagementTips": "Daily Management Tips",
+
+  "tip1": "Take medications exactly as prescribed",
+  "tip2": "Carry your rescue inhaler",
+  "tip3": "Avoid smoke, dust, and pollution",
+  "tip4": "Keep your home clean and well ventilated",
+  "tip5": "Wash bedding regularly",
+  "tip6": "Stay active with approved exercise",
+  "tip7": "Warm up before exercise",
+  "tip8": "Drink enough water",
+  "tip9": "Manage stress",
+  "tip10": "Get enough sleep",
+  "tip11": "Avoid smoking and secondhand smoke",
+  "tip12": "Get recommended vaccines",
+  "tip13": "Monitor symptoms",
+  "tip14": "Follow your asthma action plan",
+
+  "knowYourInhalers": "Know Your Inhalers",
+
+  "reliever": "Reliever",
+  "relieverDescription": "Works fast during symptoms or before exercise.",
+
+  "controller": "Controller",
+  "controllerDescription": "Used every day to prevent attacks.",
+
+  "quickReminder": "Quick Reminder",
+
+  "reminderText": "Feeling well? Take your Controller as prescribed.\n\nStarting to cough, wheeze, or feel tight-chested?\nUse your Reliever and follow your asthma action plan."
+
 }
