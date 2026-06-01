@@ -42,6 +42,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get quickQuestions => 'أسئلة سريعة';
 
   @override
+  String get logitLearnItControlIt => 'سجّلها، تعلّم منها، تحكّم بها';
+
+  @override
   String get breatheBetter => 'تنفس بشكل أفضل، وتعلم المزيد';
 
   @override

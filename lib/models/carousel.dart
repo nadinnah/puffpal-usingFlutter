@@ -20,27 +20,27 @@ class CarouselDataModel {
 List<CarouselDataModel> carouselDataList = [
   CarouselDataModel(
     title: "Asthma Basics",
-    imageName: "assets/images/asthma_basics.jpg",
+    imageName: "assets/images/asthma_basics.png",
     subtitle: "Learn the basics of asthma and its symptoms.",
     detailsPage: AsthmaBasicsPage(),
   ),
   CarouselDataModel(
     title: "Asthma Triggers",
-    imageName: "assets/images/asthmaKids.jpg",
+    imageName: "assets/images/asthma_triggers.png",
     subtitle:
         "Identify and minimize daily irritants to keep your lungs healthy.",
     detailsPage: AsthmaEducationPage(mode: EducationMode.triggers),
   ),
   CarouselDataModel(
     title: "When to Seek Help",
-    imageName: "assets/images/asthma_alert.jpg",
+    imageName: "assets/images/when_to_seek_help.png",
     subtitle:
         "Learn the warning signs of worsening asthma and when to seek care.",
     detailsPage: AsthmaEducationPage(mode: EducationMode.referral),
   ),
   CarouselDataModel(
     title: "Inhaler Techniques",
-    imageName: "assets/images/Asthma_Inhaler.jpg",
+    imageName: "assets/images/inhaler_techniques.png",
     subtitle:
         "Master your proper inhaler usage step-by-step for better relief.",
     detailsPage: InhalerTechniquesPage(),

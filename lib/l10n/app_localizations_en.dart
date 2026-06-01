@@ -42,6 +42,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quickQuestions => 'Quick questions';
 
   @override
+  String get logitLearnItControlIt => 'Log it, Learn it, Control it';
+
+  @override
   String get breatheBetter => 'Breathe Better, learn More';
 
   @override

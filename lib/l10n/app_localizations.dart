@@ -158,6 +158,12 @@ abstract class AppLocalizations {
   /// **'Quick questions'**
   String get quickQuestions;
 
+  /// No description provided for @logitLearnItControlIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Log it, Learn it, Control it'**
+  String get logitLearnItControlIt;
+
   /// No description provided for @breatheBetter.
   ///
   /// In en, this message translates to:

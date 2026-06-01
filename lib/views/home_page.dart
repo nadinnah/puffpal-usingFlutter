@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      AppLocalizations.of(context)!.breatheBetter,
+                      AppLocalizations.of(context)!.logitLearnItControlIt,
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
@@ -236,7 +236,7 @@ class _HomePageState extends State<HomePage> {
                   borderRadius: BorderRadius.circular(20),
                   // More rounded looks better for carousels
                   image: DecorationImage(
-                    image: AssetImage(data.imageName),
+                    image: AssetImage(data.imageName), //assets/images/track_your_symptoms.png
                     fit: BoxFit.cover, // Use cover to prevent "stretching"
                   ),
                   boxShadow: [
