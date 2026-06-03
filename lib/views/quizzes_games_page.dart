@@ -38,6 +38,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
     return Padding(
       padding: const EdgeInsets.fromLTRB(30.0, 30, 30, 0),
       child: ListView(
+        clipBehavior: Clip.none,
         children: [
           GestureDetector(
             onTap: () {
@@ -50,19 +51,28 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
               width: double.infinity,
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 4,
+                    offset: Offset(0, 4),
+                  ),
+                ],
                 gradient: LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
-                  colors: [
-                    Color(0xF54D97D5),
-                    Color(0xFF1E6096),
-                  ],
+                  colors: [Color(0xFFF3F1FA),
+                    Color(0xFFE2DFF2),],
                 ),
                 borderRadius: BorderRadius.circular(20),
               ),
               child: Row(
                 children: [
-                  Icon(Icons.picture_as_pdf, color: Colors.white, size: 32),
+                  Icon(
+                    Icons.picture_as_pdf,
+                    color: Color(0xFF1A5687),
+                    size: 32,
+                  ),
                   SizedBox(width: 20),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -70,14 +80,17 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                       Text(
                         "Asthma Action Plan",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Color(0xFF1A5687),
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
                         "Open PDF",
-                        style: TextStyle(color: Colors.white70, fontSize: 14),
+                        style: TextStyle(
+                          color: Color(0xFF1A5687),
+                          fontSize: 14,
+                        ),
                       ),
                     ],
                   ),
@@ -123,97 +136,97 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                   onTap: isPlayed
                       ? null
                       : () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => QuestionsPage(quiz: quiz),
-                      ),
-                    ).then((_) {
-                      loadProgress();
-                    });
-                  },
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => QuestionsPage(quiz: quiz),
+                            ),
+                          ).then((_) {
+                            loadProgress();
+                          });
+                        },
                   child: Stack(
+                    clipBehavior: Clip.none,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 40),
-                        child: Material(
-                          borderRadius: BorderRadius.circular(20),
-                          elevation: 5,
-                          child: Container(
-                            width: double.infinity,
-                            padding: EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topRight,
-                                end: Alignment.bottomLeft,
-                                colors: [
-                                  Color(0xF54D97D5),
-                                  Color(0xFF1E6096),
-                                ],
+                          margin: EdgeInsets.only(top: 40),
+                          width: double.infinity,
+                          padding: EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black26,
+                                blurRadius: 4,
+                                offset: Offset(0, 4),
                               ),
-                              borderRadius: BorderRadius.circular(20),
+                            ],
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [Color(0xFFF3F1FA),
+                                Color(0xFFE2DFF2),],
                             ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.white70),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Icon(
-                                    isPlayed ? Icons.done : Icons.play_arrow,
-                                    color: Colors.white,
-                                    size: 30,
-                                  ),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Color(0xFF1A5687)),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
-                                SizedBox(height: 10),
-                                Text(
-                                  quiz.title,
-                                  style: TextStyle(
-                                    color: Color(0xE0FBFAFA),
-                                    fontSize: 28,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                child: Icon(
+                                  isPlayed ? Icons.done : Icons.play_arrow,
+                                  color: Color(0xFF1A5687),
+                                  size: 30,
                                 ),
-                                Row(
-                                  children: [
+                              ),
+                              SizedBox(height: 10),
+                              Text(
+                                quiz.title,
+                                style: TextStyle(
+                                  color: Color(0xFF1A5687),
+                                  fontSize: 28,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    quiz.noOfQuestions,
+                                    style: const TextStyle(
+                                      color: Color(0xD33C7EB5),
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  if (isPlayed) ...[
+                                    const Text(
+                                      " • ",
+                                      style: TextStyle(color: Color(0x7B489DE3)),
+                                    ),
                                     Text(
-                                      quiz.noOfQuestions,
+                                      "Score: $score/${quiz.questions.length}",
                                       style: const TextStyle(
-                                        color: Colors.white60,
+                                        color: Color(0xFF1A5687),
                                         fontSize: 14,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                    if (isPlayed) ...[
-                                      const Text(" • ",
-                                          style: TextStyle(color: Colors.white60)),
-                                      Text(
-                                        "Score: $score/${quiz.questions.length}",
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    ],
                                   ],
-                                ),
-                              ],
-                            ),
+                                ],
+                              ),
+
+                            ],
                           ),
                         ),
-                      ),
+
                       PositionedDirectional(
                         end: 0,
                         top: -5,
-                        child: Image.asset(
-                          quiz.image,
-                          height: 150,
-                          width: 150,
-                        ),
+                        child: Image.asset(quiz.image, height: 150, width: 150),
                       ),
                     ],
                   ),

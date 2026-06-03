@@ -17,7 +17,7 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
   final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
   late PdfViewerController _pdfViewerController;
 
-  final String assetPath = 'assets/pdf/asthma-action-plan-aafa.pdf';
+  final String assetPath = 'assets/pdf/asthma-action-plans.pdf';
   final String localFileName = 'user_asthma_plan.pdf';
 
   Uint8List? _pdfBytes;

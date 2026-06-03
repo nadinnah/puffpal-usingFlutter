@@ -191,7 +191,7 @@ abstract class AppLocalizations {
   /// No description provided for @advice_title.
   ///
   /// In en, this message translates to:
-  /// **'Advice of the Day'**
+  /// **'Advice of the Day!'**
   String get advice_title;
 
   /// No description provided for @asthmaBasicsTitle.

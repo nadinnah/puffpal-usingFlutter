@@ -57,7 +57,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get medicationReminders => 'Medication Reminders';
 
   @override
-  String get advice_title => 'Advice of the Day';
+  String get advice_title => 'Advice of the Day!';
 
   @override
   String get asthmaBasicsTitle => 'Asthma Basics';

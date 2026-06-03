@@ -86,13 +86,13 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
       width: double.infinity,
       height: verticalSpacing,
       decoration: BoxDecoration(
-        color: Color(0xffe6e8fb),
+        color: Color(0xffebeeff),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            offset: Offset(0, 2),
-            blurRadius: 10,
-            color: Color(0xffaaa9a9),
+            offset: Offset(0, 4),
+            blurRadius: 4,
+            color: Colors.black26,
           ),
         ],
       ),
@@ -100,9 +100,8 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
       child: Text(
         widget.frontText,
         style: TextStyle(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-          color: Color(0xff454545),
+          fontSize: 30,
+          color: Color(0xff1e1b1b),
         ),
       ),
     );
@@ -118,13 +117,13 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
       width: double.infinity,
       height: verticalSpacing,
       decoration: BoxDecoration(
-        color: Color(0xffe6e8fb),
+        color: Color(0xffebeeff),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            offset: Offset(0, 2),
-            blurRadius: 10,
-            color: Color(0xffaaa9a9),
+            offset: Offset(0, 4),
+            blurRadius: 4,
+            color: Colors.black26,
           ),
         ],
       ),

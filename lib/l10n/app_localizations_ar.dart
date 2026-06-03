@@ -57,7 +57,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get medicationReminders => 'تذكيرات الأدوية';
 
   @override
-  String get advice_title => 'نصيحة اليوم';
+  String get advice_title => 'نصيحة اليوم!';
 
   @override
   String get asthmaBasicsTitle => 'أساسيات الربو';
