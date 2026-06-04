@@ -487,6 +487,1242 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Feeling well? Take your Controller as prescribed.\n\nStarting to cough, wheeze, or feel tight-chested?\nUse your Reliever and follow your asthma action plan.'**
   String get reminderText;
+
+  /// No description provided for @quizCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Quiz Completed!'**
+  String get quizCompleted;
+
+  /// No description provided for @scoreMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your score is {score} out of {total}'**
+  String scoreMessage(int score, int total);
+
+  /// No description provided for @quiz1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma Basics Adventure'**
+  String get quiz1Title;
+
+  /// No description provided for @q1_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma affects which part of the body?'**
+  String get q1_1;
+
+  /// No description provided for @q1_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Airways'**
+  String get q1_1_a;
+
+  /// No description provided for @q1_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Stomach'**
+  String get q1_1_b;
+
+  /// No description provided for @q1_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Bones'**
+  String get q1_1_c;
+
+  /// No description provided for @q1_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Skin'**
+  String get q1_1_d;
+
+  /// No description provided for @q1_2.
+  ///
+  /// In en, this message translates to:
+  /// **'In the “traffic jam” example, what causes the roads (airways) to become crowded?'**
+  String get q1_2;
+
+  /// No description provided for @q1_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Mucus and swelling'**
+  String get q1_2_a;
+
+  /// No description provided for @q1_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Extra oxygen'**
+  String get q1_2_b;
+
+  /// No description provided for @q1_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'More blood flow'**
+  String get q1_2_c;
+
+  /// No description provided for @q1_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Water'**
+  String get q1_2_d;
+
+  /// No description provided for @q1_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma is described as:'**
+  String get q1_3;
+
+  /// No description provided for @q1_3_a.
+  ///
+  /// In en, this message translates to:
+  /// **'A chronic condition'**
+  String get q1_3_a;
+
+  /// No description provided for @q1_3_b.
+  ///
+  /// In en, this message translates to:
+  /// **'A short-term illness'**
+  String get q1_3_b;
+
+  /// No description provided for @q1_3_c.
+  ///
+  /// In en, this message translates to:
+  /// **'A broken bone'**
+  String get q1_3_c;
+
+  /// No description provided for @q1_3_d.
+  ///
+  /// In en, this message translates to:
+  /// **'An infection'**
+  String get q1_3_d;
+
+  /// No description provided for @q1_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Which statement about asthma is TRUE?'**
+  String get q1_4;
+
+  /// No description provided for @q1_4_a.
+  ///
+  /// In en, this message translates to:
+  /// **'There is no cure, but it can be controlled'**
+  String get q1_4_a;
+
+  /// No description provided for @q1_4_b.
+  ///
+  /// In en, this message translates to:
+  /// **'It always goes away on its own'**
+  String get q1_4_b;
+
+  /// No description provided for @q1_4_b2.
+  ///
+  /// In en, this message translates to:
+  /// **'It cannot be managed'**
+  String get q1_4_b2;
+
+  /// No description provided for @q1_4_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Only children get asthma'**
+  String get q1_4_c;
+
+  /// No description provided for @q1_5.
+  ///
+  /// In en, this message translates to:
+  /// **'What happens to the muscles around the airways during an asthma flare?'**
+  String get q1_5;
+
+  /// No description provided for @q1_5_a.
+  ///
+  /// In en, this message translates to:
+  /// **'They tighten'**
+  String get q1_5_a;
+
+  /// No description provided for @q1_5_b.
+  ///
+  /// In en, this message translates to:
+  /// **'They relax completely'**
+  String get q1_5_b;
+
+  /// No description provided for @q1_5_c.
+  ///
+  /// In en, this message translates to:
+  /// **'They disappear'**
+  String get q1_5_c;
+
+  /// No description provided for @q1_5_d.
+  ///
+  /// In en, this message translates to:
+  /// **'They grow larger'**
+  String get q1_5_d;
+
+  /// No description provided for @q1_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Which of these is NOT a common asthma symptom?'**
+  String get q1_6;
+
+  /// No description provided for @q1_6_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Toothache'**
+  String get q1_6_a;
+
+  /// No description provided for @q1_6_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Wheezing'**
+  String get q1_6_b;
+
+  /// No description provided for @q1_6_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Chest tightness'**
+  String get q1_6_c;
+
+  /// No description provided for @q1_6_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Shortness of breath'**
+  String get q1_6_d;
+
+  /// No description provided for @q1_7.
+  ///
+  /// In en, this message translates to:
+  /// **'What happens to the airways during asthma?'**
+  String get q1_7;
+
+  /// No description provided for @q1_7_a.
+  ///
+  /// In en, this message translates to:
+  /// **'They become narrower'**
+  String get q1_7_a;
+
+  /// No description provided for @q1_7_b.
+  ///
+  /// In en, this message translates to:
+  /// **'They become wider'**
+  String get q1_7_b;
+
+  /// No description provided for @q1_7_c.
+  ///
+  /// In en, this message translates to:
+  /// **'They turn blue'**
+  String get q1_7_c;
+
+  /// No description provided for @q1_7_d.
+  ///
+  /// In en, this message translates to:
+  /// **'They stop working forever'**
+  String get q1_7_d;
+
+  /// No description provided for @q1_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Which of the following can happen during asthma?'**
+  String get q1_8;
+
+  /// No description provided for @q1_8_a.
+  ///
+  /// In en, this message translates to:
+  /// **'More mucus forms'**
+  String get q1_8_a;
+
+  /// No description provided for @q1_8_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Hair grows faster'**
+  String get q1_8_b;
+
+  /// No description provided for @q1_8_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Vision improves'**
+  String get q1_8_c;
+
+  /// No description provided for @q1_8_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Bones weaken'**
+  String get q1_8_d;
+
+  /// No description provided for @q1_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Which symptom may make breathing feel harder?'**
+  String get q1_9;
+
+  /// No description provided for @q1_9_a.
+  ///
+  /// In en, this message translates to:
+  /// **'All of the above'**
+  String get q1_9_a;
+
+  /// No description provided for @q1_9_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Wheezing'**
+  String get q1_9_b;
+
+  /// No description provided for @q1_9_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Shortness of breath'**
+  String get q1_9_c;
+
+  /// No description provided for @q1_9_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Chest tightness'**
+  String get q1_9_d;
+
+  /// No description provided for @q1_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma can be:'**
+  String get q1_10;
+
+  /// No description provided for @q1_10_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Serious and life-threatening'**
+  String get q1_10_a;
+
+  /// No description provided for @q1_10_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Always harmless'**
+  String get q1_10_b;
+
+  /// No description provided for @q1_10_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Contagious'**
+  String get q1_10_c;
+
+  /// No description provided for @q1_10_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Caused by eating candy'**
+  String get q1_10_d;
+
+  /// No description provided for @quiz2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma Hero Challenge'**
+  String get quiz2Title;
+
+  /// No description provided for @q2_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Which asthma type may happen during or after physical activity?'**
+  String get q2_1;
+
+  /// No description provided for @q2_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercise-induced asthma'**
+  String get q2_1_a;
+
+  /// No description provided for @q2_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Nighttime asthma'**
+  String get q2_1_b;
+
+  /// No description provided for @q2_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Occupational asthma'**
+  String get q2_1_c;
+
+  /// No description provided for @q2_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Allergic asthma'**
+  String get q2_1_d;
+
+  /// No description provided for @q2_2.
+  ///
+  /// In en, this message translates to:
+  /// **'What should you always carry with you?'**
+  String get q2_2;
+
+  /// No description provided for @q2_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Rescue inhaler'**
+  String get q2_2_a;
+
+  /// No description provided for @q2_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Sunglasses'**
+  String get q2_2_b;
+
+  /// No description provided for @q2_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Water bottle'**
+  String get q2_2_c;
+
+  /// No description provided for @q2_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Umbrella'**
+  String get q2_2_d;
+
+  /// No description provided for @q2_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Which of these can trigger asthma symptoms?'**
+  String get q2_3;
+
+  /// No description provided for @q2_3_a.
+  ///
+  /// In en, this message translates to:
+  /// **'All of the above'**
+  String get q2_3_a;
+
+  /// No description provided for @q2_3_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Smoke'**
+  String get q2_3_b;
+
+  /// No description provided for @q2_3_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Dust'**
+  String get q2_3_c;
+
+  /// No description provided for @q2_3_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Strong perfumes'**
+  String get q2_3_d;
+
+  /// No description provided for @q2_4.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the main job of the Reliever (“Rescue Hero”)?'**
+  String get q2_4;
+
+  /// No description provided for @q2_4_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the airways quickly'**
+  String get q2_4_a;
+
+  /// No description provided for @q2_4_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Prevent attacks for months'**
+  String get q2_4_b;
+
+  /// No description provided for @q2_4_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Cure asthma forever'**
+  String get q2_4_c;
+
+  /// No description provided for @q2_4_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Help you sleep'**
+  String get q2_4_d;
+
+  /// No description provided for @q2_5.
+  ///
+  /// In en, this message translates to:
+  /// **'When should you use the Controller (“Bodyguard”)?'**
+  String get q2_5;
+
+  /// No description provided for @q2_5_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Every day as prescribed'**
+  String get q2_5_a;
+
+  /// No description provided for @q2_5_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Only during an attack'**
+  String get q2_5_b;
+
+  /// No description provided for @q2_5_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Only when exercising'**
+  String get q2_5_c;
+
+  /// No description provided for @q2_5_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Once a month'**
+  String get q2_5_d;
+
+  /// No description provided for @q2_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Which statement about the Controller is TRUE?'**
+  String get q2_6;
+
+  /// No description provided for @q2_6_a.
+  ///
+  /// In en, this message translates to:
+  /// **'It reduces swelling and helps prevent attacks'**
+  String get q2_6_a;
+
+  /// No description provided for @q2_6_b.
+  ///
+  /// In en, this message translates to:
+  /// **'It works instantly'**
+  String get q2_6_b;
+
+  /// No description provided for @q2_6_c.
+  ///
+  /// In en, this message translates to:
+  /// **'It is only for emergencies'**
+  String get q2_6_c;
+
+  /// No description provided for @q2_6_d.
+  ///
+  /// In en, this message translates to:
+  /// **'It replaces the reliever inhaler'**
+  String get q2_6_d;
+
+  /// No description provided for @q2_7.
+  ///
+  /// In en, this message translates to:
+  /// **'What should you do if you start coughing, wheezing, or feel chest tightness?'**
+  String get q2_7;
+
+  /// No description provided for @q2_7_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your Reliever and follow your action plan'**
+  String get q2_7_a;
+
+  /// No description provided for @q2_7_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore it'**
+  String get q2_7_b;
+
+  /// No description provided for @q2_7_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Drink juice only'**
+  String get q2_7_c;
+
+  /// No description provided for @q2_7_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop breathing deeply'**
+  String get q2_7_d;
+
+  /// No description provided for @q2_8.
+  ///
+  /// In en, this message translates to:
+  /// **'Which daily habit can help control asthma?'**
+  String get q2_8;
+
+  /// No description provided for @q2_8_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Following your asthma action plan'**
+  String get q2_8_a;
+
+  /// No description provided for @q2_8_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Smoking'**
+  String get q2_8_b;
+
+  /// No description provided for @q2_8_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Skipping medications'**
+  String get q2_8_c;
+
+  /// No description provided for @q2_8_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Avoiding all exercise forever'**
+  String get q2_8_d;
+
+  /// No description provided for @q2_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Why is washing bedding regularly helpful?'**
+  String get q2_9;
+
+  /// No description provided for @q2_9_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Reduces dust and allergens'**
+  String get q2_9_a;
+
+  /// No description provided for @q2_9_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Makes the bed softer'**
+  String get q2_9_b;
+
+  /// No description provided for @q2_9_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Changes the color'**
+  String get q2_9_c;
+
+  /// No description provided for @q2_9_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Prevents wrinkles'**
+  String get q2_9_d;
+
+  /// No description provided for @q2_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Which habit is BEST for healthy lungs?'**
+  String get q2_10;
+
+  /// No description provided for @q2_10_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Avoiding secondhand smoke'**
+  String get q2_10_a;
+
+  /// No description provided for @q2_10_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Smoking occasionally'**
+  String get q2_10_b;
+
+  /// No description provided for @q2_10_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Skipping sleep'**
+  String get q2_10_c;
+
+  /// No description provided for @q2_10_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignoring symptoms'**
+  String get q2_10_d;
+
+  /// No description provided for @quiz3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Doctor Visit or Not?'**
+  String get quiz3Title;
+
+  /// No description provided for @q3_1.
+  ///
+  /// In en, this message translates to:
+  /// **'You wake up coughing and wheezing several nights this week. What should you do?'**
+  String get q3_1;
+
+  /// No description provided for @q3_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell your doctor'**
+  String get q3_1_a;
+
+  /// No description provided for @q3_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore it'**
+  String get q3_1_b;
+
+  /// No description provided for @q3_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait a month'**
+  String get q3_1_c;
+
+  /// No description provided for @q3_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop all medications'**
+  String get q3_1_d;
+
+  /// No description provided for @q3_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Your rescue inhaler is helping less than usual. What does this mean?'**
+  String get q3_2;
+
+  /// No description provided for @q3_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Your asthma may be worsening'**
+  String get q3_2_a;
+
+  /// No description provided for @q3_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything is fine'**
+  String get q3_2_b;
+
+  /// No description provided for @q3_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'You need more coffee'**
+  String get q3_2_c;
+
+  /// No description provided for @q3_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercise harder'**
+  String get q3_2_d;
+
+  /// No description provided for @q3_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma keeps stopping you from exercising and playing with friends. What should you do?'**
+  String get q3_3;
+
+  /// No description provided for @q3_3_a.
+  ///
+  /// In en, this message translates to:
+  /// **'See your doctor for advice'**
+  String get q3_3_a;
+
+  /// No description provided for @q3_3_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Quit all activities forever'**
+  String get q3_3_b;
+
+  /// No description provided for @q3_3_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore it'**
+  String get q3_3_c;
+
+  /// No description provided for @q3_3_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Throw away your inhaler'**
+  String get q3_3_d;
+
+  /// No description provided for @q3_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Your peak flow readings are lower than usual for several days. What’s the best action?'**
+  String get q3_4;
+
+  /// No description provided for @q3_4_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Discuss it with your doctor'**
+  String get q3_4_a;
+
+  /// No description provided for @q3_4_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Celebrate'**
+  String get q3_4_b;
+
+  /// No description provided for @q3_4_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore them'**
+  String get q3_4_c;
+
+  /// No description provided for @q3_4_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop measuring'**
+  String get q3_4_d;
+
+  /// No description provided for @q3_5.
+  ///
+  /// In en, this message translates to:
+  /// **'You notice side effects after starting a new asthma medication. What should you do?'**
+  String get q3_5;
+
+  /// No description provided for @q3_5_a.
+  ///
+  /// In en, this message translates to:
+  /// **'See your doctor'**
+  String get q3_5_a;
+
+  /// No description provided for @q3_5_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Double the dose'**
+  String get q3_5_b;
+
+  /// No description provided for @q3_5_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore them'**
+  String get q3_5_c;
+
+  /// No description provided for @q3_5_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop all treatment without advice'**
+  String get q3_5_d;
+
+  /// No description provided for @q3_6.
+  ///
+  /// In en, this message translates to:
+  /// **'You have asthma and develop fever with colored mucus. What should you do?'**
+  String get q3_6;
+
+  /// No description provided for @q3_6_a.
+  ///
+  /// In en, this message translates to:
+  /// **'See your doctor'**
+  String get q3_6_a;
+
+  /// No description provided for @q3_6_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait until next year'**
+  String get q3_6_b;
+
+  /// No description provided for @q3_6_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore it'**
+  String get q3_6_c;
+
+  /// No description provided for @q3_6_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercise more'**
+  String get q3_6_d;
+
+  /// No description provided for @q3_7.
+  ///
+  /// In en, this message translates to:
+  /// **'This is your first-ever episode of wheezing. What should you do?'**
+  String get q3_7;
+
+  /// No description provided for @q3_7_a.
+  ///
+  /// In en, this message translates to:
+  /// **'See a healthcare professional'**
+  String get q3_7_a;
+
+  /// No description provided for @q3_7_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore it'**
+  String get q3_7_b;
+
+  /// No description provided for @q3_7_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Assume it is normal'**
+  String get q3_7_c;
+
+  /// No description provided for @q3_7_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Take random medicine'**
+  String get q3_7_d;
+
+  /// No description provided for @q3_8.
+  ///
+  /// In en, this message translates to:
+  /// **'You needed emergency treatment twice this year for asthma. What does this suggest?'**
+  String get q3_8;
+
+  /// No description provided for @q3_8_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Your asthma should be reviewed by a doctor'**
+  String get q3_8_a;
+
+  /// No description provided for @q3_8_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Everything is controlled'**
+  String get q3_8_b;
+
+  /// No description provided for @q3_8_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop follow-up visits'**
+  String get q3_8_c;
+
+  /// No description provided for @q3_8_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma is gone'**
+  String get q3_8_d;
+
+  /// No description provided for @q3_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Pregnancy is making asthma symptoms harder to control. What should you do?'**
+  String get q3_9;
+
+  /// No description provided for @q3_9_a.
+  ///
+  /// In en, this message translates to:
+  /// **'See your doctor'**
+  String get q3_9_a;
+
+  /// No description provided for @q3_9_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop all asthma medicines'**
+  String get q3_9_b;
+
+  /// No description provided for @q3_9_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore symptoms'**
+  String get q3_9_c;
+
+  /// No description provided for @q3_9_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Only drink water'**
+  String get q3_9_d;
+
+  /// No description provided for @q3_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Which situation is a reason to schedule a medical review?'**
+  String get q3_10;
+
+  /// No description provided for @q3_10_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Symptoms becoming more frequent'**
+  String get q3_10_a;
+
+  /// No description provided for @q3_10_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Feeling well-controlled'**
+  String get q3_10_b;
+
+  /// No description provided for @q3_10_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Having no symptoms'**
+  String get q3_10_c;
+
+  /// No description provided for @q3_10_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Following your treatment plan successfully'**
+  String get q3_10_d;
+
+  /// No description provided for @quiz4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency or Not?'**
+  String get quiz4Title;
+
+  /// No description provided for @q4_1.
+  ///
+  /// In en, this message translates to:
+  /// **'You are so short of breath that breathing feels very difficult. What should you do?'**
+  String get q4_1;
+
+  /// No description provided for @q4_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to the Emergency Room immediately'**
+  String get q4_1_a;
+
+  /// No description provided for @q4_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a nap'**
+  String get q4_1_b;
+
+  /// No description provided for @q4_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait until tomorrow'**
+  String get q4_1_c;
+
+  /// No description provided for @q4_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore it'**
+  String get q4_1_d;
+
+  /// No description provided for @q4_2.
+  ///
+  /// In en, this message translates to:
+  /// **'You can only speak a few words at a time because of breathing trouble. This is:'**
+  String get q4_2;
+
+  /// No description provided for @q4_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'An emergency'**
+  String get q4_2_a;
+
+  /// No description provided for @q4_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal asthma'**
+  String get q4_2_b;
+
+  /// No description provided for @q4_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'A sign of being tired'**
+  String get q4_2_c;
+
+  /// No description provided for @q4_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing serious'**
+  String get q4_2_d;
+
+  /// No description provided for @q4_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Your rescue inhaler provides little or no relief. What should you do?'**
+  String get q4_3;
+
+  /// No description provided for @q4_3_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Check Asthma action plan to know exactly what to do'**
+  String get q4_3_a;
+
+  /// No description provided for @q4_3_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore it'**
+  String get q4_3_b;
+
+  /// No description provided for @q4_3_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait several days'**
+  String get q4_3_c;
+
+  /// No description provided for @q4_3_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop breathing exercises forever'**
+  String get q4_3_d;
+
+  /// No description provided for @q4_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Your lips are turning blue or gray. What does this mean?'**
+  String get q4_4;
+
+  /// No description provided for @q4_4_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency—seek help now'**
+  String get q4_4_a;
+
+  /// No description provided for @q4_4_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal asthma'**
+  String get q4_4_b;
+
+  /// No description provided for @q4_4_c.
+  ///
+  /// In en, this message translates to:
+  /// **'You’re cold'**
+  String get q4_4_c;
+
+  /// No description provided for @q4_4_d.
+  ///
+  /// In en, this message translates to:
+  /// **'You need water'**
+  String get q4_4_d;
+
+  /// No description provided for @q4_5.
+  ///
+  /// In en, this message translates to:
+  /// **'Your coughing and wheezing are getting worse very quickly. What should you do?'**
+  String get q4_5;
+
+  /// No description provided for @q4_5_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency care is needed'**
+  String get q4_5_a;
+
+  /// No description provided for @q4_5_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore it'**
+  String get q4_5_b;
+
+  /// No description provided for @q4_5_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Go jogging'**
+  String get q4_5_c;
+
+  /// No description provided for @q4_5_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop monitoring symptoms'**
+  String get q4_5_d;
+
+  /// No description provided for @q4_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Chest tightness continues even after using your rescue inhaler. What should you do?'**
+  String get q4_6;
+
+  /// No description provided for @q4_6_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Seek emergency help'**
+  String get q4_6_a;
+
+  /// No description provided for @q4_6_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait a week'**
+  String get q4_6_b;
+
+  /// No description provided for @q4_6_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore it'**
+  String get q4_6_c;
+
+  /// No description provided for @q4_6_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop treatment'**
+  String get q4_6_d;
+
+  /// No description provided for @q4_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Which sign is especially dangerous?'**
+  String get q4_7;
+
+  /// No description provided for @q4_7_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Silent chest (very little air movement)'**
+  String get q4_7_a;
+
+  /// No description provided for @q4_7_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Sneezing'**
+  String get q4_7_b;
+
+  /// No description provided for @q4_7_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Hiccups'**
+  String get q4_7_c;
+
+  /// No description provided for @q4_7_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Mild headache'**
+  String get q4_7_d;
+
+  /// No description provided for @q4_8.
+  ///
+  /// In en, this message translates to:
+  /// **'You feel dizzy, confused, and extremely tired during an asthma attack. What should you do?'**
+  String get q4_8;
+
+  /// No description provided for @q4_8_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Seek emergency help immediately'**
+  String get q4_8_a;
+
+  /// No description provided for @q4_8_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a selfie'**
+  String get q4_8_b;
+
+  /// No description provided for @q4_8_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Ignore it'**
+  String get q4_8_c;
+
+  /// No description provided for @q4_8_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait until bedtime'**
+  String get q4_8_d;
+
+  /// No description provided for @q4_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Your symptoms keep worsening despite treatment. What does this mean?'**
+  String get q4_9;
+
+  /// No description provided for @q4_9_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency evaluation is needed'**
+  String get q4_9_a;
+
+  /// No description provided for @q4_9_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Treatment is working'**
+  String get q4_9_b;
+
+  /// No description provided for @q4_9_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma is improving'**
+  String get q4_9_c;
+
+  /// No description provided for @q4_9_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Nothing is wrong'**
+  String get q4_9_d;
+
+  /// No description provided for @q4_10.
+  ///
+  /// In en, this message translates to:
+  /// **'Which of these is an asthma emergency?'**
+  String get q4_10;
+
+  /// No description provided for @q4_10_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Confusion or drowsiness during an attack'**
+  String get q4_10_a;
+
+  /// No description provided for @q4_10_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Controlled symptoms'**
+  String get q4_10_b;
+
+  /// No description provided for @q4_10_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Feeling energetic'**
+  String get q4_10_c;
+
+  /// No description provided for @q4_10_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Having a good peak flow reading'**
+  String get q4_10_d;
 }
 
 class _AppLocalizationsDelegate

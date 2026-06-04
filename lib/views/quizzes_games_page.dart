@@ -26,8 +26,8 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
   void loadProgress() async {
     Map<String, int?> tempScores = {};
     for (var quiz in quizzes) {
-      int? score = await QuizProgressService.getScore(quiz.title);
-      tempScores[quiz.title] = score;
+      int? score = await QuizProgressService.getScore(quiz.getLocalizedTitle(context));
+      tempScores[quiz.getLocalizedTitle(context)] = score;
     }
     setState(() {
       quizScores = tempScores;
@@ -37,6 +37,9 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+
+    final double verticalSpacing = screenHeight * 0.12;
 
     final double titleSize = screenWidth * 0.07;       // ~28px on standard 400w screens
     final double subtitleSize = screenWidth * 0.055;  // ~22px
@@ -132,8 +135,8 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
             ],
           ),
           ...quizzes.map((quiz) {
-            final bool isPlayed = quizScores[quiz.title] != null;
-            final int? score = quizScores[quiz.title];
+            final bool isPlayed = quizScores[quiz.getLocalizedTitle(context)] != null;
+            final int? score = quizScores[quiz.getLocalizedTitle(context)];
 
             return Opacity(
               opacity: isPlayed ? 0.7 : 1,
@@ -192,7 +195,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                               ),
                               SizedBox(height: 10),
                               Text(
-                                quiz.title,
+                                quiz.getLocalizedTitle(context),
                                 style: TextStyle(
                                   color: Colors.black87,
                                   fontSize: 28,
@@ -202,7 +205,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                               Row(
                                 children: [
                                   Text(
-                                    quiz.noOfQuestions,
+                                    quiz.getNoOfQuestions(context),
                                     style: GoogleFonts.roboto(
                                 fontStyle: FontStyle.italic,
                                 fontWeight: FontWeight.w400,
@@ -242,7 +245,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
               ),
             );
           }).toList(),
-          SizedBox(height: 20),
+          SizedBox(height: verticalSpacing/2),
         ],
       ),
     );
