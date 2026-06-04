@@ -8,6 +8,12 @@ class AsthmaEducationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final horizontalPadding = screenWidth * 0.05;
+    final verticalSpacing = screenHeight * 0.12;
+
     final isTriggers = mode == EducationMode.triggers;
 
     final primaryColor = isTriggers ? Colors.teal : Colors.red.shade700;
@@ -53,6 +59,7 @@ class AsthmaEducationPage extends StatelessWidget {
 
             // Core dynamic section list
             isTriggers ? _buildTriggersList() : _buildReferralList(),
+            SizedBox(height: verticalSpacing/2),
           ],
         ),
       ),

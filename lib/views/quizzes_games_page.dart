@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:puffpal/views/pdf_viewer_page.dart';
 import 'package:puffpal/views/questions_page.dart';
 
@@ -35,6 +36,12 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+
+    final double titleSize = screenWidth * 0.07;       // ~28px on standard 400w screens
+    final double subtitleSize = screenWidth * 0.055;  // ~22px
+    final double bodySize = screenWidth * 0.035;
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(30.0, 30, 30, 0),
       child: ListView(
@@ -70,7 +77,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                 children: [
                   Icon(
                     Icons.picture_as_pdf,
-                    color: Color(0xFF1A5687),
+                    color: Colors.black87,
                     size: 32,
                   ),
                   SizedBox(width: 20),
@@ -80,16 +87,16 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                       Text(
                         "Asthma Action Plan",
                         style: TextStyle(
-                          color: Color(0xFF1A5687),
-                          fontSize: 22,
+                          color: Colors.black87,
+                          fontSize: subtitleSize*0.75,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
                         "Open PDF",
                         style: TextStyle(
-                          color: Color(0xFF1A5687),
-                          fontSize: 14,
+                          color:Colors.black54,
+                          fontSize: bodySize,
                         ),
                       ),
                     ],
@@ -106,7 +113,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
             children: [
               Text(
                 AppLocalizations.of(context)!.quizzesTitle,
-                style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: titleSize, fontWeight: FontWeight.bold),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 5, top: 5),
@@ -174,12 +181,12 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                               Container(
                                 padding: EdgeInsets.all(5),
                                 decoration: BoxDecoration(
-                                  border: Border.all(color: Color(0xFF1A5687)),
+                                  border: Border.all(color: Colors.black87),
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 child: Icon(
                                   isPlayed ? Icons.done : Icons.play_arrow,
-                                  color: Color(0xFF1A5687),
+                                  color: Colors.black87,
                                   size: 30,
                                 ),
                               ),
@@ -187,7 +194,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                               Text(
                                 quiz.title,
                                 style: TextStyle(
-                                  color: Color(0xFF1A5687),
+                                  color: Colors.black87,
                                   fontSize: 28,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -196,11 +203,12 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                                 children: [
                                   Text(
                                     quiz.noOfQuestions,
-                                    style: const TextStyle(
-                                      color: Color(0xD33C7EB5),
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    style: GoogleFonts.roboto(
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w400,
+                                fontSize: bodySize,
+                                color: Color(0xa11e1b1b),
+                              ),
                                   ),
                                   if (isPlayed) ...[
                                     const Text(

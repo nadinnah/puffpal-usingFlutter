@@ -12,6 +12,10 @@ class AsthmaBasicsPage extends StatefulWidget {
 class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+    final horizontalPadding = screenWidth * 0.05;
+    final verticalSpacing = screenHeight * 0.12;
     final loc = AppLocalizations.of(context)!;
 
     return Scaffold(
@@ -193,7 +197,7 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
               ),
             ),
 
-            const SizedBox(height: 30),
+        SizedBox(height: verticalSpacing/2),
           ],
         ),
       ),

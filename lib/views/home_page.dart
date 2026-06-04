@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 import 'package:puffpal/views/track_symptoms_page.dart';
@@ -55,9 +56,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+
+    final double titleSize = screenWidth * 0.07;       // ~28px on standard 400w screens
+    final double subtitleSize = screenWidth * 0.055;  // ~22px
+    final double bodySize = screenWidth * 0.035;
     final userName = context.watch<UserProvider>().userName;
 
-    final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
 
     final double horizontalPadding = screenWidth * 0.05;
@@ -141,7 +146,13 @@ class _HomePageState extends State<HomePage> {
                             ),
                             subtitle: Text(
                               AppLocalizations.of(context)!.quickQuestions,
-                              style: TextStyle(fontSize: 16),
+
+                                style: GoogleFonts.roboto(
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: bodySize,
+                                  color: Color(0xa11e1b1b),
+                                ),
                             ),
                           ),
                         ],
@@ -203,6 +214,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+          SizedBox(height: verticalSpacing/2,)
 
 
         ],

@@ -37,7 +37,7 @@ Future<void> main() async {
   final notificationsEnabled = prefs.getBool("notificationsEnabled") ?? false;
 
   await FirebaseApi().initNotification();
-  final notificationService = LocalNotificationService(); // Use the singleton
+  final notificationService = LocalNotificationService();
   await notificationService.init();
   await notificationService.requestPermissions();
 

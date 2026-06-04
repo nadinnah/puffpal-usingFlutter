@@ -17,6 +17,11 @@ class InhalerDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double horizontalPadding = screenWidth * 0.05;
+    final double verticalSpacing = screenHeight * 0.12;
+
     return Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -108,6 +113,7 @@ class InhalerDetailsPage extends StatelessWidget {
                 VideoPlayerWidget(
                   videoPath: video,
                 ),
+                SizedBox(height: verticalSpacing/2),
               ],
             ),
           ),

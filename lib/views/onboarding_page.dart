@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 class OnboardingPage extends StatelessWidget {
@@ -32,21 +33,25 @@ class OnboardingPage extends StatelessWidget {
               width: 250,
               fit: BoxFit.cover,
             ),
+
+
             if (title != null)
               Padding(
-                padding:  EdgeInsets.fromLTRB(0, verticalSpacing, 0, 20),
+                padding:  EdgeInsets.fromLTRB(0, verticalSpacing/2, 0, 20),
                 child: title!,
               ),
             if (description != null)
               Text(
                 description!,
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF3D4853),
+                style: GoogleFonts.roboto(
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w100,
+                  fontSize: 18,
+                  color: const Color(0xFF3D4853),
                 ),
               ),
+
           ],
         ),
       ),

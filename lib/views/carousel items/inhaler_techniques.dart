@@ -6,6 +6,12 @@ class InhalerTechniquesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+
+    final double horizontalPadding = screenWidth * 0.05;
+
+    final double verticalSpacing = screenHeight * 0.12;
     return Scaffold(
       // Changed transparent to the light aesthetic lavender/blue background from your previous screens
       backgroundColor: const Color(0xffd8d6ea),
@@ -72,6 +78,7 @@ class InhalerTechniquesPage extends StatelessWidget {
               ],
               video: 'assets/videos/nebulizer.mp4',
             ),
+             SizedBox(height: verticalSpacing/2),
           ],
         ),
       ),

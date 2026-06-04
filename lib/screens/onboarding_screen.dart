@@ -59,20 +59,36 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       OnboardingPage(
                         animationUrl:
                             'https://lottie.host/5cf639ad-7a01-4c6d-94e3-76c986dd6e9c/jFLyI97OUg.json',
-                        title: Row(mainAxisAlignment: MainAxisAlignment.center,children:[Text('Welcome to', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold,  color: Color(0xFF3D4853) )),SizedBox(width: 10,) , Text('PuffPal', style: GoogleFonts.rubikBubbles(fontSize: 40, fontWeight: FontWeight.w600, color: Color(
-                            0xFF1E6097)),)]),
-                        description: 'description',
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'Welcome to',
+                              style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold, color: Color(0xFF3D4853)),
+                            ),
+                            const SizedBox(width: 8),
+                            Flexible(
+                              child: Text(
+                                'PuffPal',
+                                style: GoogleFonts.rubikBubbles(fontSize: 32, fontWeight: FontWeight.w600, color: const Color(0xFF1E6097)),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                        description: 'Your pocket-sized asthma helper.',
                       ),
                       OnboardingPage(
                         animationUrl:
                             'https://lottie.host/5cf639ad-7a01-4c6d-94e3-76c986dd6e9c/jFLyI97OUg.json',
-                        title: Text('title!',
+                        title: Text('Asthma care made simple!',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: 35,
+                                fontSize: 25,
                                 fontWeight: FontWeight.bold,
                                 color: Color(0xFF3D4853))),
-                        description: 'description',
+                        description: 'Track symptoms, learn helpful tips, and breathe with confidence.',
                       ),
                       OnboardingPage(
                         animationUrl:
@@ -130,7 +146,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         style: TextStyle(color: Colors.white, fontSize: 24),
                       ),
                     ),
-                    SizedBox(height: 200.0),
+                    SizedBox(height: verticalSpacing*1.25),
             ]),
                     SmoothPageIndicator(
                       controller: _pageController,

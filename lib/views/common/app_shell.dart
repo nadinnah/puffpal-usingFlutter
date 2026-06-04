@@ -31,6 +31,13 @@ class _AppShellState extends State<AppShell> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+
+    final double titleSize = screenWidth * 0.08;       // ~28px on standard 400w screens
+    final double subtitleSize = screenWidth * 0.055;  // ~22px
+    final double bodySize = screenWidth * 0.035;
+    final double buttonSize = screenWidth * 0.15;
+
     return Scaffold(
       backgroundColor:Color(0xFFA8ABCA) ,
       extendBodyBehindAppBar: true,
@@ -52,7 +59,7 @@ class _AppShellState extends State<AppShell> {
             child: Text(
               'PuffPal',
               style: GoogleFonts.rubikBubbles(
-                fontSize: 30,
+                fontSize: titleSize,
                 fontWeight: FontWeight.w600,
                 color: Color(0xFF1E6097),
               ),
@@ -64,24 +71,36 @@ class _AppShellState extends State<AppShell> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5),
             child: SizedBox(
-              width: 60,
+              width: buttonSize,
               child: DropdownButtonFormField<String>(
-                icon: Padding(
-                  padding: const EdgeInsets.only(top: 2.0),
-                  child: const Icon(Icons.language, color: Colors.black),
+                icon: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.language, color: Colors.black),
+                  ],
                 ),
-                style: const TextStyle(fontSize: 16, color: Colors.black),
+                style: TextStyle(fontSize: bodySize, color: Colors.black),
                 // Smaller font for AppBar
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10),
                   border: InputBorder.none,
                   enabledBorder: InputBorder.none,
                   focusedBorder: InputBorder.none,
                 ),
-                value: Localizations.localeOf(context).languageCode,
+                initialValue: Localizations.localeOf(context).languageCode,
                 items: [
-                  const DropdownMenuItem(value: 'en', child: Text('EN')),
-                  const DropdownMenuItem(value: 'ar', child: Text('AR')),
+                  const DropdownMenuItem(value: 'en', child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('EN'),
+                    ],
+                  )),
+                  const DropdownMenuItem(value: 'ar', child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('AR'),
+                    ],
+                  )),
                 ],
                 onChanged: (String? newValue) {
                   if (newValue != null) {

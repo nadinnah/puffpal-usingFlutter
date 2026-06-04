@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class FlipCardWidget extends StatefulWidget {
   final String frontText;
@@ -81,6 +82,9 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
   Widget buildFrontCard() {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double verticalSpacing = screenHeight * 0.25;
+    final double titleSize = screenHeight * 0.07;       // ~28px on standard 400w screens
+    final double subtitleSize = screenHeight * 0.055;  // ~22px
+    final double bodySize = screenHeight * 0.035;
 
     return Container(
       width: double.infinity,
@@ -99,8 +103,11 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
       alignment: Alignment.center,
       child: Text(
         widget.frontText,
-        style: TextStyle(
-          fontSize: 30,
+        textAlign: TextAlign.center,
+        style: GoogleFonts.roboto(
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.w100,
+          fontSize: bodySize,
           color: Color(0xff1e1b1b),
         ),
       ),
@@ -112,6 +119,9 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
     final double verticalSpacing = screenHeight * 0.25;
     final double screenWidth = MediaQuery.of(context).size.width;
     final double horizontalPadding = screenWidth * 0.09;
+    final double titleSize = screenWidth * 0.07;       // ~28px on standard 400w screens
+    final double subtitleSize = screenWidth * 0.055;  // ~22px
+    final double bodySize = screenWidth * 0.035;
 
     return Container(
       width: double.infinity,
@@ -134,7 +144,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
           widget.backText,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 20,
+            fontSize: bodySize,
             fontWeight: FontWeight.bold,
             color: Color(0xff454545),
           ),
