@@ -62,7 +62,7 @@ class _SplashPageState extends State<SplashPage> {
       backgroundColor: const Color(0xffd8d6ea),
       body: Center(
         child: Image.asset(
-          'assets/images/app_icon.png',
+          'assets/images/puffpalIcon.png',
         ),
       ),
     );

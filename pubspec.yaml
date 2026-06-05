@@ -81,21 +81,21 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/images/puffpalIcon.png"
+  image_path: "assets/images/puffpal.png"
   adaptive_icon_background: "#FFFFFF"
-  adaptive_icon_foreground: "assets/images/puffpalIcon.png"
+  adaptive_icon_foreground: "assets/images/puffpal.png"
 
 flutter_native_splash:
   # This matches your const Color(0xffd8d6ea)
   color: "#D9DBEF"
 
   # Path to your app icon image
-  image: assets/images/puffpal.png
+  image: assets/images/puffpalIcon.png
 
   # Keeps the splash screen full screen on newer Android devices
   android_12:
     color: "#D9DBEF"
-    image: assets/images/puffpal.png
+    image: assets/images/puffpalIcon.png
 
 
 
