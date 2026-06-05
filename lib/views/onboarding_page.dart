@@ -20,8 +20,11 @@ class OnboardingPage extends StatelessWidget {
     final double screenHeight = MediaQuery.of(context).size.height;
 
     final double horizontalPadding = screenWidth * 0.05;
-
     final double verticalSpacing = screenHeight * 0.1;
+
+    // Check if current system directionality is Right-to-Left (like Arabic)
+    final bool isRtl = Directionality.of(context) == TextDirection.rtl;
+
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.fromLTRB(horizontalPadding, verticalSpacing, horizontalPadding, 0),
@@ -34,24 +37,29 @@ class OnboardingPage extends StatelessWidget {
               fit: BoxFit.cover,
             ),
 
-
             if (title != null)
               Padding(
-                padding:  EdgeInsets.fromLTRB(0, verticalSpacing/2, 0, 20),
+                padding: EdgeInsets.fromLTRB(0, verticalSpacing / 2, 0, 20),
                 child: title!,
               ),
+
             if (description != null)
               Text(
                 description!,
                 textAlign: TextAlign.center,
-                style: GoogleFonts.roboto(
+                style: isRtl
+                    ? GoogleFonts.cairo(
+                  fontWeight: FontWeight.w400, // Cairo handles Arabic perfectly at normal weight
+                  fontSize: 18,
+                  color: const Color(0xFF3D4853),
+                )
+                    : GoogleFonts.roboto(
                   fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w100,
+                  fontWeight: FontWeight.w300, // Light text readability optimized
                   fontSize: 18,
                   color: const Color(0xFF3D4853),
                 ),
               ),
-
           ],
         ),
       ),

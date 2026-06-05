@@ -64,6 +64,8 @@ dependencies:
   video_player: ^2.11.1
   syncfusion_flutter_pdfviewer: ^33.2.10
   printing: ^5.14.3
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.7
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +77,27 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/puffpalIcon.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/puffpalIcon.png"
+
+flutter_native_splash:
+  # This matches your const Color(0xffd8d6ea)
+  color: "#D9DBEF"
+
+  # Path to your app icon image
+  image: assets/images/puffpal.png
+
+  # Keeps the splash screen full screen on newer Android devices
+  android_12:
+    color: "#D9DBEF"
+    image: assets/images/puffpal.png
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:puffpal/l10n/app_localizations.dart';
 import '../services/firestore_service.dart';
 
 class LoginPage extends StatefulWidget {
@@ -26,11 +27,11 @@ class _LoginPageState extends State<LoginPage> {
       fillColor: Colors.white60,
       hintText: hint,
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.white),
+        borderSide: const BorderSide(color: Colors.white),
         borderRadius: BorderRadius.circular(12),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Color(0xFF1E6097)),
+        borderSide: const BorderSide(color: Color(0xFF1E6097)),
         borderRadius: BorderRadius.circular(12),
       ),
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
@@ -39,8 +40,10 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
@@ -65,41 +68,42 @@ class _LoginPageState extends State<LoginPage> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      SizedBox(height: 80),
+                      const SizedBox(height: 80),
                       Text(
-                        "PuffPal Login",
+                        localizations.loginTitle,
                         style: GoogleFonts.rubikBubbles(
                           fontSize: 35,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFF1E6097),
+                          color: const Color(0xFF1E6097),
                         ),
                       ),
-                      SizedBox(height: 80),
-          
+                      const SizedBox(height: 80),
+
                       TextFormField(
-                        key: Key('custom_email_field'),
+                        key: const Key('custom_email_field'),
                         controller: emailController,
                         validator: (value) {
-                          if (value == null || value.isEmpty)
-                            return 'Email is required';
-                          if (!value.contains('@') || !value.contains('.'))
-                            return 'Invalid email';
+                          if (value == null || value.isEmpty) {
+                            return localizations.emailRequired;
+                          }
+                          if (!value.contains('@') || !value.contains('.')) {
+                            return localizations.invalidEmail;
+                          }
                           return null;
                         },
-                        decoration: fieldDecoration('Email', Icons.email),
+                        decoration: fieldDecoration(localizations.emailHint, Icons.email),
                       ),
-          
-                      SizedBox(height: 20),
-          
+
+                      const SizedBox(height: 20),
+
                       /// PASSWORD
                       TextFormField(
-                        key: Key('custom_password_field'),
+                        key: const Key('custom_password_field'),
                         controller: passwordController,
                         obscureText: !isVisible,
                         validator: (value) =>
-                        value!.isEmpty ? 'Password is required' : null,
-                        decoration: fieldDecoration('Password', Icons.lock)
-                            .copyWith(
+                        value!.isEmpty ? localizations.passwordRequired : null,
+                        decoration: fieldDecoration(localizations.passwordHint, Icons.lock).copyWith(
                           suffixIcon: IconButton(
                             icon: Icon(
                               isVisible
@@ -111,27 +115,27 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-          
-                      SizedBox(height: 60),
-          
+
+                      const SizedBox(height: 60),
+
                       /// LOGIN BUTTON
                       ElevatedButton(
-                        key: Key('login_button'),
+                        key: const Key('login_button'),
                         onPressed: () async {
                           try {
                             String email = emailController.text.trim();
                             String password = passwordController.text.trim();
-          
+
                             if (formKey.currentState!.validate()) {
                               bool status =
                               await firebaseServices.signIn(email, password);
-          
+
                               if (status) {
+                                if (!mounted) return;
                                 Navigator.pushReplacementNamed(
                                     context, '/appshell');
                               } else {
-                                throw Exception(
-                                    'Login failed: Invalid credentials');
+                                throw Exception(localizations.loginFailedException);
                               }
                             }
                           } catch (e) {
@@ -145,35 +149,35 @@ class _LoginPageState extends State<LoginPage> {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF1E6097),
+                          backgroundColor: const Color(0xFF1E6097),
                           foregroundColor: Colors.white,
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 50, vertical: 15),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12)),
                         ),
-                        child: Text('Login', style: TextStyle(fontSize: 18)),
+                        child: Text(localizations.loginButton, style: const TextStyle(fontSize: 18)),
                       ),
-          
-                      SizedBox(height: 20),
-          
+
+                      const SizedBox(height: 20),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Don't have an account?"),
+                          Text(localizations.dontHaveAccount),
                           TextButton(
                             onPressed: () =>
                                 Navigator.pushNamed(context, '/signup'),
-                            child: Text("Signup"),
+                            child: Text(localizations.signupButton),
                           ),
                         ],
                       ),
-          
+
                       if (errorMessage.isNotEmpty)
                         Padding(
-                          padding: EdgeInsets.only(top: 8),
+                          padding: const EdgeInsets.only(top: 8),
                           child: Text(errorMessage,
-                              style: TextStyle(color: Colors.red)),
+                              style: const TextStyle(color: Colors.red)),
                         ),
                     ],
                   ),

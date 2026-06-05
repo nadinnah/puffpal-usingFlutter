@@ -12,6 +12,7 @@ import 'package:puffpal/views/login_page.dart';
 import 'package:puffpal/views/profile_page.dart';
 import 'package:puffpal/views/quizzes_games_page.dart';
 import 'package:puffpal/views/signup_page.dart';
+import 'package:puffpal/widgets/splash.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:puffpal/controllers/language_controller.dart'; // Pointing to controllers folder
@@ -90,7 +91,7 @@ class App extends StatelessWidget {
         '/appshell': (context) => AppShell(),
         '/onboarding': (context) => OnboardingScreen(),
       },
-      home: initScreen ? AppShell() : OnboardingScreen(),
+      home: const SplashPage(),
     );
   }
 }

@@ -1792,13 +1792,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get inhalerPageHeaderDesc =>
-      'Select your device type to review the correct step-by-step administration methods.';
+      'Select your specific inhaler device type to review the correct step-by-step application technique and instructional training videos.';
 
   @override
-  String get mdiTitle => 'MDI Inhaler';
+  String get mdiTitle => 'Metered-Dose Inhaler (MDI)';
 
   @override
-  String get mdiSubtitle => 'Metered Dose Inhaler';
+  String get mdiSubtitle => 'Press and breathe slowly';
+
+  @override
+  String get mdiExample1 => 'Ventolin Evohaler';
+
+  @override
+  String get mdiExample2 => 'Vental Inhaler';
+
+  @override
+  String get mdiExample3 => 'Seretide Evohaler';
 
   @override
   String get mdiStep1 => 'Shake the inhaler.';
@@ -1827,7 +1836,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get spacerTitle => 'MDI with Spacer';
 
   @override
-  String get spacerSubtitle => 'Inhaler with holding chamber';
+  String get spacerSubtitle => 'Uses a chamber for easier breathing';
+
+  @override
+  String get spacerExample1 => 'Ventolin + AeroChamber Spacer';
+
+  @override
+  String get spacerExample2 => 'Seretide Evohaler + Spacer';
+
+  @override
+  String get spacerExample3 => 'Floxitide Evohaler + Spacer';
 
   @override
   String get spacerStep1 => 'Shake inhaler and attach it to the spacer.';
@@ -1854,7 +1872,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nebulizerTitle => 'Nebulizer';
 
   @override
-  String get nebulizerSubtitle => 'Liquid mist delivery machine';
+  String get nebulizerSubtitle => 'Converts liquid medicine into a mist';
+
+  @override
+  String get nebulizerExample1 => 'Ventolin Nebules';
+
+  @override
+  String get nebulizerExample2 => 'Atrovent Nebules';
+
+  @override
+  String get nebulizerExample3 => 'Pulmicort Respules';
 
   @override
   String get nebulizerStep1 => 'Wash your hands.';
@@ -1875,4 +1902,256 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get nebulizerStep6 =>
       'Turn off the machine and clean the equipment after use.';
+
+  @override
+  String get dpiTitle => 'Dry Powder Inhaler (DPI)';
+
+  @override
+  String get dpiSubtitle => 'Breath-activated dry powder';
+
+  @override
+  String get dpiExample1 => 'Seretide Diskus';
+
+  @override
+  String get dpiExample2 => 'Ventolin Diskus';
+
+  @override
+  String get dpiExample3 => 'Inhalex';
+
+  @override
+  String get dpiStep1 => 'Load the dose.';
+
+  @override
+  String get dpiStep2 => 'Breathe out away from device.';
+
+  @override
+  String get dpiStep3 => 'Seal lips around mouthpiece.';
+
+  @override
+  String get dpiStep4 => 'Breathe in fast and deep.';
+
+  @override
+  String get dpiStep5 => 'Hold breath for 10 seconds.';
+
+  @override
+  String get dpiStep6 => 'Breathe out slowly.';
+
+  @override
+  String get pfmTitle => 'Peak Flow Meter (PFM)';
+
+  @override
+  String get pfmSubtitle => 'Measures your lung air flow capacity';
+
+  @override
+  String get pfmExample1 => 'Mini Wright Peak Flow Meter';
+
+  @override
+  String get pfmExample2 => 'Microlife PF100 Peak Flow Meter';
+
+  @override
+  String get pfmStep1 => 'Stand up straight.';
+
+  @override
+  String get pfmStep2 => 'Move marker to zero.';
+
+  @override
+  String get pfmStep3 => 'Take a deep breath.';
+
+  @override
+  String get pfmStep4 => 'Blow out hard and fast.';
+
+  @override
+  String get pfmStep5 => 'Repeat 3 times.';
+
+  @override
+  String get pfmStep6 => 'Record the highest reading.';
+
+  @override
+  String get respimatTitle => 'Respimat';
+
+  @override
+  String get respimatSubtitle => 'Generates a slow-moving soft mist';
+
+  @override
+  String get respimatExample1 => 'Spiriva Respimat';
+
+  @override
+  String get respimatExample2 => 'Combivent Respimat';
+
+  @override
+  String get respimatStep1 => 'Turn the base until it clicks.';
+
+  @override
+  String get respimatStep2 => 'Open the cap.';
+
+  @override
+  String get respimatStep3 => 'Breathe out slowly.';
+
+  @override
+  String get respimatStep4 =>
+      'Press button while breathing in slowly and deeply.';
+
+  @override
+  String get respimatStep5 => 'Hold breath for 10 seconds.';
+
+  @override
+  String get spacerMaskTitle => 'Spacer and Mask';
+
+  @override
+  String get spacerMaskSubtitle => 'Ideal for infants and young children';
+
+  @override
+  String get spacerMaskExample1 => 'AeroChamber+ Mask';
+
+  @override
+  String get spacerMaskExample2 => 'BabyHaler Spacer';
+
+  @override
+  String get spacerMaskExample3 => 'Volumatic Spacer';
+
+  @override
+  String get spacerMaskStep1 => 'Shake inhaler well.';
+
+  @override
+  String get spacerMaskStep2 => 'Attach inhaler to spacer.';
+
+  @override
+  String get spacerMaskStep3 => 'Place mask tightly on face.';
+
+  @override
+  String get spacerMaskStep4 => 'Press one puff.';
+
+  @override
+  String get spacerMaskStep5 => 'Let patient breathe normally 5–6 breaths.';
+
+  @override
+  String get spacerMaskStep6 => 'Repeat if needed.';
+
+  @override
+  String get turbuhalerTitle => 'Turbuhaler';
+
+  @override
+  String get turbuhalerSubtitle => 'Inhale strongly and deeply';
+
+  @override
+  String get turbuhalerExample1 => 'Symbicort Turbuhaler';
+
+  @override
+  String get turbuhalerExample2 => 'Bricanyl Turbuhaler';
+
+  @override
+  String get turbuhalerStep1 => 'Unscrew and remove cap.';
+
+  @override
+  String get turbuhalerStep2 => 'Twist grip forward and back until click.';
+
+  @override
+  String get turbuhalerStep3 => 'Breathe out away from inhaler.';
+
+  @override
+  String get turbuhalerStep4 => 'Breathe in strongly and deeply.';
+
+  @override
+  String get turbuhalerStep5 => 'Hold breath for 10 seconds.';
+
+  @override
+  String get turbuhalerStep6 => 'Replace cap.';
+
+  @override
+  String get loginTitle => 'PuffPal Login';
+
+  @override
+  String get signupTitle => 'Sign Up';
+
+  @override
+  String get emailHint => 'Email';
+
+  @override
+  String get passwordHint => 'Password';
+
+  @override
+  String get nameHint => 'Name';
+
+  @override
+  String get phoneHint => 'Phone Number';
+
+  @override
+  String get ageHint => 'Age';
+
+  @override
+  String get genderHint => 'Gender';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Female';
+
+  @override
+  String get loginButton => 'Login';
+
+  @override
+  String get signupButton => 'Sign Up';
+
+  @override
+  String get dontHaveAccount => 'Don\'t have an account? ';
+
+  @override
+  String get alreadyHaveAccount => 'Already have an account? ';
+
+  @override
+  String get emailRequired => 'Email is required';
+
+  @override
+  String get invalidEmail => 'Invalid email format';
+
+  @override
+  String get passwordRequired => 'Password is required';
+
+  @override
+  String get passwordTooShort => 'Minimum 6 characters';
+
+  @override
+  String get nameRequired => 'Name is required';
+
+  @override
+  String get phoneRequired => 'Phone number is required';
+
+  @override
+  String get phoneInvalidLength => 'Phone number must be exactly 11 digits';
+
+  @override
+  String get ageRequired => 'Please enter your age';
+
+  @override
+  String get ageInvalid => 'Enter a valid age (1-120)';
+
+  @override
+  String get genderRequired => 'Please select your gender';
+
+  @override
+  String get loginFailedException => 'Login failed: Invalid credentials';
+
+  @override
+  String get signupSuccessAlert => 'Sign-up successful! Please login.';
+
+  @override
+  String get welcomeTo => 'Welcome to';
+
+  @override
+  String get pocketAsthmaHelper => 'Your pocket-sized asthma helper.';
+
+  @override
+  String get asthmaCareSimple => 'Asthma care made simple!';
+
+  @override
+  String get asthmaCareDesc =>
+      'Track symptoms, learn helpful tips, and breathe with confidence.';
+
+  @override
+  String get onboardingDoneTitle => 'Ready to breathe easier?';
+
+  @override
+  String get onboardingDoneDesc =>
+      'Join PuffPal today and gain control over your asthma journey.';
 }

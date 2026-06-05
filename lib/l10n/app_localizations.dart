@@ -3437,20 +3437,38 @@ abstract class AppLocalizations {
   /// No description provided for @inhalerPageHeaderDesc.
   ///
   /// In en, this message translates to:
-  /// **'Select your device type to review the correct step-by-step administration methods.'**
+  /// **'Select your specific inhaler device type to review the correct step-by-step application technique and instructional training videos.'**
   String get inhalerPageHeaderDesc;
 
   /// No description provided for @mdiTitle.
   ///
   /// In en, this message translates to:
-  /// **'MDI Inhaler'**
+  /// **'Metered-Dose Inhaler (MDI)'**
   String get mdiTitle;
 
   /// No description provided for @mdiSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Metered Dose Inhaler'**
+  /// **'Press and breathe slowly'**
   String get mdiSubtitle;
+
+  /// No description provided for @mdiExample1.
+  ///
+  /// In en, this message translates to:
+  /// **'Ventolin Evohaler'**
+  String get mdiExample1;
+
+  /// No description provided for @mdiExample2.
+  ///
+  /// In en, this message translates to:
+  /// **'Vental Inhaler'**
+  String get mdiExample2;
+
+  /// No description provided for @mdiExample3.
+  ///
+  /// In en, this message translates to:
+  /// **'Seretide Evohaler'**
+  String get mdiExample3;
 
   /// No description provided for @mdiStep1.
   ///
@@ -3503,8 +3521,26 @@ abstract class AppLocalizations {
   /// No description provided for @spacerSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Inhaler with holding chamber'**
+  /// **'Uses a chamber for easier breathing'**
   String get spacerSubtitle;
+
+  /// No description provided for @spacerExample1.
+  ///
+  /// In en, this message translates to:
+  /// **'Ventolin + AeroChamber Spacer'**
+  String get spacerExample1;
+
+  /// No description provided for @spacerExample2.
+  ///
+  /// In en, this message translates to:
+  /// **'Seretide Evohaler + Spacer'**
+  String get spacerExample2;
+
+  /// No description provided for @spacerExample3.
+  ///
+  /// In en, this message translates to:
+  /// **'Floxitide Evohaler + Spacer'**
+  String get spacerExample3;
 
   /// No description provided for @spacerStep1.
   ///
@@ -3557,8 +3593,26 @@ abstract class AppLocalizations {
   /// No description provided for @nebulizerSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Liquid mist delivery machine'**
+  /// **'Converts liquid medicine into a mist'**
   String get nebulizerSubtitle;
+
+  /// No description provided for @nebulizerExample1.
+  ///
+  /// In en, this message translates to:
+  /// **'Ventolin Nebules'**
+  String get nebulizerExample1;
+
+  /// No description provided for @nebulizerExample2.
+  ///
+  /// In en, this message translates to:
+  /// **'Atrovent Nebules'**
+  String get nebulizerExample2;
+
+  /// No description provided for @nebulizerExample3.
+  ///
+  /// In en, this message translates to:
+  /// **'Pulmicort Respules'**
+  String get nebulizerExample3;
 
   /// No description provided for @nebulizerStep1.
   ///
@@ -3595,6 +3649,504 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Turn off the machine and clean the equipment after use.'**
   String get nebulizerStep6;
+
+  /// No description provided for @dpiTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Dry Powder Inhaler (DPI)'**
+  String get dpiTitle;
+
+  /// No description provided for @dpiSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Breath-activated dry powder'**
+  String get dpiSubtitle;
+
+  /// No description provided for @dpiExample1.
+  ///
+  /// In en, this message translates to:
+  /// **'Seretide Diskus'**
+  String get dpiExample1;
+
+  /// No description provided for @dpiExample2.
+  ///
+  /// In en, this message translates to:
+  /// **'Ventolin Diskus'**
+  String get dpiExample2;
+
+  /// No description provided for @dpiExample3.
+  ///
+  /// In en, this message translates to:
+  /// **'Inhalex'**
+  String get dpiExample3;
+
+  /// No description provided for @dpiStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Load the dose.'**
+  String get dpiStep1;
+
+  /// No description provided for @dpiStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe out away from device.'**
+  String get dpiStep2;
+
+  /// No description provided for @dpiStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Seal lips around mouthpiece.'**
+  String get dpiStep3;
+
+  /// No description provided for @dpiStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe in fast and deep.'**
+  String get dpiStep4;
+
+  /// No description provided for @dpiStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold breath for 10 seconds.'**
+  String get dpiStep5;
+
+  /// No description provided for @dpiStep6.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe out slowly.'**
+  String get dpiStep6;
+
+  /// No description provided for @pfmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Peak Flow Meter (PFM)'**
+  String get pfmTitle;
+
+  /// No description provided for @pfmSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Measures your lung air flow capacity'**
+  String get pfmSubtitle;
+
+  /// No description provided for @pfmExample1.
+  ///
+  /// In en, this message translates to:
+  /// **'Mini Wright Peak Flow Meter'**
+  String get pfmExample1;
+
+  /// No description provided for @pfmExample2.
+  ///
+  /// In en, this message translates to:
+  /// **'Microlife PF100 Peak Flow Meter'**
+  String get pfmExample2;
+
+  /// No description provided for @pfmStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Stand up straight.'**
+  String get pfmStep1;
+
+  /// No description provided for @pfmStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Move marker to zero.'**
+  String get pfmStep2;
+
+  /// No description provided for @pfmStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a deep breath.'**
+  String get pfmStep3;
+
+  /// No description provided for @pfmStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Blow out hard and fast.'**
+  String get pfmStep4;
+
+  /// No description provided for @pfmStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat 3 times.'**
+  String get pfmStep5;
+
+  /// No description provided for @pfmStep6.
+  ///
+  /// In en, this message translates to:
+  /// **'Record the highest reading.'**
+  String get pfmStep6;
+
+  /// No description provided for @respimatTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Respimat'**
+  String get respimatTitle;
+
+  /// No description provided for @respimatSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Generates a slow-moving soft mist'**
+  String get respimatSubtitle;
+
+  /// No description provided for @respimatExample1.
+  ///
+  /// In en, this message translates to:
+  /// **'Spiriva Respimat'**
+  String get respimatExample1;
+
+  /// No description provided for @respimatExample2.
+  ///
+  /// In en, this message translates to:
+  /// **'Combivent Respimat'**
+  String get respimatExample2;
+
+  /// No description provided for @respimatStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn the base until it clicks.'**
+  String get respimatStep1;
+
+  /// No description provided for @respimatStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Open the cap.'**
+  String get respimatStep2;
+
+  /// No description provided for @respimatStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe out slowly.'**
+  String get respimatStep3;
+
+  /// No description provided for @respimatStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Press button while breathing in slowly and deeply.'**
+  String get respimatStep4;
+
+  /// No description provided for @respimatStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold breath for 10 seconds.'**
+  String get respimatStep5;
+
+  /// No description provided for @spacerMaskTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spacer and Mask'**
+  String get spacerMaskTitle;
+
+  /// No description provided for @spacerMaskSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ideal for infants and young children'**
+  String get spacerMaskSubtitle;
+
+  /// No description provided for @spacerMaskExample1.
+  ///
+  /// In en, this message translates to:
+  /// **'AeroChamber+ Mask'**
+  String get spacerMaskExample1;
+
+  /// No description provided for @spacerMaskExample2.
+  ///
+  /// In en, this message translates to:
+  /// **'BabyHaler Spacer'**
+  String get spacerMaskExample2;
+
+  /// No description provided for @spacerMaskExample3.
+  ///
+  /// In en, this message translates to:
+  /// **'Volumatic Spacer'**
+  String get spacerMaskExample3;
+
+  /// No description provided for @spacerMaskStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Shake inhaler well.'**
+  String get spacerMaskStep1;
+
+  /// No description provided for @spacerMaskStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Attach inhaler to spacer.'**
+  String get spacerMaskStep2;
+
+  /// No description provided for @spacerMaskStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Place mask tightly on face.'**
+  String get spacerMaskStep3;
+
+  /// No description provided for @spacerMaskStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Press one puff.'**
+  String get spacerMaskStep4;
+
+  /// No description provided for @spacerMaskStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'Let patient breathe normally 5–6 breaths.'**
+  String get spacerMaskStep5;
+
+  /// No description provided for @spacerMaskStep6.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat if needed.'**
+  String get spacerMaskStep6;
+
+  /// No description provided for @turbuhalerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Turbuhaler'**
+  String get turbuhalerTitle;
+
+  /// No description provided for @turbuhalerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inhale strongly and deeply'**
+  String get turbuhalerSubtitle;
+
+  /// No description provided for @turbuhalerExample1.
+  ///
+  /// In en, this message translates to:
+  /// **'Symbicort Turbuhaler'**
+  String get turbuhalerExample1;
+
+  /// No description provided for @turbuhalerExample2.
+  ///
+  /// In en, this message translates to:
+  /// **'Bricanyl Turbuhaler'**
+  String get turbuhalerExample2;
+
+  /// No description provided for @turbuhalerStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Unscrew and remove cap.'**
+  String get turbuhalerStep1;
+
+  /// No description provided for @turbuhalerStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Twist grip forward and back until click.'**
+  String get turbuhalerStep2;
+
+  /// No description provided for @turbuhalerStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe out away from inhaler.'**
+  String get turbuhalerStep3;
+
+  /// No description provided for @turbuhalerStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe in strongly and deeply.'**
+  String get turbuhalerStep4;
+
+  /// No description provided for @turbuhalerStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold breath for 10 seconds.'**
+  String get turbuhalerStep5;
+
+  /// No description provided for @turbuhalerStep6.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace cap.'**
+  String get turbuhalerStep6;
+
+  /// No description provided for @loginTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'PuffPal Login'**
+  String get loginTitle;
+
+  /// No description provided for @signupTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Up'**
+  String get signupTitle;
+
+  /// No description provided for @emailHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get emailHint;
+
+  /// No description provided for @passwordHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get passwordHint;
+
+  /// No description provided for @nameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get nameHint;
+
+  /// No description provided for @phoneHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Number'**
+  String get phoneHint;
+
+  /// No description provided for @ageHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Age'**
+  String get ageHint;
+
+  /// No description provided for @genderHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Gender'**
+  String get genderHint;
+
+  /// No description provided for @male.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get male;
+
+  /// No description provided for @female.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get female;
+
+  /// No description provided for @loginButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get loginButton;
+
+  /// No description provided for @signupButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Up'**
+  String get signupButton;
+
+  /// No description provided for @dontHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Don\'t have an account? '**
+  String get dontHaveAccount;
+
+  /// No description provided for @alreadyHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account? '**
+  String get alreadyHaveAccount;
+
+  /// No description provided for @emailRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get emailRequired;
+
+  /// No description provided for @invalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email format'**
+  String get invalidEmail;
+
+  /// No description provided for @passwordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get passwordRequired;
+
+  /// No description provided for @passwordTooShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Minimum 6 characters'**
+  String get passwordTooShort;
+
+  /// No description provided for @nameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Name is required'**
+  String get nameRequired;
+
+  /// No description provided for @phoneRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number is required'**
+  String get phoneRequired;
+
+  /// No description provided for @phoneInvalidLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone number must be exactly 11 digits'**
+  String get phoneInvalidLength;
+
+  /// No description provided for @ageRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter your age'**
+  String get ageRequired;
+
+  /// No description provided for @ageInvalid.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid age (1-120)'**
+  String get ageInvalid;
+
+  /// No description provided for @genderRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select your gender'**
+  String get genderRequired;
+
+  /// No description provided for @loginFailedException.
+  ///
+  /// In en, this message translates to:
+  /// **'Login failed: Invalid credentials'**
+  String get loginFailedException;
+
+  /// No description provided for @signupSuccessAlert.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign-up successful! Please login.'**
+  String get signupSuccessAlert;
+
+  /// No description provided for @welcomeTo.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to'**
+  String get welcomeTo;
+
+  /// No description provided for @pocketAsthmaHelper.
+  ///
+  /// In en, this message translates to:
+  /// **'Your pocket-sized asthma helper.'**
+  String get pocketAsthmaHelper;
+
+  /// No description provided for @asthmaCareSimple.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma care made simple!'**
+  String get asthmaCareSimple;
+
+  /// No description provided for @asthmaCareDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Track symptoms, learn helpful tips, and breathe with confidence.'**
+  String get asthmaCareDesc;
+
+  /// No description provided for @onboardingDoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ready to breathe easier?'**
+  String get onboardingDoneTitle;
+
+  /// No description provided for @onboardingDoneDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Join PuffPal today and gain control over your asthma journey.'**
+  String get onboardingDoneDesc;
 }
 
 class _AppLocalizationsDelegate

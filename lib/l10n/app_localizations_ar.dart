@@ -1794,6 +1794,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get mdiSubtitle => 'بخاخ دفعات دوائية محددة';
 
   @override
+  String get mdiExample1 => 'Ventolin Evohaler';
+
+  @override
+  String get mdiExample2 => 'Vental Inhaler';
+
+  @override
+  String get mdiExample3 => 'Seretide Evohaler';
+
+  @override
   String get mdiStep1 => 'رج البخاخ جيدًا.';
 
   @override
@@ -1820,6 +1829,15 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get spacerSubtitle => 'بخاخ متصل بحجرة احتجاز الدواء';
+
+  @override
+  String get spacerExample1 => 'Ventolin + AeroChamber Spacer';
+
+  @override
+  String get spacerExample2 => 'Seretide Evohaler + Spacer';
+
+  @override
+  String get spacerExample3 => 'Floxitide Evohaler + Spacer';
 
   @override
   String get spacerStep1 => 'رج البخاخ جيدًا ثم قم بتركيبه في الأنبوب المباعد.';
@@ -1851,6 +1869,15 @@ class AppLocalizationsAr extends AppLocalizations {
   String get nebulizerSubtitle => 'جهاز تحويل الدواء السائل إلى رذاذ مستنشق';
 
   @override
+  String get nebulizerExample1 => 'Ventolin Nebules';
+
+  @override
+  String get nebulizerExample2 => 'Atrovent Nebules';
+
+  @override
+  String get nebulizerExample3 => 'Pulmicort Respules';
+
+  @override
   String get nebulizerStep1 => 'اغسل يديك جيدًا.';
 
   @override
@@ -1869,4 +1896,258 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get nebulizerStep6 =>
       'أوقف تشغيل الجهاز ونظّف المعدات جيدًا بعد الاستخدام.';
+
+  @override
+  String get dpiTitle => 'بخاخ مسحوق الجفاف (DPI)';
+
+  @override
+  String get dpiSubtitle => 'بودرة جافة يتم تفعيلها عبر الشهيق';
+
+  @override
+  String get dpiExample1 => 'Seretide Diskus';
+
+  @override
+  String get dpiExample2 => 'Ventolin Diskus';
+
+  @override
+  String get dpiExample3 => 'Inhalex';
+
+  @override
+  String get dpiStep1 => 'قم بتحضير وتجهيز الجرعة في الجهاز.';
+
+  @override
+  String get dpiStep2 => 'أخرج زفيراً كاملاً بعيداً عن الجهاز.';
+
+  @override
+  String get dpiStep3 => 'أحكم إغلاق شفتيك حول قطعة الفم.';
+
+  @override
+  String get dpiStep4 => 'استنشق بسرعة وبعمق.';
+
+  @override
+  String get dpiStep5 => 'اكتم نفسك لمدة 10 ثوانٍ.';
+
+  @override
+  String get dpiStep6 => 'أخرج الزفير ببطء.';
+
+  @override
+  String get pfmTitle => 'جهاز قياس ذروة التدفق (PFM)';
+
+  @override
+  String get pfmSubtitle => 'يقيس سعة تدفق الهواء من الرئتين';
+
+  @override
+  String get pfmExample1 => 'Mini Wright Peak Flow Meter';
+
+  @override
+  String get pfmExample2 => 'Microlife PF100 Peak Flow Meter';
+
+  @override
+  String get pfmStep1 => 'قف بشكل مستقيم.';
+
+  @override
+  String get pfmStep2 => 'حرك المؤشر ليعود إلى رقم الصفر.';
+
+  @override
+  String get pfmStep3 => 'خذ نفساً عميقاً جداً.';
+
+  @override
+  String get pfmStep4 => 'انفخ في الجهاز بأقوى وأسرع ما يمكنك.';
+
+  @override
+  String get pfmStep5 => 'كرر العملية 3 مرات.';
+
+  @override
+  String get pfmStep6 => 'سجل أعلى قراءة تظهر لك.';
+
+  @override
+  String get respimatTitle => 'بخاخ ريسبيمات (Respimat)';
+
+  @override
+  String get respimatSubtitle => 'يولد رذاذاً ناعماً وبطيء الحركة';
+
+  @override
+  String get respimatExample1 => 'Spiriva Respimat';
+
+  @override
+  String get respimatExample2 => 'Combivent Respimat';
+
+  @override
+  String get respimatStep1 => 'أدر القاعدة حتى تسمع صوت طقة (نقرة).';
+
+  @override
+  String get respimatStep2 => 'افتح الغطاء.';
+
+  @override
+  String get respimatStep3 => 'أخرج زفيراً ببطء.';
+
+  @override
+  String get respimatStep4 => 'اضغط على الزر أثناء استنشاق الهواء ببطء وبعمق.';
+
+  @override
+  String get respimatStep5 => 'اكتم نفسك لمدة 10 ثوانٍ.';
+
+  @override
+  String get spacerMaskTitle => 'الأنبوب المباعد مع القناع';
+
+  @override
+  String get spacerMaskSubtitle => 'مثالي للرضع والأطفال الصغار';
+
+  @override
+  String get spacerMaskExample1 => 'AeroChamber+ Mask';
+
+  @override
+  String get spacerMaskExample2 => 'BabyHaler Spacer';
+
+  @override
+  String get spacerMaskExample3 => 'Volumatic Spacer';
+
+  @override
+  String get spacerMaskStep1 => 'رج البخاخ جيداً.';
+
+  @override
+  String get spacerMaskStep2 => 'قم بتركيب البخاخ في الأنبوب المباعد.';
+
+  @override
+  String get spacerMaskStep3 =>
+      'ضع القناع بإحكام على وجه المريض (تأكد من تغطية الفم والأنف).';
+
+  @override
+  String get spacerMaskStep4 => 'اضغط بخة واحدة.';
+
+  @override
+  String get spacerMaskStep5 => 'دع المريض يتنفس بشكل طبيعي من 5 إلى 6 أنفاس.';
+
+  @override
+  String get spacerMaskStep6 => 'كرر الخطوات عند الحاجة لبخة أخرى.';
+
+  @override
+  String get turbuhalerTitle => 'بخاخ تربوهيلر (Turbuhaler)';
+
+  @override
+  String get turbuhalerSubtitle => 'استنشق بقوة وبعمق';
+
+  @override
+  String get turbuhalerExample1 => 'Symbicort Turbuhaler';
+
+  @override
+  String get turbuhalerExample2 => 'Bricanyl Turbuhaler';
+
+  @override
+  String get turbuhalerStep1 => 'قم بفك الغطاء وإزالته.';
+
+  @override
+  String get turbuhalerStep2 =>
+      'أدر القاعدة الدوارة للأمام ثم للخلف حتى تسمع صوت طقة.';
+
+  @override
+  String get turbuhalerStep3 => 'أخرج زفيراً كاملاً بعيداً عن البخاخ.';
+
+  @override
+  String get turbuhalerStep4 => 'استنشق الهواء عبر الجهاز بقوة وبعمق.';
+
+  @override
+  String get turbuhalerStep5 => 'اكتم نفسك لمدة 10 ثوانٍ.';
+
+  @override
+  String get turbuhalerStep6 => 'أعد تركيب الغطاء ومكانه ثانياً.';
+
+  @override
+  String get loginTitle => 'تسجيل دخول PuffPal';
+
+  @override
+  String get signupTitle => 'إنشاء حساب';
+
+  @override
+  String get emailHint => 'البريد الإلكتروني';
+
+  @override
+  String get passwordHint => 'كلمة المرور';
+
+  @override
+  String get nameHint => 'الاسم الكامل';
+
+  @override
+  String get phoneHint => 'رقم الهاتف';
+
+  @override
+  String get ageHint => 'العمر';
+
+  @override
+  String get genderHint => 'الجنس';
+
+  @override
+  String get male => 'ذكر';
+
+  @override
+  String get female => 'أنثى';
+
+  @override
+  String get loginButton => 'تسجيل الدخول';
+
+  @override
+  String get signupButton => 'إنشاء الحساب';
+
+  @override
+  String get dontHaveAccount => 'ليس لديك حساب؟ ';
+
+  @override
+  String get alreadyHaveAccount => 'لديك حساب بالفعل؟ ';
+
+  @override
+  String get emailRequired => 'البريد الإلكتروني مطلوب';
+
+  @override
+  String get invalidEmail => 'صيغة البريد الإلكتروني غير صحيحة';
+
+  @override
+  String get passwordRequired => 'كلمة المرور مطلوبة';
+
+  @override
+  String get passwordTooShort => 'يجب ألا تقل عن 6 أحرف';
+
+  @override
+  String get nameRequired => 'الاسم مطلوب';
+
+  @override
+  String get phoneRequired => 'رقم الهاتف مطلوب';
+
+  @override
+  String get phoneInvalidLength => 'يجب أن يتكون رقم الهاتف من 11 رقماً';
+
+  @override
+  String get ageRequired => 'يرجى إدخال عمرك';
+
+  @override
+  String get ageInvalid => 'يرجى إدخال عمر صحيح (1-120)';
+
+  @override
+  String get genderRequired => 'يرجى اختيار الجنس';
+
+  @override
+  String get loginFailedException =>
+      'فشل تسجيل الدخول: بيانات الاعتماد غير صحيحة';
+
+  @override
+  String get signupSuccessAlert => 'تم إنشاء الحساب بنجاح! يرجى تسجيل الدخول.';
+
+  @override
+  String get welcomeTo => 'مرحباً بك في';
+
+  @override
+  String get pocketAsthmaHelper => 'مساعد الربو الخاص بك في جيبك.';
+
+  @override
+  String get asthmaCareSimple => 'رعاية الربو أصبحت بسيطة!';
+
+  @override
+  String get asthmaCareDesc =>
+      'تتبع الأعراض، وتعلم نصائح مفيدة، وتنفس بثقة تامة.';
+
+  @override
+  String get onboardingDoneTitle => 'مستعد للتنفس بشكل أسهل؟';
+
+  @override
+  String get onboardingDoneDesc =>
+      'انضم إلى PuffPal اليوم وتحكّم في رحلتك الصحية بشكل أفضل.';
 }

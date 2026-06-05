@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:puffpal/l10n/app_localizations.dart';
 import '../services/firestore_service.dart';
 import 'login_page.dart';
 
 class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
+
   @override
-  _SignupPageState createState() => _SignupPageState();
+  State<SignupPage> createState() => _SignupPageState();
 }
 
 class _SignupPageState extends State<SignupPage> {
@@ -40,11 +43,11 @@ class _SignupPageState extends State<SignupPage> {
       fillColor: Colors.white60,
       hintText: hint,
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.white),
+        borderSide: const BorderSide(color: Colors.white),
         borderRadius: BorderRadius.circular(12),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: Color(0xFF1E6097)),
+        borderSide: const BorderSide(color: Color(0xFF1E6097)),
         borderRadius: BorderRadius.circular(12),
       ),
       border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
@@ -53,8 +56,10 @@ class _SignupPageState extends State<SignupPage> {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
+
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
@@ -70,17 +75,20 @@ class _SignupPageState extends State<SignupPage> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          title: Text('Sign Up',style: GoogleFonts.rubikBubbles(
-            fontSize: 30,
-            fontWeight: FontWeight.w600,
-            color: Color(0xFF1E6097),
+          title: Text(
+            localizations.signupTitle,
+            style: GoogleFonts.rubikBubbles(
+              fontSize: 30,
+              fontWeight: FontWeight.w600,
+              color: const Color(0xFF1E6097),
+            ),
           ),
-        )),
+        ),
         body: SafeArea(
           top: false,
           bottom: true,
           child: Padding(
-            padding: EdgeInsets.fromLTRB(30, 50, 30, 0),
+            padding: const EdgeInsets.fromLTRB(30, 50, 30, 0),
             child: Form(
               key: formKey,
               child: SingleChildScrollView(
@@ -89,81 +97,90 @@ class _SignupPageState extends State<SignupPage> {
                     // NAME
                     TextFormField(
                       controller: nameController,
-                      decoration: fieldDecoration('Name', Icons.person),
+                      decoration: fieldDecoration(localizations.nameHint, Icons.person),
                       validator: (value) =>
-                      value!.isEmpty ? 'Name is required' : null,
+                      value!.isEmpty ? localizations.nameRequired : null,
                     ),
-                    SizedBox(height: 20),
-          
+                    const SizedBox(height: 20),
+
                     // PHONE
                     TextFormField(
                       controller: phoneController,
-                      decoration:
-                      fieldDecoration('Phone Number', Icons.phone),
+                      decoration: fieldDecoration(localizations.phoneHint, Icons.phone),
                       keyboardType: TextInputType.phone,
                       validator: (value) {
-                        if (value == null || value.isEmpty)
-                          return 'Phone number is required';
-                        if (value.length != 11)
-                          return 'Phone number must be exactly 11 digits';
+                        if (value == null || value.isEmpty) {
+                          return localizations.phoneRequired;
+                        }
+                        if (value.length != 11) {
+                          return localizations.phoneInvalidLength;
+                        }
                         return null;
                       },
                     ),
-                    SizedBox(height: 20),
-          
+                    const SizedBox(height: 20),
+
                     // AGE
                     TextFormField(
                       controller: ageController,
                       keyboardType: TextInputType.number,
-                      decoration: fieldDecoration('Age', Icons.cake),
+                      decoration: fieldDecoration(localizations.ageHint, Icons.cake),
                       validator: (value) {
-                        if (value == null || value.isEmpty)
-                          return 'Please enter your age';
+                        if (value == null || value.isEmpty) {
+                          return localizations.ageRequired;
+                        }
                         final int? age = int.tryParse(value);
-                        if (age == null || age <= 0 || age > 120)
-                          return 'Enter a valid age (1-120)';
+                        if (age == null || age <= 0 || age > 120) {
+                          return localizations.ageInvalid;
+                        }
                         return null;
                       },
                     ),
-                    SizedBox(height: 20),
-          
+                    const SizedBox(height: 20),
+
                     // GENDER
                     DropdownButtonFormField<String>(
-                      decoration: fieldDecoration('Gender', Icons.person_2),
+                      decoration: fieldDecoration(localizations.genderHint, Icons.person_2),
                       value: _selectedGender,
-                      items: ['Male', 'Female'].map((String gender) {
-                        return DropdownMenuItem(
-                          value: gender,
-                          child: Text(gender),
-                        );
-                      }).toList(),
+                      items: [
+                        DropdownMenuItem(
+                          value: 'Male',
+                          child: Text(localizations.male),
+                        ),
+                        DropdownMenuItem(
+                          value: 'Female',
+                          child: Text(localizations.female),
+                        ),
+                      ],
                       onChanged: (value) => setState(() {
                         _selectedGender = value;
                       }),
                       validator: (value) =>
-                      value == null ? 'Please select your gender' : null,
+                      value == null ? localizations.genderRequired : null,
                     ),
-                    SizedBox(height: 20),
-          
+                    const SizedBox(height: 20),
+
                     // EMAIL
                     TextFormField(
                       controller: emailController,
-                      decoration: fieldDecoration('Email', Icons.email),
+                      decoration: fieldDecoration(localizations.emailHint, Icons.email),
                       validator: (value) {
-                        if (value == null || value.isEmpty)
-                          return 'Email is required';
-                        if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                            .hasMatch(value)) return 'Invalid email format';
+                        if (value == null || value.isEmpty) {
+                          return localizations.emailRequired;
+                        }
+                        if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                          return localizations.invalidEmail;
+                        }
                         return null;
                       },
                     ),
-                    SizedBox(height: 20),
-          
+                    const SizedBox(height: 20),
+
                     // PASSWORD
                     TextFormField(
                       controller: passwordController,
                       obscureText: !isVisible,
-                      decoration: fieldDecoration('Password', Icons.lock).copyWith(
+                      decoration: fieldDecoration(localizations.passwordHint, Icons.lock).copyWith(
                         suffixIcon: IconButton(
                           icon: Icon(
                             isVisible
@@ -175,10 +192,10 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                       ),
                       validator: (value) =>
-                      value!.length < 6 ? 'Minimum 6 characters' : null,
+                      value!.length < 6 ? localizations.passwordTooShort : null,
                     ),
-                    SizedBox(height: 40),
-          
+                    const SizedBox(height: 40),
+
                     // SIGNUP BUTTON
                     ElevatedButton(
                       onPressed: () async {
@@ -192,18 +209,19 @@ class _SignupPageState extends State<SignupPage> {
                               int.parse(ageController.text.trim()),
                               _selectedGender!,
                             );
-          
+
                             if (result) {
+                              if (!mounted) return;
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content: Text('Sign-up successful! Please login.'),
+                                  content: Text(localizations.signupSuccessAlert),
                                   backgroundColor: Colors.green,
                                 ),
                               );
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => LoginPage()),
+                                    builder: (context) => const LoginPage()),
                               );
                             }
                           } catch (e) {
@@ -212,33 +230,33 @@ class _SignupPageState extends State<SignupPage> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF1E6097),
+                        backgroundColor: const Color(0xFF1E6097),
                         foregroundColor: Colors.white,
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                             horizontal: 50, vertical: 15),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(12)),
                       ),
-                      child: Text('Sign Up', style: TextStyle(fontSize: 18)),
+                      child: Text(localizations.signupButton, style: const TextStyle(fontSize: 18)),
                     ),
-          
-                    SizedBox(height: 15),
-          
+
+                    const SizedBox(height: 15),
+
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Already have an account?"),
+                        Text(localizations.alreadyHaveAccount),
                         TextButton(
                           onPressed: () {
                             Navigator.pushReplacementNamed(context, '/login');
                           },
-                          child: Text("Login"),
+                          child: Text(localizations.loginButton),
                         ),
                       ],
                     ),
-          
+
                     if (errorMessage.isNotEmpty)
-                      Text(errorMessage, style: TextStyle(color: Colors.red)),
+                      Text(errorMessage, style: const TextStyle(color: Colors.red)),
                   ],
                 ),
               ),

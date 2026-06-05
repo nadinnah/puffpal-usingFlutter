@@ -75,10 +75,10 @@ class _VideoPlayerWidgetState extends State<VideoPlayerWidget> {
             setState(() {});
           },
           icon: Icon(
-            controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+            controller.value.isPlaying ? Icons.pause : Icons.play_arrow, color: Colors.black,
           ),
           label: Text(
-            controller.value.isPlaying ? "Pause" : "Play",
+            controller.value.isPlaying ? "Pause" : "Play", style: TextStyle(color: Colors.black),
           ),
         ),
       ],

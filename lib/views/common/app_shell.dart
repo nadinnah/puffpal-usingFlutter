@@ -128,22 +128,29 @@ class _AppShellState extends State<AppShell> {
           ),
         ],
       ),
-      bottomNavigationBar: Theme(
-        // This prevents the background of the nav bar from fighting with the Scaffold
+      bottomNavigationBar:Theme(
+        // Force the canvas underneath to be transparent so the curves render properly
         data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
-        child: SafeArea(
-          top: false,
-          child: CurvedNavigationBar(
-            animationDuration: Duration(milliseconds: 300),
-            items: items,
-            index: index,
-            height: 60,
-            color: Color(0xffd7d2e7),
-            backgroundColor: Colors.transparent,
-            buttonBackgroundColor: Color(0xffd7d2e7),
-            onTap: (selectedIndex) =>
-                setState(() => this.index = selectedIndex),
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min, // Essential to keep the bar tightly packed at the bottom
+          children: [
+            CurvedNavigationBar(
+              animationDuration: const Duration(milliseconds: 300),
+              items: items,
+              index: index,
+              height: 60,
+              color: const Color(0xffd7d2e7),
+              backgroundColor: Colors.transparent, // Keeps the upper curve transparent
+              buttonBackgroundColor: const Color(0xffd7d2e7),
+              onTap: (selectedIndex) =>
+                  setState(() => this.index = selectedIndex),
+            ),
+            // This safely fills only the hardware gesture safe area underneath the flat line
+            Container(
+              color: const Color(0xffd7d2e7),
+              height: MediaQuery.of(context).padding.bottom,
+            ),
+          ],
         ),
       ),
       body: Stack(

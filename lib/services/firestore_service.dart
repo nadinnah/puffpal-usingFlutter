@@ -1,28 +1,26 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:shared_preferences/shared_preferences.dart'; // ADDED THIS IMPORT
 import 'package:puffpal/services/sqlite_service.dart';
 
 import 'firebase_api.dart';
 import 'location_service.dart';
 
-class FirebaseServices{
+class FirebaseServices {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   LocalDatabase localDb = LocalDatabase();
   FirebaseAuth auth = FirebaseAuth.instance;
 
   Future<void> updateFirebaseUserFieldByEmail(String email, Map<String, dynamic> fieldsToUpdate) async {
-
     try {
       await firestore.collection('Users').doc(auth.currentUser!.uid).update(fieldsToUpdate);
-
-
     } catch (e) {
       throw Exception("Failed to update user field(s) in Firebase.");
     }
   }
 
-  //Signs in a user with email and password
+  // Signs in a user with email and password
   Future<bool> signIn(String emailAddress, String password) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -37,11 +35,11 @@ class FirebaseServices{
       if (userDoc.exists) {
         Map<String, dynamic> data = userDoc.data() as Map<String, dynamic>;
 
-        // 2. Sync to Local Database so ProfilePage can find it
+        // Sync to Local Database so ProfilePage can find it
         await localDb.insertUser({
           'name': data['name'],
           'email': data['email'],
-          'password': password, // Note: You don't have the original pw in Firestore
+          'password': password,
           'number': data['phone'],
           'age': data['age'],
           'gender': data['gender'],
@@ -60,6 +58,11 @@ class FirebaseServices{
       } catch (e) {
         print('Error updating user location: $e');
       }
+
+      /// ─── ADDED: SAVE SIGN-IN STATE ───
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool("isLoggedIn", true);
+
       return true;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -72,10 +75,9 @@ class FirebaseServices{
       print(e);
       return false;
     }
-
   }
 
-  //Signs up a new user with email, password, name, and phone.
+  // Signs up a new user with email, password, name, and phone.
   Future<bool> signUp(String emailAddress, String password, String name, String phone, int age, String gender) async {
     try {
       final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -113,9 +115,12 @@ class FirebaseServices{
       } catch (e) {
         print('Failed to get user location: $e');
       }
+
+      /// ─── ADDED: SAVE SIGN-UP STATE ───
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool("isLoggedIn", true);
+
       return true;
-
-
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -127,13 +132,17 @@ class FirebaseServices{
       print(e);
       return false;
     }
-
   }
 
-  //Signs out the currently logged-in user.
+  // Signs out the currently logged-in user.
   Future<void> signOut() async {
     try {
       await FirebaseAuth.instance.signOut();
+
+      /// ─── ADDED: CLEAR LOGIN STATE ON LOGOUT ───
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setBool("isLoggedIn", false);
+
     } catch (e) {
       throw Exception('Failed to sign out.');
     }
