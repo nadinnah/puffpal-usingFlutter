@@ -79,9 +79,48 @@
   "controllerDescription": "Used every day to prevent attacks.",
 
   "quickReminder": "Quick Reminder",
+  "medicationRemindersTitle": "Medication Reminders",
+  "medicationRemindersSubtitle": "Set the start time and how often to repeat for each medicine.",
+  "maxMedicationsError": "Maximum 5 medications allowed",
+  "enterMedicineLabel": "Enter Medicine {index}",
+  "@enterMedicineLabel": {
+    "placeholders": {
+      "index": { "type": "int" }
+    }
+  },
+  "firstDose": "First Dose",
+  "everyIntervalLabel": "Every",
+  "hoursValue": "{hours} hrs",
+  "@hoursValue": {
+    "placeholders": {
+      "hours": { "type": "int" }
+    }
+  },
+  "addAnotherMedication": "Add Another Medication",
+  "fillAllDetailsError": "Please fill all details.",
+  "remindersSavedMessage": "Reminders saved and active!",
+  "setTimersButton": "Set Timers",
+  "activeRemindersTitle": "Active Reminders",
+  "noActiveReminders": "No active reminders.",
+  "reminderRemovedMessage": "{name} reminder removed",
+  "@reminderRemovedMessage": {
+    "placeholders": {
+      "name": { "type": "String" }
+    }
+  },
+  "undoAction": "Undo",
+  "reminderRestoredMessage": "Reminder restored",
+  "reminderSubtitleInfo": "Started at {time} • Every {hours}h",
+  "@reminderSubtitleInfo": {
+    "placeholders": {
+      "time": { "type": "String" },
+      "hours": { "type": "int" }
+    }
+  },
 
   "reminderText": "Feeling well? Take your Controller as prescribed.\n\nStarting to cough, wheeze, or feel tight-chested?\nUse your Reliever and follow your asthma action plan.",
-
+  "pdfTitle": "Asthma Action Plan",
+  "openPdf": "Open PDF",
 
   "quizCompleted": "Quiz Completed!",
   "scoreMessage": "Your score is {score} out of {total}",
@@ -89,6 +128,25 @@
     "placeholders": {
       "score": {"type": "int"},
       "total": {"type": "int"}
+    }
+  },
+  "numberOfQuestions": "{count} questions",
+  "@numberOfQuestions": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "quizScoreDisplay": "Score: {score}/{total}",
+  "@quizScoreDisplay": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
     }
   },
 

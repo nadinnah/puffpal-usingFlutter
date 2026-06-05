@@ -211,11 +211,27 @@ class AppLocalizationsAr extends AppLocalizations {
       'تشعر أنك بخير؟ استخدم بخاخ التحكم حسب وصف الطبيب.\n\nبدأت بالسعال أو الصفير أو ضيق الصدر؟\nاستخدم بخاخ الإنقاذ واتبع خطة التحكم بالربو.';
 
   @override
+  String get pdfTitle => 'خطة العمل الخاصة بالربو';
+
+  @override
+  String get openPdf => 'افتح الملف';
+
+  @override
   String get quizCompleted => 'اكتمل الاختبار!';
 
   @override
   String scoreMessage(int score, int total) {
     return 'درجتك هي $score من أصل $total';
+  }
+
+  @override
+  String numberOfQuestions(int count) {
+    return '$count أسئلة';
+  }
+
+  @override
+  String quizScoreDisplay(int score, int total) {
+    return 'النتيجة: $score/$total';
   }
 
   @override

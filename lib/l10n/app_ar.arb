@@ -79,13 +79,34 @@
   "controllerDescription": "يُستخدم يومياً للوقاية من النوبات.",
 
   "quickReminder": "تذكير سريع",
+  "medicationRemindersTitle": "تذكيرات الأدوية",
+  "medicationRemindersSubtitle": "حدد وقت الجرعة الأولى ومعدل التكرار لكل دواء.",
+  "maxMedicationsError": "مسموح بحد أقصى 5 أدوية فقط",
+  "enterMedicineLabel": "أدخل اسم الدواء {index}",
+  "firstDose": "الجرعة الأولى",
+  "everyIntervalLabel": "كل",
+  "hoursValue": "{hours} ساعات",
+  "addAnotherMedication": "إضافة دواء آخر",
+  "fillAllDetailsError": "يرجى ملء جميع البيانات.",
+  "remindersSavedMessage": "تم حفظ التذكيرات وتفعيلها!",
+  "setTimersButton": "ضبط التذكيرات",
+  "activeRemindersTitle": "التذكيرات النشطة",
+  "noActiveReminders": "لا توجد تذكيرات نشطة حالياً.",
+  "reminderRemovedMessage": "تم حذف تذكير {name}",
+  "undoAction": "تراجع",
+  "reminderRestoredMessage": "تمت استعادة التذكير",
+  "reminderSubtitleInfo": "بدأ في {time} • كل {hours} ساعات",
 
   "reminderText": "تشعر أنك بخير؟ استخدم بخاخ التحكم حسب وصف الطبيب.\n\nبدأت بالسعال أو الصفير أو ضيق الصدر؟\nاستخدم بخاخ الإنقاذ واتبع خطة التحكم بالربو.",
-
+  "pdfTitle": "خطة العمل الخاصة بالربو",
+  "openPdf": "افتح الملف",
 
   "quizzesTitle": "الاختبارات والألعاب",
   "quizCompleted": "اكتمل الاختبار!",
   "scoreMessage": "درجتك هي {score} من أصل {total}",
+  "numberOfQuestions": "{count} أسئلة",
+  "quizScoreDisplay": "النتيجة: {score}/{total}",
+
 
   "quiz1Title": "مغامرة أساسيات الربو",
   "q1_1": "أي جزء من الجسم يؤثر عليه الربو؟",

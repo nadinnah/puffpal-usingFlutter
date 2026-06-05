@@ -1,37 +1,33 @@
-import 'package:puffpal/models/question.dart';
-
-import 'package:flutter/material.dart';
-// lib/data/quizzes_data.dart
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../models/question.dart';
 import '../models/quiz.dart';
 
 class Quiz {
+  final String id; // 👈 1. Added stable ID field
   // A function that returns the localized title string when given a context
   final String Function(BuildContext) getLocalizedTitle;
   final String image;
   final List<Question> questions;
 
   Quiz({
+    required this.id, // 👈 2. Added to constructor parameters
     required this.getLocalizedTitle,
     required this.image,
     required this.questions,
   });
 
   String getNoOfQuestions(BuildContext context) {
-    // This allows you to easily replace 'questions' with an .arb translation key later
-    return '${questions.length} questions';
+    return AppLocalizations.of(context)!.numberOfQuestions(questions.length);
   }
 }
-
-
 
 List<Quiz> quizzes = [
   // ==========================================
   // QUIZ 1: Asthma Basics Adventure
   // ==========================================
   Quiz(
+    id: 'quiz_asthma_basics', // 👈 3. Passed unique ID
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quiz1Title,
     image: 'assets/images/inhaler3.png',
     questions: [
@@ -132,6 +128,7 @@ List<Quiz> quizzes = [
   // QUIZ 2: Asthma Hero Challenge
   // ==========================================
   Quiz(
+    id: 'quiz_asthma_hero', // 👈 3. Passed unique ID
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quiz2Title,
     image: 'assets/images/trialAsthma.png',
     questions: [
@@ -232,6 +229,7 @@ List<Quiz> quizzes = [
   // QUIZ 3: Doctor Visit or Not?
   // ==========================================
   Quiz(
+    id: 'quiz_doctor_visit', // 👈 3. Passed unique ID
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quiz3Title,
     image: 'assets/images/doctorVisit.png',
     questions: [
@@ -332,6 +330,7 @@ List<Quiz> quizzes = [
   // QUIZ 4: Emergency or Not?
   // ==========================================
   Quiz(
+    id: 'quiz_emergency', // 👈 3. Passed unique ID
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quiz4Title,
     image: 'assets/images/emergency.png',
     questions: [

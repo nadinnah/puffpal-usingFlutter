@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import '../l10n/app_localizations.dart'; // 👈 Imported for dialog string localization
+import '../l10n/app_localizations.dart';
 import '../models/quiz.dart';
 import '../services/quiz_progress_service.dart';
 
@@ -21,25 +21,21 @@ class _QuestionsPageState extends State<QuestionsPage> {
   bool answered = false;
 
   List<String> currentShuffledOptions = [];
-  List<String> rawCorrectAnswersReference = []; // 👈 Keeps track of localized answer indexes safely
+  List<String> rawCorrectAnswersReference = [];
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // Safely load and localize question options when widget receives context
     loadQuestionOptions();
   }
 
   void loadQuestionOptions() {
     final currentQuestion = widget.quiz.questions[currentQuestionIndex];
-    // Fetch the baseline ordered list (Index 0 is always correct)
     rawCorrectAnswersReference = currentQuestion.getLocalizedAnswers(context);
-    // Shuffle the answers using the method built inside the updated Question model
     currentShuffledOptions = currentQuestion.getShuffledAnswers(context);
   }
 
   void _showDialogue() {
-    // Dynamically localized messages for the score dialog
     final String titleText = AppLocalizations.of(context)!.quizCompleted;
     final String bodyText = AppLocalizations.of(context)!.scoreMessage(score, widget.quiz.questions.length);
 
@@ -81,18 +77,18 @@ class _QuestionsPageState extends State<QuestionsPage> {
   }
 
   void _showScoreDialog(BuildContext context) async {
-    // Localize the key string passed to the persistent storage service
-    final String quizProgressTitle = widget.quiz.getLocalizedTitle(context);
-    await QuizProgressService.setScore(quizProgressTitle, score);
+    // 🟢 FIXED: Changed from widget.quiz.image to widget.quiz.id
+    // This makes sure it saves to the exact ID key QuizzesGamesPage is looking for!
+    final String quizUniqueKey = widget.quiz.id;
+
+    await QuizProgressService.setScore(quizUniqueKey, score);
     _showDialogue();
   }
 
   @override
   Widget build(BuildContext context) {
     final currentQuizQuestion = widget.quiz.questions[currentQuestionIndex];
-    final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-
     final double verticalSpacing = screenHeight * 0.12;
 
     return Scaffold(
@@ -124,27 +120,23 @@ class _QuestionsPageState extends State<QuestionsPage> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
-                child: Hero(
-                  tag: widget.quiz.image,
-                  child: Center(
-                    child: Image.asset(
-                      widget.quiz.image,
-                      height: 250,
-                      width: 250,
-                    ),
+                child: Center(
+                  child: Image.asset(
+                    widget.quiz.image,
+                    height: 250,
+                    width: 250,
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Text(
-                  currentQuizQuestion.getLocalizedText(context), // 👈 Dynamic translated Question Text
+                  currentQuizQuestion.getLocalizedText(context),
                   style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
               ),
               ...currentShuffledOptions.map((option) {
-                // Index 0 of the original raw array is always the correct answer
                 final bool isCorrect = option == rawCorrectAnswersReference[0];
                 final bool isSelected = option == selectedAnswer;
 
@@ -168,14 +160,13 @@ class _QuestionsPageState extends State<QuestionsPage> {
                       if (isCorrect) score++;
                     });
 
-                    // Next question after 1 sec
                     Future.delayed(const Duration(seconds: 1), () {
                       if (currentQuestionIndex + 1 < widget.quiz.questions.length) {
                         setState(() {
                           currentQuestionIndex++;
                           answered = false;
                           selectedAnswer = null;
-                          loadQuestionOptions(); // 👈 Updates strings and shuffles next question set
+                          loadQuestionOptions();
                         });
                       } else {
                         _showScoreDialog(context);
@@ -199,7 +190,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                   ),
                 );
               }).toList(),
-              SizedBox(height: verticalSpacing/2,)
+              SizedBox(height: verticalSpacing / 2)
             ],
           ),
         ),

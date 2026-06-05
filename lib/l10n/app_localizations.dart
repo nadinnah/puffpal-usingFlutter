@@ -488,6 +488,18 @@ abstract class AppLocalizations {
   /// **'Feeling well? Take your Controller as prescribed.\n\nStarting to cough, wheeze, or feel tight-chested?\nUse your Reliever and follow your asthma action plan.'**
   String get reminderText;
 
+  /// No description provided for @pdfTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma Action Plan'**
+  String get pdfTitle;
+
+  /// No description provided for @openPdf.
+  ///
+  /// In en, this message translates to:
+  /// **'Open PDF'**
+  String get openPdf;
+
   /// No description provided for @quizCompleted.
   ///
   /// In en, this message translates to:
@@ -499,6 +511,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your score is {score} out of {total}'**
   String scoreMessage(int score, int total);
+
+  /// No description provided for @numberOfQuestions.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} questions'**
+  String numberOfQuestions(int count);
+
+  /// No description provided for @quizScoreDisplay.
+  ///
+  /// In en, this message translates to:
+  /// **'Score: {score}/{total}'**
+  String quizScoreDisplay(int score, int total);
 
   /// No description provided for @quiz1Title.
   ///

@@ -211,11 +211,27 @@ class AppLocalizationsEn extends AppLocalizations {
       'Feeling well? Take your Controller as prescribed.\n\nStarting to cough, wheeze, or feel tight-chested?\nUse your Reliever and follow your asthma action plan.';
 
   @override
+  String get pdfTitle => 'Asthma Action Plan';
+
+  @override
+  String get openPdf => 'Open PDF';
+
+  @override
   String get quizCompleted => 'Quiz Completed!';
 
   @override
   String scoreMessage(int score, int total) {
     return 'Your score is $score out of $total';
+  }
+
+  @override
+  String numberOfQuestions(int count) {
+    return '$count questions';
+  }
+
+  @override
+  String quizScoreDisplay(int score, int total) {
+    return 'Score: $score/$total';
   }
 
   @override
