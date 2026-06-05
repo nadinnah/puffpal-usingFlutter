@@ -14,14 +14,14 @@ import 'package:puffpal/views/quizzes_games_page.dart';
 import 'package:puffpal/views/signup_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'controllers/language_controller.dart';
+import 'package:puffpal/controllers/language_controller.dart'; // Pointing to controllers folder
 import 'firebase_options.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:puffpal/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
 
-var kColorScheme = ColorScheme.fromSeed(seedColor: Color(0xFF1E6097));
+var kColorScheme = ColorScheme.fromSeed(seedColor: const Color(0xFF1E6097));
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,18 +36,23 @@ Future<void> main() async {
   final initScreen = prefs.getBool("initScreen") ?? false;
   final notificationsEnabled = prefs.getBool("notificationsEnabled") ?? false;
 
+  // 1. Instantiate the controller.
+  // It will automatically trigger _loadSavedLocale() in the background via its constructor.
+  final languageController = LanguageController();
+
   await FirebaseApi().initNotification();
   final notificationService = LocalNotificationService();
   await notificationService.init();
   await notificationService.requestPermissions();
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((
-    fn,
-  ) {
+      fn,
+      ) {
     runApp(
       MultiProvider(
         providers: [
-          ChangeNotifierProvider(create: (_) => LanguageController()),
+          // Use .value to provide the pre-created instance running the storage loading logic
+          ChangeNotifierProvider.value(value: languageController),
           ChangeNotifierProvider(create: (_) => UserProvider()),
         ],
         child: App(initScreen: initScreen),
@@ -63,10 +68,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
-
     final languageController = context.watch<LanguageController>();
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'PuffPal',
@@ -87,10 +90,7 @@ class App extends StatelessWidget {
         '/appshell': (context) => AppShell(),
         '/onboarding': (context) => OnboardingScreen(),
       },
-      //home: initScreen ? LoginPage() : OnboardingScreen());
       home: initScreen ? AppShell() : OnboardingScreen(),
     );
-    //home: OnboardingScreen());
-    //home: initScreen ? const AppShell() : const OnboardingScreen(),
   }
 }

@@ -1681,4 +1681,192 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get i2_10_d => 'الانتظار من 30 إلى 60 ثانية قبل التنفس';
+
+  @override
+  String get eduTriggersHeaderDesc =>
+      'يعد الابتعاد عن العوامل البيئية التي تهيج الرئتين أمرًا أساسيًا للتحكم في الربو وإدارته.';
+
+  @override
+  String get eduReferralHeaderDesc =>
+      'تابع الأعراض بدقة. تعرّف على علامات التحذير الواضحة للحفاظ على التحكم السليم بالربو.';
+
+  @override
+  String get eduSecAirborneIrritants => 'المهيجات المحمولة جوًا';
+
+  @override
+  String get eduTriggerSmoke =>
+      'تجنب التعرض للدخان (السجائر، الشيشة، التدخين الإلكتروني، وروائح الاحتراق)';
+
+  @override
+  String get eduTriggerAllergens =>
+      'ابتعد عن الغبار، حبوب اللقاح، العفن، ووبر الحيوانات الأليفة إذا كانت تزيد الأعراض سوءًا';
+
+  @override
+  String get eduTriggerChemicals =>
+      'تجنب العطور القوية، بخاخات التنظيف، والأبخرة الكيميائية';
+
+  @override
+  String get eduSecHomeEnv => 'المنزل والبيئة';
+
+  @override
+  String get eduTriggerVentilation =>
+      'حافظ على نظافة المنزل وتهويته جيدًا لتقليل مسببات الحساسية';
+
+  @override
+  String get eduTriggerBedCovers =>
+      'استخدم أغطية للمرتبة والوسائد لتقليل عث الغبار';
+
+  @override
+  String get eduTriggerColdAir =>
+      'الهواء البارد يمكن أن يحفز الربو — قم بتغطية الأنف والفم في الطقس البارد';
+
+  @override
+  String get eduSecMedicalLifestyle => 'الصحة ونمط الحياة';
+
+  @override
+  String get eduTriggerInfections =>
+      'التهابات الجهاز التنفسي (الإنفلونزا/البرد) تزيد الربو سوءًا — اغسل يديك بانتظام واحصل على لقاح الإنفلونزا';
+
+  @override
+  String get eduTriggerExercise =>
+      'قد تثير الرياضة الأعراض — استخدم البخاخ الموصوف قبل التمرين إذا أوصى الطبيب بذلك';
+
+  @override
+  String get eduTriggerMeds =>
+      'تجنب أدوية معينة قد تحفز الأعراض: الأسبرين، مضادات الالتهاب غير الستيرويدية (مثل الإيبوبروفين)، أو بعض حاصرات بيتا';
+
+  @override
+  String get eduTriggerStress =>
+      'التوتر العاطفي والقلق يمكن أن يزيدا نوبات الربو سوءًا';
+
+  @override
+  String get eduSecConsultDoctor => 'استشر طبيبك إذا:';
+
+  @override
+  String get eduRefSevereSymptoms => 'أصبحت الأعراض أكثر تكرارًا أو أكثر حدة';
+
+  @override
+  String get eduRefRescueInhalerUsage =>
+      'أصبحت بحاجة لبخاخ الإسعاف أكثر من المعتاد (مثلًا عدة مرات في الأسبوع)';
+
+  @override
+  String get eduRefNightAwakening =>
+      'الاستيقاظ ليلًا بسبب السعال، الأزيز (الصفير)، أو ضيق التنفس';
+
+  @override
+  String get eduRefDiffBreathingWalking =>
+      'صعوبة في التحدث، المشي، أو التنفس بشكل طبيعي';
+
+  @override
+  String get eduRefLowPeakFlow =>
+      'قراءات مقياس التدفق الذروي تنخفض أو تظل منخفضة';
+
+  @override
+  String get eduEmergencyTitle => 'حالة طوارئ — توجه للمستشفى فورًا';
+
+  @override
+  String get eduEmergShortnessBreath =>
+      'ضيق شديد في التنفس أو عدم حدوث تحسن بعد استخدام بخاخ الإسعاف';
+
+  @override
+  String get eduEmergSilentChest =>
+      'الصدر الصامت (سماع حركة هواء ضئيلة جدًا أو معدومة في الرئتين)';
+
+  @override
+  String get eduEmergBlueLipsNails =>
+      'تحول الشفاه أو أظافر الأصابع إلى اللون الأزرق';
+
+  @override
+  String get eduEmergDrowsiness => 'التشوش الذهني، الاضطراب، أو النعاس الشديد';
+
+  @override
+  String get eduEmergWorseningStatus =>
+      'تدهور الأعراض سريعًا على الرغم من تلقي العلاج';
+
+  @override
+  String get inhalerPageHeaderDesc =>
+      'اختر نوع جهازك لمراجعة طريقة الاستخدام الصحيحة خطوة بخطوة.';
+
+  @override
+  String get mdiTitle => 'بخاخ الجرعات المقننة (MDI)';
+
+  @override
+  String get mdiSubtitle => 'بخاخ دفعات دوائية محددة';
+
+  @override
+  String get mdiStep1 => 'رج البخاخ جيدًا.';
+
+  @override
+  String get mdiStep2 => 'أخرج الهواء من الرئتين بالكامل (زفير).';
+
+  @override
+  String get mdiStep3 => 'ضع قطعة الفم في فمك وأغلق شفتيك حولها جيدًا.';
+
+  @override
+  String get mdiStep4 => 'اضغط مرة واحدة واستنشق ببطء وعمق.';
+
+  @override
+  String get mdiStep5 => 'احبس أنفاسك لمدة 10 ثوانٍ.';
+
+  @override
+  String get mdiStep6 => 'أخرج زفيرًا ببطء.';
+
+  @override
+  String get mdiStep7 =>
+      'انتظر من 30 إلى 60 ثانية قبل أخذ بخة ثانية إذا كانت موصوفة لك.';
+
+  @override
+  String get spacerTitle => 'البخاخ مع الأنبوب المباعد';
+
+  @override
+  String get spacerSubtitle => 'بخاخ متصل بحجرة احتجاز الدواء';
+
+  @override
+  String get spacerStep1 => 'رج البخاخ جيدًا ثم قم بتركيبه في الأنبوب المباعد.';
+
+  @override
+  String get spacerStep2 => 'أخرج الهواء من الرئتين بالكامل (زفير).';
+
+  @override
+  String get spacerStep3 => 'ضع قطعة فم الأنبوب المباعد في فمك.';
+
+  @override
+  String get spacerStep4 =>
+      'اضغط على البخاخ مرة واحدة لفتح الجرعة داخل الأنبوب.';
+
+  @override
+  String get spacerStep5 =>
+      'خذ نفسًا عميقًا وبطيئًا أو تنفس من 4 إلى 5 أنفاس طبيعية.';
+
+  @override
+  String get spacerStep6 => 'احبس أنفاسك لمدة 10 ثوانٍ إن أمكن.';
+
+  @override
+  String get spacerStep7 => 'كرر الخطوات إذا كنت بحاجة لبخة أخرى.';
+
+  @override
+  String get nebulizerTitle => 'جهاز الرذاذ (النيبولايزر)';
+
+  @override
+  String get nebulizerSubtitle => 'جهاز تحويل الدواء السائل إلى رذاذ مستنشق';
+
+  @override
+  String get nebulizerStep1 => 'اغسل يديك جيدًا.';
+
+  @override
+  String get nebulizerStep2 => 'ضع الدواء داخل كوب جهاز الرذاذ.';
+
+  @override
+  String get nebulizerStep3 => 'قم بتركيب القناع أو قطعة الفم.';
+
+  @override
+  String get nebulizerStep4 => 'قم بتشغيل الجهاز.';
+
+  @override
+  String get nebulizerStep5 =>
+      'تنفس بشكل طبيعي من خلال الفم حتى يتوقف خروج الرذاذ (حوالي 10 إلى 15 دقيقة).';
+
+  @override
+  String get nebulizerStep6 =>
+      'أوقف تشغيل الجهاز ونظّف المعدات جيدًا بعد الاستخدام.';
 }

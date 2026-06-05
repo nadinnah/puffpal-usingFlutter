@@ -1688,4 +1688,191 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get i2_10_d => 'Wait 30 to 60 seconds before breathing';
+
+  @override
+  String get eduTriggersHeaderDesc =>
+      'Staying away from environmental factors that irritate your lungs is key to managing asthma.';
+
+  @override
+  String get eduReferralHeaderDesc =>
+      'Track symptoms closely. Recognize clear warning points to maintain proper asthma control.';
+
+  @override
+  String get eduSecAirborneIrritants => 'Airborne Irritants';
+
+  @override
+  String get eduTriggerSmoke =>
+      'Avoid smoke exposure (cigarettes, shisha, vaping, burning odors)';
+
+  @override
+  String get eduTriggerAllergens =>
+      'Stay away from dust, pollen, mold, and pet dander if they worsen symptoms';
+
+  @override
+  String get eduTriggerChemicals =>
+      'Avoid strong perfumes, cleaning sprays, and chemical fumes';
+
+  @override
+  String get eduSecHomeEnv => 'Home & Environment';
+
+  @override
+  String get eduTriggerVentilation =>
+      'Keep the home clean and well ventilated to reduce allergens';
+
+  @override
+  String get eduTriggerBedCovers =>
+      'Use mattress and pillow covers to decrease dust mites';
+
+  @override
+  String get eduTriggerColdAir =>
+      'Cold air can trigger asthma — cover nose and mouth in cold weather';
+
+  @override
+  String get eduSecMedicalLifestyle => 'Medical & Lifestyle';
+
+  @override
+  String get eduTriggerInfections =>
+      'Respiratory infections (flu/colds) worsen asthma — wash hands regularly & get flu vaccine';
+
+  @override
+  String get eduTriggerExercise =>
+      'Exercise may trigger symptoms — use prescribed inhaler before exercise if advised';
+
+  @override
+  String get eduTriggerMeds =>
+      'Avoid specific trigger medicines: aspirin, NSAIDs (Ibuprofen), or some beta blockers';
+
+  @override
+  String get eduTriggerStress =>
+      'Emotional stress and anxiety can worsen asthma attacks';
+
+  @override
+  String get eduSecConsultDoctor => 'Consult Your Doctor If:';
+
+  @override
+  String get eduRefSevereSymptoms =>
+      'Symptoms are becoming more frequent or more severe';
+
+  @override
+  String get eduRefRescueInhalerUsage =>
+      'Rescue inhaler is needed more than usual (e.g. several times per week)';
+
+  @override
+  String get eduRefNightAwakening =>
+      'Nighttime awakening due to cough, wheezing, or shortness of breath';
+
+  @override
+  String get eduRefDiffBreathingWalking =>
+      'Difficulty speaking, walking, or breathing normally';
+
+  @override
+  String get eduRefLowPeakFlow =>
+      'Peak flow readings are decreasing or staying low';
+
+  @override
+  String get eduEmergencyTitle => 'EMERGENCY — Refer Immediately';
+
+  @override
+  String get eduEmergShortnessBreath =>
+      'Severe shortness of breath or no improvement after rescue inhaler';
+
+  @override
+  String get eduEmergSilentChest =>
+      'Silent chest (very little air movement heard)';
+
+  @override
+  String get eduEmergBlueLipsNails => 'Lips or fingernails turn blue';
+
+  @override
+  String get eduEmergDrowsiness => 'Confusion or drowsiness';
+
+  @override
+  String get eduEmergWorseningStatus =>
+      'Symptoms rapidly worsen despite treatment';
+
+  @override
+  String get inhalerPageHeaderDesc =>
+      'Select your device type to review the correct step-by-step administration methods.';
+
+  @override
+  String get mdiTitle => 'MDI Inhaler';
+
+  @override
+  String get mdiSubtitle => 'Metered Dose Inhaler';
+
+  @override
+  String get mdiStep1 => 'Shake the inhaler.';
+
+  @override
+  String get mdiStep2 => 'Breathe out fully.';
+
+  @override
+  String get mdiStep3 =>
+      'Place mouthpiece in your mouth and seal lips around it.';
+
+  @override
+  String get mdiStep4 => 'Press once and breathe in slowly and deeply.';
+
+  @override
+  String get mdiStep5 => 'Hold your breath for 10 seconds.';
+
+  @override
+  String get mdiStep6 => 'Breathe out slowly.';
+
+  @override
+  String get mdiStep7 =>
+      'Wait 30–60 seconds before a second puff if prescribed.';
+
+  @override
+  String get spacerTitle => 'MDI with Spacer';
+
+  @override
+  String get spacerSubtitle => 'Inhaler with holding chamber';
+
+  @override
+  String get spacerStep1 => 'Shake inhaler and attach it to the spacer.';
+
+  @override
+  String get spacerStep2 => 'Breathe out fully.';
+
+  @override
+  String get spacerStep3 => 'Place spacer mouthpiece in your mouth.';
+
+  @override
+  String get spacerStep4 => 'Press the inhaler once into the spacer.';
+
+  @override
+  String get spacerStep5 => 'Take a slow deep breath in or 4–5 normal breaths.';
+
+  @override
+  String get spacerStep6 => 'Hold your breath for 10 seconds if possible.';
+
+  @override
+  String get spacerStep7 => 'Repeat if another puff is needed.';
+
+  @override
+  String get nebulizerTitle => 'Nebulizer';
+
+  @override
+  String get nebulizerSubtitle => 'Liquid mist delivery machine';
+
+  @override
+  String get nebulizerStep1 => 'Wash your hands.';
+
+  @override
+  String get nebulizerStep2 => 'Put the medicine into the nebulizer cup.';
+
+  @override
+  String get nebulizerStep3 => 'Attach the mask or mouthpiece.';
+
+  @override
+  String get nebulizerStep4 => 'Turn on the machine.';
+
+  @override
+  String get nebulizerStep5 =>
+      'Breathe normally through the mouth until the mist stops (about 10–15 minutes).';
+
+  @override
+  String get nebulizerStep6 =>
+      'Turn off the machine and clean the equipment after use.';
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart'; // Ensure this matches your localization path
 import 'inhaler_details.dart';
 
 class InhalerTechniquesPage extends StatelessWidget {
@@ -6,86 +7,82 @@ class InhalerTechniquesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context)!;
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
 
-    final double horizontalPadding = screenWidth * 0.05;
-
     final double verticalSpacing = screenHeight * 0.12;
-    return Scaffold(
-      // Changed transparent to the light aesthetic lavender/blue background from your previous screens
-      backgroundColor: const Color(0xffd8d6ea),
 
-      // Wrapped in a SingleChildScrollView to safely prevent screen overflows
+    return Scaffold(
+      backgroundColor: const Color(0xffd8d6ea),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Select your device type to review the correct step-by-step administration methods.",
-              style: TextStyle(color: Colors.black54, fontSize: 15, height: 1.4),
+            Text(
+              localizations.inhalerPageHeaderDesc,
+              style: const TextStyle(color: Colors.black54, fontSize: 15, height: 1.4),
             ),
             const SizedBox(height: 24),
 
             _buildInhalerCard(
               context,
-              title: "MDI Inhaler",
-              subtitle: "Metered Dose Inhaler",
+              title: localizations.mdiTitle,
+              subtitle: localizations.mdiSubtitle,
               image: "assets/images/mdi.png",
               steps: [
-                "Shake the inhaler.",
-                "Breathe out fully.",
-                "Place mouthpiece in your mouth and seal lips around it.",
-                "Press once and breathe in slowly and deeply.",
-                "Hold your breath for 10 seconds.",
-                "Breathe out slowly.",
-                "Wait 30–60 seconds before a second puff if prescribed.",
+                localizations.mdiStep1,
+                localizations.mdiStep2,
+                localizations.mdiStep3,
+                localizations.mdiStep4,
+                localizations.mdiStep5,
+                localizations.mdiStep6,
+                localizations.mdiStep7,
               ],
               video: 'assets/videos/mdi.mp4',
             ),
 
             _buildInhalerCard(
               context,
-              title: "MDI with Spacer",
-              subtitle: "Inhaler with holding chamber",
+              title: localizations.spacerTitle,
+              subtitle: localizations.spacerSubtitle,
               image: "assets/images/spacer.png",
               steps: [
-                "Shake inhaler and attach it to the spacer.",
-                "Breathe out fully.",
-                "Place spacer mouthpiece in your mouth.",
-                "Press the inhaler once into the spacer.",
-                "Take a slow deep breath in or 4–5 normal breaths.",
-                "Hold your breath for 10 seconds if possible.",
-                "Repeat if another puff is needed.",
+                localizations.spacerStep1,
+                localizations.spacerStep2,
+                localizations.spacerStep3,
+                localizations.spacerStep4,
+                localizations.spacerStep5,
+                localizations.spacerStep6,
+                localizations.spacerStep7,
               ],
               video: 'assets/videos/spacer.mp4',
             ),
 
             _buildInhalerCard(
               context,
-              title: "Nebulizer",
-              subtitle: "Liquid mist delivery machine",
+              title: localizations.nebulizerTitle,
+              subtitle: localizations.nebulizerSubtitle,
               image: "assets/images/nebulizer.png",
               steps: [
-                "Wash your hands.",
-                "Put the medicine into the nebulizer cup.",
-                "Attach the mask or mouthpiece.",
-                "Turn on the machine.",
-                "Breathe normally through the mouth until the mist stops (about 10–15 minutes).",
-                "Turn off the machine and clean the equipment after use.",
+                localizations.nebulizerStep1,
+                localizations.nebulizerStep2,
+                localizations.nebulizerStep3,
+                localizations.nebulizerStep4,
+                localizations.nebulizerStep5,
+                localizations.nebulizerStep6,
               ],
               video: 'assets/videos/nebulizer.mp4',
             ),
-             SizedBox(height: verticalSpacing/2),
+            SizedBox(height: verticalSpacing / 2),
           ],
         ),
       ),
     );
   }
 
-  // Modern UI Card Builder Component
   Widget _buildInhalerCard(
       BuildContext context, {
         required String title,
@@ -129,7 +126,6 @@ class InhalerTechniquesPage extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
-                  // Visual Thumbnail Frame
                   Container(
                     width: 75,
                     height: 75,
@@ -139,12 +135,11 @@ class InhalerTechniquesPage extends StatelessWidget {
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(14),
-                      // ADDED: Hero widget wrapping the source image
                       child: Hero(
-                        tag: image, // Using the image path as a unique tag
+                        tag: image,
                         child: Image.asset(
                           image,
-                          fit: BoxFit.fill ,
+                          fit: BoxFit.fill,
                           errorBuilder: (context, error, stackTrace) {
                             return const Icon(Icons.medical_services, color: Color(0xff7367f0), size: 30);
                           },
@@ -153,8 +148,6 @@ class InhalerTechniquesPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 16),
-
-                  // Text Descriptions Column
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,12 +171,10 @@ class InhalerTechniquesPage extends StatelessWidget {
                       ],
                     ),
                   ),
-
-                  // Action Chevron Indicator
                   Container(
                     padding: const EdgeInsets.all(6),
-                    decoration: BoxDecoration(
-                      color: const Color(0xfff3f2fa),
+                    decoration: const BoxDecoration(
+                      color: Color(0xfff3f2fa),
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(
@@ -199,4 +190,5 @@ class InhalerTechniquesPage extends StatelessWidget {
         ),
       ),
     );
-  }}
+  }
+}

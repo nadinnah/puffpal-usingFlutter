@@ -3271,6 +3271,330 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Wait 30 to 60 seconds before breathing'**
   String get i2_10_d;
+
+  /// No description provided for @eduTriggersHeaderDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Staying away from environmental factors that irritate your lungs is key to managing asthma.'**
+  String get eduTriggersHeaderDesc;
+
+  /// No description provided for @eduReferralHeaderDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Track symptoms closely. Recognize clear warning points to maintain proper asthma control.'**
+  String get eduReferralHeaderDesc;
+
+  /// No description provided for @eduSecAirborneIrritants.
+  ///
+  /// In en, this message translates to:
+  /// **'Airborne Irritants'**
+  String get eduSecAirborneIrritants;
+
+  /// No description provided for @eduTriggerSmoke.
+  ///
+  /// In en, this message translates to:
+  /// **'Avoid smoke exposure (cigarettes, shisha, vaping, burning odors)'**
+  String get eduTriggerSmoke;
+
+  /// No description provided for @eduTriggerAllergens.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay away from dust, pollen, mold, and pet dander if they worsen symptoms'**
+  String get eduTriggerAllergens;
+
+  /// No description provided for @eduTriggerChemicals.
+  ///
+  /// In en, this message translates to:
+  /// **'Avoid strong perfumes, cleaning sprays, and chemical fumes'**
+  String get eduTriggerChemicals;
+
+  /// No description provided for @eduSecHomeEnv.
+  ///
+  /// In en, this message translates to:
+  /// **'Home & Environment'**
+  String get eduSecHomeEnv;
+
+  /// No description provided for @eduTriggerVentilation.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep the home clean and well ventilated to reduce allergens'**
+  String get eduTriggerVentilation;
+
+  /// No description provided for @eduTriggerBedCovers.
+  ///
+  /// In en, this message translates to:
+  /// **'Use mattress and pillow covers to decrease dust mites'**
+  String get eduTriggerBedCovers;
+
+  /// No description provided for @eduTriggerColdAir.
+  ///
+  /// In en, this message translates to:
+  /// **'Cold air can trigger asthma — cover nose and mouth in cold weather'**
+  String get eduTriggerColdAir;
+
+  /// No description provided for @eduSecMedicalLifestyle.
+  ///
+  /// In en, this message translates to:
+  /// **'Medical & Lifestyle'**
+  String get eduSecMedicalLifestyle;
+
+  /// No description provided for @eduTriggerInfections.
+  ///
+  /// In en, this message translates to:
+  /// **'Respiratory infections (flu/colds) worsen asthma — wash hands regularly & get flu vaccine'**
+  String get eduTriggerInfections;
+
+  /// No description provided for @eduTriggerExercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercise may trigger symptoms — use prescribed inhaler before exercise if advised'**
+  String get eduTriggerExercise;
+
+  /// No description provided for @eduTriggerMeds.
+  ///
+  /// In en, this message translates to:
+  /// **'Avoid specific trigger medicines: aspirin, NSAIDs (Ibuprofen), or some beta blockers'**
+  String get eduTriggerMeds;
+
+  /// No description provided for @eduTriggerStress.
+  ///
+  /// In en, this message translates to:
+  /// **'Emotional stress and anxiety can worsen asthma attacks'**
+  String get eduTriggerStress;
+
+  /// No description provided for @eduSecConsultDoctor.
+  ///
+  /// In en, this message translates to:
+  /// **'Consult Your Doctor If:'**
+  String get eduSecConsultDoctor;
+
+  /// No description provided for @eduRefSevereSymptoms.
+  ///
+  /// In en, this message translates to:
+  /// **'Symptoms are becoming more frequent or more severe'**
+  String get eduRefSevereSymptoms;
+
+  /// No description provided for @eduRefRescueInhalerUsage.
+  ///
+  /// In en, this message translates to:
+  /// **'Rescue inhaler is needed more than usual (e.g. several times per week)'**
+  String get eduRefRescueInhalerUsage;
+
+  /// No description provided for @eduRefNightAwakening.
+  ///
+  /// In en, this message translates to:
+  /// **'Nighttime awakening due to cough, wheezing, or shortness of breath'**
+  String get eduRefNightAwakening;
+
+  /// No description provided for @eduRefDiffBreathingWalking.
+  ///
+  /// In en, this message translates to:
+  /// **'Difficulty speaking, walking, or breathing normally'**
+  String get eduRefDiffBreathingWalking;
+
+  /// No description provided for @eduRefLowPeakFlow.
+  ///
+  /// In en, this message translates to:
+  /// **'Peak flow readings are decreasing or staying low'**
+  String get eduRefLowPeakFlow;
+
+  /// No description provided for @eduEmergencyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'EMERGENCY — Refer Immediately'**
+  String get eduEmergencyTitle;
+
+  /// No description provided for @eduEmergShortnessBreath.
+  ///
+  /// In en, this message translates to:
+  /// **'Severe shortness of breath or no improvement after rescue inhaler'**
+  String get eduEmergShortnessBreath;
+
+  /// No description provided for @eduEmergSilentChest.
+  ///
+  /// In en, this message translates to:
+  /// **'Silent chest (very little air movement heard)'**
+  String get eduEmergSilentChest;
+
+  /// No description provided for @eduEmergBlueLipsNails.
+  ///
+  /// In en, this message translates to:
+  /// **'Lips or fingernails turn blue'**
+  String get eduEmergBlueLipsNails;
+
+  /// No description provided for @eduEmergDrowsiness.
+  ///
+  /// In en, this message translates to:
+  /// **'Confusion or drowsiness'**
+  String get eduEmergDrowsiness;
+
+  /// No description provided for @eduEmergWorseningStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Symptoms rapidly worsen despite treatment'**
+  String get eduEmergWorseningStatus;
+
+  /// No description provided for @inhalerPageHeaderDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your device type to review the correct step-by-step administration methods.'**
+  String get inhalerPageHeaderDesc;
+
+  /// No description provided for @mdiTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MDI Inhaler'**
+  String get mdiTitle;
+
+  /// No description provided for @mdiSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Metered Dose Inhaler'**
+  String get mdiSubtitle;
+
+  /// No description provided for @mdiStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Shake the inhaler.'**
+  String get mdiStep1;
+
+  /// No description provided for @mdiStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe out fully.'**
+  String get mdiStep2;
+
+  /// No description provided for @mdiStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Place mouthpiece in your mouth and seal lips around it.'**
+  String get mdiStep3;
+
+  /// No description provided for @mdiStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Press once and breathe in slowly and deeply.'**
+  String get mdiStep4;
+
+  /// No description provided for @mdiStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold your breath for 10 seconds.'**
+  String get mdiStep5;
+
+  /// No description provided for @mdiStep6.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe out slowly.'**
+  String get mdiStep6;
+
+  /// No description provided for @mdiStep7.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait 30–60 seconds before a second puff if prescribed.'**
+  String get mdiStep7;
+
+  /// No description provided for @spacerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MDI with Spacer'**
+  String get spacerTitle;
+
+  /// No description provided for @spacerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inhaler with holding chamber'**
+  String get spacerSubtitle;
+
+  /// No description provided for @spacerStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Shake inhaler and attach it to the spacer.'**
+  String get spacerStep1;
+
+  /// No description provided for @spacerStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe out fully.'**
+  String get spacerStep2;
+
+  /// No description provided for @spacerStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Place spacer mouthpiece in your mouth.'**
+  String get spacerStep3;
+
+  /// No description provided for @spacerStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Press the inhaler once into the spacer.'**
+  String get spacerStep4;
+
+  /// No description provided for @spacerStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a slow deep breath in or 4–5 normal breaths.'**
+  String get spacerStep5;
+
+  /// No description provided for @spacerStep6.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold your breath for 10 seconds if possible.'**
+  String get spacerStep6;
+
+  /// No description provided for @spacerStep7.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat if another puff is needed.'**
+  String get spacerStep7;
+
+  /// No description provided for @nebulizerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Nebulizer'**
+  String get nebulizerTitle;
+
+  /// No description provided for @nebulizerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Liquid mist delivery machine'**
+  String get nebulizerSubtitle;
+
+  /// No description provided for @nebulizerStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'Wash your hands.'**
+  String get nebulizerStep1;
+
+  /// No description provided for @nebulizerStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'Put the medicine into the nebulizer cup.'**
+  String get nebulizerStep2;
+
+  /// No description provided for @nebulizerStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'Attach the mask or mouthpiece.'**
+  String get nebulizerStep3;
+
+  /// No description provided for @nebulizerStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn on the machine.'**
+  String get nebulizerStep4;
+
+  /// No description provided for @nebulizerStep5.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe normally through the mouth until the mist stops (about 10–15 minutes).'**
+  String get nebulizerStep5;
+
+  /// No description provided for @nebulizerStep6.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn off the machine and clean the equipment after use.'**
+  String get nebulizerStep6;
 }
 
 class _AppLocalizationsDelegate

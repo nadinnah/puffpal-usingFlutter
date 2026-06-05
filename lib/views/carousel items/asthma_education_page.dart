@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../l10n/app_localizations.dart';
 import '../../models/carousel.dart';
 
 class AsthmaEducationPage extends StatelessWidget {
@@ -8,14 +9,12 @@ class AsthmaEducationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
+    final localizations = AppLocalizations.of(context)!;
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    final horizontalPadding = screenWidth * 0.05;
     final verticalSpacing = screenHeight * 0.12;
 
     final isTriggers = mode == EducationMode.triggers;
-
     final primaryColor = isTriggers ? Colors.teal : Colors.red.shade700;
 
     return Scaffold(
@@ -43,8 +42,8 @@ class AsthmaEducationPage extends StatelessWidget {
                   Expanded(
                     child: Text(
                       isTriggers
-                          ? "Staying away from environmental factors that irritate your lungs is key to managing asthma."
-                          : "Track symptoms closely. Recognize clear warning points to maintain proper asthma control.",
+                          ? localizations.eduTriggersHeaderDesc
+                          : localizations.eduReferralHeaderDesc,
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey.shade800,
@@ -58,98 +57,46 @@ class AsthmaEducationPage extends StatelessWidget {
             const SizedBox(height: 24),
 
             // Core dynamic section list
-            isTriggers ? _buildTriggersList() : _buildReferralList(),
-            SizedBox(height: verticalSpacing/2),
+            isTriggers ? _buildTriggersList(localizations) : _buildReferralList(localizations),
+            SizedBox(height: verticalSpacing / 2),
           ],
         ),
       ),
     );
   }
 
-  // Section 1 Data: Populated directly from Document (28) (1).pdf
-  Widget _buildTriggersList() {
+  Widget _buildTriggersList(AppLocalizations localizations) {
     return Column(
       children: [
-        _buildSectionCard("Airborne Irritants", Colors.blue, [
-          BulletItem(
-            "Avoid smoke exposure (cigarettes, shisha, vaping, burning odors)",
-            Icons.smoke_free,
-          ), //
-          BulletItem(
-            "Stay away from dust, pollen, mold, and pet dander if they worsen symptoms",
-            Icons.grass,
-          ), //[cite: 1]
-          BulletItem(
-            "Avoid strong perfumes, cleaning sprays, and chemical fumes",
-            Icons.clean_hands,
-          ), //[cite: 1]
+        _buildSectionCard(localizations.eduSecAirborneIrritants, Colors.blue, [
+          BulletItem(localizations.eduTriggerSmoke, Icons.smoke_free),
+          BulletItem(localizations.eduTriggerAllergens, Icons.grass),
+          BulletItem(localizations.eduTriggerChemicals, Icons.clean_hands),
         ]),
-        _buildSectionCard("Home & Environment", Colors.green, [
-          BulletItem(
-            "Keep the home clean and well ventilated to reduce allergens",
-            Icons.window,
-          ), //[cite: 1]
-          BulletItem(
-            "Use mattress and pillow covers to decrease dust mites",
-            Icons.bed,
-          ), //[cite: 1]
-          BulletItem(
-            "Cold air can trigger asthma — cover nose and mouth in cold weather",
-            Icons.ac_unit,
-          ), //[cite: 1]
+        _buildSectionCard(localizations.eduSecHomeEnv, Colors.green, [
+          BulletItem(localizations.eduTriggerVentilation, Icons.window),
+          BulletItem(localizations.eduTriggerBedCovers, Icons.bed),
+          BulletItem(localizations.eduTriggerColdAir, Icons.ac_unit),
         ]),
-        _buildSectionCard("Medical & Lifestyle", Colors.orange, [
-          BulletItem(
-            "Respiratory infections (flu/colds) worsen asthma — wash hands regularly & get flu vaccine",
-            Icons.wash,
-          ), //[cite: 1]
-          BulletItem(
-            "Exercise may trigger symptoms — use prescribed inhaler before exercise if advised",
-            Icons.fitness_center,
-          ), //[cite: 1]
-          BulletItem(
-            "Avoid specific trigger medicines: aspirin, NSAIDs (Ibuprofen), or some beta blockers",
-            Icons.medication,
-          ), //[cite: 1]
-          BulletItem(
-            "Emotional stress and anxiety can worsen asthma attacks",
-            Icons.psychology,
-          ), //[cite: 1]
+        _buildSectionCard(localizations.eduSecMedicalLifestyle, Colors.orange, [
+          BulletItem(localizations.eduTriggerInfections, Icons.wash),
+          BulletItem(localizations.eduTriggerExercise, Icons.fitness_center),
+          BulletItem(localizations.eduTriggerMeds, Icons.medication),
+          BulletItem(localizations.eduTriggerStress, Icons.psychology),
         ]),
       ],
     );
   }
 
-  // Section 2 Data: Populated directly from Document (28) (1).pdf
-  Widget _buildReferralList() {
+  Widget _buildReferralList(AppLocalizations localizations) {
     return Column(
       children: [
-        _buildSectionCard("Consult Your Doctor If:", Colors.orange.shade800, [
-          BulletItem(
-            "Symptoms are becoming more frequent or more severe",
-            Icons.trending_up,
-          ),
-          //[cite: 1]
-          BulletItem(
-            "Rescue inhaler is needed more than usual (e.g. several times per week)",
-            Icons.replay,
-          ),
-          //[cite: 1]
-          BulletItem(
-            "Nighttime awakening due to cough, wheezing, or shortness of breath",
-            Icons.bedtime,
-          ),
-          //[cite: 1]
-          BulletItem(
-            "Difficulty speaking, walking, or breathing normally",
-            Icons.directions_walk,
-          ),
-          //[cite: 1]
-          BulletItem(
-            "Peak flow readings are decreasing or staying low",
-            Icons.speed,
-          ),
-          //[cite: 1]
+        _buildSectionCard(localizations.eduSecConsultDoctor, Colors.orange.shade800, [
+          BulletItem(localizations.eduRefSevereSymptoms, Icons.trending_up),
+          BulletItem(localizations.eduRefRescueInhalerUsage, Icons.replay),
+          BulletItem(localizations.eduRefNightAwakening, Icons.bedtime),
+          BulletItem(localizations.eduRefDiffBreathingWalking, Icons.directions_walk),
+          BulletItem(localizations.eduRefLowPeakFlow, Icons.speed),
         ]),
 
         // Immediate Emergency High-Contrast Block
@@ -170,7 +117,7 @@ class AsthmaEducationPage extends StatelessWidget {
                   Icon(Icons.gpp_bad, color: Colors.red.shade900),
                   const SizedBox(width: 8),
                   Text(
-                    "EMERGENCY — Refer Immediately",
+                    localizations.eduEmergencyTitle,
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -181,43 +128,38 @@ class AsthmaEducationPage extends StatelessWidget {
               ),
               const Divider(color: Colors.red, thickness: 0.5),
               ...[
-                    "Severe shortness of breath or no improvement after rescue inhaler",
-                    //[cite: 1]
-                    "Silent chest (very little air movement heard)",
-                    //[cite: 1]
-                    "Lips or fingernails turn blue",
-                    //[cite: 1]
-                    "Confusion or drowsiness",
-                    //[cite: 1]
-                    "Symptoms rapidly worsen despite treatment",
-                    //[cite: 1]
-                  ]
+                localizations.eduEmergShortnessBreath,
+                localizations.eduEmergSilentChest,
+                localizations.eduEmergBlueLipsNails,
+                localizations.eduEmergDrowsiness,
+                localizations.eduEmergWorseningStatus,
+              ]
                   .map(
                     (text) => Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(
-                            Icons.report_problem,
-                            size: 16,
-                            color: Colors.red.shade700,
-                          ),
-                          const SizedBox(width: 8),
-                          Expanded(
-                            child: Text(
-                              text,
-                              style: TextStyle(
-                                color: Colors.red.shade900,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ),
-                        ],
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Icon(
+                        Icons.report_problem,
+                        size: 16,
+                        color: Colors.red.shade700,
                       ),
-                    ),
-                  )
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Text(
+                          text,
+                          style: TextStyle(
+                            color: Colors.red.shade900,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
                   .toList(),
             ],
           ),
@@ -226,16 +168,15 @@ class AsthmaEducationPage extends StatelessWidget {
     );
   }
 
-  // Elegant helper widget building uniform categories
   Widget _buildSectionCard(
-    String title,
-    Color accentColor,
-    List<BulletItem> itemRules,
-  ) {
+      String title,
+      Color accentColor,
+      List<BulletItem> itemRules,
+      ) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
-        color: Color(0xE6FFFFFF),
+        color: const Color(0xE6FFFFFF),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
@@ -265,26 +206,26 @@ class AsthmaEducationPage extends StatelessWidget {
                 children: itemRules
                     .map(
                       (item) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 6.0),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Icon(item.icon, size: 20, color: accentColor),
-                            const SizedBox(width: 12),
-                            Expanded(
-                              child: Text(
-                                item.label,
-                                style: TextStyle(
-                                  fontSize: 13.5,
-                                  color: Colors.grey.shade800,
-                                  height: 1.2,
-                                ),
-                              ),
+                    padding: const EdgeInsets.symmetric(vertical: 6.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Icon(item.icon, size: 20, color: accentColor),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            item.label,
+                            style: TextStyle(
+                              fontSize: 13.5,
+                              color: Colors.grey.shade800,
+                              height: 1.2,
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    )
+                      ],
+                    ),
+                  ),
+                )
                     .toList(),
               ),
             ),
