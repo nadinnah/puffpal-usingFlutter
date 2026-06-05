@@ -1,51 +1,76 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 import '../views/carousel items/asthma_basics.dart';
 import '../views/carousel items/asthma_education_page.dart';
 import '../views/carousel items/inhaler_techniques.dart';
 
+enum EducationMode { triggers, referral }
+
 class CarouselDataModel {
-  final String title;
+  final String id; // Stable developer identifier used for asset mapping & localization matching
   final String imageName;
-  final String subtitle;
   final Widget detailsPage;
 
   CarouselDataModel({
-    required this.title,
+    required this.id,
     required this.imageName,
-    required this.subtitle,
     required this.detailsPage,
   });
+
+  /// Dynamically retrieves the localized title text
+  String getLocalizedTitle(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    switch (id) {
+      case 'basics':
+        return l10n.carouselBasicsTitle;
+      case 'triggers':
+        return l10n.carouselTriggersTitle;
+      case 'help':
+        return l10n.carouselHelpTitle;
+      case 'inhaler':
+        return l10n.carouselInhalerTitle;
+      default:
+        return '';
+    }
+  }
+
+  /// Dynamically retrieves the localized subtitle descriptive paragraph
+  String getLocalizedSubtitle(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    switch (id) {
+      case 'basics':
+        return l10n.carouselBasicsSubtitle;
+      case 'triggers':
+        return l10n.carouselTriggersSubtitle;
+      case 'help':
+        return l10n.carouselHelpSubtitle;
+      case 'inhaler':
+        return l10n.carouselInhalerSubtitle;
+      default:
+        return '';
+    }
+  }
 }
 
 List<CarouselDataModel> carouselDataList = [
   CarouselDataModel(
-    title: "Asthma Basics",
+    id: "basics",
     imageName: "assets/images/asthma_basics.png",
-    subtitle: "Learn the basics of asthma and its symptoms.",
-    detailsPage: AsthmaBasicsPage(),
+    detailsPage: const AsthmaBasicsPage(),
   ),
   CarouselDataModel(
-    title: "Asthma Triggers",
+    id: "triggers",
     imageName: "assets/images/asthma_triggers.png",
-    subtitle:
-        "Identify and minimize daily irritants to keep your lungs healthy.",
-    detailsPage: AsthmaEducationPage(mode: EducationMode.triggers),
+    detailsPage: const AsthmaEducationPage(mode: EducationMode.triggers),
   ),
   CarouselDataModel(
-    title: "When to Seek Help",
+    id: "help",
     imageName: "assets/images/when_to_seek_help.png",
-    subtitle:
-        "Learn the warning signs of worsening asthma and when to seek care.",
-    detailsPage: AsthmaEducationPage(mode: EducationMode.referral),
+    detailsPage: const AsthmaEducationPage(mode: EducationMode.referral),
   ),
   CarouselDataModel(
-    title: "Inhaler Techniques",
+    id: "inhaler",
     imageName: "assets/images/inhaler_techniques.png",
-    subtitle:
-        "Master your proper inhaler usage step-by-step for better relief.",
-    detailsPage: InhalerTechniquesPage(),
+    detailsPage: const InhalerTechniquesPage(),
   ),
 ];
-
-// Enum to tell AsthmaEducationPage which dataset to render beautifully
-enum EducationMode { triggers, referral }

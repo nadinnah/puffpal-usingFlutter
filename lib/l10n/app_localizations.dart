@@ -482,6 +482,306 @@ abstract class AppLocalizations {
   /// **'Quick Reminder'**
   String get quickReminder;
 
+  /// No description provided for @medicationRemindersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication Reminders'**
+  String get medicationRemindersTitle;
+
+  /// No description provided for @medicationRemindersSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Set the start time and how often to repeat for each medicine.'**
+  String get medicationRemindersSubtitle;
+
+  /// No description provided for @maxMedicationsError.
+  ///
+  /// In en, this message translates to:
+  /// **'Maximum 5 medications allowed'**
+  String get maxMedicationsError;
+
+  /// No description provided for @enterMedicineLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Medicine {index}'**
+  String enterMedicineLabel(int index);
+
+  /// No description provided for @firstDose.
+  ///
+  /// In en, this message translates to:
+  /// **'First Dose'**
+  String get firstDose;
+
+  /// No description provided for @everyIntervalLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Every'**
+  String get everyIntervalLabel;
+
+  /// No description provided for @hoursValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{hours} hrs'**
+  String hoursValue(int hours);
+
+  /// No description provided for @addAnotherMedication.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Another Medication'**
+  String get addAnotherMedication;
+
+  /// No description provided for @fillAllDetailsError.
+  ///
+  /// In en, this message translates to:
+  /// **'Please fill all details.'**
+  String get fillAllDetailsError;
+
+  /// No description provided for @remindersSavedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminders saved and active!'**
+  String get remindersSavedMessage;
+
+  /// No description provided for @setTimersButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Set Timers'**
+  String get setTimersButton;
+
+  /// No description provided for @activeRemindersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Reminders'**
+  String get activeRemindersTitle;
+
+  /// No description provided for @noActiveReminders.
+  ///
+  /// In en, this message translates to:
+  /// **'No active reminders.'**
+  String get noActiveReminders;
+
+  /// No description provided for @reminderRemovedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'{name} reminder removed'**
+  String reminderRemovedMessage(String name);
+
+  /// No description provided for @undoAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get undoAction;
+
+  /// No description provided for @reminderRestoredMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Reminder restored'**
+  String get reminderRestoredMessage;
+
+  /// No description provided for @reminderSubtitleInfo.
+  ///
+  /// In en, this message translates to:
+  /// **'Started at {time} • Every {hours}h'**
+  String reminderSubtitleInfo(String time, int hours);
+
+  /// No description provided for @editFieldTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit {label}'**
+  String editFieldTitle(String label);
+
+  /// No description provided for @cancelAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancelAction;
+
+  /// No description provided for @saveAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get saveAction;
+
+  /// No description provided for @medicationRemindersMenu.
+  ///
+  /// In en, this message translates to:
+  /// **'Medication Reminders'**
+  String get medicationRemindersMenu;
+
+  /// No description provided for @genderMale.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get genderMale;
+
+  /// No description provided for @genderFemale.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get genderFemale;
+
+  /// No description provided for @carouselBasicsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma Basics'**
+  String get carouselBasicsTitle;
+
+  /// No description provided for @carouselBasicsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the basics of asthma and its symptoms.'**
+  String get carouselBasicsSubtitle;
+
+  /// No description provided for @carouselTriggersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma Triggers'**
+  String get carouselTriggersTitle;
+
+  /// No description provided for @carouselTriggersSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify and minimize daily irritants to keep your lungs healthy.'**
+  String get carouselTriggersSubtitle;
+
+  /// No description provided for @carouselHelpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'When to Seek Help'**
+  String get carouselHelpTitle;
+
+  /// No description provided for @carouselHelpSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn the warning signs of worsening asthma and when to seek care.'**
+  String get carouselHelpSubtitle;
+
+  /// No description provided for @carouselInhalerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inhaler Techniques'**
+  String get carouselInhalerTitle;
+
+  /// No description provided for @carouselInhalerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Master your proper inhaler usage step-by-step for better relief.'**
+  String get carouselInhalerSubtitle;
+
+  /// No description provided for @trackedTodayTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'re all set for today!'**
+  String get trackedTodayTitle;
+
+  /// No description provided for @trackedTodaySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap a square to see past data'**
+  String get trackedTodaySubtitle;
+
+  /// No description provided for @backToHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Home'**
+  String get backToHome;
+
+  /// No description provided for @questionProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Question {current} of {total}'**
+  String questionProgress(int current, int total);
+
+  /// No description provided for @yesLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yesLabel;
+
+  /// No description provided for @noLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get noLabel;
+
+  /// No description provided for @backButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get backButton;
+
+  /// No description provided for @nextButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get nextButton;
+
+  /// No description provided for @submitButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submitButton;
+
+  /// No description provided for @assessmentResultTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Assessment Result'**
+  String get assessmentResultTitle;
+
+  /// No description provided for @logDateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Log: {day}/{month}/{year}'**
+  String logDateTitle(int day, int month, int year);
+
+  /// No description provided for @okAction.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get okAction;
+
+  /// No description provided for @wellControlledAsthma.
+  ///
+  /// In en, this message translates to:
+  /// **'Well Controlled Asthma'**
+  String get wellControlledAsthma;
+
+  /// No description provided for @partlyControlledAsthma.
+  ///
+  /// In en, this message translates to:
+  /// **'Partly Controlled Asthma'**
+  String get partlyControlledAsthma;
+
+  /// No description provided for @uncontrolledAsthma.
+  ///
+  /// In en, this message translates to:
+  /// **'Uncontrolled Asthma'**
+  String get uncontrolledAsthma;
+
+  /// No description provided for @questionDaytime.
+  ///
+  /// In en, this message translates to:
+  /// **'Daytime symptoms more than twice/week?'**
+  String get questionDaytime;
+
+  /// No description provided for @questionNightWaking.
+  ///
+  /// In en, this message translates to:
+  /// **'Any night waking due to asthma?'**
+  String get questionNightWaking;
+
+  /// No description provided for @questionRescueInhaler.
+  ///
+  /// In en, this message translates to:
+  /// **'Rescue inhaler needed more than twice/week?'**
+  String get questionRescueInhaler;
+
+  /// No description provided for @questionActivityLimitation.
+  ///
+  /// In en, this message translates to:
+  /// **'Any activity limitation due to asthma?'**
+  String get questionActivityLimitation;
+
   /// No description provided for @reminderText.
   ///
   /// In en, this message translates to:
@@ -1747,6 +2047,1230 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Having a good peak flow reading'**
   String get q4_10_d;
+
+  /// No description provided for @quizTriggersPart1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma Triggers: Home & Environment'**
+  String get quizTriggersPart1Title;
+
+  /// No description provided for @quizTriggersPart2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma Triggers: Lifestyle & Health'**
+  String get quizTriggersPart2Title;
+
+  /// No description provided for @quizInhalersPart1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Inhalers: Controller vs. Reliever'**
+  String get quizInhalersPart1Title;
+
+  /// No description provided for @quizInhalersPart2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Inhalers: Setup & Best Practices'**
+  String get quizInhalersPart2Title;
+
+  /// No description provided for @t1_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Which of the following types of smoke should an asthma patient avoid?'**
+  String get t1_1;
+
+  /// No description provided for @t1_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Cigarette smoke, shisha, vaping, and burning odors'**
+  String get t1_1_a;
+
+  /// No description provided for @t1_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Cigarette smoke only'**
+  String get t1_1_b;
+
+  /// No description provided for @t1_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Shisha and vaping only'**
+  String get t1_1_c;
+
+  /// No description provided for @t1_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Only outdoor smoke'**
+  String get t1_1_d;
+
+  /// No description provided for @t1_2.
+  ///
+  /// In en, this message translates to:
+  /// **'What is recommended to decrease dust mites in an asthma patient\'s bed?'**
+  String get t1_2;
+
+  /// No description provided for @t1_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Using mattress and pillow covers'**
+  String get t1_2_a;
+
+  /// No description provided for @t1_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Changing the bed frame'**
+  String get t1_2_b;
+
+  /// No description provided for @t1_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Sleeping without pillows'**
+  String get t1_2_c;
+
+  /// No description provided for @t1_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Keeping the window open all night'**
+  String get t1_2_d;
+
+  /// No description provided for @t1_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Which of the following household habits helps reduce environmental allergens for asthma patients?'**
+  String get t1_3;
+
+  /// No description provided for @t1_3_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Keeping the home clean and well-ventilated'**
+  String get t1_3_a;
+
+  /// No description provided for @t1_3_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Keeping the home closed off and unventilated'**
+  String get t1_3_b;
+
+  /// No description provided for @t1_3_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Sweeping dust into the air'**
+  String get t1_3_c;
+
+  /// No description provided for @t1_3_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Using multiple air fresheners'**
+  String get t1_3_d;
+
+  /// No description provided for @t1_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Which annual vaccine should an asthma patient consider to prevent symptom-worsening infections?'**
+  String get t1_4;
+
+  /// No description provided for @t1_4_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Yearly flu vaccine'**
+  String get t1_4_a;
+
+  /// No description provided for @t1_4_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Tetanus vaccine'**
+  String get t1_4_b;
+
+  /// No description provided for @t1_4_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Hepatitis vaccine'**
+  String get t1_4_c;
+
+  /// No description provided for @t1_4_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Chickenpox vaccine'**
+  String get t1_4_d;
+
+  /// No description provided for @t1_5.
+  ///
+  /// In en, this message translates to:
+  /// **'If exercise triggers asthma symptoms, what should a patient do if advised by their doctor?'**
+  String get t1_5;
+
+  /// No description provided for @t1_5_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Use their prescribed inhaler before exercise'**
+  String get t1_5_a;
+
+  /// No description provided for @t1_5_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop exercising completely'**
+  String get t1_5_b;
+
+  /// No description provided for @t1_5_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercise only in freezing weather'**
+  String get t1_5_c;
+
+  /// No description provided for @t1_5_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Drink a sugary beverage before running'**
+  String get t1_5_d;
+
+  /// No description provided for @t1_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Which over-the-counter pain medication is explicitly listed as a potential asthma trigger?'**
+  String get t1_6;
+
+  /// No description provided for @t1_6_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Ibuprofen (an NSAID)'**
+  String get t1_6_a;
+
+  /// No description provided for @t1_6_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Acetaminophen'**
+  String get t1_6_b;
+
+  /// No description provided for @t1_6_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Vitamin C'**
+  String get t1_6_c;
+
+  /// No description provided for @t1_6_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Antacids'**
+  String get t1_6_d;
+
+  /// No description provided for @t1_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Besides aspirin and NSAIDs, which class of medications is mentioned as a potential asthma trigger?'**
+  String get t1_7;
+
+  /// No description provided for @t1_7_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Beta-blockers'**
+  String get t1_7_a;
+
+  /// No description provided for @t1_7_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Antibiotics'**
+  String get t1_7_b;
+
+  /// No description provided for @t1_7_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Antihistamines'**
+  String get t1_7_c;
+
+  /// No description provided for @t1_7_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Cough syrups'**
+  String get t1_7_d;
+
+  /// No description provided for @t1_8.
+  ///
+  /// In en, this message translates to:
+  /// **'What simple hygiene habit is recommended to help prevent respiratory infections like the flu or colds?'**
+  String get t1_8;
+
+  /// No description provided for @t1_8_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Washing hands regularly'**
+  String get t1_8_a;
+
+  /// No description provided for @t1_8_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Wearing heavy perfume'**
+  String get t1_8_b;
+
+  /// No description provided for @t1_8_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Avoiding the use of mattress covers'**
+  String get t1_8_c;
+
+  /// No description provided for @t1_8_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercising without using an inhaler'**
+  String get t1_8_d;
+
+  /// No description provided for @t1_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Besides smoke and dust, what other air conditions are listed as a \"bad air day\" trigger?'**
+  String get t1_9;
+
+  /// No description provided for @t1_9_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Pollution and sandstorms'**
+  String get t1_9_a;
+
+  /// No description provided for @t1_9_b.
+  ///
+  /// In en, this message translates to:
+  /// **'High oxygen levels'**
+  String get t1_9_b;
+
+  /// No description provided for @t1_9_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Fog and morning dew'**
+  String get t1_9_c;
+
+  /// No description provided for @t1_9_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Gentle summer breezes'**
+  String get t1_9_d;
+
+  /// No description provided for @t1_10.
+  ///
+  /// In en, this message translates to:
+  /// **'How can physical activity or \"running like you\'re in the Olympics\" affect some asthma patients?'**
+  String get t1_10;
+
+  /// No description provided for @t1_10_a.
+  ///
+  /// In en, this message translates to:
+  /// **'It acts as a trigger for asthma symptoms.'**
+  String get t1_10_a;
+
+  /// No description provided for @t1_10_b.
+  ///
+  /// In en, this message translates to:
+  /// **'It always cures asthma symptoms permanently.'**
+  String get t1_10_b;
+
+  /// No description provided for @t1_10_c.
+  ///
+  /// In en, this message translates to:
+  /// **'It prevents the need for a rescue inhaler.'**
+  String get t1_10_c;
+
+  /// No description provided for @t1_10_d.
+  ///
+  /// In en, this message translates to:
+  /// **'It eliminates the effect of pollen.'**
+  String get t1_10_d;
+
+  /// No description provided for @t2_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Which of the following sets of medications contains known triggers for some individuals with asthma?'**
+  String get t2_1;
+
+  /// No description provided for @t2_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Aspirin, Ibuprofen (NSAIDs), and certain beta-blockers'**
+  String get t2_1_a;
+
+  /// No description provided for @t2_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Vitamins and minerals'**
+  String get t2_1_b;
+
+  /// No description provided for @t2_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Antibiotics and cough syrups'**
+  String get t2_1_c;
+
+  /// No description provided for @t2_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Antacids and anti-allergy pills'**
+  String get t2_1_d;
+
+  /// No description provided for @t2_2.
+  ///
+  /// In en, this message translates to:
+  /// **'What can happen to an asthma patient who is around someone smoking a shisha or vaping?'**
+  String get t2_2;
+
+  /// No description provided for @t2_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Their asthma symptoms can get worse.'**
+  String get t2_2_a;
+
+  /// No description provided for @t2_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Their lungs become completely immune to dust.'**
+  String get t2_2_b;
+
+  /// No description provided for @t2_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'They will no longer need a rescue inhaler.'**
+  String get t2_2_c;
+
+  /// No description provided for @t2_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Their exercise performance will improve'**
+  String get t2_2_d;
+
+  /// No description provided for @t2_3.
+  ///
+  /// In en, this message translates to:
+  /// **'What type of household spray can act as a trigger and cause an asthma attack?'**
+  String get t2_3;
+
+  /// No description provided for @t2_3_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Chemical cleaning sprays'**
+  String get t2_3_a;
+
+  /// No description provided for @t2_3_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Water mist spray'**
+  String get t2_3_b;
+
+  /// No description provided for @t2_3_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Saline nasal sprays'**
+  String get t2_3_c;
+
+  /// No description provided for @t2_3_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Air cooling fans'**
+  String get t2_3_d;
+
+  /// No description provided for @t2_4.
+  ///
+  /// In en, this message translates to:
+  /// **'What outdoor trigger comes from trees, grass, and flowers?'**
+  String get t2_4;
+
+  /// No description provided for @t2_4_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Pollen'**
+  String get t2_4_a;
+
+  /// No description provided for @t2_4_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Dust bunnies'**
+  String get t2_4_b;
+
+  /// No description provided for @t2_4_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Chemical fumes'**
+  String get t2_4_c;
+
+  /// No description provided for @t2_4_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet dander'**
+  String get t2_4_d;
+
+  /// No description provided for @t2_5.
+  ///
+  /// In en, this message translates to:
+  /// **'Why should an asthma patient wash their hands regularly?'**
+  String get t2_5;
+
+  /// No description provided for @t2_5_a.
+  ///
+  /// In en, this message translates to:
+  /// **'To avoid catching a cold or flu that could worsen asthma'**
+  String get t2_5_a;
+
+  /// No description provided for @t2_5_b.
+  ///
+  /// In en, this message translates to:
+  /// **'To remove pollen from their mattress covers'**
+  String get t2_5_b;
+
+  /// No description provided for @t2_5_c.
+  ///
+  /// In en, this message translates to:
+  /// **'To protect themselves from cold weather air'**
+  String get t2_5_c;
+
+  /// No description provided for @t2_5_d.
+  ///
+  /// In en, this message translates to:
+  /// **'To stop the effects of emotional stress'**
+  String get t2_5_d;
+
+  /// No description provided for @t2_6.
+  ///
+  /// In en, this message translates to:
+  /// **'Which of the following describes an indoor environmental trigger found on carpets and furniture?'**
+  String get t2_6;
+
+  /// No description provided for @t2_6_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Dust and dust mites'**
+  String get t2_6_a;
+
+  /// No description provided for @t2_6_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Shisha smoke'**
+  String get t2_6_b;
+
+  /// No description provided for @t2_6_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Sandstorms'**
+  String get t2_6_c;
+
+  /// No description provided for @t2_6_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Pollen from outdoor trees'**
+  String get t2_6_d;
+
+  /// No description provided for @t2_7.
+  ///
+  /// In en, this message translates to:
+  /// **'What can happen if an asthma patient breathes in chemical fumes from strong products?'**
+  String get t2_7;
+
+  /// No description provided for @t2_7_a.
+  ///
+  /// In en, this message translates to:
+  /// **'It can act as a trigger and worsen their asthma.'**
+  String get t2_7_a;
+
+  /// No description provided for @t2_7_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Their breathing may become easier.'**
+  String get t2_7_b;
+
+  /// No description provided for @t2_7_c.
+  ///
+  /// In en, this message translates to:
+  /// **'It cures their allergy to pet dander.'**
+  String get t2_7_c;
+
+  /// No description provided for @t2_7_d.
+  ///
+  /// In en, this message translates to:
+  /// **'It replaces the need for a controller medicine.'**
+  String get t2_7_d;
+
+  /// No description provided for @t2_8.
+  ///
+  /// In en, this message translates to:
+  /// **'What is pet dander, which is a known asthma trigger?'**
+  String get t2_8;
+
+  /// No description provided for @t2_8_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Tiny bits of skin and fur from furry animals'**
+  String get t2_8_a;
+
+  /// No description provided for @t2_8_b.
+  ///
+  /// In en, this message translates to:
+  /// **'A type of medicine used for pain relief'**
+  String get t2_8_b;
+
+  /// No description provided for @t2_8_c.
+  ///
+  /// In en, this message translates to:
+  /// **'The chilly air found during winter'**
+  String get t2_8_c;
+
+  /// No description provided for @t2_8_d.
+  ///
+  /// In en, this message translates to:
+  /// **'A cleaning spray used for the kitchen'**
+  String get t2_8_d;
+
+  /// No description provided for @t2_9.
+  ///
+  /// In en, this message translates to:
+  /// **'If someone with asthma wants to minimize triggers in their bedroom, what is the best habit?'**
+  String get t2_9;
+
+  /// No description provided for @t2_9_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Use mattress and pillow covers to decrease dust mites.'**
+  String get t2_9_a;
+
+  /// No description provided for @t2_9_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Avoid using any covers on pillows and mattresses.'**
+  String get t2_9_b;
+
+  /// No description provided for @t2_9_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep the room unventilated and dusty.'**
+  String get t2_9_c;
+
+  /// No description provided for @t2_9_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Bring multiple furry pets into the bed.'**
+  String get t2_9_d;
+
+  /// No description provided for @t2_10.
+  ///
+  /// In en, this message translates to:
+  /// **'If an asthma patient loves playing with cats or dogs, what specific trigger should they watch out for?'**
+  String get t2_10;
+
+  /// No description provided for @t2_10_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet dander'**
+  String get t2_10_a;
+
+  /// No description provided for @t2_10_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Pollen party'**
+  String get t2_10_b;
+
+  /// No description provided for @t2_10_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Burning odors'**
+  String get t2_10_c;
+
+  /// No description provided for @t2_10_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Chemical fumes'**
+  String get t2_10_d;
+
+  /// No description provided for @i1_1.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the main purpose of a Controller inhaler?'**
+  String get i1_1;
+
+  /// No description provided for @i1_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'To prevent symptoms and asthma attacks by being used every day'**
+  String get i1_1_a;
+
+  /// No description provided for @i1_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'To give instant relief during an asthma attack'**
+  String get i1_1_b;
+
+  /// No description provided for @i1_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'To open the airways within seconds during an emergency'**
+  String get i1_1_c;
+
+  /// No description provided for @i1_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'To clean the lungs after a workout'**
+  String get i1_1_d;
+
+  /// No description provided for @i1_2.
+  ///
+  /// In en, this message translates to:
+  /// **'How does a Controller inhaler help the lungs over time?'**
+  String get i1_2;
+
+  /// No description provided for @i1_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'It reduces swelling and inflammation in the airways'**
+  String get i1_2_a;
+
+  /// No description provided for @i1_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'It increases the patient\'s heart rate'**
+  String get i1_2_b;
+
+  /// No description provided for @i1_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'It cures asthma completely after one use'**
+  String get i1_2_c;
+
+  /// No description provided for @i1_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'It acts as a temporary mask for dust'**
+  String get i1_2_d;
+
+  /// No description provided for @i1_3.
+  ///
+  /// In en, this message translates to:
+  /// **'When should a patient take their Controller inhaler?'**
+  String get i1_3;
+
+  /// No description provided for @i1_3_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Regularly every day, even when feeling well'**
+  String get i1_3_a;
+
+  /// No description provided for @i1_3_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Only when they are coughing severely'**
+  String get i1_3_b;
+
+  /// No description provided for @i1_3_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Only during an emergency or sudden attack'**
+  String get i1_3_c;
+
+  /// No description provided for @i1_3_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Only right before going to sleep'**
+  String get i1_3_d;
+
+  /// No description provided for @i1_4.
+  ///
+  /// In en, this message translates to:
+  /// **'Does a Controller inhaler provide quick relief during sudden breathing problems?'**
+  String get i1_4;
+
+  /// No description provided for @i1_4_a.
+  ///
+  /// In en, this message translates to:
+  /// **'No, it does not give quick relief during sudden breathing problems'**
+  String get i1_4_a;
+
+  /// No description provided for @i1_4_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, it works instantly'**
+  String get i1_4_b;
+
+  /// No description provided for @i1_4_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes, but only if taken with hot water'**
+  String get i1_4_c;
+
+  /// No description provided for @i1_4_d.
+  ///
+  /// In en, this message translates to:
+  /// **'No, it only works if you are exercising'**
+  String get i1_4_d;
+
+  /// No description provided for @i1_5.
+  ///
+  /// In en, this message translates to:
+  /// **'Which type of inhaler is referred to as \"emergency help\" or \"The Rescue Inhaler\"?'**
+  String get i1_5;
+
+  /// No description provided for @i1_5_a.
+  ///
+  /// In en, this message translates to:
+  /// **'The Reliever inhaler'**
+  String get i1_5_a;
+
+  /// No description provided for @i1_5_b.
+  ///
+  /// In en, this message translates to:
+  /// **'The Controller inhaler'**
+  String get i1_5_b;
+
+  /// No description provided for @i1_5_c.
+  ///
+  /// In en, this message translates to:
+  /// **'The Nebulizer machine'**
+  String get i1_5_c;
+
+  /// No description provided for @i1_5_d.
+  ///
+  /// In en, this message translates to:
+  /// **'The Spacer attachment'**
+  String get i1_5_d;
+
+  /// No description provided for @i1_6.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the primary job of a Reliever inhaler?'**
+  String get i1_6;
+
+  /// No description provided for @i1_6_a.
+  ///
+  /// In en, this message translates to:
+  /// **'To work quickly to open the airways during symptoms'**
+  String get i1_6_a;
+
+  /// No description provided for @i1_6_b.
+  ///
+  /// In en, this message translates to:
+  /// **'To reduce swelling quietly over several weeks'**
+  String get i1_6_b;
+
+  /// No description provided for @i1_6_c.
+  ///
+  /// In en, this message translates to:
+  /// **'To replace the need for daily medication'**
+  String get i1_6_c;
+
+  /// No description provided for @i1_6_d.
+  ///
+  /// In en, this message translates to:
+  /// **'To track the patient\'s breathing patterns'**
+  String get i1_6_d;
+
+  /// No description provided for @i1_7.
+  ///
+  /// In en, this message translates to:
+  /// **'Which of the following symptoms does a Reliever inhaler help relieve?'**
+  String get i1_7;
+
+  /// No description provided for @i1_7_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Wheezing, coughing, chest tightness, and shortness of breath'**
+  String get i1_7_a;
+
+  /// No description provided for @i1_7_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Skin rashes and itching'**
+  String get i1_7_b;
+
+  /// No description provided for @i1_7_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Headaches and fever'**
+  String get i1_7_c;
+
+  /// No description provided for @i1_7_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Food allergies and stomach aches'**
+  String get i1_7_d;
+
+  /// No description provided for @i1_8.
+  ///
+  /// In en, this message translates to:
+  /// **'When should a patient use their Reliever inhaler?'**
+  String get i1_8;
+
+  /// No description provided for @i1_8_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Only when needed or before exercise if prescribed'**
+  String get i1_8_a;
+
+  /// No description provided for @i1_8_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Every single morning and evening without fail'**
+  String get i1_8_b;
+
+  /// No description provided for @i1_8_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Only when they feel completely fine'**
+  String get i1_8_c;
+
+  /// No description provided for @i1_8_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Twice a week whether they have symptoms or not'**
+  String get i1_8_d;
+
+  /// No description provided for @i1_9.
+  ///
+  /// In en, this message translates to:
+  /// **'What is a key fact to remember about the Reliever inhaler\'s effect?'**
+  String get i1_9;
+
+  /// No description provided for @i1_9_a.
+  ///
+  /// In en, this message translates to:
+  /// **'It fixes the problem right now, but doesn\'t stop asthma from coming back'**
+  String get i1_9_a;
+
+  /// No description provided for @i1_9_b.
+  ///
+  /// In en, this message translates to:
+  /// **'It stops asthma from ever coming back'**
+  String get i1_9_b;
+
+  /// No description provided for @i1_9_c.
+  ///
+  /// In en, this message translates to:
+  /// **'It takes days or weeks to show its full benefit'**
+  String get i1_9_c;
+
+  /// No description provided for @i1_9_d.
+  ///
+  /// In en, this message translates to:
+  /// **'It must be avoided at all costs during an attack'**
+  String get i1_9_d;
+
+  /// No description provided for @i1_10.
+  ///
+  /// In en, this message translates to:
+  /// **'What should you do if you start coughing, wheezing, or feeling tight-chested?'**
+  String get i1_10;
+
+  /// No description provided for @i1_10_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your Reliever inhaler and follow your asthma action plan'**
+  String get i1_10_a;
+
+  /// No description provided for @i1_10_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Take your Controller inhaler and go to sleep'**
+  String get i1_10_b;
+
+  /// No description provided for @i1_10_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop taking all medications completely'**
+  String get i1_10_c;
+
+  /// No description provided for @i1_10_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait 10 to 15 minutes before doing anything'**
+  String get i1_10_d;
+
+  /// No description provided for @i2_1.
+  ///
+  /// In en, this message translates to:
+  /// **'When using a Metered-Dose Inhaler (MDI), how long should you hold your breath after inhaling the medicine?'**
+  String get i2_1;
+
+  /// No description provided for @i2_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'10 seconds'**
+  String get i2_1_a;
+
+  /// No description provided for @i2_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'2 seconds'**
+  String get i2_1_b;
+
+  /// No description provided for @i2_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'1 minute'**
+  String get i2_1_c;
+
+  /// No description provided for @i2_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'30 to 60 seconds'**
+  String get i2_1_d;
+
+  /// No description provided for @i2_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Where do you put the medicine when preparing a Nebulizer?'**
+  String get i2_2;
+
+  /// No description provided for @i2_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Inside the nebulizer cup'**
+  String get i2_2_a;
+
+  /// No description provided for @i2_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Directly onto the mask'**
+  String get i2_2_b;
+
+  /// No description provided for @i2_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Into the spacer tube'**
+  String get i2_2_c;
+
+  /// No description provided for @i2_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'On the mouthpiece seal'**
+  String get i2_2_d;
+
+  /// No description provided for @i2_3.
+  ///
+  /// In en, this message translates to:
+  /// **'How long might a Controller inhaler take to show its full benefit?'**
+  String get i2_3;
+
+  /// No description provided for @i2_3_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Days or weeks'**
+  String get i2_3_a;
+
+  /// No description provided for @i2_3_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Only 10 seconds'**
+  String get i2_3_b;
+
+  /// No description provided for @i2_3_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Immediately during a cough'**
+  String get i2_3_c;
+
+  /// No description provided for @i2_3_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Exactly 30 to 60 seconds'**
+  String get i2_3_d;
+
+  /// No description provided for @i2_4.
+  ///
+  /// In en, this message translates to:
+  /// **'How should you breathe through a nebulizer mask or mouthpiece while the machine is running?'**
+  String get i2_4;
+
+  /// No description provided for @i2_4_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe normally through your mouth'**
+  String get i2_4_a;
+
+  /// No description provided for @i2_4_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold your breath as long as possible'**
+  String get i2_4_b;
+
+  /// No description provided for @i2_4_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe quickly through your nose only'**
+  String get i2_4_c;
+
+  /// No description provided for @i2_4_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Take sharp, gasping breaths'**
+  String get i2_4_d;
+
+  /// No description provided for @i2_5.
+  ///
+  /// In en, this message translates to:
+  /// **'Which device requires you to turn on a machine to create a mist for breathing?'**
+  String get i2_5;
+
+  /// No description provided for @i2_5_a.
+  ///
+  /// In en, this message translates to:
+  /// **'A nebulizer'**
+  String get i2_5_a;
+
+  /// No description provided for @i2_5_b.
+  ///
+  /// In en, this message translates to:
+  /// **'A standard MDI'**
+  String get i2_5_b;
+
+  /// No description provided for @i2_5_c.
+  ///
+  /// In en, this message translates to:
+  /// **'A spacer tube'**
+  String get i2_5_c;
+
+  /// No description provided for @i2_5_d.
+  ///
+  /// In en, this message translates to:
+  /// **'A pillow cover'**
+  String get i2_5_d;
+
+  /// No description provided for @i2_6.
+  ///
+  /// In en, this message translates to:
+  /// **'What should you do immediately before you press the canister and breathe in using a standard MDI?'**
+  String get i2_6;
+
+  /// No description provided for @i2_6_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe out fully'**
+  String get i2_6_a;
+
+  /// No description provided for @i2_6_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait 60 seconds'**
+  String get i2_6_b;
+
+  /// No description provided for @i2_6_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Wash the cup'**
+  String get i2_6_c;
+
+  /// No description provided for @i2_6_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn off the machine'**
+  String get i2_6_d;
+
+  /// No description provided for @i2_7.
+  ///
+  /// In en, this message translates to:
+  /// **'If you are feeling completely fine, what should you do regarding your Controller inhaler?'**
+  String get i2_7;
+
+  /// No description provided for @i2_7_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Take it exactly as prescribed'**
+  String get i2_7_a;
+
+  /// No description provided for @i2_7_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop taking it until you feel sick'**
+  String get i2_7_b;
+
+  /// No description provided for @i2_7_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Replace it with a Reliever inhaler'**
+  String get i2_7_c;
+
+  /// No description provided for @i2_7_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Double the dose to stay safe'**
+  String get i2_7_d;
+
+  /// No description provided for @i2_8.
+  ///
+  /// In en, this message translates to:
+  /// **'What should you do with a nebulizer machine once the medicine mist completely stops?'**
+  String get i2_8;
+
+  /// No description provided for @i2_8_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Turn off the machine and clean the equipment'**
+  String get i2_8_a;
+
+  /// No description provided for @i2_8_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave it running for another hour'**
+  String get i2_8_b;
+
+  /// No description provided for @i2_8_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Add water without turning it off'**
+  String get i2_8_c;
+
+  /// No description provided for @i2_8_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Shake it while attached to a spacer'**
+  String get i2_8_d;
+
+  /// No description provided for @i2_9.
+  ///
+  /// In en, this message translates to:
+  /// **'Which inhaler is meant for \"Daily Protection\" rather than quick relief?'**
+  String get i2_9;
+
+  /// No description provided for @i2_9_a.
+  ///
+  /// In en, this message translates to:
+  /// **'The Controller inhaler'**
+  String get i2_9_a;
+
+  /// No description provided for @i2_9_b.
+  ///
+  /// In en, this message translates to:
+  /// **'The Reliever inhaler'**
+  String get i2_9_b;
+
+  /// No description provided for @i2_9_c.
+  ///
+  /// In en, this message translates to:
+  /// **'The Rescue Hero'**
+  String get i2_9_c;
+
+  /// No description provided for @i2_9_d.
+  ///
+  /// In en, this message translates to:
+  /// **'The Nebulizer cup'**
+  String get i2_9_d;
+
+  /// No description provided for @i2_10.
+  ///
+  /// In en, this message translates to:
+  /// **'What is the specific action required right after pressing a standard MDI canister once?'**
+  String get i2_10;
+
+  /// No description provided for @i2_10_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe in slowly and deeply'**
+  String get i2_10_a;
+
+  /// No description provided for @i2_10_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Shake the inhaler again'**
+  String get i2_10_b;
+
+  /// No description provided for @i2_10_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Breathe out slowly and fully'**
+  String get i2_10_c;
+
+  /// No description provided for @i2_10_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait 30 to 60 seconds before breathing'**
+  String get i2_10_d;
 }
 
 class _AppLocalizationsDelegate

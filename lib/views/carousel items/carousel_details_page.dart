@@ -22,7 +22,7 @@ class CarouselDetailsPage extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         title: Text(
-          carouselData.title,
+          carouselData.getLocalizedTitle(context),
           style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
         ),
 

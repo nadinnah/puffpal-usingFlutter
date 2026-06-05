@@ -231,41 +231,38 @@ class _HomePageState extends State<HomePage> {
       children: [
         Expanded(
           // Use Expanded to let the image fill the AspectRatio space
-          child: Hero(
-            tag: data.title,
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        CarouselDetailsPage(carouselData: data),
-                  ),
-                );
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  // More rounded looks better for carousels
-                  image: DecorationImage(
-                    image: AssetImage(data.imageName), //assets/images/track_your_symptoms.png
-                    fit: BoxFit.cover, // Use cover to prevent "stretching"
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      offset: const Offset(0, 4),
-                      blurRadius: 8,
-                      color: Colors.black.withOpacity(0.2),
-                    ),
-                  ],
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      CarouselDetailsPage(carouselData: data),
                 ),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                // More rounded looks better for carousels
+                image: DecorationImage(
+                  image: AssetImage(data.imageName), //assets/images/track_your_symptoms.png
+                  fit: BoxFit.cover, // Use cover to prevent "stretching"
+                ),
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(0, 4),
+                    blurRadius: 8,
+                    color: Colors.black.withOpacity(0.2),
+                  ),
+                ],
               ),
             ),
           ),
         ),
         const SizedBox(height: 12),
         Text(
-          data.title,
+          data.getLocalizedTitle(context),
           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ],

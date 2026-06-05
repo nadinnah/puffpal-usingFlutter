@@ -207,6 +207,178 @@ class AppLocalizationsAr extends AppLocalizations {
   String get quickReminder => 'تذكير سريع';
 
   @override
+  String get medicationRemindersTitle => 'تذكيرات الأدوية';
+
+  @override
+  String get medicationRemindersSubtitle =>
+      'حدد وقت الجرعة الأولى ومعدل التكرار لكل دواء.';
+
+  @override
+  String get maxMedicationsError => 'مسموح بحد أقصى 5 أدوية فقط';
+
+  @override
+  String enterMedicineLabel(int index) {
+    return 'أدخل اسم الدواء $index';
+  }
+
+  @override
+  String get firstDose => 'الجرعة الأولى';
+
+  @override
+  String get everyIntervalLabel => 'كل';
+
+  @override
+  String hoursValue(int hours) {
+    return '$hours ساعات';
+  }
+
+  @override
+  String get addAnotherMedication => 'إضافة دواء آخر';
+
+  @override
+  String get fillAllDetailsError => 'يرجى ملء جميع البيانات.';
+
+  @override
+  String get remindersSavedMessage => 'تم حفظ التذكيرات وتفعيلها!';
+
+  @override
+  String get setTimersButton => 'ضبط التذكيرات';
+
+  @override
+  String get activeRemindersTitle => 'التذكيرات النشطة';
+
+  @override
+  String get noActiveReminders => 'لا توجد تذكيرات نشطة حالياً.';
+
+  @override
+  String reminderRemovedMessage(String name) {
+    return 'تم حذف تذكير $name';
+  }
+
+  @override
+  String get undoAction => 'تراجع';
+
+  @override
+  String get reminderRestoredMessage => 'تمت استعادة التذكير';
+
+  @override
+  String reminderSubtitleInfo(String time, int hours) {
+    return 'بدأ في $time • كل $hours ساعات';
+  }
+
+  @override
+  String editFieldTitle(String label) {
+    return 'تعديل $label';
+  }
+
+  @override
+  String get cancelAction => 'إلغاء';
+
+  @override
+  String get saveAction => 'حفظ';
+
+  @override
+  String get medicationRemindersMenu => 'تذكيرات الأدوية';
+
+  @override
+  String get genderMale => 'ذكر';
+
+  @override
+  String get genderFemale => 'أنثى';
+
+  @override
+  String get carouselBasicsTitle => 'أساسيات الربو';
+
+  @override
+  String get carouselBasicsSubtitle =>
+      'تعرف على أساسيات مرض الربو وأعراضه الشائعة.';
+
+  @override
+  String get carouselTriggersTitle => 'مثيرات الربو';
+
+  @override
+  String get carouselTriggersSubtitle =>
+      'تحديد وتقليل المهيجات اليومية للحفاظ على صحة رئتيك.';
+
+  @override
+  String get carouselHelpTitle => 'متى تطلب المساعدة';
+
+  @override
+  String get carouselHelpSubtitle =>
+      'تعرف على العلامات التحذيرية لتفاقم الربو ومتى يجب طلب الرعاية الطبية.';
+
+  @override
+  String get carouselInhalerTitle => 'طرق استخدام البخاخ';
+
+  @override
+  String get carouselInhalerSubtitle =>
+      'أتقن الاستخدام الصحيح للبخاخ خطوة بخطوة للحصول على راحة أفضل.';
+
+  @override
+  String get trackedTodayTitle => 'لقد قمت بالتسجيل اليوم بالفعل!';
+
+  @override
+  String get trackedTodaySubtitle => 'اضغط على مربع لمشاهدة البيانات السابقة';
+
+  @override
+  String get backToHome => 'العودة للرئيسية';
+
+  @override
+  String questionProgress(int current, int total) {
+    return 'السؤال $current من $total';
+  }
+
+  @override
+  String get yesLabel => 'نعم';
+
+  @override
+  String get noLabel => 'لا';
+
+  @override
+  String get backButton => 'السابق';
+
+  @override
+  String get nextButton => 'التالي';
+
+  @override
+  String get submitButton => 'إرسال';
+
+  @override
+  String get assessmentResultTitle => 'نتيجة التقييم';
+
+  @override
+  String logDateTitle(int day, int month, int year) {
+    return 'سجل يوم: $day/$month/$year';
+  }
+
+  @override
+  String get okAction => 'موافق';
+
+  @override
+  String get wellControlledAsthma => 'الربو متحكم فيه بشكل جيد';
+
+  @override
+  String get partlyControlledAsthma => 'الربو متحكم فيه جزئياً';
+
+  @override
+  String get uncontrolledAsthma => 'الربو غير متحكم فيه';
+
+  @override
+  String get questionDaytime =>
+      'هل تظهر أعراض خلال النهار أكثر من مرتين في الأسبوع؟';
+
+  @override
+  String get questionNightWaking => 'هل تستيقظ من النوم ليلاً بسبب الربو؟';
+
+  @override
+  String get questionRescueInhaler =>
+      'هل تحتاج إلى استخدام بخاخ الإسعافات الأولية أكثر من مرتين في الأسبوع؟';
+
+  @override
+  String get questionActivityLimitation =>
+      'هل يحد الربو من ممارسة نشاطاتك اليومية المعتادة؟';
+
+  @override
   String get reminderText =>
       'تشعر أنك بخير؟ استخدم بخاخ التحكم حسب وصف الطبيب.\n\nبدأت بالسعال أو الصفير أو ضيق الصدر؟\nاستخدم بخاخ الإنقاذ واتبع خطة التحكم بالربو.';
 
@@ -864,4 +1036,649 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get q4_10_d => 'الحصول على قراءة جيدة لذروة التدفق';
+
+  @override
+  String get quizTriggersPart1Title => 'محفزات الربو: البيت والبيئة المحيطة';
+
+  @override
+  String get quizTriggersPart2Title => 'محفزات الربو: أسلوب الحياة والصحة';
+
+  @override
+  String get quizInhalersPart1Title => 'البخاخات: الوقائي مقابل الإسعافي';
+
+  @override
+  String get quizInhalersPart2Title => 'البخاخات: طرق الاستخدام الصحيحة';
+
+  @override
+  String get t1_1 => 'أي نوع من أنواع الدخان يجب على مريض الربو تجنبه؟';
+
+  @override
+  String get t1_1_a =>
+      'دخان السجائر والشيشة والتدخين الإلكتروني وروائح الاحتراق';
+
+  @override
+  String get t1_1_b => 'دخان السجائر فقط';
+
+  @override
+  String get t1_1_c => 'الشيشة والتدخين الإلكتروني فقط';
+
+  @override
+  String get t1_1_d => 'الدخان الخارجي فقط';
+
+  @override
+  String get t1_2 => 'ما الذي يُنصح به لتقليل عثّ الغبار في سرير مريض الربو؟';
+
+  @override
+  String get t1_2_a => 'استخدام أغطية للمرتبة والوسائد';
+
+  @override
+  String get t1_2_b => 'تغيير هيكل السرير';
+
+  @override
+  String get t1_2_c => 'النوم دون وسائد';
+
+  @override
+  String get t1_2_d => 'إبقاء النافذة مفتوحة طوال الليل';
+
+  @override
+  String get t1_3 =>
+      'أي من العادات المنزلية التالية تساعد على تقليل مسببات الحساسية البيئية لمرضى الربو؟';
+
+  @override
+  String get t1_3_a => 'الحفاظ على نظافة المنزل وتهويته جيدًا';
+
+  @override
+  String get t1_3_b => 'إبقاء المنزل مغلقًا دون تهوية';
+
+  @override
+  String get t1_3_c => 'كنس الغبار بطريقة تثيره في الهواء';
+
+  @override
+  String get t1_3_d => 'استخدام العديد من معطرات الجو';
+
+  @override
+  String get t1_4 =>
+      'ما اللقاح السنوي الذي يُنصح به لمريض الربو للوقاية من العدوى التي قد تزيد الأعراض سوءًا؟';
+
+  @override
+  String get t1_4_a => 'لقاح الإنفلونزا السنوي';
+
+  @override
+  String get t1_4_b => 'لقاح الكزاز (التيتانوس)';
+
+  @override
+  String get t1_4_c => 'لقاح التهاب الكبد';
+
+  @override
+  String get t1_4_d => 'لقاح جدري الماء';
+
+  @override
+  String get t1_5 =>
+      'إذا كانت الرياضة تثير أعراض الربو، فما الذي يجب على المريض فعله إذا أوصى الطبيب بذلك؟';
+
+  @override
+  String get t1_5_a => 'استخدام البخاخ الموصوف قبل التمرين';
+
+  @override
+  String get t1_5_b => 'التوقف عن ممارسة الرياضة تمامًا';
+
+  @override
+  String get t1_5_c => 'ممارسة الرياضة فقط في الطقس شديد البرودة';
+
+  @override
+  String get t1_5_d => 'شرب مشروب سكري قبل الجري';
+
+  @override
+  String get t1_6 =>
+      'أي من مسكنات الألم التي تُصرف دون وصفة طبية ذُكرت صراحةً كمحفز محتمل للربو؟';
+
+  @override
+  String get t1_6_a =>
+      'الإيبوبروفين (من مضادات الالتهاب غير الستيرويدية NSAIDs)';
+
+  @override
+  String get t1_6_b => 'الباراسيتامول (أسيتامينوفين)';
+
+  @override
+  String get t1_6_c => 'فيتامين C';
+
+  @override
+  String get t1_6_d => 'مضادات الحموضة';
+
+  @override
+  String get t1_7 =>
+      'بالإضافة إلى الأسبرين ومضادات الالتهاب غير الستيرويدية، ما الفئة الدوائية الأخرى المذكورة كمحفز محتمل للربو؟';
+
+  @override
+  String get t1_7_a => 'حاصرات بيتا (Beta-blockers)';
+
+  @override
+  String get t1_7_b => 'المضادات الحيوية';
+
+  @override
+  String get t1_7_c => 'مضادات الهيستامين';
+
+  @override
+  String get t1_7_d => 'أدوية السعال';
+
+  @override
+  String get t1_8 =>
+      'ما العادة الصحية البسيطة الموصى بها للمساعدة في الوقاية من التهابات الجهاز التنفسي مثل الإنفلونزا أو نزلات البرد؟';
+
+  @override
+  String get t1_8_a => 'غسل اليدين بانتظام';
+
+  @override
+  String get t1_8_b => 'استخدام العطور القوية';
+
+  @override
+  String get t1_8_c => 'تجنب استخدام أغطية المراتب';
+
+  @override
+  String get t1_8_d => 'ممارسة الرياضة دون استخدام البخاخ';
+
+  @override
+  String get t1_9 =>
+      'بالإضافة إلى الدخان والغبار، ما الظروف الجوية الأخرى التي تُعد من محفزات \"الأيام ذات الهواء السيئ\"؟';
+
+  @override
+  String get t1_9_a => 'التلوث والعواصف الرملية';
+
+  @override
+  String get t1_9_b => 'ارتفاع مستويات الأكسجين';
+
+  @override
+  String get t1_9_c => 'الضباب وندى الصباح';
+
+  @override
+  String get t1_9_d => 'نسمات الصيف اللطيفة';
+
+  @override
+  String get t1_10 =>
+      'كيف يمكن للنشاط البدني أو \"الجري وكأنك في الأولمبياد\" أن يؤثر على بعض مرضى الربو؟';
+
+  @override
+  String get t1_10_a => 'قد يكون محفزًا لأعراض الربو';
+
+  @override
+  String get t1_10_b => 'يعالج الربو بشكل دائم';
+
+  @override
+  String get t1_10_c => 'يمنع الحاجة إلى بخاخ الإسعاف';
+
+  @override
+  String get t1_10_d => 'يلغي تأثير حبوب اللقاح';
+
+  @override
+  String get t2_1 =>
+      'أي مجموعة من الأدوية التالية تحتوي على محفزات معروفة للربو لدى بعض الأشخاص؟';
+
+  @override
+  String get t2_1_a => 'الأسبرين والإيبوبروفين (NSAIDs) وبعض حاصرات بيتا';
+
+  @override
+  String get t2_1_b => 'الفيتامينات والمعادن';
+
+  @override
+  String get t2_1_c => 'المضادات الحيوية وأدوية السعال';
+
+  @override
+  String get t2_1_d => 'مضادات الحموضة وأدوية الحساسية';
+
+  @override
+  String get t2_2 =>
+      'ماذا يمكن أن يحدث لمريض الربو إذا كان بالقرب من شخص يدخن الشيشة أو يستخدم التدخين الإلكتروني؟';
+
+  @override
+  String get t2_2_a => 'قد تزداد أعراض الربو لديه سوءًا';
+
+  @override
+  String get t2_2_b => 'تصبح رئتاه محصنتين تمامًا ضد الغبار';
+
+  @override
+  String get t2_2_c => 'لن يحتاج بعد ذلك إلى بخاخ الإسعاف';
+
+  @override
+  String get t2_2_d => 'يتتحسن أداؤه الرياضي';
+
+  @override
+  String get t2_3 =>
+      'أي نوع من البخاخات المنزلية يمكن أن يعمل كمحفز ويسبب نوبة ربو؟';
+
+  @override
+  String get t2_3_a => 'بخاخات التنظيف الكيميائية';
+
+  @override
+  String get t2_3_b => 'بخاخ رذاذ الماء';
+
+  @override
+  String get t2_3_c => 'بخاخات المحلول الملحي للأنف';
+
+  @override
+  String get t2_3_d => 'مراوح التبريد الهوائية';
+
+  @override
+  String get t2_4 => 'ما المحفز الخارجي الذي يأتي من الأشجار والأعشاب والزهور؟';
+
+  @override
+  String get t2_4_a => 'حبوب اللقاح';
+
+  @override
+  String get t2_4_b => 'كرات الغبار المنزلية';
+
+  @override
+  String get t2_4_c => 'الأبخرة الكيميائية';
+
+  @override
+  String get t2_4_d => 'وبر الحيوانات الأليفة';
+
+  @override
+  String get t2_5 => 'لماذا يجب على مريض الربو غسل يديه بانتظام؟';
+
+  @override
+  String get t2_5_a =>
+      'لتجنب الإصابة بنزلة برد أو إنفلونزا قد تزيد الربو سوءًا';
+
+  @override
+  String get t2_5_b => 'لإزالة حبوب اللقاح من أغطية المراتب';
+
+  @override
+  String get t2_5_c => 'لالحماية من الهواء البارد';
+
+  @override
+  String get t2_5_d => 'لإيقاف تأثير التوتر العاطفي';
+
+  @override
+  String get t2_6 =>
+      'أي مما يلي يصف محفزًا بيئيًا داخليًا يوجد في السجاد والأثاث؟';
+
+  @override
+  String get t2_6_a => 'الغبار وعثّ الغبار';
+
+  @override
+  String get t2_6_b => 'دخان الشيشة';
+
+  @override
+  String get t2_6_c => 'العواصف الرملية';
+
+  @override
+  String get t2_6_d => 'حبوب اللقاح من الأشجار الخارجية';
+
+  @override
+  String get t2_7 =>
+      'ماذا يمكن أن يحدث إذا استنشق مريض الربو أبخرة كيميائية من منتجات قوية؟';
+
+  @override
+  String get t2_7_a => 'قد تعمل كمحفز وتزيد الربو سوءًا';
+
+  @override
+  String get t2_7_b => 'يصبح التنفس أسهل';
+
+  @override
+  String get t2_7_c => 'تعالج حساسية وبر الحيوانات الأليفة';
+
+  @override
+  String get t2_7_d => 'تغني عن استخدام دواء التحكم بالربو';
+
+  @override
+  String get t2_8 =>
+      'ما هو وبر الحيوانات الأليفة (Pet Dander)، وهو أحد محفزات الربو المعروفة؟';
+
+  @override
+  String get t2_8_a =>
+      'جزيئات صغيرة من الجلد والفراء تتساقط من الحيوانات ذات الفراء';
+
+  @override
+  String get t2_8_b => 'نوع من الأدوية المسكنة للألم';
+
+  @override
+  String get t2_8_c => 'الهواء البارد في فصل الشتاء';
+
+  @override
+  String get t2_8_d => 'بخاخ تنظيف يُستخدم في المطبخ';
+
+  @override
+  String get t2_9 =>
+      'إذا أراد شخص مصاب بالربو تقليل المحفزات في غرفة نومه، فما أفضل عادة؟';
+
+  @override
+  String get t2_9_a => 'استخدام أغطية للمراتب والوسائد لتقليل عثّ الغبار';
+
+  @override
+  String get t2_9_b => 'تجنب استخدام أي أغطية للوسائد أو المراتب';
+
+  @override
+  String get t2_9_c => 'إبقاء الغرفة غير مهواة ومليئة بالغبار';
+
+  @override
+  String get t2_9_d => 'السماح للعديد من الحيوانات الأليفة بالنوم في السرير';
+
+  @override
+  String get t2_10 =>
+      'إذا كان مريض الربو يحب اللعب مع القطط أو الكلاب، فما المحفز المحدد الذي يجب أن ينتبه له؟';
+
+  @override
+  String get t2_10_a => 'وبر الحيوانات الأليفة';
+
+  @override
+  String get t2_10_b => 'حفلة حبوب اللقاح';
+
+  @override
+  String get t2_10_c => 'روائح الاحتراق';
+
+  @override
+  String get t2_10_d => 'الأبخرة الكيميائية';
+
+  @override
+  String get i1_1 => 'ما الغرض الرئيسي من بخاخ الوقاية (Controller Inhaler)؟';
+
+  @override
+  String get i1_1_a =>
+      'الوقاية من الأعراض ونوبات الربو من خلال استخدامه يوميًا';
+
+  @override
+  String get i1_1_b => 'إعطاء راحة فورية أثناء نوبة الربو';
+
+  @override
+  String get i1_1_c => 'فتح الممرات الهوائية خلال ثوانٍ في حالات الطوارئ';
+
+  @override
+  String get i1_1_d => 'تنظيف الرئتين بعد التمرين';
+
+  @override
+  String get i1_2 => 'كيف يساعد بخاخ الوقاية الرئتين مع مرور الوقت؟';
+
+  @override
+  String get i1_2_a => 'يقلل التورم والالتهاب في الممرات الهوائية';
+
+  @override
+  String get i1_2_b => 'يزيد من معدل ضربات القلب';
+
+  @override
+  String get i1_2_c => 'يعالج الربو نهائيًا بعد استخدام واحد';
+
+  @override
+  String get i1_2_d => 'يعمل كقناع مؤقت ضد الغبار';
+
+  @override
+  String get i1_3 => 'متى يجب على المريض استخدام بخاخ الوقاية؟';
+
+  @override
+  String get i1_3_a => 'بانتظام كل يوم حتى عند الشعور بالتحسن';
+
+  @override
+  String get i1_3_b => 'فقط عند السعال الشديد';
+
+  @override
+  String get i1_3_c => 'فقط أثناء الطوارئ أو النوبات المفاجئة';
+
+  @override
+  String get i1_3_d => 'فقط قبل النوم مباشرة';
+
+  @override
+  String get i1_4 =>
+      'هل يوفر بخاخ الوقاية راحة سريعة عند حدوث صعوبة مفاجئة في التنفس؟';
+
+  @override
+  String get i1_4_a => 'لا، لا يوفر راحة سريعة في حالات ضيق التنفس المفاجئة';
+
+  @override
+  String get i1_4_b => 'نعم، يعمل فورًا';
+
+  @override
+  String get i1_4_c => 'نعم، ولكن فقط إذا استُخدم مع ماء ساخن';
+
+  @override
+  String get i1_4_d => 'لا، فهو يعمل فقط أثناء ممارسة الرياضة';
+
+  @override
+  String get i1_5 =>
+      'أي نوع من البخاخات يُعرف باسم “بخاخ الإنقاذ” أو “المساعدة الطارئة”؟';
+
+  @override
+  String get i1_5_a => 'بخاخ الإغاثة السريعة (Reliever Inhaler)';
+
+  @override
+  String get i1_5_b => 'بخاخ الوقاية';
+
+  @override
+  String get i1_5_c => 'جهاز الرذاذ (Nebulizer)';
+
+  @override
+  String get i1_5_d => 'الأنبوب المباعد (Spacer)';
+
+  @override
+  String get i1_6 => 'ما الوظيفة الأساسية لبخاخ الإغاثة السريعة؟';
+
+  @override
+  String get i1_6_a => 'العمل بسرعة لفتح الممرات الهوائية عند ظهور الأعراض';
+
+  @override
+  String get i1_6_b => 'تقليل الالتهاب تدريجيًا خلال أسابيع';
+
+  @override
+  String get i1_6_c => 'الاستغناء عن الأدوية اليومية';
+
+  @override
+  String get i1_6_d => 'تتبع نمط تنفس المريض';
+
+  @override
+  String get i1_7 =>
+      'أي من الأعراض التالية يساعد بخاخ الإغاثة السريعة على تخفيفها؟';
+
+  @override
+  String get i1_7_a => 'الأزيز (الصفير)، والسعال، وضيق الصدر، وضيق التنفس';
+
+  @override
+  String get i1_7_b => 'الطفح الجلدي والحكة';
+
+  @override
+  String get i1_7_c => 'الصداع والحمى';
+
+  @override
+  String get i1_7_d => 'حساسية الطعام وآلام المعدة';
+
+  @override
+  String get i1_8 => 'متى يجب على المريض استخدام بخاخ الإغاثة السريعة؟';
+
+  @override
+  String get i1_8_a => 'عند الحاجة فقط أو قبل التمرين إذا أوصى الطبيب بذلك';
+
+  @override
+  String get i1_8_b => 'كل صباح ومساء بشكل منتظم';
+
+  @override
+  String get i1_8_c => 'فقط عندما يشعر بأنه بخير تمامًا';
+
+  @override
+  String get i1_8_d => 'مرتين أسبوعيًا سواء ظهرت الأعراض أم لا';
+
+  @override
+  String get i1_9 =>
+      'ما الحقيقة المهمة التي يجب تذكرها حول تأثير بخاخ الإغاثة السريعة؟';
+
+  @override
+  String get i1_9_a => 'يعالج المشكلة الحالية فورًا لكنه لا يمنع عودة الربو';
+
+  @override
+  String get i1_9_b => 'يمنع عودة الربو نهائيًا';
+
+  @override
+  String get i1_9_c => 'يحتاج أيامًا أو أسابيع ليظهر تأثيره الكامل';
+
+  @override
+  String get i1_9_d => 'يجب تجنبه تمامًا أثناء النوبة';
+
+  @override
+  String get i1_10 =>
+      'ماذا يجب أن تفعل إذا بدأت بالسعال أو الصفير أو الشعور بضيق في الصدر؟';
+
+  @override
+  String get i1_10_a =>
+      'استخدم بخاخ الإغاثة السريعة واتبع خطة التعامل مع الربو الخاصة بك';
+
+  @override
+  String get i1_10_b => 'استخدم بخاخ الوقاية ثم اذهب للنوم';
+
+  @override
+  String get i1_10_c => 'توقف عن جميع الأدوية تمامًا';
+
+  @override
+  String get i1_10_d => 'انتظر من 10 إلى 15 دقيقة قبل فعل أي شيء';
+
+  @override
+  String get i2_1 =>
+      'عند استخدام بخاخ الجرعات المقننة (MDI)، كم من الوقت يجب أن تحبس أنفاسك بعد استنشاق الدواء؟';
+
+  @override
+  String get i2_1_a => '10 ثوانٍ';
+
+  @override
+  String get i2_1_b => 'ثانيتان';
+
+  @override
+  String get i2_1_c => 'دقيقة واحدة';
+
+  @override
+  String get i2_1_d => 'من 30 إلى 60 ثانية';
+
+  @override
+  String get i2_2 => 'أين يتم وضع الدواء عند تجهيز جهاز الرذاذ (Nebulizer)؟';
+
+  @override
+  String get i2_2_a => 'داخل كوب جهاز الرذاذ';
+
+  @override
+  String get i2_2_b => 'مباشرة على القناع';
+
+  @override
+  String get i2_2_c => 'داخل الأنبوب المباعد';
+
+  @override
+  String get i2_2_d => 'على ختم قطعة الفم';
+
+  @override
+  String get i2_3 => 'كم من الوقت قد يحتاج بخاخ الوقاية ليُظهر فائدته الكاملة؟';
+
+  @override
+  String get i2_3_a => 'أيام أو أسابيع';
+
+  @override
+  String get i2_3_b => '10 ثوانٍ فقط';
+
+  @override
+  String get i2_3_c => 'مباشرة عند السعال';
+
+  @override
+  String get i2_3_d => 'من 30 إلى 60 ثانية بالضبط';
+
+  @override
+  String get i2_4 =>
+      'كيف يجب أن تتنفس من خلال قناع أو قطعة فم جهاز الرذاذ أثناء تشغيله؟';
+
+  @override
+  String get i2_4_a => 'تنفس بشكل طبيعي من خلال الفم';
+
+  @override
+  String get i2_4_b => 'احبس أنفاسك لأطول مدة ممكنة';
+
+  @override
+  String get i2_4_c => 'تنفس بسرعة من الأنف فقط';
+
+  @override
+  String get i2_4_d => 'خذ أنفاسًا متقطعة وحادة';
+
+  @override
+  String get i2_5 => 'أي جهاز يتطلب تشغيل آلة لتكوين رذاذ يتم استنشاقه؟';
+
+  @override
+  String get i2_5_a => 'جهاز الرذاذ (Nebulizer)';
+
+  @override
+  String get i2_5_b => 'بخاخ الجرعات المقننة (MDI)';
+
+  @override
+  String get i2_5_c => 'الأنبوب المباعد (Spacer)';
+
+  @override
+  String get i2_5_d => 'غطاء الوسادة';
+
+  @override
+  String get i2_6 =>
+      'ماذا يجب أن تفعل مباشرة قبل الضغط على عبوة بخاخ الجرعات المقننة (MDI) والاستنشاق؟';
+
+  @override
+  String get i2_6_a => 'إخراج الهواء من الرئتين بالكامل (الزفير)';
+
+  @override
+  String get i2_6_b => 'الانتظار 60 ثانية';
+
+  @override
+  String get i2_6_c => 'غسل الكوب';
+
+  @override
+  String get i2_6_d => 'إطفاء الجهاز';
+
+  @override
+  String get i2_7 =>
+      'إذا كنت تشعر بأنك بخير تمامًا، فماذا يجب أن تفعل بشأن بخاخ الوقاية؟';
+
+  @override
+  String get i2_7_a => 'استخدامه تمامًا كما وصفه الطبيب';
+
+  @override
+  String get i2_7_b => 'التوقف عن استخدامه حتى تشعر بالمرض';
+
+  @override
+  String get i2_7_c => 'استبداله ببخاخ الإغاثة السريعة';
+
+  @override
+  String get i2_7_d => 'مضاعفة الجرعة احتياطًا';
+
+  @override
+  String get i2_8 =>
+      'ماذا يجب أن تفعل بجهاز الرذاذ بعد توقف خروج الرذاذ الدوائي تمامًا؟';
+
+  @override
+  String get i2_8_a => 'إيقاف الجهاز وتنظيف المعدات';
+
+  @override
+  String get i2_8_b => 'تركه يعمل لمدة ساعة إضافية';
+
+  @override
+  String get i2_8_c => 'إضافة الماء دون إيقافه';
+
+  @override
+  String get i2_8_d => 'هزه أثناء توصيله بالأنبوب المباعد';
+
+  @override
+  String get i2_9 => 'أي بخاخ مخصص لـ “الحماية اليومية” وليس للإغاثة السريعة؟';
+
+  @override
+  String get i2_9_a => 'بخاخ الوقاية';
+
+  @override
+  String get i2_9_b => 'بخاخ الإغاثة السريعة';
+
+  @override
+  String get i2_9_c => 'بخاخ الإنقاذ';
+
+  @override
+  String get i2_9_d => 'كوب جهاز الرذاذ';
+
+  @override
+  String get i2_10 =>
+      'ما الخطوة المطلوبة مباشرة بعد الضغط مرة واحدة على عبوة بخاخ الجرعات المقننة (MDI)؟';
+
+  @override
+  String get i2_10_a => 'الاستنشاق ببطء وعمق';
+
+  @override
+  String get i2_10_b => 'رجّ البخاخ مرة أخرى';
+
+  @override
+  String get i2_10_c => 'إخراج الهواء ببطء وبشكل كامل';
+
+  @override
+  String get i2_10_d => 'الانتظار من 30 إلى 60 ثانية قبل التنفس';
 }

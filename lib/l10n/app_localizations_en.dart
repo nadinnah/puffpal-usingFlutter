@@ -207,6 +207,177 @@ class AppLocalizationsEn extends AppLocalizations {
   String get quickReminder => 'Quick Reminder';
 
   @override
+  String get medicationRemindersTitle => 'Medication Reminders';
+
+  @override
+  String get medicationRemindersSubtitle =>
+      'Set the start time and how often to repeat for each medicine.';
+
+  @override
+  String get maxMedicationsError => 'Maximum 5 medications allowed';
+
+  @override
+  String enterMedicineLabel(int index) {
+    return 'Enter Medicine $index';
+  }
+
+  @override
+  String get firstDose => 'First Dose';
+
+  @override
+  String get everyIntervalLabel => 'Every';
+
+  @override
+  String hoursValue(int hours) {
+    return '$hours hrs';
+  }
+
+  @override
+  String get addAnotherMedication => 'Add Another Medication';
+
+  @override
+  String get fillAllDetailsError => 'Please fill all details.';
+
+  @override
+  String get remindersSavedMessage => 'Reminders saved and active!';
+
+  @override
+  String get setTimersButton => 'Set Timers';
+
+  @override
+  String get activeRemindersTitle => 'Active Reminders';
+
+  @override
+  String get noActiveReminders => 'No active reminders.';
+
+  @override
+  String reminderRemovedMessage(String name) {
+    return '$name reminder removed';
+  }
+
+  @override
+  String get undoAction => 'Undo';
+
+  @override
+  String get reminderRestoredMessage => 'Reminder restored';
+
+  @override
+  String reminderSubtitleInfo(String time, int hours) {
+    return 'Started at $time • Every ${hours}h';
+  }
+
+  @override
+  String editFieldTitle(String label) {
+    return 'Edit $label';
+  }
+
+  @override
+  String get cancelAction => 'Cancel';
+
+  @override
+  String get saveAction => 'Save';
+
+  @override
+  String get medicationRemindersMenu => 'Medication Reminders';
+
+  @override
+  String get genderMale => 'Male';
+
+  @override
+  String get genderFemale => 'Female';
+
+  @override
+  String get carouselBasicsTitle => 'Asthma Basics';
+
+  @override
+  String get carouselBasicsSubtitle =>
+      'Learn the basics of asthma and its symptoms.';
+
+  @override
+  String get carouselTriggersTitle => 'Asthma Triggers';
+
+  @override
+  String get carouselTriggersSubtitle =>
+      'Identify and minimize daily irritants to keep your lungs healthy.';
+
+  @override
+  String get carouselHelpTitle => 'When to Seek Help';
+
+  @override
+  String get carouselHelpSubtitle =>
+      'Learn the warning signs of worsening asthma and when to seek care.';
+
+  @override
+  String get carouselInhalerTitle => 'Inhaler Techniques';
+
+  @override
+  String get carouselInhalerSubtitle =>
+      'Master your proper inhaler usage step-by-step for better relief.';
+
+  @override
+  String get trackedTodayTitle => 'You\'re all set for today!';
+
+  @override
+  String get trackedTodaySubtitle => 'Tap a square to see past data';
+
+  @override
+  String get backToHome => 'Back to Home';
+
+  @override
+  String questionProgress(int current, int total) {
+    return 'Question $current of $total';
+  }
+
+  @override
+  String get yesLabel => 'Yes';
+
+  @override
+  String get noLabel => 'No';
+
+  @override
+  String get backButton => 'Back';
+
+  @override
+  String get nextButton => 'Next';
+
+  @override
+  String get submitButton => 'Submit';
+
+  @override
+  String get assessmentResultTitle => 'Assessment Result';
+
+  @override
+  String logDateTitle(int day, int month, int year) {
+    return 'Log: $day/$month/$year';
+  }
+
+  @override
+  String get okAction => 'OK';
+
+  @override
+  String get wellControlledAsthma => 'Well Controlled Asthma';
+
+  @override
+  String get partlyControlledAsthma => 'Partly Controlled Asthma';
+
+  @override
+  String get uncontrolledAsthma => 'Uncontrolled Asthma';
+
+  @override
+  String get questionDaytime => 'Daytime symptoms more than twice/week?';
+
+  @override
+  String get questionNightWaking => 'Any night waking due to asthma?';
+
+  @override
+  String get questionRescueInhaler =>
+      'Rescue inhaler needed more than twice/week?';
+
+  @override
+  String get questionActivityLimitation =>
+      'Any activity limitation due to asthma?';
+
+  @override
   String get reminderText =>
       'Feeling well? Take your Controller as prescribed.\n\nStarting to cough, wheeze, or feel tight-chested?\nUse your Reliever and follow your asthma action plan.';
 
@@ -866,4 +1037,655 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get q4_10_d => 'Having a good peak flow reading';
+
+  @override
+  String get quizTriggersPart1Title => 'Asthma Triggers: Home & Environment';
+
+  @override
+  String get quizTriggersPart2Title => 'Asthma Triggers: Lifestyle & Health';
+
+  @override
+  String get quizInhalersPart1Title => 'Inhalers: Controller vs. Reliever';
+
+  @override
+  String get quizInhalersPart2Title => 'Inhalers: Setup & Best Practices';
+
+  @override
+  String get t1_1 =>
+      'Which of the following types of smoke should an asthma patient avoid?';
+
+  @override
+  String get t1_1_a => 'Cigarette smoke, shisha, vaping, and burning odors';
+
+  @override
+  String get t1_1_b => 'Cigarette smoke only';
+
+  @override
+  String get t1_1_c => 'Shisha and vaping only';
+
+  @override
+  String get t1_1_d => 'Only outdoor smoke';
+
+  @override
+  String get t1_2 =>
+      'What is recommended to decrease dust mites in an asthma patient\'s bed?';
+
+  @override
+  String get t1_2_a => 'Using mattress and pillow covers';
+
+  @override
+  String get t1_2_b => 'Changing the bed frame';
+
+  @override
+  String get t1_2_c => 'Sleeping without pillows';
+
+  @override
+  String get t1_2_d => 'Keeping the window open all night';
+
+  @override
+  String get t1_3 =>
+      'Which of the following household habits helps reduce environmental allergens for asthma patients?';
+
+  @override
+  String get t1_3_a => 'Keeping the home clean and well-ventilated';
+
+  @override
+  String get t1_3_b => 'Keeping the home closed off and unventilated';
+
+  @override
+  String get t1_3_c => 'Sweeping dust into the air';
+
+  @override
+  String get t1_3_d => 'Using multiple air fresheners';
+
+  @override
+  String get t1_4 =>
+      'Which annual vaccine should an asthma patient consider to prevent symptom-worsening infections?';
+
+  @override
+  String get t1_4_a => 'Yearly flu vaccine';
+
+  @override
+  String get t1_4_b => 'Tetanus vaccine';
+
+  @override
+  String get t1_4_c => 'Hepatitis vaccine';
+
+  @override
+  String get t1_4_d => 'Chickenpox vaccine';
+
+  @override
+  String get t1_5 =>
+      'If exercise triggers asthma symptoms, what should a patient do if advised by their doctor?';
+
+  @override
+  String get t1_5_a => 'Use their prescribed inhaler before exercise';
+
+  @override
+  String get t1_5_b => 'Stop exercising completely';
+
+  @override
+  String get t1_5_c => 'Exercise only in freezing weather';
+
+  @override
+  String get t1_5_d => 'Drink a sugary beverage before running';
+
+  @override
+  String get t1_6 =>
+      'Which over-the-counter pain medication is explicitly listed as a potential asthma trigger?';
+
+  @override
+  String get t1_6_a => 'Ibuprofen (an NSAID)';
+
+  @override
+  String get t1_6_b => 'Acetaminophen';
+
+  @override
+  String get t1_6_c => 'Vitamin C';
+
+  @override
+  String get t1_6_d => 'Antacids';
+
+  @override
+  String get t1_7 =>
+      'Besides aspirin and NSAIDs, which class of medications is mentioned as a potential asthma trigger?';
+
+  @override
+  String get t1_7_a => 'Beta-blockers';
+
+  @override
+  String get t1_7_b => 'Antibiotics';
+
+  @override
+  String get t1_7_c => 'Antihistamines';
+
+  @override
+  String get t1_7_d => 'Cough syrups';
+
+  @override
+  String get t1_8 =>
+      'What simple hygiene habit is recommended to help prevent respiratory infections like the flu or colds?';
+
+  @override
+  String get t1_8_a => 'Washing hands regularly';
+
+  @override
+  String get t1_8_b => 'Wearing heavy perfume';
+
+  @override
+  String get t1_8_c => 'Avoiding the use of mattress covers';
+
+  @override
+  String get t1_8_d => 'Exercising without using an inhaler';
+
+  @override
+  String get t1_9 =>
+      'Besides smoke and dust, what other air conditions are listed as a \"bad air day\" trigger?';
+
+  @override
+  String get t1_9_a => 'Pollution and sandstorms';
+
+  @override
+  String get t1_9_b => 'High oxygen levels';
+
+  @override
+  String get t1_9_c => 'Fog and morning dew';
+
+  @override
+  String get t1_9_d => 'Gentle summer breezes';
+
+  @override
+  String get t1_10 =>
+      'How can physical activity or \"running like you\'re in the Olympics\" affect some asthma patients?';
+
+  @override
+  String get t1_10_a => 'It acts as a trigger for asthma symptoms.';
+
+  @override
+  String get t1_10_b => 'It always cures asthma symptoms permanently.';
+
+  @override
+  String get t1_10_c => 'It prevents the need for a rescue inhaler.';
+
+  @override
+  String get t1_10_d => 'It eliminates the effect of pollen.';
+
+  @override
+  String get t2_1 =>
+      'Which of the following sets of medications contains known triggers for some individuals with asthma?';
+
+  @override
+  String get t2_1_a => 'Aspirin, Ibuprofen (NSAIDs), and certain beta-blockers';
+
+  @override
+  String get t2_1_b => 'Vitamins and minerals';
+
+  @override
+  String get t2_1_c => 'Antibiotics and cough syrups';
+
+  @override
+  String get t2_1_d => 'Antacids and anti-allergy pills';
+
+  @override
+  String get t2_2 =>
+      'What can happen to an asthma patient who is around someone smoking a shisha or vaping?';
+
+  @override
+  String get t2_2_a => 'Their asthma symptoms can get worse.';
+
+  @override
+  String get t2_2_b => 'Their lungs become completely immune to dust.';
+
+  @override
+  String get t2_2_c => 'They will no longer need a rescue inhaler.';
+
+  @override
+  String get t2_2_d => 'Their exercise performance will improve';
+
+  @override
+  String get t2_3 =>
+      'What type of household spray can act as a trigger and cause an asthma attack?';
+
+  @override
+  String get t2_3_a => 'Chemical cleaning sprays';
+
+  @override
+  String get t2_3_b => 'Water mist spray';
+
+  @override
+  String get t2_3_c => 'Saline nasal sprays';
+
+  @override
+  String get t2_3_d => 'Air cooling fans';
+
+  @override
+  String get t2_4 =>
+      'What outdoor trigger comes from trees, grass, and flowers?';
+
+  @override
+  String get t2_4_a => 'Pollen';
+
+  @override
+  String get t2_4_b => 'Dust bunnies';
+
+  @override
+  String get t2_4_c => 'Chemical fumes';
+
+  @override
+  String get t2_4_d => 'Pet dander';
+
+  @override
+  String get t2_5 => 'Why should an asthma patient wash their hands regularly?';
+
+  @override
+  String get t2_5_a =>
+      'To avoid catching a cold or flu that could worsen asthma';
+
+  @override
+  String get t2_5_b => 'To remove pollen from their mattress covers';
+
+  @override
+  String get t2_5_c => 'To protect themselves from cold weather air';
+
+  @override
+  String get t2_5_d => 'To stop the effects of emotional stress';
+
+  @override
+  String get t2_6 =>
+      'Which of the following describes an indoor environmental trigger found on carpets and furniture?';
+
+  @override
+  String get t2_6_a => 'Dust and dust mites';
+
+  @override
+  String get t2_6_b => 'Shisha smoke';
+
+  @override
+  String get t2_6_c => 'Sandstorms';
+
+  @override
+  String get t2_6_d => 'Pollen from outdoor trees';
+
+  @override
+  String get t2_7 =>
+      'What can happen if an asthma patient breathes in chemical fumes from strong products?';
+
+  @override
+  String get t2_7_a => 'It can act as a trigger and worsen their asthma.';
+
+  @override
+  String get t2_7_b => 'Their breathing may become easier.';
+
+  @override
+  String get t2_7_c => 'It cures their allergy to pet dander.';
+
+  @override
+  String get t2_7_d => 'It replaces the need for a controller medicine.';
+
+  @override
+  String get t2_8 => 'What is pet dander, which is a known asthma trigger?';
+
+  @override
+  String get t2_8_a => 'Tiny bits of skin and fur from furry animals';
+
+  @override
+  String get t2_8_b => 'A type of medicine used for pain relief';
+
+  @override
+  String get t2_8_c => 'The chilly air found during winter';
+
+  @override
+  String get t2_8_d => 'A cleaning spray used for the kitchen';
+
+  @override
+  String get t2_9 =>
+      'If someone with asthma wants to minimize triggers in their bedroom, what is the best habit?';
+
+  @override
+  String get t2_9_a => 'Use mattress and pillow covers to decrease dust mites.';
+
+  @override
+  String get t2_9_b => 'Avoid using any covers on pillows and mattresses.';
+
+  @override
+  String get t2_9_c => 'Keep the room unventilated and dusty.';
+
+  @override
+  String get t2_9_d => 'Bring multiple furry pets into the bed.';
+
+  @override
+  String get t2_10 =>
+      'If an asthma patient loves playing with cats or dogs, what specific trigger should they watch out for?';
+
+  @override
+  String get t2_10_a => 'Pet dander';
+
+  @override
+  String get t2_10_b => 'Pollen party';
+
+  @override
+  String get t2_10_c => 'Burning odors';
+
+  @override
+  String get t2_10_d => 'Chemical fumes';
+
+  @override
+  String get i1_1 => 'What is the main purpose of a Controller inhaler?';
+
+  @override
+  String get i1_1_a =>
+      'To prevent symptoms and asthma attacks by being used every day';
+
+  @override
+  String get i1_1_b => 'To give instant relief during an asthma attack';
+
+  @override
+  String get i1_1_c => 'To open the airways within seconds during an emergency';
+
+  @override
+  String get i1_1_d => 'To clean the lungs after a workout';
+
+  @override
+  String get i1_2 => 'How does a Controller inhaler help the lungs over time?';
+
+  @override
+  String get i1_2_a => 'It reduces swelling and inflammation in the airways';
+
+  @override
+  String get i1_2_b => 'It increases the patient\'s heart rate';
+
+  @override
+  String get i1_2_c => 'It cures asthma completely after one use';
+
+  @override
+  String get i1_2_d => 'It acts as a temporary mask for dust';
+
+  @override
+  String get i1_3 => 'When should a patient take their Controller inhaler?';
+
+  @override
+  String get i1_3_a => 'Regularly every day, even when feeling well';
+
+  @override
+  String get i1_3_b => 'Only when they are coughing severely';
+
+  @override
+  String get i1_3_c => 'Only during an emergency or sudden attack';
+
+  @override
+  String get i1_3_d => 'Only right before going to sleep';
+
+  @override
+  String get i1_4 =>
+      'Does a Controller inhaler provide quick relief during sudden breathing problems?';
+
+  @override
+  String get i1_4_a =>
+      'No, it does not give quick relief during sudden breathing problems';
+
+  @override
+  String get i1_4_b => 'Yes, it works instantly';
+
+  @override
+  String get i1_4_c => 'Yes, but only if taken with hot water';
+
+  @override
+  String get i1_4_d => 'No, it only works if you are exercising';
+
+  @override
+  String get i1_5 =>
+      'Which type of inhaler is referred to as \"emergency help\" or \"The Rescue Inhaler\"?';
+
+  @override
+  String get i1_5_a => 'The Reliever inhaler';
+
+  @override
+  String get i1_5_b => 'The Controller inhaler';
+
+  @override
+  String get i1_5_c => 'The Nebulizer machine';
+
+  @override
+  String get i1_5_d => 'The Spacer attachment';
+
+  @override
+  String get i1_6 => 'What is the primary job of a Reliever inhaler?';
+
+  @override
+  String get i1_6_a => 'To work quickly to open the airways during symptoms';
+
+  @override
+  String get i1_6_b => 'To reduce swelling quietly over several weeks';
+
+  @override
+  String get i1_6_c => 'To replace the need for daily medication';
+
+  @override
+  String get i1_6_d => 'To track the patient\'s breathing patterns';
+
+  @override
+  String get i1_7 =>
+      'Which of the following symptoms does a Reliever inhaler help relieve?';
+
+  @override
+  String get i1_7_a =>
+      'Wheezing, coughing, chest tightness, and shortness of breath';
+
+  @override
+  String get i1_7_b => 'Skin rashes and itching';
+
+  @override
+  String get i1_7_c => 'Headaches and fever';
+
+  @override
+  String get i1_7_d => 'Food allergies and stomach aches';
+
+  @override
+  String get i1_8 => 'When should a patient use their Reliever inhaler?';
+
+  @override
+  String get i1_8_a => 'Only when needed or before exercise if prescribed';
+
+  @override
+  String get i1_8_b => 'Every single morning and evening without fail';
+
+  @override
+  String get i1_8_c => 'Only when they feel completely fine';
+
+  @override
+  String get i1_8_d => 'Twice a week whether they have symptoms or not';
+
+  @override
+  String get i1_9 =>
+      'What is a key fact to remember about the Reliever inhaler\'s effect?';
+
+  @override
+  String get i1_9_a =>
+      'It fixes the problem right now, but doesn\'t stop asthma from coming back';
+
+  @override
+  String get i1_9_b => 'It stops asthma from ever coming back';
+
+  @override
+  String get i1_9_c => 'It takes days or weeks to show its full benefit';
+
+  @override
+  String get i1_9_d => 'It must be avoided at all costs during an attack';
+
+  @override
+  String get i1_10 =>
+      'What should you do if you start coughing, wheezing, or feeling tight-chested?';
+
+  @override
+  String get i1_10_a =>
+      'Use your Reliever inhaler and follow your asthma action plan';
+
+  @override
+  String get i1_10_b => 'Take your Controller inhaler and go to sleep';
+
+  @override
+  String get i1_10_c => 'Stop taking all medications completely';
+
+  @override
+  String get i1_10_d => 'Wait 10 to 15 minutes before doing anything';
+
+  @override
+  String get i2_1 =>
+      'When using a Metered-Dose Inhaler (MDI), how long should you hold your breath after inhaling the medicine?';
+
+  @override
+  String get i2_1_a => '10 seconds';
+
+  @override
+  String get i2_1_b => '2 seconds';
+
+  @override
+  String get i2_1_c => '1 minute';
+
+  @override
+  String get i2_1_d => '30 to 60 seconds';
+
+  @override
+  String get i2_2 =>
+      'Where do you put the medicine when preparing a Nebulizer?';
+
+  @override
+  String get i2_2_a => 'Inside the nebulizer cup';
+
+  @override
+  String get i2_2_b => 'Directly onto the mask';
+
+  @override
+  String get i2_2_c => 'Into the spacer tube';
+
+  @override
+  String get i2_2_d => 'On the mouthpiece seal';
+
+  @override
+  String get i2_3 =>
+      'How long might a Controller inhaler take to show its full benefit?';
+
+  @override
+  String get i2_3_a => 'Days or weeks';
+
+  @override
+  String get i2_3_b => 'Only 10 seconds';
+
+  @override
+  String get i2_3_c => 'Immediately during a cough';
+
+  @override
+  String get i2_3_d => 'Exactly 30 to 60 seconds';
+
+  @override
+  String get i2_4 =>
+      'How should you breathe through a nebulizer mask or mouthpiece while the machine is running?';
+
+  @override
+  String get i2_4_a => 'Breathe normally through your mouth';
+
+  @override
+  String get i2_4_b => 'Hold your breath as long as possible';
+
+  @override
+  String get i2_4_c => 'Breathe quickly through your nose only';
+
+  @override
+  String get i2_4_d => 'Take sharp, gasping breaths';
+
+  @override
+  String get i2_5 =>
+      'Which device requires you to turn on a machine to create a mist for breathing?';
+
+  @override
+  String get i2_5_a => 'A nebulizer';
+
+  @override
+  String get i2_5_b => 'A standard MDI';
+
+  @override
+  String get i2_5_c => 'A spacer tube';
+
+  @override
+  String get i2_5_d => 'A pillow cover';
+
+  @override
+  String get i2_6 =>
+      'What should you do immediately before you press the canister and breathe in using a standard MDI?';
+
+  @override
+  String get i2_6_a => 'Breathe out fully';
+
+  @override
+  String get i2_6_b => 'Wait 60 seconds';
+
+  @override
+  String get i2_6_c => 'Wash the cup';
+
+  @override
+  String get i2_6_d => 'Turn off the machine';
+
+  @override
+  String get i2_7 =>
+      'If you are feeling completely fine, what should you do regarding your Controller inhaler?';
+
+  @override
+  String get i2_7_a => 'Take it exactly as prescribed';
+
+  @override
+  String get i2_7_b => 'Stop taking it until you feel sick';
+
+  @override
+  String get i2_7_c => 'Replace it with a Reliever inhaler';
+
+  @override
+  String get i2_7_d => 'Double the dose to stay safe';
+
+  @override
+  String get i2_8 =>
+      'What should you do with a nebulizer machine once the medicine mist completely stops?';
+
+  @override
+  String get i2_8_a => 'Turn off the machine and clean the equipment';
+
+  @override
+  String get i2_8_b => 'Leave it running for another hour';
+
+  @override
+  String get i2_8_c => 'Add water without turning it off';
+
+  @override
+  String get i2_8_d => 'Shake it while attached to a spacer';
+
+  @override
+  String get i2_9 =>
+      'Which inhaler is meant for \"Daily Protection\" rather than quick relief?';
+
+  @override
+  String get i2_9_a => 'The Controller inhaler';
+
+  @override
+  String get i2_9_b => 'The Reliever inhaler';
+
+  @override
+  String get i2_9_c => 'The Rescue Hero';
+
+  @override
+  String get i2_9_d => 'The Nebulizer cup';
+
+  @override
+  String get i2_10 =>
+      'What is the specific action required right after pressing a standard MDI canister once?';
+
+  @override
+  String get i2_10_a => 'Breathe in slowly and deeply';
+
+  @override
+  String get i2_10_b => 'Shake the inhaler again';
+
+  @override
+  String get i2_10_c => 'Breathe out slowly and fully';
+
+  @override
+  String get i2_10_d => 'Wait 30 to 60 seconds before breathing';
 }

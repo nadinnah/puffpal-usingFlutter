@@ -118,6 +118,61 @@
     }
   },
 
+  "editFieldTitle": "Edit {label}",
+  "@editFieldTitle": {
+    "placeholders": {
+      "label": { "type": "String" }
+    }
+  },
+
+  "cancelAction": "Cancel",
+  "saveAction": "Save",
+  "medicationRemindersMenu": "Medication Reminders",
+  "genderMale": "Male",
+  "genderFemale": "Female",
+
+  "carouselBasicsTitle": "Asthma Basics",
+  "carouselBasicsSubtitle": "Learn the basics of asthma and its symptoms.",
+  "carouselTriggersTitle": "Asthma Triggers",
+  "carouselTriggersSubtitle": "Identify and minimize daily irritants to keep your lungs healthy.",
+  "carouselHelpTitle": "When to Seek Help",
+  "carouselHelpSubtitle": "Learn the warning signs of worsening asthma and when to seek care.",
+  "carouselInhalerTitle": "Inhaler Techniques",
+  "carouselInhalerSubtitle": "Master your proper inhaler usage step-by-step for better relief.",
+
+  "trackedTodayTitle": "You're all set for today!",
+  "trackedTodaySubtitle": "Tap a square to see past data",
+  "backToHome": "Back to Home",
+  "questionProgress": "Question {current} of {total}",
+  "@questionProgress": {
+    "placeholders": {
+      "current": { "type": "int" },
+      "total": { "type": "int" }
+    }
+  },
+  "yesLabel": "Yes",
+  "noLabel": "No",
+  "backButton": "Back",
+  "nextButton": "Next",
+  "submitButton": "Submit",
+  "assessmentResultTitle": "Assessment Result",
+  "logDateTitle": "Log: {day}/{month}/{year}",
+  "@logDateTitle": {
+    "placeholders": {
+      "day": { "type": "int" },
+      "month": { "type": "int" },
+      "year": { "type": "int" }
+    }
+  },
+  "okAction": "OK",
+  "wellControlledAsthma": "Well Controlled Asthma",
+  "partlyControlledAsthma": "Partly Controlled Asthma",
+  "uncontrolledAsthma": "Uncontrolled Asthma",
+  "questionDaytime": "Daytime symptoms more than twice/week?",
+  "questionNightWaking": "Any night waking due to asthma?",
+  "questionRescueInhaler": "Rescue inhaler needed more than twice/week?",
+  "questionActivityLimitation": "Any activity limitation due to asthma?",
+
   "reminderText": "Feeling well? Take your Controller as prescribed.\n\nStarting to cough, wheeze, or feel tight-chested?\nUse your Reliever and follow your asthma action plan.",
   "pdfTitle": "Asthma Action Plan",
   "openPdf": "Open PDF",
@@ -356,6 +411,249 @@
   "q4_10_a": "Confusion or drowsiness during an attack",
   "q4_10_b": "Controlled symptoms",
   "q4_10_c": "Feeling energetic",
-  "q4_10_d": "Having a good peak flow reading"
+  "q4_10_d": "Having a good peak flow reading",
+  "quizTriggersPart1Title": "Asthma Triggers: Home & Environment",
+  "quizTriggersPart2Title": "Asthma Triggers: Lifestyle & Health",
+  "quizInhalersPart1Title": "Inhalers: Controller vs. Reliever",
+  "quizInhalersPart2Title": "Inhalers: Setup & Best Practices",
+  "t1_1": "Which of the following types of smoke should an asthma patient avoid?",
+  "t1_1_a": "Cigarette smoke, shisha, vaping, and burning odors",
+  "t1_1_b": "Cigarette smoke only",
+  "t1_1_c": "Shisha and vaping only",
+  "t1_1_d": "Only outdoor smoke",
+
+  "t1_2": "What is recommended to decrease dust mites in an asthma patient's bed?",
+  "t1_2_a": "Using mattress and pillow covers",
+  "t1_2_b": "Changing the bed frame",
+  "t1_2_c": "Sleeping without pillows",
+  "t1_2_d": "Keeping the window open all night",
+
+  "t1_3": "Which of the following household habits helps reduce environmental allergens for asthma patients?",
+  "t1_3_a": "Keeping the home clean and well-ventilated",
+  "t1_3_b": "Keeping the home closed off and unventilated",
+  "t1_3_c": "Sweeping dust into the air",
+  "t1_3_d": "Using multiple air fresheners",
+
+  "t1_4": "Which annual vaccine should an asthma patient consider to prevent symptom-worsening infections?",
+  "t1_4_a": "Yearly flu vaccine",
+  "t1_4_b": "Tetanus vaccine",
+  "t1_4_c": "Hepatitis vaccine",
+  "t1_4_d": "Chickenpox vaccine",
+
+  "t1_5": "If exercise triggers asthma symptoms, what should a patient do if advised by their doctor?",
+  "t1_5_a": "Use their prescribed inhaler before exercise",
+  "t1_5_b": "Stop exercising completely",
+  "t1_5_c": "Exercise only in freezing weather",
+  "t1_5_d": "Drink a sugary beverage before running",
+
+  "t1_6": "Which over-the-counter pain medication is explicitly listed as a potential asthma trigger?",
+  "t1_6_a": "Ibuprofen (an NSAID)",
+  "t1_6_b": "Acetaminophen",
+  "t1_6_c": "Vitamin C",
+  "t1_6_d": "Antacids",
+
+  "t1_7": "Besides aspirin and NSAIDs, which class of medications is mentioned as a potential asthma trigger?",
+  "t1_7_a": "Beta-blockers",
+  "t1_7_b": "Antibiotics",
+  "t1_7_c": "Antihistamines",
+  "t1_7_d": "Cough syrups",
+
+  "t1_8": "What simple hygiene habit is recommended to help prevent respiratory infections like the flu or colds?",
+  "t1_8_a": "Washing hands regularly",
+  "t1_8_b": "Wearing heavy perfume",
+  "t1_8_c": "Avoiding the use of mattress covers",
+  "t1_8_d": "Exercising without using an inhaler",
+
+  "t1_9": "Besides smoke and dust, what other air conditions are listed as a \"bad air day\" trigger?",
+  "t1_9_a": "Pollution and sandstorms",
+  "t1_9_b": "High oxygen levels",
+  "t1_9_c": "Fog and morning dew",
+  "t1_9_d": "Gentle summer breezes",
+
+  "t1_10": "How can physical activity or \"running like you're in the Olympics\" affect some asthma patients?",
+  "t1_10_a": "It acts as a trigger for asthma symptoms.",
+  "t1_10_b": "It always cures asthma symptoms permanently.",
+  "t1_10_c": "It prevents the need for a rescue inhaler.",
+  "t1_10_d": "It eliminates the effect of pollen.",
+
+  "t2_1": "Which of the following sets of medications contains known triggers for some individuals with asthma?",
+  "t2_1_a": "Aspirin, Ibuprofen (NSAIDs), and certain beta-blockers",
+  "t2_1_b": "Vitamins and minerals",
+  "t2_1_c": "Antibiotics and cough syrups",
+  "t2_1_d": "Antacids and anti-allergy pills",
+
+  "t2_2": "What can happen to an asthma patient who is around someone smoking a shisha or vaping?",
+  "t2_2_a": "Their asthma symptoms can get worse.",
+  "t2_2_b": "Their lungs become completely immune to dust.",
+  "t2_2_c": "They will no longer need a rescue inhaler.",
+  "t2_2_d": "Their exercise performance will improve",
+
+  "t2_3": "What type of household spray can act as a trigger and cause an asthma attack?",
+  "t2_3_a": "Chemical cleaning sprays",
+  "t2_3_b": "Water mist spray",
+  "t2_3_c": "Saline nasal sprays",
+  "t2_3_d": "Air cooling fans",
+
+  "t2_4": "What outdoor trigger comes from trees, grass, and flowers?",
+  "t2_4_a": "Pollen",
+  "t2_4_b": "Dust bunnies",
+  "t2_4_c": "Chemical fumes",
+  "t2_4_d": "Pet dander",
+
+  "t2_5": "Why should an asthma patient wash their hands regularly?",
+  "t2_5_a": "To avoid catching a cold or flu that could worsen asthma",
+  "t2_5_b": "To remove pollen from their mattress covers",
+  "t2_5_c": "To protect themselves from cold weather air",
+  "t2_5_d": "To stop the effects of emotional stress",
+
+  "t2_6": "Which of the following describes an indoor environmental trigger found on carpets and furniture?",
+  "t2_6_a": "Dust and dust mites",
+  "t2_6_b": "Shisha smoke",
+  "t2_6_c": "Sandstorms",
+  "t2_6_d": "Pollen from outdoor trees",
+
+  "t2_7": "What can happen if an asthma patient breathes in chemical fumes from strong products?",
+  "t2_7_a": "It can act as a trigger and worsen their asthma.",
+  "t2_7_b": "Their breathing may become easier.",
+  "t2_7_c": "It cures their allergy to pet dander.",
+  "t2_7_d": "It replaces the need for a controller medicine.",
+
+  "t2_8": "What is pet dander, which is a known asthma trigger?",
+  "t2_8_a": "Tiny bits of skin and fur from furry animals",
+  "t2_8_b": "A type of medicine used for pain relief",
+  "t2_8_c": "The chilly air found during winter",
+  "t2_8_d": "A cleaning spray used for the kitchen",
+
+  "t2_9": "If someone with asthma wants to minimize triggers in their bedroom, what is the best habit?",
+  "t2_9_a": "Use mattress and pillow covers to decrease dust mites.",
+  "t2_9_b": "Avoid using any covers on pillows and mattresses.",
+  "t2_9_c": "Keep the room unventilated and dusty.",
+  "t2_9_d": "Bring multiple furry pets into the bed.",
+
+  "t2_10": "If an asthma patient loves playing with cats or dogs, what specific trigger should they watch out for?",
+  "t2_10_a": "Pet dander",
+  "t2_10_b": "Pollen party",
+  "t2_10_c": "Burning odors",
+  "t2_10_d": "Chemical fumes",
+
+  "i1_1": "What is the main purpose of a Controller inhaler?",
+  "i1_1_a": "To prevent symptoms and asthma attacks by being used every day",
+  "i1_1_b": "To give instant relief during an asthma attack",
+  "i1_1_c": "To open the airways within seconds during an emergency",
+  "i1_1_d": "To clean the lungs after a workout",
+
+  "i1_2": "How does a Controller inhaler help the lungs over time?",
+  "i1_2_a": "It reduces swelling and inflammation in the airways",
+  "i1_2_b": "It increases the patient's heart rate",
+  "i1_2_c": "It cures asthma completely after one use",
+  "i1_2_d": "It acts as a temporary mask for dust",
+
+  "i1_3": "When should a patient take their Controller inhaler?",
+  "i1_3_a": "Regularly every day, even when feeling well",
+  "i1_3_b": "Only when they are coughing severely",
+  "i1_3_c": "Only during an emergency or sudden attack",
+  "i1_3_d": "Only right before going to sleep",
+
+  "i1_4": "Does a Controller inhaler provide quick relief during sudden breathing problems?",
+  "i1_4_a": "No, it does not give quick relief during sudden breathing problems",
+  "i1_4_b": "Yes, it works instantly",
+  "i1_4_c": "Yes, but only if taken with hot water",
+  "i1_4_d": "No, it only works if you are exercising",
+
+  "i1_5": "Which type of inhaler is referred to as \"emergency help\" or \"The Rescue Inhaler\"?",
+  "i1_5_a": "The Reliever inhaler",
+  "i1_5_b": "The Controller inhaler",
+  "i1_5_c": "The Nebulizer machine",
+  "i1_5_d": "The Spacer attachment",
+
+  "i1_6": "What is the primary job of a Reliever inhaler?",
+  "i1_6_a": "To work quickly to open the airways during symptoms",
+  "i1_6_b": "To reduce swelling quietly over several weeks",
+  "i1_6_c": "To replace the need for daily medication",
+  "i1_6_d": "To track the patient's breathing patterns",
+
+  "i1_7": "Which of the following symptoms does a Reliever inhaler help relieve?",
+  "i1_7_a": "Wheezing, coughing, chest tightness, and shortness of breath",
+  "i1_7_b": "Skin rashes and itching",
+  "i1_7_c": "Headaches and fever",
+  "i1_7_d": "Food allergies and stomach aches",
+
+  "i1_8": "When should a patient use their Reliever inhaler?",
+  "i1_8_a": "Only when needed or before exercise if prescribed",
+  "i1_8_b": "Every single morning and evening without fail",
+  "i1_8_c": "Only when they feel completely fine",
+  "i1_8_d": "Twice a week whether they have symptoms or not",
+
+  "i1_9": "What is a key fact to remember about the Reliever inhaler's effect?",
+  "i1_9_a": "It fixes the problem right now, but doesn't stop asthma from coming back",
+  "i1_9_b": "It stops asthma from ever coming back",
+  "i1_9_c": "It takes days or weeks to show its full benefit",
+  "i1_9_d": "It must be avoided at all costs during an attack",
+
+  "i1_10": "What should you do if you start coughing, wheezing, or feeling tight-chested?",
+  "i1_10_a": "Use your Reliever inhaler and follow your asthma action plan",
+  "i1_10_b": "Take your Controller inhaler and go to sleep",
+  "i1_10_c": "Stop taking all medications completely",
+  "i1_10_d": "Wait 10 to 15 minutes before doing anything",
+
+  "i2_1": "When using a Metered-Dose Inhaler (MDI), how long should you hold your breath after inhaling the medicine?",
+  "i2_1_a": "10 seconds",
+  "i2_1_b": "2 seconds",
+  "i2_1_c": "1 minute",
+  "i2_1_d": "30 to 60 seconds",
+
+  "i2_2": "Where do you put the medicine when preparing a Nebulizer?",
+  "i2_2_a": "Inside the nebulizer cup",
+  "i2_2_b": "Directly onto the mask",
+  "i2_2_c": "Into the spacer tube",
+  "i2_2_d": "On the mouthpiece seal",
+
+  "i2_3": "How long might a Controller inhaler take to show its full benefit?",
+  "i2_3_a": "Days or weeks",
+  "i2_3_b": "Only 10 seconds",
+  "i2_3_c": "Immediately during a cough",
+  "i2_3_d": "Exactly 30 to 60 seconds",
+
+  "i2_4": "How should you breathe through a nebulizer mask or mouthpiece while the machine is running?",
+  "i2_4_a": "Breathe normally through your mouth",
+  "i2_4_b": "Hold your breath as long as possible",
+  "i2_4_c": "Breathe quickly through your nose only",
+  "i2_4_d": "Take sharp, gasping breaths",
+
+  "i2_5": "Which device requires you to turn on a machine to create a mist for breathing?",
+  "i2_5_a": "A nebulizer",
+  "i2_5_b": "A standard MDI",
+  "i2_5_c": "A spacer tube",
+  "i2_5_d": "A pillow cover",
+
+  "i2_6": "What should you do immediately before you press the canister and breathe in using a standard MDI?",
+  "i2_6_a": "Breathe out fully",
+  "i2_6_b": "Wait 60 seconds",
+  "i2_6_c": "Wash the cup",
+  "i2_6_d": "Turn off the machine",
+
+  "i2_7": "If you are feeling completely fine, what should you do regarding your Controller inhaler?",
+  "i2_7_a": "Take it exactly as prescribed",
+  "i2_7_b": "Stop taking it until you feel sick",
+  "i2_7_c": "Replace it with a Reliever inhaler",
+  "i2_7_d": "Double the dose to stay safe",
+
+  "i2_8": "What should you do with a nebulizer machine once the medicine mist completely stops?",
+  "i2_8_a": "Turn off the machine and clean the equipment",
+  "i2_8_b": "Leave it running for another hour",
+  "i2_8_c": "Add water without turning it off",
+  "i2_8_d": "Shake it while attached to a spacer",
+
+  "i2_9": "Which inhaler is meant for \"Daily Protection\" rather than quick relief?",
+  "i2_9_a": "The Controller inhaler",
+  "i2_9_b": "The Reliever inhaler",
+  "i2_9_c": "The Rescue Hero",
+  "i2_9_d": "The Nebulizer cup",
+
+  "i2_10": "What is the specific action required right after pressing a standard MDI canister once?",
+  "i2_10_a": "Breathe in slowly and deeply",
+  "i2_10_b": "Shake the inhaler again",
+  "i2_10_c": "Breathe out slowly and fully",
+  "i2_10_d": "Wait 30 to 60 seconds before breathing"
 }
 
