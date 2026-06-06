@@ -245,9 +245,10 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                       ),
                     ),
                     PositionedDirectional(
-                      end: 0,
-                      top: -5,
-                      child: Image.asset(quiz.image, height: 150, width: 150),
+                      end: 10,
+                      top: 5,
+
+                      child: Image.asset(quiz.image, height: 120, width: 120),
                     ),
                   ],
                 ),

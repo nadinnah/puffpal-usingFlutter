@@ -101,101 +101,97 @@ class _QuestionsPageState extends State<QuestionsPage> {
           icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
         ),
       ),
-      body: SafeArea(
-        top: false,
-        bottom: true,
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topRight,
-              end: Alignment.bottomLeft,
-              colors: [Color(0xFFD8D0E5), Color(0xFFD9DBEF), Color(0xFFA8ABCA)],
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [Color(0xFFD8D0E5), Color(0xFFD9DBEF), Color(0xFFA8ABCA)],
+          ),
+        ),
+        child: ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Center(
+                child: Image.asset(
+                  widget.quiz.image,
+                  height: 250,
+                  width: 250,
+                ),
+              ),
             ),
-          ),
-          child: ListView(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: Center(
-                  child: Image.asset(
-                    widget.quiz.image,
-                    height: 250,
-                    width: 250,
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Text(
+                currentQuizQuestion.getLocalizedText(context),
+                style: const TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            ...currentShuffledOptions.map((option) {
+              final bool isCorrect = option == rawCorrectAnswersReference[0];
+              final bool isSelected = option == selectedAnswer;
+
+              Color getColor() {
+                if (!answered) return Colors.white;
+
+                if (isSelected && isCorrect) return Colors.green;
+                if (isSelected && !isCorrect) return Colors.red;
+                if (!isSelected && isCorrect) return Colors.green.shade200;
+
+                return Colors.white;
+              }
+
+              return GestureDetector(
+                onTap: answered
+                    ? null
+                    : () {
+                        setState(() {
+                          selectedAnswer = option;
+                          answered = true;
+                          if (isCorrect) score++;
+                        });
+
+                        Future.delayed(const Duration(seconds: 1), () {
+                          if (currentQuestionIndex + 1 <
+                              widget.quiz.questions.length) {
+                            setState(() {
+                              currentQuestionIndex++;
+                              answered = false;
+                              selectedAnswer = null;
+                              loadQuestionOptions();
+                            });
+                          } else {
+                            _showScoreDialog(context);
+                          }
+                        });
+                      },
+                child: Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 30,
+                  ),
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: getColor(),
+                    borderRadius: BorderRadius.circular(12),
+                    border: Border.all(color: Colors.black12),
+                  ),
+                  child: Text(
+                    option,
+                    style: const TextStyle(fontSize: 18),
+                    textAlign: TextAlign.center,
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Text(
-                  currentQuizQuestion.getLocalizedText(context),
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              ...currentShuffledOptions.map((option) {
-                final bool isCorrect = option == rawCorrectAnswersReference[0];
-                final bool isSelected = option == selectedAnswer;
-
-                Color getColor() {
-                  if (!answered) return Colors.white;
-
-                  if (isSelected && isCorrect) return Colors.green;
-                  if (isSelected && !isCorrect) return Colors.red;
-                  if (!isSelected && isCorrect) return Colors.green.shade200;
-
-                  return Colors.white;
-                }
-
-                return GestureDetector(
-                  onTap: answered
-                      ? null
-                      : () {
-                          setState(() {
-                            selectedAnswer = option;
-                            answered = true;
-                            if (isCorrect) score++;
-                          });
-
-                          Future.delayed(const Duration(seconds: 1), () {
-                            if (currentQuestionIndex + 1 <
-                                widget.quiz.questions.length) {
-                              setState(() {
-                                currentQuestionIndex++;
-                                answered = false;
-                                selectedAnswer = null;
-                                loadQuestionOptions();
-                              });
-                            } else {
-                              _showScoreDialog(context);
-                            }
-                          });
-                        },
-                  child: Container(
-                    width: double.infinity,
-                    margin: const EdgeInsets.symmetric(
-                      vertical: 10,
-                      horizontal: 30,
-                    ),
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: getColor(),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: Colors.black12),
-                    ),
-                    child: Text(
-                      option,
-                      style: const TextStyle(fontSize: 18),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                );
-              }).toList(),
-              SizedBox(height: verticalSpacing / 2),
-            ],
-          ),
+              );
+            }).toList(),
+            SizedBox(height: verticalSpacing / 2),
+          ],
         ),
       ),
     );

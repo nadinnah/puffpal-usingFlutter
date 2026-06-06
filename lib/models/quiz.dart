@@ -24,7 +24,7 @@ List<Quiz> quizzes = [
   Quiz(
     id: 'quiz_asthma_basics',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quiz1Title,
-    image: 'assets/images/inhaler3.png',
+    image: 'assets/images/quiz_asthma_basics_icon.png',
     questions: [
       Question(
         getLocalizedText: (context) => AppLocalizations.of(context)!.q1_1,
@@ -122,7 +122,7 @@ List<Quiz> quizzes = [
   Quiz(
     id: 'quiz_asthma_hero',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quiz2Title,
-    image: 'assets/images/trialAsthma.png',
+    image: 'assets/images/quiz_asthma_hero_icon.png',
     questions: [
       Question(
         getLocalizedText: (context) => AppLocalizations.of(context)!.q2_1,
@@ -220,7 +220,7 @@ List<Quiz> quizzes = [
   Quiz(
     id: 'quiz_doctor_visit',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quiz3Title,
-    image: 'assets/images/doctorVisit.png',
+    image: 'assets/images/quiz_doctor_visit_icon.png',
     questions: [
       Question(
         getLocalizedText: (context) => AppLocalizations.of(context)!.q3_1,
@@ -318,7 +318,7 @@ List<Quiz> quizzes = [
   Quiz(
     id: 'quiz_emergency',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quiz4Title,
-    image: 'assets/images/emergency.png',
+    image: 'assets/images/quiz_emergency_icon.png',
     questions: [
       Question(
         getLocalizedText: (context) => AppLocalizations.of(context)!.q4_1,
@@ -415,7 +415,7 @@ List<Quiz> quizzes = [
   Quiz(
     id: 'quiz_triggers_part1',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quizTriggersPart1Title,
-    image: 'assets/images/asthma_triggers.png',
+    image: 'assets/images/quiz_triggers_part1_icon.png',
     questions: [
       Question(
         getLocalizedText: (context) => AppLocalizations.of(context)!.t1_1, // 1. Any type of smoke...
@@ -513,7 +513,7 @@ List<Quiz> quizzes = [
   Quiz(
     id: 'quiz_triggers_part2',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quizTriggersPart2Title,
-    image: 'assets/images/when_to_seek_help.png',
+    image: 'assets/images/quiz_triggers_part2_icon.png',
     questions: [
       Question(
         getLocalizedText: (context) => AppLocalizations.of(context)!.t2_1, // 11. Known triggers medications set...
@@ -611,7 +611,7 @@ List<Quiz> quizzes = [
   Quiz(
     id: 'quiz_inhalers_part1',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quizInhalersPart1Title,
-    image: 'assets/images/inhaler_techniques.png',
+    image: 'assets/images/quiz_inhalers_part1_icon.png',
     questions: [
       Question(
         getLocalizedText: (context) => AppLocalizations.of(context)!.i1_1, // 1. Purpose of Controller inhaler...
@@ -710,7 +710,7 @@ List<Quiz> quizzes = [
   Quiz(
     id: 'quiz_inhalers_part2',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quizInhalersPart2Title,
-    image: 'assets/images/inhaler3.png',
+    image: 'assets/images/quiz_inhalers_part2_icon.png',
     questions: [
       Question(
         getLocalizedText: (context) => AppLocalizations.of(context)!.i2_1, // 11. MDI hold breath timing...
@@ -807,7 +807,7 @@ List<Quiz> quizzes = [
   Quiz(
     id: 'quiz_all_inhalation_devices',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.combinedQuizTitle,
-    image: 'assets/images/inhaler_master.png', // Replace with your asset path
+    image: 'assets/images/quiz_all_inhalation_devices_icon.png', // Replace with your asset path
     questions: [
       Question(
         getLocalizedText: (context) => AppLocalizations.of(context)!.q_mdi_2,
