@@ -63,11 +63,7 @@ class _SignupPageState extends State<SignupPage> {
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [
-            Color(0xFFD8D0E5),
-            Color(0xFFD9DBEF),
-            Color(0xFFA8ABCA),
-          ],
+          colors: [Color(0xFFD8D0E5), Color(0xFFD9DBEF), Color(0xFFA8ABCA)],
         ),
       ),
       child: Scaffold(
@@ -94,19 +90,23 @@ class _SignupPageState extends State<SignupPage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    // NAME
                     TextFormField(
                       controller: nameController,
-                      decoration: fieldDecoration(localizations.nameHint, Icons.person),
+                      decoration: fieldDecoration(
+                        localizations.nameHint,
+                        Icons.person,
+                      ),
                       validator: (value) =>
-                      value!.isEmpty ? localizations.nameRequired : null,
+                          value!.isEmpty ? localizations.nameRequired : null,
                     ),
                     const SizedBox(height: 20),
 
-                    // PHONE
                     TextFormField(
                       controller: phoneController,
-                      decoration: fieldDecoration(localizations.phoneHint, Icons.phone),
+                      decoration: fieldDecoration(
+                        localizations.phoneHint,
+                        Icons.phone,
+                      ),
                       keyboardType: TextInputType.phone,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -120,11 +120,13 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                     const SizedBox(height: 20),
 
-                    // AGE
                     TextFormField(
                       controller: ageController,
                       keyboardType: TextInputType.number,
-                      decoration: fieldDecoration(localizations.ageHint, Icons.cake),
+                      decoration: fieldDecoration(
+                        localizations.ageHint,
+                        Icons.cake,
+                      ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return localizations.ageRequired;
@@ -137,10 +139,11 @@ class _SignupPageState extends State<SignupPage> {
                       },
                     ),
                     const SizedBox(height: 20),
-
-                    // GENDER
                     DropdownButtonFormField<String>(
-                      decoration: fieldDecoration(localizations.genderHint, Icons.person_2),
+                      decoration: fieldDecoration(
+                        localizations.genderHint,
+                        Icons.person_2,
+                      ),
                       value: _selectedGender,
                       items: [
                         DropdownMenuItem(
@@ -156,19 +159,24 @@ class _SignupPageState extends State<SignupPage> {
                         _selectedGender = value;
                       }),
                       validator: (value) =>
-                      value == null ? localizations.genderRequired : null,
+                          value == null ? localizations.genderRequired : null,
                     ),
                     const SizedBox(height: 20),
 
                     // EMAIL
                     TextFormField(
                       controller: emailController,
-                      decoration: fieldDecoration(localizations.emailHint, Icons.email),
+                      decoration: fieldDecoration(
+                        localizations.emailHint,
+                        Icons.email,
+                      ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return localizations.emailRequired;
                         }
-                        if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+                        if (!RegExp(
+                          r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                        ).hasMatch(value)) {
                           return localizations.invalidEmail;
                         }
                         return null;
@@ -180,19 +188,24 @@ class _SignupPageState extends State<SignupPage> {
                     TextFormField(
                       controller: passwordController,
                       obscureText: !isVisible,
-                      decoration: fieldDecoration(localizations.passwordHint, Icons.lock).copyWith(
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            isVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off,
+                      decoration:
+                          fieldDecoration(
+                            localizations.passwordHint,
+                            Icons.lock,
+                          ).copyWith(
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                isVisible
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
+                              onPressed: () =>
+                                  setState(() => isVisible = !isVisible),
+                            ),
                           ),
-                          onPressed: () =>
-                              setState(() => isVisible = !isVisible),
-                        ),
-                      ),
-                      validator: (value) =>
-                      value!.length < 6 ? localizations.passwordTooShort : null,
+                      validator: (value) => value!.length < 6
+                          ? localizations.passwordTooShort
+                          : null,
                     ),
                     const SizedBox(height: 40),
 
@@ -202,6 +215,7 @@ class _SignupPageState extends State<SignupPage> {
                         if (formKey.currentState!.validate()) {
                           try {
                             bool result = await firebaseServices.signUp(
+                              context,
                               emailController.text.trim(),
                               passwordController.text.trim(),
                               nameController.text.trim(),
@@ -214,14 +228,17 @@ class _SignupPageState extends State<SignupPage> {
                               if (!mounted) return;
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
-                                  content: Text(localizations.signupSuccessAlert),
+                                  content: Text(
+                                    localizations.signupSuccessAlert,
+                                  ),
                                   backgroundColor: Colors.green,
                                 ),
                               );
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => const LoginPage()),
+                                  builder: (context) => const LoginPage(),
+                                ),
                               );
                             }
                           } catch (e) {
@@ -233,11 +250,17 @@ class _SignupPageState extends State<SignupPage> {
                         backgroundColor: const Color(0xFF1E6097),
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 50, vertical: 15),
+                          horizontal: 50,
+                          vertical: 15,
+                        ),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(12)),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
                       ),
-                      child: Text(localizations.signupButton, style: const TextStyle(fontSize: 18)),
+                      child: Text(
+                        localizations.signupButton,
+                        style: const TextStyle(fontSize: 18),
+                      ),
                     ),
 
                     const SizedBox(height: 15),
@@ -256,7 +279,10 @@ class _SignupPageState extends State<SignupPage> {
                     ),
 
                     if (errorMessage.isNotEmpty)
-                      Text(errorMessage, style: const TextStyle(color: Colors.red)),
+                      Text(
+                        errorMessage,
+                        style: const TextStyle(color: Colors.red),
+                      ),
                   ],
                 ),
               ),

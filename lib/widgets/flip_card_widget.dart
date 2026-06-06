@@ -82,8 +82,8 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
   Widget buildFrontCard() {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double verticalSpacing = screenHeight * 0.25;
-    final double titleSize = screenHeight * 0.07;       // ~28px on standard 400w screens
-    final double subtitleSize = screenHeight * 0.055;  // ~22px
+    final double titleSize = screenHeight * 0.07;
+    final double subtitleSize = screenHeight * 0.055;
     final double bodySize = screenHeight * 0.035;
 
     return Container(
@@ -93,11 +93,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
         color: Color(0xffebeeff),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
-          BoxShadow(
-            offset: Offset(0, 4),
-            blurRadius: 4,
-            color: Colors.black26,
-          ),
+          BoxShadow(offset: Offset(0, 4), blurRadius: 4, color: Colors.black26),
         ],
       ),
       alignment: Alignment.center,
@@ -119,8 +115,8 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
     final double verticalSpacing = screenHeight * 0.25;
     final double screenWidth = MediaQuery.of(context).size.width;
     final double horizontalPadding = screenWidth * 0.09;
-    final double titleSize = screenWidth * 0.07;       // ~28px on standard 400w screens
-    final double subtitleSize = screenWidth * 0.055;  // ~22px
+    final double titleSize = screenWidth * 0.07;
+    final double subtitleSize = screenWidth * 0.055;
     final double bodySize = screenWidth * 0.035;
 
     return Container(
@@ -130,11 +126,7 @@ class _FlipCardWidgetState extends State<FlipCardWidget>
         color: Color(0xffebeeff),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
-          BoxShadow(
-            offset: Offset(0, 4),
-            blurRadius: 4,
-            color: Colors.black26,
-          ),
+          BoxShadow(offset: Offset(0, 4), blurRadius: 4, color: Colors.black26),
         ],
       ),
       alignment: Alignment.center,

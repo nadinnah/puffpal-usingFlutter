@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 import '../models/question.dart';
-import '../models/quiz.dart';
 
 class Quiz {
-  final String id; // 👈 1. Added stable ID field
-  // A function that returns the localized title string when given a context
+  final String id;
   final String Function(BuildContext) getLocalizedTitle;
   final String image;
   final List<Question> questions;
 
   Quiz({
-    required this.id, // 👈 2. Added to constructor parameters
+    required this.id,
     required this.getLocalizedTitle,
     required this.image,
     required this.questions,
@@ -23,11 +21,8 @@ class Quiz {
 }
 
 List<Quiz> quizzes = [
-  // ==========================================
-  // QUIZ 1: Asthma Basics Adventure
-  // ==========================================
   Quiz(
-    id: 'quiz_asthma_basics', // 👈 3. Passed unique ID
+    id: 'quiz_asthma_basics',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quiz1Title,
     image: 'assets/images/inhaler3.png',
     questions: [
@@ -124,11 +119,8 @@ List<Quiz> quizzes = [
     ],
   ),
 
-  // ==========================================
-  // QUIZ 2: Asthma Hero Challenge
-  // ==========================================
   Quiz(
-    id: 'quiz_asthma_hero', // 👈 3. Passed unique ID
+    id: 'quiz_asthma_hero',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quiz2Title,
     image: 'assets/images/trialAsthma.png',
     questions: [
@@ -225,11 +217,8 @@ List<Quiz> quizzes = [
     ],
   ),
 
-  // ==========================================
-  // QUIZ 3: Doctor Visit or Not?
-  // ==========================================
   Quiz(
-    id: 'quiz_doctor_visit', // 👈 3. Passed unique ID
+    id: 'quiz_doctor_visit',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quiz3Title,
     image: 'assets/images/doctorVisit.png',
     questions: [
@@ -326,11 +315,8 @@ List<Quiz> quizzes = [
     ],
   ),
 
-  // ==========================================
-  // QUIZ 4: Emergency or Not?
-  // ==========================================
   Quiz(
-    id: 'quiz_emergency', // 👈 3. Passed unique ID
+    id: 'quiz_emergency',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quiz4Title,
     image: 'assets/images/emergency.png',
     questions: [
@@ -426,9 +412,6 @@ List<Quiz> quizzes = [
       ),
     ],
   ),
-  // ==========================================
-  // QUIZ 5: Asthma Triggers - Part 1 (10 Questions)
-  // ==========================================
   Quiz(
     id: 'quiz_triggers_part1',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quizTriggersPart1Title,
@@ -527,9 +510,6 @@ List<Quiz> quizzes = [
     ],
   ),
 
-  // ==========================================
-  // QUIZ 6: Asthma Triggers - Part 2 (10 Questions)
-  // ==========================================
   Quiz(
     id: 'quiz_triggers_part2',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quizTriggersPart2Title,
@@ -628,9 +608,6 @@ List<Quiz> quizzes = [
     ],
   ),
 
-  // ==========================================
-  // QUIZ 7: Inhaler Techniques - Part 1 (10 Questions)
-  // ==========================================
   Quiz(
     id: 'quiz_inhalers_part1',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quizInhalersPart1Title,
@@ -729,9 +706,7 @@ List<Quiz> quizzes = [
     ],
   ),
 
-  // ==========================================
-  // QUIZ 8: Inhaler Techniques - Part 2 (10 Questions)
-  // ==========================================
+
   Quiz(
     id: 'quiz_inhalers_part2',
     getLocalizedTitle: (context) => AppLocalizations.of(context)!.quizInhalersPart2Title,
@@ -825,6 +800,139 @@ List<Quiz> quizzes = [
           AppLocalizations.of(context)!.i2_10_b,
           AppLocalizations.of(context)!.i2_10_c,
           AppLocalizations.of(context)!.i2_10_d,
+        ],
+      ),
+    ],
+  ),
+  Quiz(
+    id: 'quiz_all_inhalation_devices',
+    getLocalizedTitle: (context) => AppLocalizations.of(context)!.combinedQuizTitle,
+    image: 'assets/images/inhaler_master.png', // Replace with your asset path
+    questions: [
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_mdi_2,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_mdi_2_a,
+          AppLocalizations.of(context)!.q_mdi_2_b,
+          AppLocalizations.of(context)!.q_mdi_2_c,
+          AppLocalizations.of(context)!.q_mdi_2_d,
+        ],
+      ),
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_spacer_adult_1,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_spacer_adult_1_a,
+          AppLocalizations.of(context)!.q_spacer_adult_1_b,
+          AppLocalizations.of(context)!.q_spacer_adult_1_c,
+          AppLocalizations.of(context)!.q_spacer_adult_1_d,
+        ],
+      ),
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_spacer_adult_2,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_spacer_adult_2_a,
+          AppLocalizations.of(context)!.q_spacer_adult_2_b,
+          AppLocalizations.of(context)!.q_spacer_adult_2_c,
+          AppLocalizations.of(context)!.q_spacer_adult_2_d,
+        ],
+      ),
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_spacer_child_1,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_spacer_child_1_a,
+          AppLocalizations.of(context)!.q_spacer_child_1_b,
+          AppLocalizations.of(context)!.q_spacer_child_1_c,
+          AppLocalizations.of(context)!.q_spacer_child_1_d,
+        ],
+      ),
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_spacer_child_2,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_spacer_child_2_a,
+          AppLocalizations.of(context)!.q_spacer_child_2_b,
+          AppLocalizations.of(context)!.q_spacer_child_2_c,
+          AppLocalizations.of(context)!.q_spacer_child_2_d,
+        ],
+      ),
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_turbuhaler_1,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_turbuhaler_1_a,
+          AppLocalizations.of(context)!.q_turbuhaler_1_b,
+          AppLocalizations.of(context)!.q_turbuhaler_1_c,
+          AppLocalizations.of(context)!.q_turbuhaler_1_d,
+        ],
+      ),
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_turbuhaler_2,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_turbuhaler_2_a,
+          AppLocalizations.of(context)!.q_turbuhaler_2_b,
+          AppLocalizations.of(context)!.q_turbuhaler_2_c,
+          AppLocalizations.of(context)!.q_turbuhaler_2_d,
+        ],
+      ),
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_diskus_1,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_diskus_1_a,
+          AppLocalizations.of(context)!.q_diskus_1_b,
+          AppLocalizations.of(context)!.q_diskus_1_c,
+          AppLocalizations.of(context)!.q_diskus_1_d,
+        ],
+      ),
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_respimat_1,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_respimat_1_a,
+          AppLocalizations.of(context)!.q_respimat_1_b,
+          AppLocalizations.of(context)!.q_respimat_1_c,
+          AppLocalizations.of(context)!.q_respimat_1_d,
+        ],
+      ),
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_respimat_2,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_respimat_2_a,
+          AppLocalizations.of(context)!.q_respimat_2_b,
+          AppLocalizations.of(context)!.q_respimat_2_c,
+          AppLocalizations.of(context)!.q_respimat_2_d,
+        ],
+      ),
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_neb_2,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_neb_2_a,
+          AppLocalizations.of(context)!.q_neb_2_b,
+          AppLocalizations.of(context)!.q_neb_2_c,
+          AppLocalizations.of(context)!.q_neb_2_d,
+        ],
+      ),
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_peak_1,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_peak_1_a,
+          AppLocalizations.of(context)!.q_peak_1_b,
+          AppLocalizations.of(context)!.q_peak_1_c,
+          AppLocalizations.of(context)!.q_peak_1_d,
+        ],
+      ),
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_peak_2,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_peak_2_a,
+          AppLocalizations.of(context)!.q_peak_2_b,
+          AppLocalizations.of(context)!.q_peak_2_c,
+          AppLocalizations.of(context)!.q_peak_2_d,
+        ],
+      ),
+      Question(
+        getLocalizedText: (context) => AppLocalizations.of(context)!.q_peak_3,
+        getLocalizedAnswers: (context) => [
+          AppLocalizations.of(context)!.q_peak_3_a,
+          AppLocalizations.of(context)!.q_peak_3_b,
+          AppLocalizations.of(context)!.q_peak_3_c,
+          AppLocalizations.of(context)!.q_peak_3_d,
         ],
       ),
     ],

@@ -21,20 +21,23 @@ class InhalerTechniquesPage extends StatelessWidget {
           children: [
             Text(
               localizations.inhalerPageHeaderDesc,
-              style: const TextStyle(color: Colors.black54, fontSize: 15, height: 1.4),
+              style: const TextStyle(
+                color: Colors.black54,
+                fontSize: 15,
+                height: 1.4,
+              ),
             ),
             const SizedBox(height: 24),
 
-            /// 1. MDI
             _buildInhalerCard(
               context,
-              title: localizations.mdiTitle, // e.g., "Metered-Dose Inhaler (MDI)"
+              title: localizations.mdiTitle,
               subtitle: localizations.mdiSubtitle,
               image: "assets/images/mdi.jpeg",
               examples: [
-                localizations.mdiExample1, // e.g., "Ventolin Evohaler"
-                localizations.mdiExample2, // e.g., "Vental Inhaler"
-                localizations.mdiExample3, // e.g., "Seretide Evohaler"
+                localizations.mdiExample1,
+                localizations.mdiExample2,
+                localizations.mdiExample3,
               ],
               steps: [
                 localizations.mdiStep1,
@@ -48,16 +51,15 @@ class InhalerTechniquesPage extends StatelessWidget {
               video: 'assets/videos/mdi.mp4',
             ),
 
-            /// 2. MDI with Spacer
             _buildInhalerCard(
               context,
               title: localizations.spacerTitle,
               subtitle: localizations.spacerSubtitle,
               image: "assets/images/spacer.png",
               examples: [
-                localizations.spacerExample1, // e.g., "Ventolin + aerochamber spacer"
-                localizations.spacerExample2, // e.g., "seretide evohaler+ spacer"
-                localizations.spacerExample3, // e.g., "floxotide Evihaler+ spacer"
+                localizations.spacerExample1,
+                localizations.spacerExample2,
+                localizations.spacerExample3,
               ],
               steps: [
                 localizations.spacerStep1,
@@ -70,17 +72,15 @@ class InhalerTechniquesPage extends StatelessWidget {
               ],
               video: 'assets/videos/spacer.mp4',
             ),
-
-            /// 3. Nebulizer
             _buildInhalerCard(
               context,
               title: localizations.nebulizerTitle,
               subtitle: localizations.nebulizerSubtitle,
               image: "assets/images/nebulizer.png",
               examples: [
-                localizations.nebulizerExample1, // e.g., "Ventolin Nebules"
-                localizations.nebulizerExample2, // e.g., "atrovent nebules"
-                localizations.nebulizerExample3, // e.g., "pulmicort respules"
+                localizations.nebulizerExample1,
+                localizations.nebulizerExample2,
+                localizations.nebulizerExample3,
               ],
               steps: [
                 localizations.nebulizerStep1,
@@ -93,16 +93,15 @@ class InhalerTechniquesPage extends StatelessWidget {
               video: 'assets/videos/nebulizer.mp4',
             ),
 
-            /// 4. DPI (Dry Powder Inhaler)
             _buildInhalerCard(
               context,
               title: localizations.dpiTitle,
               subtitle: localizations.dpiSubtitle,
               image: "assets/images/dpi.png",
               examples: [
-                localizations.dpiExample1, // e.g., "seretide diskus"
-                localizations.dpiExample2, // e.g., "ventolin diskus"
-                localizations.dpiExample3, // e.g., "Inhalex"
+                localizations.dpiExample1,
+                localizations.dpiExample2,
+                localizations.dpiExample3,
               ],
               steps: [
                 localizations.dpiStep1,
@@ -115,16 +114,12 @@ class InhalerTechniquesPage extends StatelessWidget {
               video: 'assets/videos/dpi.mp4',
             ),
 
-            /// 5. PFM (Peak Flow Meter)
             _buildInhalerCard(
               context,
               title: localizations.pfmTitle,
               subtitle: localizations.pfmSubtitle,
               image: "assets/images/pfm.png",
-              examples: [
-                localizations.pfmExample1, // e.g., "Mini Wright Peak Flow Meter"
-                localizations.pfmExample2, // e.g., "Microlife PF100 Peak Flow Meter"
-              ],
+              examples: [localizations.pfmExample1, localizations.pfmExample2],
               steps: [
                 localizations.pfmStep1,
                 localizations.pfmStep2,
@@ -135,16 +130,14 @@ class InhalerTechniquesPage extends StatelessWidget {
               ],
               video: 'assets/videos/pfm.mp4',
             ),
-
-            /// 6. Respimat
             _buildInhalerCard(
               context,
               title: localizations.respimatTitle,
               subtitle: localizations.respimatSubtitle,
               image: "assets/images/respimat.png",
               examples: [
-                localizations.respimatExample1, // e.g., "Spiriva Respimat"
-                localizations.respimatExample2, // e.g., "Combivent Respimat"
+                localizations.respimatExample1,
+                localizations.respimatExample2,
               ],
               steps: [
                 localizations.respimatStep1,
@@ -156,16 +149,15 @@ class InhalerTechniquesPage extends StatelessWidget {
               video: 'assets/videos/respimat.mp4',
             ),
 
-            /// 7. Spacer and Mask
             _buildInhalerCard(
               context,
               title: localizations.spacerMaskTitle,
               subtitle: localizations.spacerMaskSubtitle,
               image: "assets/images/spacer_mask.png",
               examples: [
-                localizations.spacerMaskExample1, // e.g., "AeroChamber+ mask"
-                localizations.spacerMaskExample2, // e.g., "BabyHaler Spacer"
-                localizations.spacerMaskExample3, // e.g., "Volumatic Spacer"
+                localizations.spacerMaskExample1,
+                localizations.spacerMaskExample2,
+                localizations.spacerMaskExample3,
               ],
               steps: [
                 localizations.spacerMaskStep1,
@@ -178,15 +170,14 @@ class InhalerTechniquesPage extends StatelessWidget {
               video: 'assets/videos/spacer_mask.mp4',
             ),
 
-            /// 8. Turbuhaler
             _buildInhalerCard(
               context,
               title: localizations.turbuhalerTitle,
               subtitle: localizations.turbuhalerSubtitle,
               image: "assets/images/turbuhaler.png",
               examples: [
-                localizations.turbuhalerExample1, // e.g., "Symbicort Turbuhaler"
-                localizations.turbuhalerExample2, // e.g., "Bricanyl Turbuhaler"
+                localizations.turbuhalerExample1,
+                localizations.turbuhalerExample2,
               ],
               steps: [
                 localizations.turbuhalerStep1,
@@ -207,14 +198,14 @@ class InhalerTechniquesPage extends StatelessWidget {
   }
 
   Widget _buildInhalerCard(
-      BuildContext context, {
-        required String title,
-        required String subtitle,
-        required String image,
-        required List<String> examples,
-        required List<String> steps,
-        required String video,
-      }) {
+    BuildContext context, {
+    required String title,
+    required String subtitle,
+    required String image,
+    required List<String> examples,
+    required List<String> steps,
+    required String video,
+  }) {
     return Container(
       margin: const EdgeInsets.only(bottom: 18),
       decoration: BoxDecoration(
@@ -241,7 +232,7 @@ class InhalerTechniquesPage extends StatelessWidget {
                     title: title,
                     image: image,
                     steps: steps,
-                    examples: examples, // Properly passing localized array here
+                    examples: examples,
                     video: video,
                   ),
                 ),
@@ -266,7 +257,11 @@ class InhalerTechniquesPage extends StatelessWidget {
                           image,
                           fit: BoxFit.fill,
                           errorBuilder: (context, error, stackTrace) {
-                            return const Icon(Icons.medical_services, color: Color(0xff7367f0), size: 30);
+                            return const Icon(
+                              Icons.medical_services,
+                              color: Color(0xff7367f0),
+                              size: 30,
+                            );
                           },
                         ),
                       ),
@@ -307,7 +302,7 @@ class InhalerTechniquesPage extends StatelessWidget {
                       size: 14,
                       color: Colors.black87,
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

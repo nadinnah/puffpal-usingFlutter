@@ -2150,4 +2150,240 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get onboardingDoneDesc =>
       'انضم إلى PuffPal اليوم وتحكّم في رحلتك الصحية بشكل أفضل.';
+
+  @override
+  String get combinedQuizTitle => 'الاختبار الشامل لأجهزة الاستنشاق';
+
+  @override
+  String get q_mdi_2 =>
+      'ما الذي يجب عليك فعله دائمًا فور الانتهاء من استخدام البخاخ؟';
+
+  @override
+  String get q_mdi_2_a => 'مضمضة الفم بالماء';
+
+  @override
+  String get q_mdi_2_b => 'الذهاب للنوم';
+
+  @override
+  String get q_mdi_2_c => 'تناول وجبة كاملة';
+
+  @override
+  String get q_mdi_2_d => 'ممارسة الرياضة لمدة 10 دقائق';
+
+  @override
+  String get q_spacer_adult_1 =>
+      'ماذا يعني إذا سمعت صوت صفير أثناء الاستنشاق من الأنبوب المباعد (السبايسر)؟';
+
+  @override
+  String get q_spacer_adult_1_a => 'أنت تتنفس بسرعة كبيرة.';
+
+  @override
+  String get q_spacer_adult_1_b => 'أنت تحبس أنفاسك بشكل صحيح.';
+
+  @override
+  String get q_spacer_adult_1_c => 'البخاخ فارغ تمامًا.';
+
+  @override
+  String get q_spacer_adult_1_d => 'أنت تقوم بالزفير بدلاً من الشهيق.';
+
+  @override
+  String get q_spacer_adult_2 =>
+      'ماذا يجب أن تفعل إذا لم تكن قادرًا على حبس أنفاسك لمدة 5 إلى 10 ثوانٍ بعد استخدام الأنبوب المباعد؟';
+
+  @override
+  String get q_spacer_adult_2_a =>
+      'خذ 6 أنفاس طبيعية من الأنبوب المباعد بدلاً من ذلك.';
+
+  @override
+  String get q_spacer_adult_2_b => 'توقف عن استخدام البخاخ تمامًا.';
+
+  @override
+  String get q_spacer_adult_2_c => 'قم ببخ جرحة أخرى في الأنبوب المباعد فورًا.';
+
+  @override
+  String get q_spacer_adult_2_d => 'اشرب رشفة من الماء بدلاً من ذلك.';
+
+  @override
+  String get q_spacer_child_1 =>
+      'ماذا يعني إذا كان عداد الجرعات في البخاخ يشير إلى \'0\'؟';
+
+  @override
+  String get q_spacer_child_1_a => 'البخاخ فارغ ويجب استبداله.';
+
+  @override
+  String get q_spacer_child_1_b => 'البخاخ جاهز تمامًا للاستخدام.';
+
+  @override
+  String get q_spacer_child_1_c => 'البخاخ ممتلئ حتى نصفه تمامًا.';
+
+  @override
+  String get q_spacer_child_1_d => 'يجب هز البخاخ لمدة 10 ثوانٍ.';
+
+  @override
+  String get q_spacer_child_2 =>
+      'ماذا يجب أن تفعل لتهيئة بخاخ جديد تمامًا قبل استخدامه للمرة الأولى على الإطلاق؟';
+
+  @override
+  String get q_spacer_child_2_a =>
+      'هز البخاخ لمدة 10 ثوانٍ وبخ من 2 إلى 4 بخات في الهواء.';
+
+  @override
+  String get q_spacer_child_2_b => 'غسل البخاخ بالكامل بالماء الدافئ والصابون.';
+
+  @override
+  String get q_spacer_child_2_c => 'وضعه في الثلاجة لمدة 24 ساعة.';
+
+  @override
+  String get q_spacer_child_2_d =>
+      'الضغط على الزر 10 مرات مع إبقاء الغطاء مغلقًا بإحكام.';
+
+  @override
+  String get q_turbuhaler_1 =>
+      'كيف يجب أن تمسك جهاز التوربوهيلر (Turbuhaler) عندما تكون مستعدًا لاستخدامه، لضمان عدم سقوط الدواء منه؟';
+
+  @override
+  String get q_turbuhaler_1_a => 'أمسكه بشكل مسطح (أفقيًا)';
+
+  @override
+  String get q_turbuhaler_1_b => 'أمسكه مقلوبًا تمامًا رأسًا على عقب.';
+
+  @override
+  String get q_turbuhaler_1_c => 'هزه لأعلى ولأسفل أثناء الاستنشاق.';
+
+  @override
+  String get q_turbuhaler_1_d => 'موازنته عموديًا على طاولة مسطحة.';
+
+  @override
+  String get q_turbuhaler_2 =>
+      'إذا أرشدك الطبيب لأخذ بخة ثانية من دوائك، فكم من الوقت يجب أن تنتظر بعد البخة الأولى قبل تكرار الخطوات؟';
+
+  @override
+  String get q_turbuhaler_2_a => 'حوالي دقيقة واحدة';
+
+  @override
+  String get q_turbuhaler_2_b => 'على الفور دون أي توقف';
+
+  @override
+  String get q_turbuhaler_2_c => 'ساعة واحدة بالضبط';
+
+  @override
+  String get q_turbuhaler_2_d => '10 ثوانٍ';
+
+  @override
+  String get q_diskus_1 =>
+      'كيف تقوم بإعداد الجرعة على جهاز الديسكوس (Diskus) وتجهيزها للاستنشاق؟';
+
+  @override
+  String get q_diskus_1_a =>
+      'ادفع مقبض الإبهام بعيدًا عنك حتى تسمع صوت طقطقة، ثم اسحب الرافعة بعيدًا عن قطعة الفم حتى تسمع طقطقة أخرى';
+
+  @override
+  String get q_diskus_1_b => 'ادفع مقبض الإبهام بعيدًا عنك حتى تظهر قطعة الفم';
+
+  @override
+  String get q_diskus_1_c => 'قم بتدوير القاعدة الرمادية بالكامل';
+
+  @override
+  String get q_diskus_1_d => 'اضغط على الزر الأوسط حتى يومض الضوء';
+
+  @override
+  String get q_respimat_1 =>
+      'عند استخدام بخاخ الريسبيمات (Respimat)، ما هي الحيلة السريعة المكونة من ثلاث خطوات لتذكر ترتيب الخطوات؟';
+
+  @override
+  String get q_respimat_1_a => 'تدوير - فتح - ضغط (TOP)';
+
+  @override
+  String get q_respimat_1_b => 'ضغط - تدوير - استنشاق - عد';
+
+  @override
+  String get q_respimat_1_c => 'طقطقة - تدوير - تنفس - إغلاق';
+
+  @override
+  String get q_respimat_1_d => 'استعداد - ضبط - انطلاق - تكرار';
+
+  @override
+  String get q_respimat_2 =>
+      'كم مرة يجب عليك تنظيف قطعة الفم لبخاخ الريسبيمات (Respimat)؟';
+
+  @override
+  String get q_respimat_2_a => 'مرة واحدة في الأسبوع بقطعة قماش مبللة.';
+
+  @override
+  String get q_respimat_2_b => 'بعد كل جرعة بالماء والصابون.';
+
+  @override
+  String get q_respimat_2_c => 'مرة واحدة في الشهر باستخدام الكحول الطبي.';
+
+  @override
+  String get q_respimat_2_d => 'فقط عندما تبدو متسخة بصريًا.';
+
+  @override
+  String get q_neb_2 =>
+      'عند تجميع أجزاء جهاز الرذاذ (النيبولايزر)، كم عدد القطع التي تقوم بتوصيلها معًا لتجهيز الإعداد الكامل؟';
+
+  @override
+  String get q_neb_2_a =>
+      '5 قطع: كوب الدواء، القطعة العلوية والقناع، الأنبوب البلاستيكي النحيف، والضاغط (الكمبريسور)';
+
+  @override
+  String get q_neb_2_b => '3 قطع: كوب الدواء، قطعة الفم، والقناع';
+
+  @override
+  String get q_neb_2_c =>
+      '4 قطع: كوب الدواء، القطعة العلوية، القناع، والقابس الكهربائي';
+
+  @override
+  String get q_neb_2_d =>
+      '6 قطع: كوب الدواء، القطعة العلوية، قطعة الفم، الأنابيب، الضاغط، وحقيبة الحمل';
+
+  @override
+  String get q_peak_1 =>
+      'عند تكرار الاختبار ثلاث مرات لمعرفة نتيجتك، أي رقم يجب عليك تدوينه في مذكراتك اليومية؟';
+
+  @override
+  String get q_peak_1_a => 'أعلى رقم وصلت إليه من بين المحاولات الثلاث.';
+
+  @override
+  String get q_peak_1_b => 'أقل رقم حصلت عليه من بين المحاولات الثلاث.';
+
+  @override
+  String get q_peak_1_c => 'متوسط الأرقام الثلاثة معًا.';
+
+  @override
+  String get q_peak_1_d => 'النتيجة من محاولتك الأولى فقط.';
+
+  @override
+  String get q_peak_2 =>
+      'كم من الوقت يجب أن تحتفظ بسجل يومي لدرجات تدفق الهواء القصوى (Peak Flow Score)؟';
+
+  @override
+  String get q_peak_2_a => 'لمدة أسبوعين في نفس الوقت تقريبًا.';
+
+  @override
+  String get q_peak_2_b => 'لمدة يومين أو ثلاثة أيام متتالية فقط.';
+
+  @override
+  String get q_peak_2_c => 'في عطلات نهاية الأسبوع فقط لمدة شهر واحد.';
+
+  @override
+  String get q_peak_2_d => 'لعام كامل دون توقف.';
+
+  @override
+  String get q_peak_3 =>
+      'ما هو رقم \'أفضل أداء شخصي\' (Personal Best) لتدفق الهواء، وكيف يتم تحديده؟';
+
+  @override
+  String get q_peak_3_a =>
+      'هو أعلى رقم تصل إليه خلال فترة تتبع مدتها أسبوعان عندما تكون بصحة جيدة.';
+
+  @override
+  String get q_peak_3_b => 'هو أقل نتيجة تحصل عليها عندما تشعر بمرض شديد.';
+
+  @override
+  String get q_peak_3_c =>
+      'هو متوسط النتيجة المحسوبة من قبل طبيبك خلال الموعد.';
+
+  @override
+  String get q_peak_3_d => 'هو رقم قياسي موحد يتطابق تمامًا لكل الأشخاص.';
 }

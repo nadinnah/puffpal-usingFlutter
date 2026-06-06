@@ -6,13 +6,12 @@ import 'package:puffpal/services/sqlite_service.dart';
 import '../l10n/app_localizations.dart';
 
 class AsthmaResult {
-  final int severity; // 1, 2, 3 for heatmap
-  final String label; // Fallback / Database baseline identifier value
+  final int severity;
+  final String label;
   final Color color;
 
   AsthmaResult(this.severity, this.label, this.color);
 
-  /// Dynamically retrieves localized assessment descriptions at runtime
   String getLocalizedLabel(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     switch (severity) {
@@ -65,8 +64,10 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
   /// Helper tool that matches baseline database values to localized equivalents
   String _getLocalizedDatabaseResult(BuildContext context, String rawDbResult) {
     final l10n = AppLocalizations.of(context)!;
-    if (rawDbResult == "Well Controlled Asthma") return l10n.wellControlledAsthma;
-    if (rawDbResult == "Partly Controlled Asthma") return l10n.partlyControlledAsthma;
+    if (rawDbResult == "Well Controlled Asthma")
+      return l10n.wellControlledAsthma;
+    if (rawDbResult == "Partly Controlled Asthma")
+      return l10n.partlyControlledAsthma;
     if (rawDbResult == "Uncontrolled Asthma") return l10n.uncontrolledAsthma;
     return rawDbResult;
   }
@@ -99,9 +100,11 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
           child: isLoading
               ? const Center(child: CircularProgressIndicator())
               : Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: alreadyTracked ? _buildHistoryView() : _buildQuestionnaireView(),
-          ),
+                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                  child: alreadyTracked
+                      ? _buildHistoryView()
+                      : _buildQuestionnaireView(),
+                ),
         ),
       ),
     );
@@ -128,7 +131,9 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
         ),
         const SizedBox(height: 30),
         Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
           elevation: 4,
           child: Padding(
             padding: const EdgeInsets.all(12.0),
@@ -157,15 +162,12 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
         TextButton(
           onPressed: () => Navigator.pop(context),
           child: Text(l10n.backToHome, style: const TextStyle(fontSize: 16)),
-        )
+        ),
       ],
     );
   }
 
-  // --- VIEW 2: QUESTIONNAIRE ---
   Widget _buildQuestionnaireView() {
-    // ⚠️ CRITICAL STEP: Accessing localized version of question object
-    // Make sure your SymptomTrackingQuestion model implements a `getLocalizedQuestion(context)` method
     final question = questions[currentIndex];
     final l10n = AppLocalizations.of(context)!;
 
@@ -188,7 +190,7 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
             child: Column(
               children: [
                 Text(
-                  question.getLocalizedQuestion(context), // 👈 Dynamic translated Question Text hook
+                  question.getLocalizedQuestion(context),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 20,
@@ -238,16 +240,18 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
                 if (currentIndex == questions.length - 1) {
                   AsthmaResult result = calculateResult();
 
-                  // We keep logging the stable English baseline string to the database
-                  // to keep data query logs unified, but translate it in UI views!
-                  await _localDb.logSymptom(_email, result.label, result.severity);
+                  await _localDb.logSymptom(
+                    _email,
+                    result.label,
+                    result.severity,
+                  );
 
                   if (mounted) {
                     showDialog(
                       context: context,
                       builder: (_) => AlertDialog(
                         title: Text(l10n.assessmentResultTitle),
-                        content: Text(result.getLocalizedLabel(context)), // 👈 Localized alert display copy
+                        content: Text(result.getLocalizedLabel(context)),
                         actions: [
                           TextButton(
                             onPressed: () {
@@ -267,7 +271,9 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
                 }
               },
               child: Text(
-                currentIndex == questions.length - 1 ? l10n.submitButton : l10n.nextButton,
+                currentIndex == questions.length - 1
+                    ? l10n.submitButton
+                    : l10n.nextButton,
               ),
             ),
           ],
@@ -280,24 +286,12 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
     int yesCount = questions.where((q) => q.answer == true).length;
 
     if (yesCount == 0) {
-      return AsthmaResult(
-        1,
-        "Well Controlled Asthma",
-        Colors.green,
-      );
+      return AsthmaResult(1, "Well Controlled Asthma", Colors.green);
     }
     if (yesCount <= 2) {
-      return AsthmaResult(
-        2,
-        "Partly Controlled Asthma",
-        Colors.orange,
-      );
+      return AsthmaResult(2, "Partly Controlled Asthma", Colors.orange);
     }
-    return AsthmaResult(
-      3,
-      "Uncontrolled Asthma",
-      Colors.red,
-    );
+    return AsthmaResult(3, "Uncontrolled Asthma", Colors.red);
   }
 
   void _showResultDialog(DateTime date, String result) {
@@ -308,14 +302,14 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text(l10n.logDateTitle(date.day, date.month, date.year)),
         content: Text(
-          _getLocalizedDatabaseResult(context, result), // 👈 Parse database text into translation system match
+          _getLocalizedDatabaseResult(context, result),
           style: const TextStyle(fontSize: 17),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: Text(l10n.okAction),
-          )
+          ),
         ],
       ),
     );

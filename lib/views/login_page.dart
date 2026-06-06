@@ -47,11 +47,7 @@ class _LoginPageState extends State<LoginPage> {
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [
-            Color(0xFFD8D0E5),
-            Color(0xFFD9DBEF),
-            Color(0xFFA8ABCA),
-          ],
+          colors: [Color(0xFFD8D0E5), Color(0xFFD9DBEF), Color(0xFFA8ABCA)],
         ),
       ),
       child: Scaffold(
@@ -91,34 +87,40 @@ class _LoginPageState extends State<LoginPage> {
                           }
                           return null;
                         },
-                        decoration: fieldDecoration(localizations.emailHint, Icons.email),
+                        decoration: fieldDecoration(
+                          localizations.emailHint,
+                          Icons.email,
+                        ),
                       ),
 
                       const SizedBox(height: 20),
 
-                      /// PASSWORD
                       TextFormField(
                         key: const Key('custom_password_field'),
                         controller: passwordController,
                         obscureText: !isVisible,
-                        validator: (value) =>
-                        value!.isEmpty ? localizations.passwordRequired : null,
-                        decoration: fieldDecoration(localizations.passwordHint, Icons.lock).copyWith(
-                          suffixIcon: IconButton(
-                            icon: Icon(
-                              isVisible
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
+                        validator: (value) => value!.isEmpty
+                            ? localizations.passwordRequired
+                            : null,
+                        decoration:
+                            fieldDecoration(
+                              localizations.passwordHint,
+                              Icons.lock,
+                            ).copyWith(
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  isVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                ),
+                                onPressed: () =>
+                                    setState(() => isVisible = !isVisible),
+                              ),
                             ),
-                            onPressed: () =>
-                                setState(() => isVisible = !isVisible),
-                          ),
-                        ),
                       ),
 
                       const SizedBox(height: 60),
 
-                      /// LOGIN BUTTON
                       ElevatedButton(
                         key: const Key('login_button'),
                         onPressed: () async {
@@ -127,15 +129,22 @@ class _LoginPageState extends State<LoginPage> {
                             String password = passwordController.text.trim();
 
                             if (formKey.currentState!.validate()) {
-                              bool status =
-                              await firebaseServices.signIn(email, password);
+                              bool status = await firebaseServices.signIn(
+                                context,
+                                email,
+                                password,
+                              );
 
                               if (status) {
                                 if (!mounted) return;
                                 Navigator.pushReplacementNamed(
-                                    context, '/appshell');
+                                  context,
+                                  '/appshell',
+                                );
                               } else {
-                                throw Exception(localizations.loginFailedException);
+                                throw Exception(
+                                  localizations.loginFailedException,
+                                );
                               }
                             }
                           } catch (e) {
@@ -152,11 +161,17 @@ class _LoginPageState extends State<LoginPage> {
                           backgroundColor: const Color(0xFF1E6097),
                           foregroundColor: Colors.white,
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 50, vertical: 15),
+                            horizontal: 50,
+                            vertical: 15,
+                          ),
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12)),
+                            borderRadius: BorderRadius.circular(12),
+                          ),
                         ),
-                        child: Text(localizations.loginButton, style: const TextStyle(fontSize: 18)),
+                        child: Text(
+                          localizations.loginButton,
+                          style: const TextStyle(fontSize: 18),
+                        ),
                       ),
 
                       const SizedBox(height: 20),
@@ -176,8 +191,10 @@ class _LoginPageState extends State<LoginPage> {
                       if (errorMessage.isNotEmpty)
                         Padding(
                           padding: const EdgeInsets.only(top: 8),
-                          child: Text(errorMessage,
-                              style: const TextStyle(color: Colors.red)),
+                          child: Text(
+                            errorMessage,
+                            style: const TextStyle(color: Colors.red),
+                          ),
                         ),
                     ],
                   ),

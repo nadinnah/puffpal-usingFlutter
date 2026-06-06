@@ -5,32 +5,39 @@ import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:flutter_timezone/flutter_timezone.dart';
 
 class LocalNotificationService {
-  static final LocalNotificationService _instance = LocalNotificationService._internal();
+  static final LocalNotificationService _instance =
+      LocalNotificationService._internal();
+
   factory LocalNotificationService() => _instance;
+
   LocalNotificationService._internal();
 
-  final FlutterLocalNotificationsPlugin _plugin = FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin _plugin =
+      FlutterLocalNotificationsPlugin();
 
   Future<void> init() async {
     tz.initializeTimeZones();
 
     try {
-      final String currentTimeZone = (await FlutterTimezone.getLocalTimezone()) as String;
+      final String currentTimeZone =
+          (await FlutterTimezone.getLocalTimezone()) as String;
       tz.setLocalLocation(tz.getLocation(currentTimeZone));
     } catch (e) {
       tz.setLocalLocation(tz.getLocation('Asia/Kuwait'));
     }
 
     const AndroidInitializationSettings androidSettings =
-    AndroidInitializationSettings('@mipmap/ic_launcher');
+        AndroidInitializationSettings('@mipmap/ic_launcher');
 
     await _plugin.initialize(
       const InitializationSettings(android: androidSettings),
     );
 
     if (Platform.isAndroid) {
-      final androidPlugin = _plugin.resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>();
+      final androidPlugin = _plugin
+          .resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin
+          >();
 
       const AndroidNotificationChannel channel = AndroidNotificationChannel(
         'high_importance_channel',
@@ -43,26 +50,34 @@ class LocalNotificationService {
       await androidPlugin?.createNotificationChannel(channel);
     }
   }
+
   Future<void> requestPermissions() async {
     if (Platform.isAndroid) {
       final AndroidFlutterLocalNotificationsPlugin? androidImplementation =
-      _plugin.resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>();
+          _plugin
+              .resolvePlatformSpecificImplementation<
+                AndroidFlutterLocalNotificationsPlugin
+              >();
 
-      // This triggers the "Allow puffpal to send notifications" dialog
       await androidImplementation?.requestNotificationsPermission();
 
-      // This requests the "Exact Alarm" permission required for Android 13+
-      final bool? hasAlarmPermission = await androidImplementation?.requestExactAlarmsPermission();
+      final bool? hasAlarmPermission = await androidImplementation
+          ?.requestExactAlarmsPermission();
 
       print("Exact Alarm Permission: $hasAlarmPermission");
     }
   }
 
-  Future<void> scheduleRepeatingReminder(String medName, DateTime startTime, int intervalHours) async {
+  Future<void> scheduleRepeatingReminder(
+    String medName,
+    DateTime startTime,
+    int intervalHours,
+  ) async {
     for (int i = 0; i < 10; i++) {
       int id = medName.hashCode.abs() + i;
-      DateTime scheduledTime = startTime.add(Duration(hours: intervalHours * i));
+      DateTime scheduledTime = startTime.add(
+        Duration(hours: intervalHours * i),
+      );
 
       if (scheduledTime.isBefore(DateTime.now())) continue;
 
@@ -83,7 +98,6 @@ class LocalNotificationService {
           ),
         ),
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-
       );
     }
   }

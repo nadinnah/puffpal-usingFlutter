@@ -36,21 +36,18 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
     super.dispose();
   }
 
-  // --- LOGIC: LOAD EDITED FILE OR FALLBACK TO ASSET ---
   Future<void> _loadPdfDocument() async {
     try {
       final directory = await getApplicationDocumentsDirectory();
       final localFile = File('${directory.path}/$localFileName');
 
       if (await localFile.exists()) {
-        // If the user previously edited and saved the document, load it
         final bytes = await localFile.readAsBytes();
         setState(() {
           _pdfBytes = bytes;
           _isLoading = false;
         });
       } else {
-        // First-time setup: Load the clean baseline template from assets
         final byteData = await rootBundle.load(assetPath);
         setState(() {
           _pdfBytes = byteData.buffer.asUint8List();
@@ -116,7 +113,6 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
     final double horizontalPadding = screenWidth * 0.03;
 
     return WillPopScope(
-      // Automatically save changes in the background when clicking back arrow or system back
       onWillPop: () async {
         await _savePdf(showFeedback: false);
         return true;
@@ -133,7 +129,10 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
             },
             icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black),
           ),
-          title: const Text('Asthma Action Plan', style: TextStyle(color: Colors.black)),
+          title: const Text(
+            'Asthma Action Plan',
+            style: TextStyle(color: Colors.black),
+          ),
           actions: [
             IconButton(
               icon: const Icon(Icons.print, color: Colors.black),
@@ -151,11 +150,11 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
         body: _isLoading
             ? const Center(child: CircularProgressIndicator())
             : SfPdfViewer.memory(
-          _pdfBytes!,
-          key: _pdfViewerKey,
-          controller: _pdfViewerController,
-          enableTextSelection: true,
-        ),
+                _pdfBytes!,
+                key: _pdfViewerKey,
+                controller: _pdfViewerController,
+                enableTextSelection: true,
+              ),
       ),
     );
   }

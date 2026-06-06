@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../l10n/app_localizations.dart'; // Ensure this import points to your l10n directory
+import '../l10n/app_localizations.dart';
 
 abstract class SymptomNode {}
 
 class SymptomTrackingQuestions {
-  final String id;       // 🟢 Stable identifier to fetch the translation key
-  final String question; // Fallback English text
+  final String id;
+  final String question;
   bool? answer;
 
   SymptomTrackingQuestions({
@@ -14,7 +14,6 @@ class SymptomTrackingQuestions {
     this.answer,
   });
 
-  /// 🟢 Dynamically bridges the UI file to your ARB definitions
   String getLocalizedQuestion(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     switch (id) {
@@ -27,7 +26,7 @@ class SymptomTrackingQuestions {
       case 'activity_limitation':
         return l10n.questionActivityLimitation;
       default:
-        return question; // Fallback to raw property text
+        return question;
     }
   }
 }

@@ -4147,6 +4147,432 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Join PuffPal today and gain control over your asthma journey.'**
   String get onboardingDoneDesc;
+
+  /// No description provided for @combinedQuizTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inhalation Devices Master Quiz'**
+  String get combinedQuizTitle;
+
+  /// No description provided for @q_mdi_2.
+  ///
+  /// In en, this message translates to:
+  /// **'What should you always do immediately after you finish using your inhaler?'**
+  String get q_mdi_2;
+
+  /// No description provided for @q_mdi_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Rinse your mouth out with water'**
+  String get q_mdi_2_a;
+
+  /// No description provided for @q_mdi_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Go to sleep'**
+  String get q_mdi_2_b;
+
+  /// No description provided for @q_mdi_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Eat a full meal'**
+  String get q_mdi_2_c;
+
+  /// No description provided for @q_mdi_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercise for 10 minutes'**
+  String get q_mdi_2_d;
+
+  /// No description provided for @q_spacer_adult_1.
+  ///
+  /// In en, this message translates to:
+  /// **'What does it mean if you hear a whistle sound while breathing in from the spacer?'**
+  String get q_spacer_adult_1;
+
+  /// No description provided for @q_spacer_adult_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'You are breathing in too fast.'**
+  String get q_spacer_adult_1_a;
+
+  /// No description provided for @q_spacer_adult_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'You are holding your breath correctly.'**
+  String get q_spacer_adult_1_b;
+
+  /// No description provided for @q_spacer_adult_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'The inhaler is completely empty.'**
+  String get q_spacer_adult_1_c;
+
+  /// No description provided for @q_spacer_adult_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'You are breathing out instead of in.'**
+  String get q_spacer_adult_1_d;
+
+  /// No description provided for @q_spacer_adult_2.
+  ///
+  /// In en, this message translates to:
+  /// **'What should you do if you are unable to hold your breath for 5 to 10 seconds after using the spacer?'**
+  String get q_spacer_adult_2;
+
+  /// No description provided for @q_spacer_adult_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Take 6 normal breaths from the spacer instead.'**
+  String get q_spacer_adult_2_a;
+
+  /// No description provided for @q_spacer_adult_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Stop using the inhaler entirely.'**
+  String get q_spacer_adult_2_b;
+
+  /// No description provided for @q_spacer_adult_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Spray another puff into the spacer immediately.'**
+  String get q_spacer_adult_2_c;
+
+  /// No description provided for @q_spacer_adult_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a drink of water instead.'**
+  String get q_spacer_adult_2_d;
+
+  /// No description provided for @q_spacer_child_1.
+  ///
+  /// In en, this message translates to:
+  /// **'What does it mean if the dose counter on your inhaler says \'0\'?'**
+  String get q_spacer_child_1;
+
+  /// No description provided for @q_spacer_child_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'The inhaler is empty and needs to be replaced.'**
+  String get q_spacer_child_1_a;
+
+  /// No description provided for @q_spacer_child_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'The inhaler is perfectly ready to use.'**
+  String get q_spacer_child_1_b;
+
+  /// No description provided for @q_spacer_child_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'The inhaler is exactly half full.'**
+  String get q_spacer_child_1_c;
+
+  /// No description provided for @q_spacer_child_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'The inhaler needs to be shaken for 10 seconds.'**
+  String get q_spacer_child_1_d;
+
+  /// No description provided for @q_spacer_child_2.
+  ///
+  /// In en, this message translates to:
+  /// **'What should you do to \'prime\' a brand new inhaler before using it for the very first time?'**
+  String get q_spacer_child_2;
+
+  /// No description provided for @q_spacer_child_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Shake it for 10 seconds and spray 2 to 4 puffs into the air.'**
+  String get q_spacer_child_2_a;
+
+  /// No description provided for @q_spacer_child_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Wash the entire inhaler with warm soap and water.'**
+  String get q_spacer_child_2_b;
+
+  /// No description provided for @q_spacer_child_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Put it in the refrigerator for 24 hours.'**
+  String get q_spacer_child_2_c;
+
+  /// No description provided for @q_spacer_child_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Press the button 10 times while keeping the cap tightly on.'**
+  String get q_spacer_child_2_d;
+
+  /// No description provided for @q_turbuhaler_1.
+  ///
+  /// In en, this message translates to:
+  /// **'How should you hold the Turbuhaler when you are ready to use it, to make sure the medicine doesn\'t fall out?'**
+  String get q_turbuhaler_1;
+
+  /// No description provided for @q_turbuhaler_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold it flat (horizontally)'**
+  String get q_turbuhaler_1_a;
+
+  /// No description provided for @q_turbuhaler_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Hold it completely upside down.'**
+  String get q_turbuhaler_1_b;
+
+  /// No description provided for @q_turbuhaler_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Shake it up and down while breathing in.'**
+  String get q_turbuhaler_1_c;
+
+  /// No description provided for @q_turbuhaler_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Balance it vertically on a flat table.'**
+  String get q_turbuhaler_1_d;
+
+  /// No description provided for @q_turbuhaler_2.
+  ///
+  /// In en, this message translates to:
+  /// **'If your doctor instructs you to take a second puff of your medication, how long should you wait after the first puff before repeating the steps?'**
+  String get q_turbuhaler_2;
+
+  /// No description provided for @q_turbuhaler_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'About 1 minute'**
+  String get q_turbuhaler_2_a;
+
+  /// No description provided for @q_turbuhaler_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Right away with no pause'**
+  String get q_turbuhaler_2_b;
+
+  /// No description provided for @q_turbuhaler_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Exactly 1 hour'**
+  String get q_turbuhaler_2_c;
+
+  /// No description provided for @q_turbuhaler_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'10 seconds'**
+  String get q_turbuhaler_2_d;
+
+  /// No description provided for @q_diskus_1.
+  ///
+  /// In en, this message translates to:
+  /// **'How do you prepare a dose on your Diskus device and get it ready to inhale?'**
+  String get q_diskus_1;
+
+  /// No description provided for @q_diskus_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Push the thumb grip away from you until it clicks, then slide the lever away from the mouthpiece until it clicks again'**
+  String get q_diskus_1_a;
+
+  /// No description provided for @q_diskus_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Push the thumb grip away from you until you see the mouthpiece'**
+  String get q_diskus_1_b;
+
+  /// No description provided for @q_diskus_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Twist the entire gray base around'**
+  String get q_diskus_1_c;
+
+  /// No description provided for @q_diskus_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Press the center button until a light flashes.'**
+  String get q_diskus_1_d;
+
+  /// No description provided for @q_respimat_1.
+  ///
+  /// In en, this message translates to:
+  /// **'When using your Respimat inhaler, what is the quick three-step memory trick (acronym) to help you remember the order of steps?'**
+  String get q_respimat_1;
+
+  /// No description provided for @q_respimat_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'TOP (TURN - OPEN - PRESS)'**
+  String get q_respimat_1_a;
+
+  /// No description provided for @q_respimat_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'PUSH - TURN - INHALE - COUNT'**
+  String get q_respimat_1_b;
+
+  /// No description provided for @q_respimat_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'CLICK - SPIN - BREATHE - CLOSE'**
+  String get q_respimat_1_c;
+
+  /// No description provided for @q_respimat_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'READY - SET - GO - REPEAT'**
+  String get q_respimat_1_d;
+
+  /// No description provided for @q_respimat_2.
+  ///
+  /// In en, this message translates to:
+  /// **'How often should you clean the mouthpiece of your Respimat inhaler?'**
+  String get q_respimat_2;
+
+  /// No description provided for @q_respimat_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'Once a week with a damp cloth.'**
+  String get q_respimat_2_a;
+
+  /// No description provided for @q_respimat_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'After every single dose with soap and water.'**
+  String get q_respimat_2_b;
+
+  /// No description provided for @q_respimat_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Once a month with rubbing alcohol.'**
+  String get q_respimat_2_c;
+
+  /// No description provided for @q_respimat_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'Only when it looks visually dirty.'**
+  String get q_respimat_2_d;
+
+  /// No description provided for @q_neb_2.
+  ///
+  /// In en, this message translates to:
+  /// **'When putting your nebulizer parts together, how many pieces do you connect to form the complete setup?'**
+  String get q_neb_2;
+
+  /// No description provided for @q_neb_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'5 pieces: medicine cup, top piece and mask, thin plastic tubing, and compressor'**
+  String get q_neb_2_a;
+
+  /// No description provided for @q_neb_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'3 pieces: medicine cup, mouthpiece, and mask'**
+  String get q_neb_2_b;
+
+  /// No description provided for @q_neb_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'4 pieces: medicine cup, top piece, mask, and electrical plug'**
+  String get q_neb_2_c;
+
+  /// No description provided for @q_neb_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'6 pieces: medicine cup, top piece, mouthpiece, tubing, compressor, and carrying bag'**
+  String get q_neb_2_d;
+
+  /// No description provided for @q_peak_1.
+  ///
+  /// In en, this message translates to:
+  /// **'When you repeat the test three times to find your score, which number should you write down in your daily diary?'**
+  String get q_peak_1;
+
+  /// No description provided for @q_peak_1_a.
+  ///
+  /// In en, this message translates to:
+  /// **'The highest number you reached out of your three attempts.'**
+  String get q_peak_1_a;
+
+  /// No description provided for @q_peak_1_b.
+  ///
+  /// In en, this message translates to:
+  /// **'The lowest number you got out of the three tries.'**
+  String get q_peak_1_b;
+
+  /// No description provided for @q_peak_1_c.
+  ///
+  /// In en, this message translates to:
+  /// **'An average of all three numbers added together.'**
+  String get q_peak_1_c;
+
+  /// No description provided for @q_peak_1_d.
+  ///
+  /// In en, this message translates to:
+  /// **'The number from your very first try.'**
+  String get q_peak_1_d;
+
+  /// No description provided for @q_peak_2.
+  ///
+  /// In en, this message translates to:
+  /// **'How long should you keep a daily record of your peak flow score?'**
+  String get q_peak_2;
+
+  /// No description provided for @q_peak_2_a.
+  ///
+  /// In en, this message translates to:
+  /// **'For 2 weeks at around the same time.'**
+  String get q_peak_2_a;
+
+  /// No description provided for @q_peak_2_b.
+  ///
+  /// In en, this message translates to:
+  /// **'Just 2 or 3 days in a row.'**
+  String get q_peak_2_b;
+
+  /// No description provided for @q_peak_2_c.
+  ///
+  /// In en, this message translates to:
+  /// **'Only on the weekends for 1 month.'**
+  String get q_peak_2_c;
+
+  /// No description provided for @q_peak_2_d.
+  ///
+  /// In en, this message translates to:
+  /// **'For a full calendar year without stopping.'**
+  String get q_peak_2_d;
+
+  /// No description provided for @q_peak_3.
+  ///
+  /// In en, this message translates to:
+  /// **'What is your \'personal best\' peak flow number, and how is it determined?'**
+  String get q_peak_3;
+
+  /// No description provided for @q_peak_3_a.
+  ///
+  /// In en, this message translates to:
+  /// **'It is the highest number you reach during a two-week tracking period while you are feeling well.'**
+  String get q_peak_3_a;
+
+  /// No description provided for @q_peak_3_b.
+  ///
+  /// In en, this message translates to:
+  /// **'It is the lowest score you get when you are feeling very sick.'**
+  String get q_peak_3_b;
+
+  /// No description provided for @q_peak_3_c.
+  ///
+  /// In en, this message translates to:
+  /// **'It is the average score calculated by your doctor during an appointment.'**
+  String get q_peak_3_c;
+
+  /// No description provided for @q_peak_3_d.
+  ///
+  /// In en, this message translates to:
+  /// **'It is a standard number that is exactly the same for every person.'**
+  String get q_peak_3_d;
 }
 
 class _AppLocalizationsDelegate

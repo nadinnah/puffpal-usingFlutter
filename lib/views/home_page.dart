@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 import 'package:puffpal/views/track_symptoms_page.dart';
 import '../l10n/app_localizations.dart';
-import '../services/advice_service.dart';
 import '../services/advice_service.dart' as AdviceService;
 import '../services/firestore_service.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -58,8 +57,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    final double titleSize = screenWidth * 0.07;       // ~28px on standard 400w screens
-    final double subtitleSize = screenWidth * 0.055;  // ~22px
+    final double titleSize = screenWidth * 0.07; // ~28px
+    final double subtitleSize = screenWidth * 0.055; // ~22px
     final double bodySize = screenWidth * 0.035;
     final userName = context.watch<UserProvider>().userName;
 
@@ -70,7 +69,12 @@ class _HomePageState extends State<HomePage> {
     final double verticalSpacing = screenHeight * 0.12;
 
     return SingleChildScrollView(
-      padding: EdgeInsets.fromLTRB(0, verticalSpacing, 0, 0.75*verticalSpacing),
+      padding: EdgeInsets.fromLTRB(
+        0,
+        verticalSpacing,
+        0,
+        0.75 * verticalSpacing,
+      ),
       child: Column(
         children: [
           Padding(
@@ -88,7 +92,6 @@ class _HomePageState extends State<HomePage> {
                   builder: (context, snapshot) {
                     return FlipCardWidget(
                       frontText: AppLocalizations.of(context)!.advice_title,
-                      // If the future isn't done, show "...", otherwise show the translated text
                       backText: snapshot.data ?? "...",
                     );
                   },
@@ -147,12 +150,12 @@ class _HomePageState extends State<HomePage> {
                             subtitle: Text(
                               AppLocalizations.of(context)!.quickQuestions,
 
-                                style: GoogleFonts.roboto(
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: bodySize,
-                                  color: Color(0xa11e1b1b),
-                                ),
+                              style: GoogleFonts.roboto(
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w400,
+                                fontSize: bodySize,
+                                color: Color(0xa11e1b1b),
+                              ),
                             ),
                           ),
                         ],
@@ -185,7 +188,7 @@ class _HomePageState extends State<HomePage> {
               ),
               SizedBox(height: 10),
               AspectRatio(
-                aspectRatio: 1.5, // Adjust this decimal to control total height
+                aspectRatio: 1.5,
                 child: PageView.builder(
                   itemCount: carouselDataList.length,
                   physics: const ClampingScrollPhysics(),
@@ -193,7 +196,6 @@ class _HomePageState extends State<HomePage> {
                   onPageChanged: (index) =>
                       setState(() => _currentPage = index),
                   itemBuilder: (BuildContext context, int index) {
-                    // Use Padding here to create the gap between carousel items
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10.0),
                       child: carouselView(index),
@@ -214,9 +216,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          SizedBox(height: verticalSpacing/2,)
-
-
+          SizedBox(height: verticalSpacing / 2),
         ],
       ),
     );
@@ -230,24 +230,21 @@ class _HomePageState extends State<HomePage> {
     return Column(
       children: [
         Expanded(
-          // Use Expanded to let the image fill the AspectRatio space
           child: GestureDetector(
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>
-                      CarouselDetailsPage(carouselData: data),
+                  builder: (context) => CarouselDetailsPage(carouselData: data),
                 ),
               );
             },
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                // More rounded looks better for carousels
                 image: DecorationImage(
-                  image: AssetImage(data.imageName), //assets/images/track_your_symptoms.png
-                  fit: BoxFit.cover, // Use cover to prevent "stretching"
+                  image: AssetImage(data.imageName),
+                  fit: BoxFit.cover,
                 ),
                 boxShadow: [
                   BoxShadow(

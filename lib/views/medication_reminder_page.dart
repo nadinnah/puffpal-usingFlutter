@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../data/medication_entry.dart';
-import '../l10n/app_localizations.dart'; // 👈 Imported localization
+import '../l10n/app_localizations.dart';
 import '../services/local_notification_service.dart';
 import '../services/sqlite_service.dart';
 
@@ -21,7 +21,8 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
     MedicationEntry(controller: TextEditingController()),
   ];
 
-  final LocalNotificationService notificationService = LocalNotificationService();
+  final LocalNotificationService notificationService =
+      LocalNotificationService();
 
   @override
   void initState() {
@@ -54,7 +55,7 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
-    final localizations = AppLocalizations.of(context)!; // Cache localizations short handle
+    final localizations = AppLocalizations.of(context)!;
 
     final double titleSize = screenWidth * 0.07;
     final double subtitleSize = screenWidth * 0.055;
@@ -120,7 +121,9 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                                 child: TextField(
                                   controller: med.controller,
                                   decoration: InputDecoration(
-                                    labelText: localizations.enterMedicineLabel(index + 1),
+                                    labelText: localizations.enterMedicineLabel(
+                                      index + 1,
+                                    ),
                                     prefixIcon: const Icon(
                                       Icons.medical_services_sharp,
                                       color: Colors.black,
@@ -136,7 +139,7 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                                     color: Colors.redAccent,
                                   ),
                                   onPressed: () => setState(
-                                        () => _medications.removeAt(index),
+                                    () => _medications.removeAt(index),
                                   ),
                                 ),
                             ],
@@ -219,8 +222,8 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                       await notificationService.requestPermissions();
 
                       bool allValid = _medications.every(
-                            (m) =>
-                        m.controller.text.trim().isNotEmpty &&
+                        (m) =>
+                            m.controller.text.trim().isNotEmpty &&
                             m.time != null &&
                             m.interval != null,
                       );
@@ -294,7 +297,10 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                 const SizedBox(height: 40),
                 Text(
                   localizations.activeRemindersTitle,
-                  style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const Divider(color: Colors.black26),
                 const SizedBox(height: 10),
@@ -331,13 +337,20 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                             onDismissed: (direction) async {
                               final messenger = ScaffoldMessenger.of(context);
                               final deletedMed = med;
-                              await notificationService.cancelMedicationReminder(deletedMed['name']);
-                              await localDatabase.deleteMedication(deletedMed['id']);
+                              await notificationService
+                                  .cancelMedicationReminder(deletedMed['name']);
+                              await localDatabase.deleteMedication(
+                                deletedMed['id'],
+                              );
                               setState(() {});
 
                               messenger.showSnackBar(
                                 SnackBar(
-                                  content: Text(localizations.reminderRemovedMessage(deletedMed['name'])),
+                                  content: Text(
+                                    localizations.reminderRemovedMessage(
+                                      deletedMed['name'],
+                                    ),
+                                  ),
                                   action: SnackBarAction(
                                     label: localizations.undoAction,
                                     onPressed: () {
@@ -347,16 +360,20 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                                         'startTime': deletedMed['startTime'],
                                         'interval': deletedMed['interval'],
                                       });
-                                      notificationService.scheduleRepeatingReminder(
-                                        deletedMed['name'],
-                                        DateTime.now(),
-                                        deletedMed['interval'],
-                                      );
+                                      notificationService
+                                          .scheduleRepeatingReminder(
+                                            deletedMed['name'],
+                                            DateTime.now(),
+                                            deletedMed['interval'],
+                                          );
                                       setState(() {});
 
                                       messenger.showSnackBar(
                                         SnackBar(
-                                          content: Text(localizations.reminderRestoredMessage),
+                                          content: Text(
+                                            localizations
+                                                .reminderRestoredMessage,
+                                          ),
                                         ),
                                       );
                                     },
@@ -392,34 +409,52 @@ class _MedicationReminderPageState extends State<MedicationReminderPage> {
                                       color: Colors.red,
                                     ),
                                     onPressed: () async {
-                                      final messenger = ScaffoldMessenger.of(context);
+                                      final messenger = ScaffoldMessenger.of(
+                                        context,
+                                      );
                                       final deletedMed = med;
-                                      await notificationService.cancelMedicationReminder(deletedMed['name']);
-                                      await localDatabase.deleteMedication(deletedMed['id']);
+                                      await notificationService
+                                          .cancelMedicationReminder(
+                                            deletedMed['name'],
+                                          );
+                                      await localDatabase.deleteMedication(
+                                        deletedMed['id'],
+                                      );
                                       setState(() {});
 
                                       messenger.showSnackBar(
                                         SnackBar(
-                                          content: Text(localizations.reminderRemovedMessage(deletedMed['name'])),
+                                          content: Text(
+                                            localizations
+                                                .reminderRemovedMessage(
+                                                  deletedMed['name'],
+                                                ),
+                                          ),
                                           action: SnackBarAction(
                                             label: localizations.undoAction,
                                             onPressed: () {
                                               localDatabase.insertMedication({
                                                 'userEmail': currentUserEmail,
                                                 'name': deletedMed['name'],
-                                                'startTime': deletedMed['startTime'],
-                                                'interval': deletedMed['interval'],
+                                                'startTime':
+                                                    deletedMed['startTime'],
+                                                'interval':
+                                                    deletedMed['interval'],
                                               });
-                                              notificationService.scheduleRepeatingReminder(
-                                                deletedMed['name'],
-                                                DateTime.now(),
-                                                deletedMed['interval'],
-                                              );
+                                              notificationService
+                                                  .scheduleRepeatingReminder(
+                                                    deletedMed['name'],
+                                                    DateTime.now(),
+                                                    deletedMed['interval'],
+                                                  );
                                               setState(() {});
 
                                               messenger.showSnackBar(
                                                 SnackBar(
-                                                  content: Text(localizations.reminderRestoredMessage),
+                                                  content: Text(
+                                                    localizations
+                                                        .reminderRestoredMessage,
+                                                  ),
                                                 ),
                                               );
                                             },

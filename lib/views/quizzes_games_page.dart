@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:puffpal/views/pdf_viewer_page.dart';
 import 'package:puffpal/views/questions_page.dart';
-
 import '../l10n/app_localizations.dart';
 import '../models/quiz.dart';
 import '../services/quiz_progress_service.dart';
@@ -15,13 +14,11 @@ class QuizzesGamesPage extends StatefulWidget {
 }
 
 class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
-  // Keyed on quiz.id rather than a localized title string
   Map<String, int?> quizScores = {};
 
   @override
   void initState() {
     super.initState();
-    // Safely schedules state population after context is initialized
     WidgetsBinding.instance.addPostFrameCallback((_) {
       loadProgress();
     });
@@ -31,7 +28,6 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
     Map<String, int?> temporaryScores = {};
 
     for (var quiz in quizzes) {
-      // Fetch data using our stable, production-ready quiz ID
       final score = await QuizProgressService.getScore(quiz.id);
 
       if (score != null) {
@@ -83,10 +79,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                 gradient: const LinearGradient(
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
-                  colors: [
-                    Color(0xFFF3F1FA),
-                    Color(0xFFE2DFF2),
-                  ],
+                  colors: [Color(0xFFF3F1FA), Color(0xFFE2DFF2)],
                 ),
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -130,7 +123,10 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
             children: [
               Text(
                 AppLocalizations.of(context)!.quizzesTitle,
-                style: TextStyle(fontSize: titleSize, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: titleSize,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 5, top: 5),
@@ -149,7 +145,6 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
             ],
           ),
           ...quizzes.map((quiz) {
-            // Check play records using the distinct quiz identifier
             final bool isPlayed = quizScores[quiz.id] != null;
             final int? score = quizScores[quiz.id];
 
@@ -159,15 +154,15 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                 onTap: isPlayed
                     ? null
                     : () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => QuestionsPage(quiz: quiz),
-                    ),
-                  ).then((_) {
-                    loadProgress();
-                  });
-                },
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => QuestionsPage(quiz: quiz),
+                          ),
+                        ).then((_) {
+                          loadProgress();
+                        });
+                      },
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
@@ -186,10 +181,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                         gradient: const LinearGradient(
                           begin: Alignment.topRight,
                           end: Alignment.bottomLeft,
-                          colors: [
-                            Color(0xFFF3F1FA),
-                            Color(0xFFE2DFF2),
-                          ],
+                          colors: [Color(0xFFF3F1FA), Color(0xFFE2DFF2)],
                         ),
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -234,7 +226,12 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                                   style: TextStyle(color: Color(0x7B489DE3)),
                                 ),
                                 Text(
-                                  AppLocalizations.of(context)!.quizScoreDisplay(score ?? 0, quiz.questions.length),
+                                  AppLocalizations.of(
+                                    context,
+                                  )!.quizScoreDisplay(
+                                    score ?? 0,
+                                    quiz.questions.length,
+                                  ),
                                   style: const TextStyle(
                                     color: Color(0xFF1A5687),
                                     fontSize: 14,

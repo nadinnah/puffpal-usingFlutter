@@ -35,7 +35,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
 
-    final double titleSize = screenWidth * 0.08;       // ~28px on standard 400w screens
+    final double titleSize = screenWidth * 0.08;
     final double bodySize = screenWidth * 0.035;
     final double buttonSize = screenWidth * 0.15;
     final double verticalSpacing = screenHeight * 0.1;
@@ -114,7 +114,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       ),
       body: Stack(
         children: [
-          // 1. Fullscreen Background Gradient Layer
           Positioned.fill(
             child: Container(
               decoration: const BoxDecoration(
@@ -127,7 +126,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
 
-          // 2. Interactive Foreground Layer wrapped in SafeArea
           SafeArea(
             top: false,
             bottom: true,
@@ -153,7 +151,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           });
                         },
                         children: [
-                          // PAGE 1 (Centered)
                           Center(
                             child: SingleChildScrollView(
                               physics: const NeverScrollableScrollPhysics(),
@@ -179,7 +176,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                           ),
 
-                          // PAGE 2 (Centered)
                           Center(
                             child: SingleChildScrollView(
                               physics: const NeverScrollableScrollPhysics(),
@@ -198,8 +194,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             ),
                           ),
 
-                          // PAGE 3 (Kept original alignment so it doesn't clash with the login/signup buttons below it)
-                          OnboardingPage(
+                           OnboardingPage(
                             animationUrl: 'https://lottie.host/5cf639ad-7a01-4c6d-94e3-76c986dd6e9c/jFLyI97OUg.json',
                             title: Text(
                               localizations.onboardingDoneTitle,
@@ -216,7 +211,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                   ),
 
-                  // Bottom Section Control Block
                   Column(
                     children: [
                       if (isLastPage) ...[

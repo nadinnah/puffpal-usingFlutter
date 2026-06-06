@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../l10n/app_localizations.dart';
 
 class AsthmaBasicsPage extends StatefulWidget {
@@ -12,9 +11,7 @@ class AsthmaBasicsPage extends StatefulWidget {
 class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    final horizontalPadding = screenWidth * 0.05;
     final verticalSpacing = screenHeight * 0.12;
     final loc = AppLocalizations.of(context)!;
 
@@ -26,7 +23,6 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
 
           children: [
-            /// HEADER
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -57,7 +53,6 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
 
             const SizedBox(height: 24),
 
-            /// QUICK FACTS
             _sectionTitle(loc.asthmaBasicsSection),
 
             _infoCard(Icons.info_outline, [
@@ -69,7 +64,6 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
 
             const SizedBox(height: 24),
 
-            /// WHAT HAPPENS
             _sectionTitle(loc.whatHappensTitle),
 
             _infoCard(Icons.air, [
@@ -81,7 +75,6 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
 
             const SizedBox(height: 24),
 
-            /// SYMPTOMS
             _sectionTitle(loc.commonSymptoms),
 
             Wrap(
@@ -97,7 +90,6 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
 
             const SizedBox(height: 24),
 
-            /// TYPES
             _sectionTitle(loc.typesOfAsthma),
 
             Card(
@@ -120,7 +112,6 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
 
             const SizedBox(height: 24),
 
-            /// DAILY HABITS
             _sectionTitle(loc.dailyManagementTips),
 
             _checklistCard([
@@ -142,7 +133,6 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
 
             const SizedBox(height: 24),
 
-            /// RELIEVER VS CONTROLLER
             _sectionTitle(loc.knowYourInhalers),
 
             Row(
@@ -197,7 +187,7 @@ class _AsthmaBasicsPageState extends State<AsthmaBasicsPage> {
               ),
             ),
 
-        SizedBox(height: verticalSpacing/2),
+            SizedBox(height: verticalSpacing / 2),
           ],
         ),
       ),

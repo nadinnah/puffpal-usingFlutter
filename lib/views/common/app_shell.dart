@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:puffpal/views/home_page.dart';
 import 'package:puffpal/views/profile_page.dart';
 import 'package:puffpal/views/quizzes_games_page.dart';
-import 'package:puffpal/views/track_symptoms_page.dart';
 import '../../controllers/language_controller.dart';
 import '../../services/firestore_service.dart';
 
@@ -33,13 +32,13 @@ class _AppShellState extends State<AppShell> {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    final double titleSize = screenWidth * 0.08;       // ~28px on standard 400w screens
-    final double subtitleSize = screenWidth * 0.055;  // ~22px
+    final double titleSize = screenWidth * 0.08; // ~28px
+    final double subtitleSize = screenWidth * 0.055; // ~22px
     final double bodySize = screenWidth * 0.035;
     final double buttonSize = screenWidth * 0.15;
 
     return Scaffold(
-      backgroundColor:Color(0xFFA8ABCA) ,
+      backgroundColor: Color(0xFFA8ABCA),
       extendBodyBehindAppBar: true,
       extendBody: true,
       appBar: AppBar(
@@ -76,12 +75,9 @@ class _AppShellState extends State<AppShell> {
                 icon: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Icon(Icons.language, color: Colors.black),
-                  ],
+                  children: [const Icon(Icons.language, color: Colors.black)],
                 ),
                 style: TextStyle(fontSize: bodySize, color: Colors.black),
-                // Smaller font for AppBar
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   enabledBorder: InputBorder.none,
@@ -89,18 +85,20 @@ class _AppShellState extends State<AppShell> {
                 ),
                 initialValue: Localizations.localeOf(context).languageCode,
                 items: [
-                  const DropdownMenuItem(value: 'en', child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text('EN'),
-                    ],
-                  )),
-                  const DropdownMenuItem(value: 'ar', child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text('AR'),
-                    ],
-                  )),
+                  const DropdownMenuItem(
+                    value: 'en',
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [Text('EN')],
+                    ),
+                  ),
+                  const DropdownMenuItem(
+                    value: 'ar',
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [Text('AR')],
+                    ),
+                  ),
                 ],
                 onChanged: (String? newValue) {
                   if (newValue != null) {
@@ -128,11 +126,10 @@ class _AppShellState extends State<AppShell> {
           ),
         ],
       ),
-      bottomNavigationBar:Theme(
-        // Force the canvas underneath to be transparent so the curves render properly
+      bottomNavigationBar: Theme(
         data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
         child: Column(
-          mainAxisSize: MainAxisSize.min, // Essential to keep the bar tightly packed at the bottom
+          mainAxisSize: MainAxisSize.min,
           children: [
             CurvedNavigationBar(
               animationDuration: const Duration(milliseconds: 300),
@@ -140,12 +137,11 @@ class _AppShellState extends State<AppShell> {
               index: index,
               height: 60,
               color: const Color(0xffd7d2e7),
-              backgroundColor: Colors.transparent, // Keeps the upper curve transparent
+              backgroundColor: Colors.transparent,
               buttonBackgroundColor: const Color(0xffd7d2e7),
               onTap: (selectedIndex) =>
                   setState(() => this.index = selectedIndex),
             ),
-            // This safely fills only the hardware gesture safe area underneath the flat line
             Container(
               color: const Color(0xffd7d2e7),
               height: MediaQuery.of(context).padding.bottom,

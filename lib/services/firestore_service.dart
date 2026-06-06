@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:shared_preferences/shared_preferences.dart'; // ADDED THIS IMPORT
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:puffpal/services/sqlite_service.dart';
 
 import 'firebase_api.dart';
@@ -12,16 +13,21 @@ class FirebaseServices {
   LocalDatabase localDb = LocalDatabase();
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  Future<void> updateFirebaseUserFieldByEmail(String email, Map<String, dynamic> fieldsToUpdate) async {
+  Future<void> updateFirebaseUserFieldByEmail(
+      String email,
+      Map<String, dynamic> fieldsToUpdate,
+      ) async {
     try {
-      await firestore.collection('Users').doc(auth.currentUser!.uid).update(fieldsToUpdate);
+      await firestore
+          .collection('Users')
+          .doc(auth.currentUser!.uid)
+          .update(fieldsToUpdate);
     } catch (e) {
       throw Exception("Failed to update user field(s) in Firebase.");
     }
   }
 
-  // Signs in a user with email and password
-  Future<bool> signIn(String emailAddress, String password) async {
+  Future<bool> signIn(BuildContext context, String emailAddress, String password) async {
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailAddress,
@@ -35,7 +41,6 @@ class FirebaseServices {
       if (userDoc.exists) {
         Map<String, dynamic> data = userDoc.data() as Map<String, dynamic>;
 
-        // Sync to Local Database so ProfilePage can find it
         await localDb.insertUser({
           'name': data['name'],
           'email': data['email'],
@@ -54,35 +59,64 @@ class FirebaseServices {
 
       try {
         await LocationService().requestAndSaveLocation();
-        print('User location updated on sign-in.');
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('User location updated on sign-in.')),
+          );
+        }
       } catch (e) {
-        print('Error updating user location: $e');
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Error updating user location: $e')),
+          );
+        }
       }
 
-      /// ─── ADDED: SAVE SIGN-IN STATE ───
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool("isLoggedIn", true);
 
       return true;
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+      if (context.mounted) {
+        if (e.code == 'weak-password') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('The password provided is too weak.')),
+          );
+        } else if (e.code == 'email-already-in-use') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('The account already exists for that email.')),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Authentication error: ${e.message}')),
+          );
+        }
       }
       return false;
     } catch (e) {
-      print(e);
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('An error occurred: $e')),
+        );
+      }
       return false;
     }
   }
 
-  // Signs up a new user with email, password, name, and phone.
-  Future<bool> signUp(String emailAddress, String password, String name, String phone, int age, String gender) async {
+  Future<bool> signUp(
+      BuildContext context,
+      String emailAddress,
+      String password,
+      String name,
+      String phone,
+      int age,
+      String gender,
+      ) async {
     try {
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailAddress,
-          password: password
+      final credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+        email: emailAddress,
+        password: password,
       );
 
       String? fcmToken = await FirebaseMessaging.instance.getToken();
@@ -111,38 +145,56 @@ class FirebaseServices {
 
       try {
         await LocationService().requestAndSaveLocation();
-        print('User location saved successfully.');
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('User location saved successfully.')),
+          );
+        }
       } catch (e) {
-        print('Failed to get user location: $e');
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Failed to get user location: $e')),
+          );
+        }
       }
 
-      /// ─── ADDED: SAVE SIGN-UP STATE ───
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool("isLoggedIn", true);
 
       return true;
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+      if (context.mounted) {
+        if (e.code == 'user-not-found') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('No user found for that email.')),
+          );
+        } else if (e.code == 'wrong-password') {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Wrong password provided for that user.')),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Registration error: ${e.message}')),
+          );
+        }
       }
       return false;
     } catch (e) {
-      print(e);
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('An error occurred: $e')),
+        );
+      }
       return false;
     }
   }
 
-  // Signs out the currently logged-in user.
   Future<void> signOut() async {
     try {
       await FirebaseAuth.instance.signOut();
 
-      /// ─── ADDED: CLEAR LOGIN STATE ON LOGOUT ───
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool("isLoggedIn", false);
-
     } catch (e) {
       throw Exception('Failed to sign out.');
     }

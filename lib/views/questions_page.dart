@@ -37,7 +37,9 @@ class _QuestionsPageState extends State<QuestionsPage> {
 
   void _showDialogue() {
     final String titleText = AppLocalizations.of(context)!.quizCompleted;
-    final String bodyText = AppLocalizations.of(context)!.scoreMessage(score, widget.quiz.questions.length);
+    final String bodyText = AppLocalizations.of(
+      context,
+    )!.scoreMessage(score, widget.quiz.questions.length);
 
     if (Platform.isIOS) {
       showCupertinoDialog(
@@ -52,7 +54,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                 Navigator.pop(context);
                 Navigator.pop(context);
               },
-            )
+            ),
           ],
         ),
       );
@@ -69,7 +71,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                 Navigator.pop(context);
                 Navigator.pop(context);
               },
-            )
+            ),
           ],
         ),
       );
@@ -77,8 +79,6 @@ class _QuestionsPageState extends State<QuestionsPage> {
   }
 
   void _showScoreDialog(BuildContext context) async {
-    // 🟢 FIXED: Changed from widget.quiz.image to widget.quiz.id
-    // This makes sure it saves to the exact ID key QuizzesGamesPage is looking for!
     final String quizUniqueKey = widget.quiz.id;
 
     await QuizProgressService.setScore(quizUniqueKey, score);
@@ -109,11 +109,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
             gradient: LinearGradient(
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
-              colors: [
-                Color(0xFFD8D0E5),
-                Color(0xFFD9DBEF),
-                Color(0xFFA8ABCA),
-              ],
+              colors: [Color(0xFFD8D0E5), Color(0xFFD9DBEF), Color(0xFFA8ABCA)],
             ),
           ),
           child: ListView(
@@ -132,7 +128,10 @@ class _QuestionsPageState extends State<QuestionsPage> {
                 padding: const EdgeInsets.all(20.0),
                 child: Text(
                   currentQuizQuestion.getLocalizedText(context),
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -154,28 +153,32 @@ class _QuestionsPageState extends State<QuestionsPage> {
                   onTap: answered
                       ? null
                       : () {
-                    setState(() {
-                      selectedAnswer = option;
-                      answered = true;
-                      if (isCorrect) score++;
-                    });
+                          setState(() {
+                            selectedAnswer = option;
+                            answered = true;
+                            if (isCorrect) score++;
+                          });
 
-                    Future.delayed(const Duration(seconds: 1), () {
-                      if (currentQuestionIndex + 1 < widget.quiz.questions.length) {
-                        setState(() {
-                          currentQuestionIndex++;
-                          answered = false;
-                          selectedAnswer = null;
-                          loadQuestionOptions();
-                        });
-                      } else {
-                        _showScoreDialog(context);
-                      }
-                    });
-                  },
+                          Future.delayed(const Duration(seconds: 1), () {
+                            if (currentQuestionIndex + 1 <
+                                widget.quiz.questions.length) {
+                              setState(() {
+                                currentQuestionIndex++;
+                                answered = false;
+                                selectedAnswer = null;
+                                loadQuestionOptions();
+                              });
+                            } else {
+                              _showScoreDialog(context);
+                            }
+                          });
+                        },
                   child: Container(
                     width: double.infinity,
-                    margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 30,
+                    ),
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: getColor(),
@@ -190,7 +193,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                   ),
                 );
               }).toList(),
-              SizedBox(height: verticalSpacing / 2)
+              SizedBox(height: verticalSpacing / 2),
             ],
           ),
         ),

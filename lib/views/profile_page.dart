@@ -39,7 +39,6 @@ class _ProfilePageState extends State<ProfilePage> {
     return data;
   }
 
-  // Helper to safely translate database-driven gender entries dynamically
   String _getLocalizedGender(BuildContext context, String rawGender) {
     final l10n = AppLocalizations.of(context)!;
     if (rawGender.trim().toLowerCase() == 'male') {
@@ -47,7 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
     } else if (rawGender.trim().toLowerCase() == 'female') {
       return l10n.genderFemale;
     }
-    return rawGender; // Fallback if it's already an updated localized value or empty
+    return rawGender;
   }
 
   @override
@@ -60,16 +59,21 @@ class _ProfilePageState extends State<ProfilePage> {
 
     final l10n = AppLocalizations.of(context);
     if (userData.isEmpty || l10n == null) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
-    final String currentGenderRaw = userData.containsKey('gender') ? userData['gender'] : '';
+    final String currentGenderRaw = userData.containsKey('gender')
+        ? userData['gender']
+        : '';
 
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(horizontalPadding, verticalSpacing, horizontalPadding, 0),
+        padding: EdgeInsets.fromLTRB(
+          horizontalPadding,
+          verticalSpacing,
+          horizontalPadding,
+          0,
+        ),
         child: Column(
           children: [
             Text(
@@ -82,7 +86,10 @@ class _ProfilePageState extends State<ProfilePage> {
               label: l10n.name,
               value: userData.containsKey('name') ? userData['name'] : '',
               onSave: (newValue) {
-                firebaseServices.updateFirebaseUserFieldByEmail(auth.currentUser!.email!, {'name': newValue});
+                firebaseServices.updateFirebaseUserFieldByEmail(
+                  auth.currentUser!.email!,
+                  {'name': newValue},
+                );
                 return localdb.updateUserFieldByEmail(
                   auth.currentUser!.email!,
                   {'name': newValue},
@@ -91,7 +98,13 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             ListTile(
               leading: const Icon(Icons.email, color: Colors.black),
-              title: Text(l10n.email, style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+              title: Text(
+                l10n.email,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               subtitle: Text(
                 auth.currentUser!.email!,
                 style: const TextStyle(color: Colors.black),
@@ -102,7 +115,10 @@ class _ProfilePageState extends State<ProfilePage> {
               label: l10n.phone,
               value: userData.containsKey('number') ? userData['number'] : '',
               onSave: (newValue) {
-                firebaseServices.updateFirebaseUserFieldByEmail(auth.currentUser!.email!, {'number': newValue});
+                firebaseServices.updateFirebaseUserFieldByEmail(
+                  auth.currentUser!.email!,
+                  {'number': newValue},
+                );
                 return localdb.updateUserFieldByEmail(
                   auth.currentUser!.email!,
                   {'number': newValue},
@@ -111,18 +127,29 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             ListTile(
               leading: const Icon(Icons.perm_identity, color: Colors.black),
-              title: Text(l10n.gender, style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+              title: Text(
+                l10n.gender,
+                style: const TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               subtitle: Text(
-                _getLocalizedGender(context, currentGenderRaw), // 👈 Dynamic DB text parser conversion
+                _getLocalizedGender(context, currentGenderRaw),
                 style: const TextStyle(color: Colors.black),
               ),
             ),
             _buildEditableField(
               icon: Icons.calendar_today,
               label: l10n.age,
-              value: userData.containsKey('age') ? userData['age'].toString() : '',
+              value: userData.containsKey('age')
+                  ? userData['age'].toString()
+                  : '',
               onSave: (newValue) {
-                firebaseServices.updateFirebaseUserFieldByEmail(auth.currentUser!.email!, {'age': int.parse(newValue)});
+                firebaseServices.updateFirebaseUserFieldByEmail(
+                  auth.currentUser!.email!,
+                  {'age': int.parse(newValue)},
+                );
                 return localdb.updateUserFieldByEmail(
                   auth.currentUser!.email!,
                   {'age': int.parse(newValue)},
@@ -137,20 +164,33 @@ class _ProfilePageState extends State<ProfilePage> {
               padding: const EdgeInsets.all(10.0),
               child: TextButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MedicationReminderPage()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MedicationReminderPage(),
+                    ),
+                  );
                 },
                 child: Row(
                   children: [
                     Text(
-                      l10n.medicationRemindersMenu, // 👈 Localized navigation header text
-                      style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
+                      l10n.medicationRemindersMenu,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                      ),
                     ),
                     const Spacer(),
-                    const Icon(Icons.navigate_next, color: Colors.black, size: 30)
+                    const Icon(
+                      Icons.navigate_next,
+                      color: Colors.black,
+                      size: 30,
+                    ),
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -165,19 +205,26 @@ class _ProfilePageState extends State<ProfilePage> {
   }) {
     return ListTile(
       leading: Icon(icon, color: Colors.black),
-      title: Text(label, style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+      title: Text(
+        label,
+        style: const TextStyle(
+          color: Colors.black,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       subtitle: Text(value, style: const TextStyle(color: Colors.black)),
       trailing: const Icon(Icons.edit, color: Colors.black),
       onTap: () async {
-        // Moved dialog logic directly onto the whole row or edit button target safely
-        TextEditingController fieldController = TextEditingController(text: value);
+        TextEditingController fieldController = TextEditingController(
+          text: value,
+        );
         final l10n = AppLocalizations.of(context)!;
 
         showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text(l10n.editFieldTitle(label)), // 👈 Managed using structural placeholder templates
+              title: Text(l10n.editFieldTitle(label)),
               content: TextField(
                 controller: fieldController,
                 decoration: InputDecoration(labelText: label),
@@ -193,7 +240,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     if (newValue.isNotEmpty) {
                       await onSave(newValue);
                       if (label == AppLocalizations.of(context)!.name) {
-                        Provider.of<UserProvider>(context, listen: false).updateName(newValue);
+                        Provider.of<UserProvider>(
+                          context,
+                          listen: false,
+                        ).updateName(newValue);
                       }
                       Navigator.pop(context);
                       _loadUserData();

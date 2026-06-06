@@ -68,7 +68,9 @@ class LocalDatabase {
       onUpgrade: (db, oldVersion, newVersion) async {
         if (oldVersion < 6) {
           try {
-            await db.execute('ALTER TABLE Symptoms ADD COLUMN severity INTEGER;');
+            await db.execute(
+              'ALTER TABLE Symptoms ADD COLUMN severity INTEGER;',
+            );
           } catch (e) {
             await db.execute('''
             CREATE TABLE IF NOT EXISTS Symptoms (
@@ -121,7 +123,9 @@ class LocalDatabase {
 
   Future<int> insertUser(Map<String, dynamic> userData) async {
     final db = await myDataBase;
-    return await db!.insert('Users', {...userData}, conflictAlgorithm: ConflictAlgorithm.replace,);
+    return await db!.insert('Users', {
+      ...userData,
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<String?> getNameByEmail(String email) async {
@@ -143,18 +147,12 @@ class LocalDatabase {
     final db = await myDataBase;
     String today = DateTime.now().toString().split(' ')[0];
 
-    await db!.insert(
-      'Symptoms',
-      {
-        'email': email,
-        'date': today,
-        'result': resultText,
-        'severity': severity,
-        // Save the specific advice given
-      },
-      conflictAlgorithm:
-          ConflictAlgorithm.replace, // Overwrite if they somehow track twice
-    );
+    await db!.insert('Symptoms', {
+      'email': email,
+      'date': today,
+      'result': resultText,
+      'severity': severity,
+    }, conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<bool> hasTrackedToday(String email) async {
@@ -181,7 +179,6 @@ class LocalDatabase {
     for (var row in result) {
       DateTime date = DateTime.parse(row['date'] as String);
 
-      // Extract the true severity value, fallback to 1 if null
       int severity = (row['severity'] as int?) ?? 1;
 
       history[date] = severity;
@@ -213,6 +210,7 @@ class LocalDatabase {
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
+
   Future<List<Map<String, dynamic>>> getMedicationsForUser(String email) async {
     final db = await myDataBase;
     return await db!.query(
@@ -224,10 +222,6 @@ class LocalDatabase {
 
   Future<void> deleteMedication(int id) async {
     final db = await myDataBase;
-    await db!.delete(
-      'Medications',
-      where: 'id = ?',
-      whereArgs: [id],
-    );
+    await db!.delete('Medications', where: 'id = ?', whereArgs: [id]);
   }
 }

@@ -5,7 +5,7 @@ class InhalerDetailsPage extends StatelessWidget {
   final String title;
   final String image;
   final List<String> steps;
-  final List<String> examples; // Added examples list
+  final List<String> examples;
   final String video;
 
   const InhalerDetailsPage({
@@ -13,13 +13,12 @@ class InhalerDetailsPage extends StatelessWidget {
     required this.title,
     required this.image,
     required this.steps,
-    required this.examples, // Initialized here
+    required this.examples,
     required this.video,
   });
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     final double verticalSpacing = screenHeight * 0.12;
 
@@ -28,11 +27,7 @@ class InhalerDetailsPage extends StatelessWidget {
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [
-            Color(0xFFD8D0E5),
-            Color(0xFFD9DBEF),
-            Color(0xFFA8ABCA),
-          ],
+          colors: [Color(0xFFD8D0E5), Color(0xFFD9DBEF), Color(0xFFA8ABCA)],
         ),
       ),
       child: Scaffold(
@@ -43,7 +38,10 @@ class InhalerDetailsPage extends StatelessWidget {
           iconTheme: const IconThemeData(color: Colors.black),
           title: Text(
             title,
-            style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
           ),
         ),
         body: SingleChildScrollView(
@@ -51,7 +49,6 @@ class InhalerDetailsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              /// IMAGE WITH HERO FLIGHT TRANSITION
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Hero(
@@ -66,7 +63,6 @@ class InhalerDetailsPage extends StatelessWidget {
               ),
               const SizedBox(height: 24),
 
-              /// STEPS TITLE
               const Text(
                 "Steps",
                 style: TextStyle(
@@ -77,10 +73,9 @@ class InhalerDetailsPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
 
-              /// STEPS LIST
               ...List.generate(
                 steps.length,
-                    (index) => Padding(
+                (index) => Padding(
                   padding: const EdgeInsets.only(bottom: 16),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -90,7 +85,11 @@ class InhalerDetailsPage extends StatelessWidget {
                         backgroundColor: const Color(0xff7367f0),
                         child: Text(
                           "${index + 1}",
-                          style: const TextStyle(color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       const SizedBox(width: 14),
@@ -109,8 +108,6 @@ class InhalerDetailsPage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-
-              /// EXAMPLES SECTION (PLACED BEFORE VIDEO)
               if (examples.isNotEmpty) ...[
                 const Text(
                   "Examples",
@@ -126,11 +123,16 @@ class InhalerDetailsPage extends StatelessWidget {
                   runSpacing: 8.0,
                   children: examples.map((example) {
                     return Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 14,
+                        vertical: 8,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.8),
                         borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: const Color(0xff7367f0).withOpacity(0.25)),
+                        border: Border.all(
+                          color: const Color(0xff7367f0).withOpacity(0.25),
+                        ),
                       ),
                       child: Text(
                         example,
@@ -145,11 +147,7 @@ class InhalerDetailsPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
               ],
-
-              /// VIDEO PLAYER
-              VideoPlayerWidget(
-                videoPath: video,
-              ),
+              VideoPlayerWidget(videoPath: video),
               SizedBox(height: verticalSpacing / 2),
             ],
           ),

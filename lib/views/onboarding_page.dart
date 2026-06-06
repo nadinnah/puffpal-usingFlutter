@@ -22,12 +22,16 @@ class OnboardingPage extends StatelessWidget {
     final double horizontalPadding = screenWidth * 0.05;
     final double verticalSpacing = screenHeight * 0.1;
 
-    // Check if current system directionality is Right-to-Left (like Arabic)
     final bool isRtl = Directionality.of(context) == TextDirection.rtl;
 
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.fromLTRB(horizontalPadding, verticalSpacing, horizontalPadding, 0),
+        padding: EdgeInsets.fromLTRB(
+          horizontalPadding,
+          verticalSpacing,
+          horizontalPadding,
+          0,
+        ),
         child: Column(
           children: [
             Lottie.network(
@@ -49,16 +53,16 @@ class OnboardingPage extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: isRtl
                     ? GoogleFonts.cairo(
-                  fontWeight: FontWeight.w400, // Cairo handles Arabic perfectly at normal weight
-                  fontSize: 18,
-                  color: const Color(0xFF3D4853),
-                )
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18,
+                        color: const Color(0xFF3D4853),
+                      )
                     : GoogleFonts.roboto(
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.w300, // Light text readability optimized
-                  fontSize: 18,
-                  color: const Color(0xFF3D4853),
-                ),
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w300,
+                        fontSize: 18,
+                        color: const Color(0xFF3D4853),
+                      ),
               ),
           ],
         ),

@@ -10,7 +10,6 @@ class AsthmaEducationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localizations = AppLocalizations.of(context)!;
-    final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     final verticalSpacing = screenHeight * 0.12;
 
@@ -55,9 +54,9 @@ class AsthmaEducationPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-
-            // Core dynamic section list
-            isTriggers ? _buildTriggersList(localizations) : _buildReferralList(localizations),
+            isTriggers
+                ? _buildTriggersList(localizations)
+                : _buildReferralList(localizations),
             SizedBox(height: verticalSpacing / 2),
           ],
         ),
@@ -91,15 +90,21 @@ class AsthmaEducationPage extends StatelessWidget {
   Widget _buildReferralList(AppLocalizations localizations) {
     return Column(
       children: [
-        _buildSectionCard(localizations.eduSecConsultDoctor, Colors.orange.shade800, [
-          BulletItem(localizations.eduRefSevereSymptoms, Icons.trending_up),
-          BulletItem(localizations.eduRefRescueInhalerUsage, Icons.replay),
-          BulletItem(localizations.eduRefNightAwakening, Icons.bedtime),
-          BulletItem(localizations.eduRefDiffBreathingWalking, Icons.directions_walk),
-          BulletItem(localizations.eduRefLowPeakFlow, Icons.speed),
-        ]),
+        _buildSectionCard(
+          localizations.eduSecConsultDoctor,
+          Colors.orange.shade800,
+          [
+            BulletItem(localizations.eduRefSevereSymptoms, Icons.trending_up),
+            BulletItem(localizations.eduRefRescueInhalerUsage, Icons.replay),
+            BulletItem(localizations.eduRefNightAwakening, Icons.bedtime),
+            BulletItem(
+              localizations.eduRefDiffBreathingWalking,
+              Icons.directions_walk,
+            ),
+            BulletItem(localizations.eduRefLowPeakFlow, Icons.speed),
+          ],
+        ),
 
-        // Immediate Emergency High-Contrast Block
         Container(
           width: double.infinity,
           margin: const EdgeInsets.only(top: 8),
@@ -128,38 +133,38 @@ class AsthmaEducationPage extends StatelessWidget {
               ),
               const Divider(color: Colors.red, thickness: 0.5),
               ...[
-                localizations.eduEmergShortnessBreath,
-                localizations.eduEmergSilentChest,
-                localizations.eduEmergBlueLipsNails,
-                localizations.eduEmergDrowsiness,
-                localizations.eduEmergWorseningStatus,
-              ]
+                    localizations.eduEmergShortnessBreath,
+                    localizations.eduEmergSilentChest,
+                    localizations.eduEmergBlueLipsNails,
+                    localizations.eduEmergDrowsiness,
+                    localizations.eduEmergWorseningStatus,
+                  ]
                   .map(
                     (text) => Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Icon(
-                        Icons.report_problem,
-                        size: 16,
-                        color: Colors.red.shade700,
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        child: Text(
-                          text,
-                          style: TextStyle(
-                            color: Colors.red.shade900,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 13,
+                      padding: const EdgeInsets.symmetric(vertical: 4.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.report_problem,
+                            size: 16,
+                            color: Colors.red.shade700,
                           ),
-                        ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              text,
+                              style: TextStyle(
+                                color: Colors.red.shade900,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-              )
+                    ),
+                  )
                   .toList(),
             ],
           ),
@@ -169,10 +174,10 @@ class AsthmaEducationPage extends StatelessWidget {
   }
 
   Widget _buildSectionCard(
-      String title,
-      Color accentColor,
-      List<BulletItem> itemRules,
-      ) {
+    String title,
+    Color accentColor,
+    List<BulletItem> itemRules,
+  ) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
@@ -206,26 +211,26 @@ class AsthmaEducationPage extends StatelessWidget {
                 children: itemRules
                     .map(
                       (item) => Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(item.icon, size: 20, color: accentColor),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Text(
-                            item.label,
-                            style: TextStyle(
-                              fontSize: 13.5,
-                              color: Colors.grey.shade800,
-                              height: 1.2,
+                        padding: const EdgeInsets.symmetric(vertical: 6.0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(item.icon, size: 20, color: accentColor),
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Text(
+                                item.label,
+                                style: TextStyle(
+                                  fontSize: 13.5,
+                                  color: Colors.grey.shade800,
+                                  height: 1.2,
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                )
+                      ),
+                    )
                     .toList(),
               ),
             ),

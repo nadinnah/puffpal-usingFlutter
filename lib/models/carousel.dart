@@ -7,7 +7,7 @@ import '../views/carousel items/inhaler_techniques.dart';
 enum EducationMode { triggers, referral }
 
 class CarouselDataModel {
-  final String id; // Stable developer identifier used for asset mapping & localization matching
+  final String id;
   final String imageName;
   final Widget detailsPage;
 
@@ -17,7 +17,6 @@ class CarouselDataModel {
     required this.detailsPage,
   });
 
-  /// Dynamically retrieves the localized title text
   String getLocalizedTitle(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     switch (id) {
@@ -34,7 +33,6 @@ class CarouselDataModel {
     }
   }
 
-  /// Dynamically retrieves the localized subtitle descriptive paragraph
   String getLocalizedSubtitle(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     switch (id) {

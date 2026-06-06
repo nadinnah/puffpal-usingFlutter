@@ -2154,4 +2154,248 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get onboardingDoneDesc =>
       'Join PuffPal today and gain control over your asthma journey.';
+
+  @override
+  String get combinedQuizTitle => 'Inhalation Devices Master Quiz';
+
+  @override
+  String get q_mdi_2 =>
+      'What should you always do immediately after you finish using your inhaler?';
+
+  @override
+  String get q_mdi_2_a => 'Rinse your mouth out with water';
+
+  @override
+  String get q_mdi_2_b => 'Go to sleep';
+
+  @override
+  String get q_mdi_2_c => 'Eat a full meal';
+
+  @override
+  String get q_mdi_2_d => 'Exercise for 10 minutes';
+
+  @override
+  String get q_spacer_adult_1 =>
+      'What does it mean if you hear a whistle sound while breathing in from the spacer?';
+
+  @override
+  String get q_spacer_adult_1_a => 'You are breathing in too fast.';
+
+  @override
+  String get q_spacer_adult_1_b => 'You are holding your breath correctly.';
+
+  @override
+  String get q_spacer_adult_1_c => 'The inhaler is completely empty.';
+
+  @override
+  String get q_spacer_adult_1_d => 'You are breathing out instead of in.';
+
+  @override
+  String get q_spacer_adult_2 =>
+      'What should you do if you are unable to hold your breath for 5 to 10 seconds after using the spacer?';
+
+  @override
+  String get q_spacer_adult_2_a =>
+      'Take 6 normal breaths from the spacer instead.';
+
+  @override
+  String get q_spacer_adult_2_b => 'Stop using the inhaler entirely.';
+
+  @override
+  String get q_spacer_adult_2_c =>
+      'Spray another puff into the spacer immediately.';
+
+  @override
+  String get q_spacer_adult_2_d => 'Take a drink of water instead.';
+
+  @override
+  String get q_spacer_child_1 =>
+      'What does it mean if the dose counter on your inhaler says \'0\'?';
+
+  @override
+  String get q_spacer_child_1_a =>
+      'The inhaler is empty and needs to be replaced.';
+
+  @override
+  String get q_spacer_child_1_b => 'The inhaler is perfectly ready to use.';
+
+  @override
+  String get q_spacer_child_1_c => 'The inhaler is exactly half full.';
+
+  @override
+  String get q_spacer_child_1_d =>
+      'The inhaler needs to be shaken for 10 seconds.';
+
+  @override
+  String get q_spacer_child_2 =>
+      'What should you do to \'prime\' a brand new inhaler before using it for the very first time?';
+
+  @override
+  String get q_spacer_child_2_a =>
+      'Shake it for 10 seconds and spray 2 to 4 puffs into the air.';
+
+  @override
+  String get q_spacer_child_2_b =>
+      'Wash the entire inhaler with warm soap and water.';
+
+  @override
+  String get q_spacer_child_2_c => 'Put it in the refrigerator for 24 hours.';
+
+  @override
+  String get q_spacer_child_2_d =>
+      'Press the button 10 times while keeping the cap tightly on.';
+
+  @override
+  String get q_turbuhaler_1 =>
+      'How should you hold the Turbuhaler when you are ready to use it, to make sure the medicine doesn\'t fall out?';
+
+  @override
+  String get q_turbuhaler_1_a => 'Hold it flat (horizontally)';
+
+  @override
+  String get q_turbuhaler_1_b => 'Hold it completely upside down.';
+
+  @override
+  String get q_turbuhaler_1_c => 'Shake it up and down while breathing in.';
+
+  @override
+  String get q_turbuhaler_1_d => 'Balance it vertically on a flat table.';
+
+  @override
+  String get q_turbuhaler_2 =>
+      'If your doctor instructs you to take a second puff of your medication, how long should you wait after the first puff before repeating the steps?';
+
+  @override
+  String get q_turbuhaler_2_a => 'About 1 minute';
+
+  @override
+  String get q_turbuhaler_2_b => 'Right away with no pause';
+
+  @override
+  String get q_turbuhaler_2_c => 'Exactly 1 hour';
+
+  @override
+  String get q_turbuhaler_2_d => '10 seconds';
+
+  @override
+  String get q_diskus_1 =>
+      'How do you prepare a dose on your Diskus device and get it ready to inhale?';
+
+  @override
+  String get q_diskus_1_a =>
+      'Push the thumb grip away from you until it clicks, then slide the lever away from the mouthpiece until it clicks again';
+
+  @override
+  String get q_diskus_1_b =>
+      'Push the thumb grip away from you until you see the mouthpiece';
+
+  @override
+  String get q_diskus_1_c => 'Twist the entire gray base around';
+
+  @override
+  String get q_diskus_1_d => 'Press the center button until a light flashes.';
+
+  @override
+  String get q_respimat_1 =>
+      'When using your Respimat inhaler, what is the quick three-step memory trick (acronym) to help you remember the order of steps?';
+
+  @override
+  String get q_respimat_1_a => 'TOP (TURN - OPEN - PRESS)';
+
+  @override
+  String get q_respimat_1_b => 'PUSH - TURN - INHALE - COUNT';
+
+  @override
+  String get q_respimat_1_c => 'CLICK - SPIN - BREATHE - CLOSE';
+
+  @override
+  String get q_respimat_1_d => 'READY - SET - GO - REPEAT';
+
+  @override
+  String get q_respimat_2 =>
+      'How often should you clean the mouthpiece of your Respimat inhaler?';
+
+  @override
+  String get q_respimat_2_a => 'Once a week with a damp cloth.';
+
+  @override
+  String get q_respimat_2_b => 'After every single dose with soap and water.';
+
+  @override
+  String get q_respimat_2_c => 'Once a month with rubbing alcohol.';
+
+  @override
+  String get q_respimat_2_d => 'Only when it looks visually dirty.';
+
+  @override
+  String get q_neb_2 =>
+      'When putting your nebulizer parts together, how many pieces do you connect to form the complete setup?';
+
+  @override
+  String get q_neb_2_a =>
+      '5 pieces: medicine cup, top piece and mask, thin plastic tubing, and compressor';
+
+  @override
+  String get q_neb_2_b => '3 pieces: medicine cup, mouthpiece, and mask';
+
+  @override
+  String get q_neb_2_c =>
+      '4 pieces: medicine cup, top piece, mask, and electrical plug';
+
+  @override
+  String get q_neb_2_d =>
+      '6 pieces: medicine cup, top piece, mouthpiece, tubing, compressor, and carrying bag';
+
+  @override
+  String get q_peak_1 =>
+      'When you repeat the test three times to find your score, which number should you write down in your daily diary?';
+
+  @override
+  String get q_peak_1_a =>
+      'The highest number you reached out of your three attempts.';
+
+  @override
+  String get q_peak_1_b => 'The lowest number you got out of the three tries.';
+
+  @override
+  String get q_peak_1_c => 'An average of all three numbers added together.';
+
+  @override
+  String get q_peak_1_d => 'The number from your very first try.';
+
+  @override
+  String get q_peak_2 =>
+      'How long should you keep a daily record of your peak flow score?';
+
+  @override
+  String get q_peak_2_a => 'For 2 weeks at around the same time.';
+
+  @override
+  String get q_peak_2_b => 'Just 2 or 3 days in a row.';
+
+  @override
+  String get q_peak_2_c => 'Only on the weekends for 1 month.';
+
+  @override
+  String get q_peak_2_d => 'For a full calendar year without stopping.';
+
+  @override
+  String get q_peak_3 =>
+      'What is your \'personal best\' peak flow number, and how is it determined?';
+
+  @override
+  String get q_peak_3_a =>
+      'It is the highest number you reach during a two-week tracking period while you are feeling well.';
+
+  @override
+  String get q_peak_3_b =>
+      'It is the lowest score you get when you are feeling very sick.';
+
+  @override
+  String get q_peak_3_c =>
+      'It is the average score calculated by your doctor during an appointment.';
+
+  @override
+  String get q_peak_3_d =>
+      'It is a standard number that is exactly the same for every person.';
 }
