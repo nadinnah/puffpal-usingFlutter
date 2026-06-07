@@ -9,9 +9,9 @@ import 'firebase_api.dart';
 import 'location_service.dart';
 
 class FirebaseServices {
-  FirebaseFirestore firestore = FirebaseFirestore.instance;
-  LocalDatabase localDb = LocalDatabase();
-  FirebaseAuth auth = FirebaseAuth.instance;
+  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final LocalDatabase localDb = LocalDatabase();
+  final FirebaseAuth auth = FirebaseAuth.instance;
 
   Future<void> updateFirebaseUserFieldByEmail(
       String email,
@@ -103,24 +103,31 @@ class FirebaseServices {
     }
   }
 
-  Future<bool> signUp(
-      BuildContext context,
-      String emailAddress,
-      String password,
-      String name,
-      String phone,
-      int age,
-      String gender,
-      ) async {
+  Future<bool> signUp({
+    required String emailAddress,
+    required String password,
+    required String name,
+    required String phone,
+    required int age,
+    required String gender,
+  }) async {
     try {
+      // 1. Create User in Firebase Auth
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(
         email: emailAddress,
         password: password,
       );
 
-      String? fcmToken = await FirebaseMessaging.instance.getToken();
+      // 2. Fetch FCM Notification Token
+      String? fcmToken;
+      try {
+        fcmToken = await FirebaseMessaging.instance.getToken();
+      } catch (e) {
+        debugPrint('Failed to get FCM Token: $e');
+      }
 
+      // 3. Save to Firestore
       await firestore.collection('Users').doc(credential.user!.uid).set({
         'name': name,
         'email': emailAddress,
@@ -131,6 +138,7 @@ class FirebaseServices {
         'fcmToken': fcmToken,
       });
 
+      // 4. Save to Local SQLite DB
       await localDb.insertUser({
         'name': name,
         'email': emailAddress,
@@ -141,51 +149,34 @@ class FirebaseServices {
         'firebaseId': credential.user!.uid,
       });
 
+      // 5. Initialize Notification Configurations
       await FirebaseApi().initNotification();
 
+      // 6. Handle Background Location Data
       try {
         await LocationService().requestAndSaveLocation();
-        if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('User location saved successfully.')),
-          );
-        }
       } catch (e) {
-        if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Failed to get user location: $e')),
-          );
-        }
+        debugPrint('Failed to fetch user location silently: $e');
       }
 
+      // 7. Persist local Session State
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool("isLoggedIn", true);
 
       return true;
     } on FirebaseAuthException catch (e) {
-      if (context.mounted) {
-        if (e.code == 'user-not-found') {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('No user found for that email.')),
-          );
-        } else if (e.code == 'wrong-password') {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Wrong password provided for that user.')),
-          );
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Registration error: ${e.message}')),
-          );
-        }
+      // Catch Registration-specific error codes
+      if (e.code == 'weak-password') {
+        throw Exception('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        throw Exception('This email is already registered.');
+      } else if (e.code == 'invalid-email') {
+        throw Exception('The email address format is invalid.');
+      } else {
+        throw Exception(e.message ?? 'An unknown registration error occurred.');
       }
-      return false;
     } catch (e) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('An error occurred: $e')),
-        );
-      }
-      return false;
+      throw Exception('An unexpected error occurred during signup: $e');
     }
   }
 

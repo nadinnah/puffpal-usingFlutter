@@ -90,6 +90,7 @@ class _SignupPageState extends State<SignupPage> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    // NAME FIELD
                     TextFormField(
                       controller: nameController,
                       decoration: fieldDecoration(
@@ -97,10 +98,11 @@ class _SignupPageState extends State<SignupPage> {
                         Icons.person,
                       ),
                       validator: (value) =>
-                          value!.isEmpty ? localizations.nameRequired : null,
+                      value!.isEmpty ? localizations.nameRequired : null,
                     ),
                     const SizedBox(height: 20),
 
+                    // PHONE FIELD
                     TextFormField(
                       controller: phoneController,
                       decoration: fieldDecoration(
@@ -120,6 +122,7 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                     const SizedBox(height: 20),
 
+                    // AGE FIELD
                     TextFormField(
                       controller: ageController,
                       keyboardType: TextInputType.number,
@@ -139,6 +142,8 @@ class _SignupPageState extends State<SignupPage> {
                       },
                     ),
                     const SizedBox(height: 20),
+
+                    // GENDER DROPDOWN
                     DropdownButtonFormField<String>(
                       decoration: fieldDecoration(
                         localizations.genderHint,
@@ -159,11 +164,11 @@ class _SignupPageState extends State<SignupPage> {
                         _selectedGender = value;
                       }),
                       validator: (value) =>
-                          value == null ? localizations.genderRequired : null,
+                      value == null ? localizations.genderRequired : null,
                     ),
                     const SizedBox(height: 20),
 
-                    // EMAIL
+                    // EMAIL FIELD
                     TextFormField(
                       controller: emailController,
                       decoration: fieldDecoration(
@@ -184,25 +189,25 @@ class _SignupPageState extends State<SignupPage> {
                     ),
                     const SizedBox(height: 20),
 
-                    // PASSWORD
+                    // PASSWORD FIELD
                     TextFormField(
                       controller: passwordController,
                       obscureText: !isVisible,
                       decoration:
-                          fieldDecoration(
-                            localizations.passwordHint,
-                            Icons.lock,
-                          ).copyWith(
-                            suffixIcon: IconButton(
-                              icon: Icon(
-                                isVisible
-                                    ? Icons.visibility
-                                    : Icons.visibility_off,
-                              ),
-                              onPressed: () =>
-                                  setState(() => isVisible = !isVisible),
-                            ),
+                      fieldDecoration(
+                        localizations.passwordHint,
+                        Icons.lock,
+                      ).copyWith(
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            isVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
                           ),
+                          onPressed: () =>
+                              setState(() => isVisible = !isVisible),
+                        ),
+                      ),
                       validator: (value) => value!.length < 6
                           ? localizations.passwordTooShort
                           : null,
@@ -213,19 +218,26 @@ class _SignupPageState extends State<SignupPage> {
                     ElevatedButton(
                       onPressed: () async {
                         if (formKey.currentState!.validate()) {
+                          // Clear out past runtime errors before running
+                          setState(() => errorMessage = '');
+
                           try {
                             bool result = await firebaseServices.signUp(
-                              context,
-                              emailController.text.trim(),
-                              passwordController.text.trim(),
-                              nameController.text.trim(),
-                              phoneController.text.trim(),
-                              int.parse(ageController.text.trim()),
-                              _selectedGender!,
+                              emailAddress: emailController.text.trim(),
+                              password: passwordController.text.trim(),
+                              name: nameController.text.trim(),
+                              phone: phoneController.text.trim(),
+                              age: int.parse(ageController.text.trim()),
+                              gender: _selectedGender!,
                             );
 
                             if (result) {
                               if (!mounted) return;
+
+                              // Clear active background snackbars immediately
+                              ScaffoldMessenger.of(context).clearSnackBars();
+
+                              // Display the validation message safely
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
@@ -234,6 +246,7 @@ class _SignupPageState extends State<SignupPage> {
                                   backgroundColor: Colors.green,
                                 ),
                               );
+
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
@@ -242,7 +255,9 @@ class _SignupPageState extends State<SignupPage> {
                               );
                             }
                           } catch (e) {
-                            setState(() => errorMessage = e.toString());
+                            // Extract clear error text omitting "Exception: "
+                            final cleanString = e.toString().replaceAll('Exception: ', '');
+                            setState(() => errorMessage = cleanString);
                           }
                         }
                       },
@@ -278,10 +293,16 @@ class _SignupPageState extends State<SignupPage> {
                       ],
                     ),
 
+                    const SizedBox(height: 10),
+
                     if (errorMessage.isNotEmpty)
                       Text(
                         errorMessage,
-                        style: const TextStyle(color: Colors.red),
+                        style: const TextStyle(
+                          color: Colors.red,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                   ],
                 ),
