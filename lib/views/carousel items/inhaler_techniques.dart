@@ -33,7 +33,7 @@ class InhalerTechniquesPage extends StatelessWidget {
               context,
               title: localizations.mdiTitle,
               subtitle: localizations.mdiSubtitle,
-              image: "assets/images/mdi.jpeg",
+              image: "assets/images/mdi.png",
               examples: [
                 localizations.mdiExample1,
                 localizations.mdiExample2,
@@ -92,7 +92,22 @@ class InhalerTechniquesPage extends StatelessWidget {
               ],
               video: 'assets/videos/nebulizer.mp4',
             ),
-
+            _buildInhalerCard(
+              context,
+              title: localizations.pfmTitle,
+              subtitle: localizations.pfmSubtitle,
+              image: "assets/images/pfm.png",
+              examples: [localizations.pfmExample1, localizations.pfmExample2],
+              steps: [
+                localizations.pfmStep1,
+                localizations.pfmStep2,
+                localizations.pfmStep3,
+                localizations.pfmStep4,
+                localizations.pfmStep5,
+                localizations.pfmStep6,
+              ],
+              video: 'assets/videos/pfm.mp4',
+            ),
             _buildInhalerCard(
               context,
               title: localizations.dpiTitle,
@@ -114,22 +129,7 @@ class InhalerTechniquesPage extends StatelessWidget {
               video: 'assets/videos/dpi.mp4',
             ),
 
-            _buildInhalerCard(
-              context,
-              title: localizations.pfmTitle,
-              subtitle: localizations.pfmSubtitle,
-              image: "assets/images/pfm.png",
-              examples: [localizations.pfmExample1, localizations.pfmExample2],
-              steps: [
-                localizations.pfmStep1,
-                localizations.pfmStep2,
-                localizations.pfmStep3,
-                localizations.pfmStep4,
-                localizations.pfmStep5,
-                localizations.pfmStep6,
-              ],
-              video: 'assets/videos/pfm.mp4',
-            ),
+
             _buildInhalerCard(
               context,
               title: localizations.respimatTitle,

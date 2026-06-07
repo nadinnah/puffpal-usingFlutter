@@ -116,8 +116,8 @@ class _QuestionsPageState extends State<QuestionsPage> {
               child: Center(
                 child: Image.asset(
                   widget.quiz.image,
-                  height: 250,
-                  width: 250,
+                  height: 300,
+                  width: 300,
                 ),
               ),
             ),

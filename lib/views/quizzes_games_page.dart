@@ -167,7 +167,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                   clipBehavior: Clip.none,
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(top: 40),
+                      margin: const EdgeInsets.only(top: 50),
                       width: double.infinity,
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
@@ -245,7 +245,7 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
                       ),
                     ),
                     PositionedDirectional(
-                      end: 10,
+                      end: 15,
                       top: 5,
 
                       child: Image.asset(quiz.image, height: 120, width: 120),
