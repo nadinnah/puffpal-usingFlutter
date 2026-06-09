@@ -2,28 +2,32 @@ name: 🌦️ Daily Weather Notifier
 
 on:
   schedule:
-    - cron: '0 5 * * *'  # Runs every day at 5 AM UTC = 7 AM Cairo
-  workflow_dispatch:      # Allows manual run
+    - cron: '0 5 * * *'
+  workflow_dispatch:
 
 jobs:
   send-weather-alerts:
     runs-on: ubuntu-latest
 
-    env:
-      FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-      OPEN_METEO_API: "https://api.open-meteo.com/v1/forecast"
-
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install node-fetch@2 firebase-admin
+        run: |
+          if [ -f package.json ]; then
+            npm ci
+          else
+            npm install node-fetch@2 firebase-admin dotenv
+          fi
 
       - name: Run weather notification script
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: node .github/scripts/weatherNotifier.js
