@@ -40,12 +40,11 @@ async function main() {
     // 2. Fetch Users
     const usersSnapshot = await db.collection("Users").get();
     if (usersSnapshot.empty) {
-      console.log("No users found in Firestore.");
+      console.log("⚠️ No users found in Firestore.");
       return;
     }
 
     // 3. Group users by a coarser location region (1 decimal place ~11km accuracy)
-    // This allows fine/coarse GPS inputs to safely merge into local regional buckets like Cairo.
     const locationGroups = {};
 
     for (const userDoc of usersSnapshot.docs) {
@@ -56,7 +55,7 @@ async function main() {
       const rawLat = user.latitude || 30.0444;
       const rawLon = user.longitude || 31.2357;
 
-      // Rounding to 1 decimal place aggregates local neighborhoods together
+      // Rounding to 1 decimal place aggregates local neighborhoods together safely
       const groupLat = Number(rawLat).toFixed(1);
       const groupLon = Number(rawLon).toFixed(1);
       const geoKey = `${groupLat}_${groupLon}`;
@@ -76,7 +75,7 @@ async function main() {
       });
     }
 
-    console.log(`Grouped users into ${Object.keys(locationGroups).length} unique weather regions.`);
+    console.log(`📦 Grouped users into ${Object.keys(locationGroups).length} unique weather regions.`);
 
     // 4. Process each geographic group
     for (const geoKey in locationGroups) {
@@ -90,7 +89,8 @@ async function main() {
       } else {
         try {
           const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m&forecast_days=1`;
-          const airQualityUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&hourly=dust,pollen_pollen_grass&forecast_days=1`;
+          // FIXED: Removed the invalid grass_pollen endpoint and added valid pm10 and pm2_5 parameters
+          const airQualityUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}&hourly=dust,pm10,pm2_5&forecast_days=1`;
 
           const [wRes, aRes] = await Promise.all([
             fetch(weatherUrl).then(r => {
@@ -103,12 +103,14 @@ async function main() {
             })
           ]);
 
+          // Threshold evaluations
           if (wRes.hourly?.temperature_2m?.some(t => t < 16)) triggers.push("chilly air");
           if (aRes.hourly?.dust?.some(d => d > 80)) triggers.push("dust");
+          if (aRes.hourly?.pm10?.some(p => p > 50)) triggers.push("high PM10");
+          if (aRes.hourly?.pm2_5?.some(p => p > 25)) triggers.push("high PM2.5");
 
         } catch (apiError) {
-          // If the API fails for this location, log it and move to the next region without crashing the job
-          console.error(`Failed to fetch weather for region ${geoKey}:`, apiError.message);
+          console.error(`❌ Failed to fetch weather for region ${geoKey}:`, apiError.message);
           continue;
         }
       }
@@ -119,7 +121,6 @@ async function main() {
         const conditionString = triggers.join(", ");
 
         try {
-          // sendEachForMulticast is efficient and returns individual statuses for each token
           const response = await admin.messaging().sendEachForMulticast({
             tokens: tokens,
             notification: {
@@ -128,20 +129,19 @@ async function main() {
             }
           });
 
-          console.log(`Region [${geoKey}] broadcast complete: ${response.successCount} successful, ${response.failureCount} failed.`);
+          console.log(`✅ Region [${geoKey}] broadcast complete: ${response.successCount} successful, ${response.failureCount} failed.`);
 
-          // Optional: Loop through responses to spot/clean expired FCM tokens
           response.responses.forEach((res, idx) => {
             if (!res.success) {
-              console.error(`   FCM Error for user ${users[idx].email}:`, res.error.message);
+              console.error(`   ❌ FCM Error for user ${users[idx].email}:`, res.error.message);
             }
           });
 
         } catch (fcmError) {
-          console.error(`Heavy FCM broadcast error for region ${geoKey}:`, fcmError.message);
+          console.error(`❌ Heavy FCM broadcast error for region ${geoKey}:`, fcmError.message);
         }
       } else {
-        console.log(`Region [${geoKey}] conditions are optimal. No alerts needed.`);
+        console.log(`🟢 Region [${geoKey}] conditions are optimal. No alerts needed.`);
       }
     }
 
