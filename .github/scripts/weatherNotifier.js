@@ -35,7 +35,7 @@ async function main() {
     }
 
     const db = admin.firestore();
-    const TEST_MODE = false;
+    const TEST_MODE = true;
 
     // 2. Fetch Users
     const usersSnapshot = await db.collection("Users").get();
