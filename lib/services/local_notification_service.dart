@@ -6,28 +6,28 @@ import 'package:flutter_timezone/flutter_timezone.dart';
 
 class LocalNotificationService {
   static final LocalNotificationService _instance =
-      LocalNotificationService._internal();
+  LocalNotificationService._internal();
 
   factory LocalNotificationService() => _instance;
 
   LocalNotificationService._internal();
 
   final FlutterLocalNotificationsPlugin _plugin =
-      FlutterLocalNotificationsPlugin();
+  FlutterLocalNotificationsPlugin();
 
   Future<void> init() async {
     tz.initializeTimeZones();
 
     try {
       final String currentTimeZone =
-          (await FlutterTimezone.getLocalTimezone()) as String;
+      (await FlutterTimezone.getLocalTimezone()) as String;
       tz.setLocalLocation(tz.getLocation(currentTimeZone));
     } catch (e) {
       tz.setLocalLocation(tz.getLocation('Asia/Kuwait'));
     }
 
     const AndroidInitializationSettings androidSettings =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
+    AndroidInitializationSettings('@mipmap/ic_launcher');
 
     await _plugin.initialize(
       const InitializationSettings(android: androidSettings),
@@ -36,8 +36,7 @@ class LocalNotificationService {
     if (Platform.isAndroid) {
       final androidPlugin = _plugin
           .resolvePlatformSpecificImplementation<
-            AndroidFlutterLocalNotificationsPlugin
-          >();
+          AndroidFlutterLocalNotificationsPlugin>();
 
       const AndroidNotificationChannel channel = AndroidNotificationChannel(
         'high_importance_channel',
@@ -54,32 +53,46 @@ class LocalNotificationService {
   Future<void> requestPermissions() async {
     if (Platform.isAndroid) {
       final AndroidFlutterLocalNotificationsPlugin? androidImplementation =
-          _plugin
-              .resolvePlatformSpecificImplementation<
-                AndroidFlutterLocalNotificationsPlugin
-              >();
+      _plugin.resolvePlatformSpecificImplementation<
+          AndroidFlutterLocalNotificationsPlugin>();
 
       await androidImplementation?.requestNotificationsPermission();
 
-      final bool? hasAlarmPermission = await androidImplementation
-          ?.requestExactAlarmsPermission();
+      final bool? hasAlarmPermission =
+      await androidImplementation?.requestExactAlarmsPermission();
 
       print("Exact Alarm Permission: $hasAlarmPermission");
     }
   }
 
   Future<void> scheduleRepeatingReminder(
-    String medName,
-    DateTime startTime,
-    int intervalHours,
-  ) async {
+      String medName,
+      DateTime startTime,
+      int intervalHours,
+      ) async {
+    int baseId = medName.hashCode.abs();
+    DateTime now = DateTime.now();
+    DateTime nextScheduledTime = startTime;
+
+    // Automatically roll the start time forward by the interval amount
+    // until it lands cleanly in the future.
+    if (nextScheduledTime.isBefore(now)) {
+      int hoursPassed = now.difference(nextScheduledTime).inHours;
+
+      // Calculate how many intervals were missed, then add one extra interval
+      // to ensure the target time is completely in the future.
+      int intervalsToSkip = (hoursPassed / intervalHours).floor() + 1;
+      nextScheduledTime = nextScheduledTime.add(
+        Duration(hours: intervalHours * intervalsToSkip),
+      );
+    }
+
+    // Schedule the next 10 consecutive doses starting from the calculated future baseline
     for (int i = 0; i < 10; i++) {
-      int id = medName.hashCode.abs() + i;
-      DateTime scheduledTime = startTime.add(
+      int id = baseId + i;
+      DateTime scheduledTime = nextScheduledTime.add(
         Duration(hours: intervalHours * i),
       );
-
-      if (scheduledTime.isBefore(DateTime.now())) continue;
 
       print("Scheduling $medName ID: $id for $scheduledTime");
 

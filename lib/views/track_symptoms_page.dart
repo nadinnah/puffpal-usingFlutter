@@ -100,11 +100,11 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
           child: isLoading
               ? const Center(child: CircularProgressIndicator())
               : Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: alreadyTracked
-                      ? _buildHistoryView()
-                      : _buildQuestionnaireView(),
-                ),
+            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+            child: alreadyTracked
+                ? _buildHistoryView()
+                : _buildQuestionnaireView(),
+          ),
         ),
       ),
     );
@@ -129,7 +129,9 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
           style: const TextStyle(color: Colors.black54),
           textAlign: TextAlign.center,
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 24),
+        _buildWeekStrip(),
+        const SizedBox(height: 24),
         Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
@@ -158,7 +160,13 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
             ),
           ),
         ),
-        const SizedBox(height: 30),
+        const SizedBox(height: 16),
+        Text(
+          l10n.showDoctorHint,
+          textAlign: TextAlign.center,
+          style: const TextStyle(color: Colors.black54, fontSize: 13),
+        ),
+        const SizedBox(height: 14),
         TextButton(
           onPressed: () => Navigator.pop(context),
           child: Text(l10n.backToHome, style: const TextStyle(fontSize: 16)),
@@ -279,6 +287,95 @@ class _TrackSymptomsPageState extends State<TrackSymptomsPage> {
           ],
         ),
       ],
+    );
+  }
+
+  Widget _buildWeekStrip() {
+    final l10n = AppLocalizations.of(context)!;
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+
+    const Map<int, Color> colorFor = {
+      1: Colors.green,
+      2: Colors.orange,
+      3: Colors.red,
+    };
+    String labelFor(int sev) {
+      switch (sev) {
+        case 1:
+          return l10n.wellControlledShort;
+        case 2:
+          return l10n.partlyControlledShort;
+        case 3:
+          return l10n.uncontrolledShort;
+        default:
+          return '';
+      }
+    }
+
+    const weekdayLetters = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+
+    final List<Widget> days = [];
+    for (int i = 6; i >= 0; i--) {
+      final day = today.subtract(Duration(days: i));
+      final key = DateTime(day.year, day.month, day.day);
+      final int? sev = heatmapData[key];
+      final Color c = sev != null ? colorFor[sev]! : Colors.grey.shade300;
+      days.add(
+        Column(
+          children: [
+            Text(
+              weekdayLetters[day.weekday - 1],
+              style: const TextStyle(fontSize: 12, color: Colors.black54),
+            ),
+            const SizedBox(height: 4),
+            Container(
+              width: 30,
+              height: 30,
+              decoration: BoxDecoration(
+                color: c,
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.white, width: 1.5),
+              ),
+              child: sev != null
+                  ? const Icon(Icons.circle, size: 0)
+                  : null,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              sev != null ? labelFor(sev) : '–',
+              style: const TextStyle(fontSize: 10, color: Colors.black45),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      elevation: 3,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 6, bottom: 10),
+              child: Text(
+                l10n.last7Days,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: days,
+            ),
+          ],
+        ),
+      ),
     );
   }
 

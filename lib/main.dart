@@ -85,6 +85,27 @@ class App extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'PuffPal',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: kColorScheme,
+        scaffoldBackgroundColor: const Color(0xFFD9DBEF),
+        cardTheme: CardThemeData(
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: const Color(0xFF1E6097),
+            foregroundColor: Colors.white,
+            padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 12),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(14),
+            ),
+          ),
+        ),
+      ),
       locale: languageController.locale,
       supportedLocales: const [Locale('en'), Locale('ar')],
       localizationsDelegates: const [
