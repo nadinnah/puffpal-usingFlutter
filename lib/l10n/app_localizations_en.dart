@@ -2398,4 +2398,95 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get q_peak_3_d =>
       'It is a standard number that is exactly the same for every person.';
+
+  @override
+  String get emergencyButton => 'Emergency';
+
+  @override
+  String get emergencyTitle => 'Asthma Emergency';
+
+  @override
+  String get emergencySubtitle =>
+      'Stay calm. Follow these steps one at a time.';
+
+  @override
+  String get emStep1Title => 'Sit upright';
+
+  @override
+  String get emStep1Body =>
+      'Sit up straight and try to keep calm. Do not lie down.';
+
+  @override
+  String get emStep2Title => 'Use your rescue inhaler';
+
+  @override
+  String get emStep2Body =>
+      'Take 1 puff of your rescue (reliever) inhaler every 30–60 seconds, up to 10 puffs. Use a spacer if you have one.';
+
+  @override
+  String get emStep3Title => 'Check how you feel';
+
+  @override
+  String get emStep3Body =>
+      'If you feel no better after 10 puffs, or you feel worse at any time, get emergency help now.';
+
+  @override
+  String get emStep4Title => 'Call for help';
+
+  @override
+  String get emStep4Body =>
+      'Call your local emergency number, or have someone take you to the nearest emergency department.';
+
+  @override
+  String get emStep5Title => 'Repeat if needed';
+
+  @override
+  String get emStep5Body =>
+      'If help has not arrived after 10 minutes and you still feel unwell, repeat step 2.';
+
+  @override
+  String get emergencyDisclaimer =>
+      'This guidance does not replace your personal asthma action plan or your doctor\'s advice.';
+
+  @override
+  String get feedbackCorrect => 'Correct! Great job.';
+
+  @override
+  String get feedbackIncorrect => 'Not quite.';
+
+  @override
+  String correctAnswerWas(Object answer) {
+    return 'Correct answer: $answer';
+  }
+
+  @override
+  String get nextQuestion => 'Next';
+
+  @override
+  String get seeResults => 'See results';
+
+  @override
+  String get retakeQuiz => 'Retake';
+
+  @override
+  String get last7Days => 'Last 7 days';
+
+  @override
+  String get wellControlledShort => 'Good';
+
+  @override
+  String get partlyControlledShort => 'Okay';
+
+  @override
+  String get uncontrolledShort => 'Tough';
+
+  @override
+  String get showDoctorHint =>
+      'Tip: show this calendar to your doctor at your next visit.';
+
+  @override
+  String get answerAllPrompt => 'Please answer all questions first.';
+
+  @override
+  String get howWasToday => 'How is your asthma today?';
 }

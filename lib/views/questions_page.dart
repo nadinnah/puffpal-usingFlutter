@@ -85,6 +85,84 @@ class _QuestionsPageState extends State<QuestionsPage> {
     _showDialogue();
   }
 
+  void _goNext() {
+    if (currentQuestionIndex + 1 < widget.quiz.questions.length) {
+      setState(() {
+        currentQuestionIndex++;
+        answered = false;
+        selectedAnswer = null;
+        loadQuestionOptions();
+      });
+    } else {
+      _showScoreDialog(context);
+    }
+  }
+
+  Widget _buildFeedbackPanel(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final bool wasCorrect = selectedAnswer == rawCorrectAnswersReference[0];
+    final bool isLast =
+        currentQuestionIndex + 1 >= widget.quiz.questions.length;
+
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: wasCorrect ? const Color(0xFFE6F4EA) : const Color(0xFFFDECEA),
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: wasCorrect ? Colors.green : Colors.red.shade300,
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(
+                wasCorrect ? Icons.check_circle : Icons.info,
+                color: wasCorrect ? Colors.green.shade700 : Colors.red.shade700,
+              ),
+              const SizedBox(width: 8),
+              Expanded(
+                child: Text(
+                  wasCorrect ? l10n.feedbackCorrect : l10n.feedbackIncorrect,
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          if (!wasCorrect) ...[
+            const SizedBox(height: 6),
+            Text(
+              l10n.correctAnswerWas(rawCorrectAnswersReference[0]),
+              style: const TextStyle(fontSize: 15, height: 1.3),
+            ),
+          ],
+          const SizedBox(height: 12),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF1E6097),
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(vertical: 12),
+              ),
+              onPressed: _goNext,
+              child: Text(
+                isLast ? l10n.seeResults : l10n.nextQuestion,
+                style: const TextStyle(fontSize: 16),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final currentQuizQuestion = widget.quiz.questions[currentQuestionIndex];
@@ -150,26 +228,12 @@ class _QuestionsPageState extends State<QuestionsPage> {
                 onTap: answered
                     ? null
                     : () {
-                        setState(() {
-                          selectedAnswer = option;
-                          answered = true;
-                          if (isCorrect) score++;
-                        });
-
-                        Future.delayed(const Duration(seconds: 1), () {
-                          if (currentQuestionIndex + 1 <
-                              widget.quiz.questions.length) {
-                            setState(() {
-                              currentQuestionIndex++;
-                              answered = false;
-                              selectedAnswer = null;
-                              loadQuestionOptions();
-                            });
-                          } else {
-                            _showScoreDialog(context);
-                          }
-                        });
-                      },
+                  setState(() {
+                    selectedAnswer = option;
+                    answered = true;
+                    if (isCorrect) score++;
+                  });
+                },
                 child: Container(
                   width: double.infinity,
                   margin: const EdgeInsets.symmetric(
@@ -190,6 +254,7 @@ class _QuestionsPageState extends State<QuestionsPage> {
                 ),
               );
             }).toList(),
+            if (answered) _buildFeedbackPanel(context),
             SizedBox(height: verticalSpacing / 2),
           ],
         ),

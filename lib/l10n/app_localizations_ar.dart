@@ -2386,4 +2386,94 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get q_peak_3_d => 'هو رقم قياسي موحد يتطابق تمامًا لكل الأشخاص.';
+
+  @override
+  String get emergencyButton => 'طوارئ';
+
+  @override
+  String get emergencyTitle => 'نوبة ربو طارئة';
+
+  @override
+  String get emergencySubtitle =>
+      'حافظ على هدوئك. اتبع هذه الخطوات واحدة تلو الأخرى.';
+
+  @override
+  String get emStep1Title => 'اجلس باستقامة';
+
+  @override
+  String get emStep1Body => 'اجلس مستقيمًا وحاول أن تبقى هادئًا. لا تستلقِ.';
+
+  @override
+  String get emStep2Title => 'استخدم بخاخ الإنقاذ';
+
+  @override
+  String get emStep2Body =>
+      'خذ بخة واحدة من بخاخ الإنقاذ كل 30–60 ثانية، حتى 10 بخات كحد أقصى. استخدم المباعدة إن وجدت.';
+
+  @override
+  String get emStep3Title => 'تحقق من حالتك';
+
+  @override
+  String get emStep3Body =>
+      'إذا لم تتحسن بعد 10 بخات، أو ساءت حالتك في أي وقت، اطلب المساعدة الطارئة فورًا.';
+
+  @override
+  String get emStep4Title => 'اطلب المساعدة';
+
+  @override
+  String get emStep4Body =>
+      'اتصل برقم الطوارئ المحلي، أو اطلب من شخص أن يأخذك إلى أقرب قسم طوارئ.';
+
+  @override
+  String get emStep5Title => 'كرر إذا لزم الأمر';
+
+  @override
+  String get emStep5Body =>
+      'إذا لم تصل المساعدة بعد 10 دقائق وما زلت تشعر بالتعب، كرر الخطوة 2.';
+
+  @override
+  String get emergencyDisclaimer =>
+      'هذه الإرشادات لا تغني عن خطة علاج الربو الخاصة بك أو نصيحة طبيبك.';
+
+  @override
+  String get feedbackCorrect => 'إجابة صحيحة! أحسنت.';
+
+  @override
+  String get feedbackIncorrect => 'إجابة غير صحيحة.';
+
+  @override
+  String correctAnswerWas(Object answer) {
+    return 'الإجابة الصحيحة: $answer';
+  }
+
+  @override
+  String get nextQuestion => 'التالي';
+
+  @override
+  String get seeResults => 'عرض النتيجة';
+
+  @override
+  String get retakeQuiz => 'إعادة المحاولة';
+
+  @override
+  String get last7Days => 'آخر 7 أيام';
+
+  @override
+  String get wellControlledShort => 'جيد';
+
+  @override
+  String get partlyControlledShort => 'متوسط';
+
+  @override
+  String get uncontrolledShort => 'صعب';
+
+  @override
+  String get showDoctorHint =>
+      'نصيحة: أرِ طبيبك هذا التقويم في زيارتك القادمة.';
+
+  @override
+  String get answerAllPrompt => 'يرجى الإجابة على جميع الأسئلة أولًا.';
+
+  @override
+  String get howWasToday => 'كيف حال ربوك اليوم؟';
 }

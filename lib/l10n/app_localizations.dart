@@ -4573,6 +4573,168 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'It is a standard number that is exactly the same for every person.'**
   String get q_peak_3_d;
+
+  /// No description provided for @emergencyButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Emergency'**
+  String get emergencyButton;
+
+  /// No description provided for @emergencyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Asthma Emergency'**
+  String get emergencyTitle;
+
+  /// No description provided for @emergencySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay calm. Follow these steps one at a time.'**
+  String get emergencySubtitle;
+
+  /// No description provided for @emStep1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Sit upright'**
+  String get emStep1Title;
+
+  /// No description provided for @emStep1Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Sit up straight and try to keep calm. Do not lie down.'**
+  String get emStep1Body;
+
+  /// No description provided for @emStep2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Use your rescue inhaler'**
+  String get emStep2Title;
+
+  /// No description provided for @emStep2Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Take 1 puff of your rescue (reliever) inhaler every 30–60 seconds, up to 10 puffs. Use a spacer if you have one.'**
+  String get emStep2Body;
+
+  /// No description provided for @emStep3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Check how you feel'**
+  String get emStep3Title;
+
+  /// No description provided for @emStep3Body.
+  ///
+  /// In en, this message translates to:
+  /// **'If you feel no better after 10 puffs, or you feel worse at any time, get emergency help now.'**
+  String get emStep3Body;
+
+  /// No description provided for @emStep4Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Call for help'**
+  String get emStep4Title;
+
+  /// No description provided for @emStep4Body.
+  ///
+  /// In en, this message translates to:
+  /// **'Call your local emergency number, or have someone take you to the nearest emergency department.'**
+  String get emStep4Body;
+
+  /// No description provided for @emStep5Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat if needed'**
+  String get emStep5Title;
+
+  /// No description provided for @emStep5Body.
+  ///
+  /// In en, this message translates to:
+  /// **'If help has not arrived after 10 minutes and you still feel unwell, repeat step 2.'**
+  String get emStep5Body;
+
+  /// No description provided for @emergencyDisclaimer.
+  ///
+  /// In en, this message translates to:
+  /// **'This guidance does not replace your personal asthma action plan or your doctor\'s advice.'**
+  String get emergencyDisclaimer;
+
+  /// No description provided for @feedbackCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct! Great job.'**
+  String get feedbackCorrect;
+
+  /// No description provided for @feedbackIncorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Not quite.'**
+  String get feedbackIncorrect;
+
+  /// No description provided for @correctAnswerWas.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct answer: {answer}'**
+  String correctAnswerWas(Object answer);
+
+  /// No description provided for @nextQuestion.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get nextQuestion;
+
+  /// No description provided for @seeResults.
+  ///
+  /// In en, this message translates to:
+  /// **'See results'**
+  String get seeResults;
+
+  /// No description provided for @retakeQuiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Retake'**
+  String get retakeQuiz;
+
+  /// No description provided for @last7Days.
+  ///
+  /// In en, this message translates to:
+  /// **'Last 7 days'**
+  String get last7Days;
+
+  /// No description provided for @wellControlledShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Good'**
+  String get wellControlledShort;
+
+  /// No description provided for @partlyControlledShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Okay'**
+  String get partlyControlledShort;
+
+  /// No description provided for @uncontrolledShort.
+  ///
+  /// In en, this message translates to:
+  /// **'Tough'**
+  String get uncontrolledShort;
+
+  /// No description provided for @showDoctorHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tip: show this calendar to your doctor at your next visit.'**
+  String get showDoctorHint;
+
+  /// No description provided for @answerAllPrompt.
+  ///
+  /// In en, this message translates to:
+  /// **'Please answer all questions first.'**
+  String get answerAllPrompt;
+
+  /// No description provided for @howWasToday.
+  ///
+  /// In en, this message translates to:
+  /// **'How is your asthma today?'**
+  String get howWasToday;
 }
 
 class _AppLocalizationsDelegate

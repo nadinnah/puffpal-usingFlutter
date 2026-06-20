@@ -903,7 +903,36 @@
   "q_peak_3_a": "It is the highest number you reach during a two-week tracking period while you are feeling well.",
   "q_peak_3_b": "It is the lowest score you get when you are feeling very sick.",
   "q_peak_3_c": "It is the average score calculated by your doctor during an appointment.",
-  "q_peak_3_d": "It is a standard number that is exactly the same for every person."
+  "q_peak_3_d": "It is a standard number that is exactly the same for every person.",
+  "emergencyButton": "Emergency",
+  "emergencyTitle": "Asthma Emergency",
+  "emergencySubtitle": "Stay calm. Follow these steps one at a time.",
+  "emStep1Title": "Sit upright",
+  "emStep1Body": "Sit up straight and try to keep calm. Do not lie down.",
+  "emStep2Title": "Use your rescue inhaler",
+  "emStep2Body": "Take 1 puff of your rescue (reliever) inhaler every 30–60 seconds, up to 10 puffs. Use a spacer if you have one.",
+  "emStep3Title": "Check how you feel",
+  "emStep3Body": "If you feel no better after 10 puffs, or you feel worse at any time, get emergency help now.",
+  "emStep4Title": "Call for help",
+  "emStep4Body": "Call your local emergency number, or have someone take you to the nearest emergency department.",
+  "emStep5Title": "Repeat if needed",
+  "emStep5Body": "If help has not arrived after 10 minutes and you still feel unwell, repeat step 2.",
+  "emergencyDisclaimer": "This guidance does not replace your personal asthma action plan or your doctor's advice.",
+  "feedbackCorrect": "Correct! Great job.",
+  "feedbackIncorrect": "Not quite.",
+  "correctAnswerWas": "Correct answer: {answer}",
+  "@correctAnswerWas": {"placeholders": {"answer": {"type": "Object"}}},
+  "nextQuestion": "Next",
+  "seeResults": "See results",
+  "retakeQuiz": "Retake",
+  "last7Days": "Last 7 days",
+  "wellControlledShort": "Good",
+  "partlyControlledShort": "Okay",
+  "uncontrolledShort": "Tough",
+  "showDoctorHint": "Tip: show this calendar to your doctor at your next visit.",
+  "answerAllPrompt": "Please answer all questions first.",
+  "howWasToday": "How is your asthma today?"
+
 }
 
 

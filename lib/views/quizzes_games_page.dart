@@ -148,110 +148,141 @@ class _QuizzesGamesPageState extends State<QuizzesGamesPage> {
             final bool isPlayed = quizScores[quiz.id] != null;
             final int? score = quizScores[quiz.id];
 
-            return Opacity(
-              opacity: isPlayed ? 0.7 : 1,
-              child: GestureDetector(
-                onTap: isPlayed
-                    ? null
-                    : () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => QuestionsPage(quiz: quiz),
-                          ),
-                        ).then((_) {
-                          loadProgress();
-                        });
-                      },
-                child: Stack(
-                  clipBehavior: Clip.none,
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(top: 50),
-                      width: double.infinity,
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                        boxShadow: const [
-                          BoxShadow(
-                            color: Colors.black26,
-                            blurRadius: 4,
-                            offset: Offset(0, 4),
-                          ),
-                        ],
-                        gradient: const LinearGradient(
-                          begin: Alignment.topRight,
-                          end: Alignment.bottomLeft,
-                          colors: [Color(0xFFF3F1FA), Color(0xFFE2DFF2)],
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => QuestionsPage(quiz: quiz),
+                  ),
+                ).then((_) {
+                  loadProgress();
+                });
+              },
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 50),
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.black26,
+                          blurRadius: 4,
+                          offset: Offset(0, 4),
                         ),
-                        borderRadius: BorderRadius.circular(20),
+                      ],
+                      gradient: const LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [Color(0xFFF3F1FA), Color(0xFFE2DFF2)],
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black87),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Icon(
-                              isPlayed ? Icons.done : Icons.play_arrow,
-                              color: Colors.black87,
-                              size: 30,
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            quiz.getLocalizedTitle(context),
-                            style: const TextStyle(
-                              color: Colors.black87,
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Row(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        isPlayed
+                            ? SizedBox(
+                          width: 44,
+                          height: 44,
+                          child: Stack(
+                            alignment: Alignment.center,
                             children: [
+                              CircularProgressIndicator(
+                                value: (score ?? 0) /
+                                    quiz.questions.length,
+                                strokeWidth: 5,
+                                backgroundColor: Colors.black12,
+                                color: const Color(0xFF1E6097),
+                              ),
                               Text(
-                                quiz.getNoOfQuestions(context),
-                                style: GoogleFonts.roboto(
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: bodySize,
-                                  color: const Color(0xa11e1b1b),
+                                '${score ?? 0}',
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
                                 ),
                               ),
-                              if (isPlayed) ...[
-                                const Text(
-                                  " • ",
-                                  style: TextStyle(color: Color(0x7B489DE3)),
-                                ),
-                                Text(
-                                  AppLocalizations.of(
-                                    context,
-                                  )!.quizScoreDisplay(
-                                    score ?? 0,
-                                    quiz.questions.length,
-                                  ),
-                                  style: const TextStyle(
-                                    color: Color(0xFF1A5687),
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ],
                             ],
                           ),
-                        ],
-                      ),
+                        )
+                            : Container(
+                          padding: const EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black87),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: const Icon(
+                            Icons.play_arrow,
+                            color: Colors.black87,
+                            size: 30,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          quiz.getLocalizedTitle(context),
+                          style: const TextStyle(
+                            color: Colors.black87,
+                            fontSize: 28,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              quiz.getNoOfQuestions(context),
+                              style: GoogleFonts.roboto(
+                                fontStyle: FontStyle.italic,
+                                fontWeight: FontWeight.w400,
+                                fontSize: bodySize,
+                                color: const Color(0xa11e1b1b),
+                              ),
+                            ),
+                            if (isPlayed) ...[
+                              const Text(
+                                " • ",
+                                style: TextStyle(color: Color(0x7B489DE3)),
+                              ),
+                              Text(
+                                AppLocalizations.of(
+                                  context,
+                                )!.quizScoreDisplay(
+                                  score ?? 0,
+                                  quiz.questions.length,
+                                ),
+                                style: const TextStyle(
+                                  color: Color(0xFF1A5687),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const Text(
+                                " • ",
+                                style: TextStyle(color: Color(0x7B489DE3)),
+                              ),
+                              Text(
+                                AppLocalizations.of(context)!.retakeQuiz,
+                                style: const TextStyle(
+                                  color: Color(0xFF1A5687),
+                                  fontSize: 14,
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ],
+                          ],
+                        ),
+                      ],
                     ),
-                    PositionedDirectional(
-                      end: 15,
-                      top: 5,
+                  ),
+                  PositionedDirectional(
+                    end: 15,
+                    top: 5,
 
-                      child: Image.asset(quiz.image, height: 120, width: 120),
-                    ),
-                  ],
-                ),
+                    child: Image.asset(quiz.image, height: 120, width: 120),
+                  ),
+                ],
               ),
             );
           }).toList(),
